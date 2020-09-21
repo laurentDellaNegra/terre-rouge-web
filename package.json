@@ -2,6 +2,12 @@
   "name": "terre-rouge-web",
   "version": "0.1.0",
   "private": true,
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "airbnb"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +16,18 @@
   "dependencies": {
     "next": "9.5.3",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "styled-components": "^5.2.0",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-styled-components": "^1.11.1",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2"
   }
 }
