@@ -1,4 +1,4 @@
-import Box from '../primitives/Box';
+import Box from 'components/primitives/Box';
 
 const Content = () => (
   <Box color="black" bg="blue">
