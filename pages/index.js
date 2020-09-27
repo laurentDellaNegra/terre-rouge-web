@@ -1,16 +1,11 @@
 import Head from 'next/head';
 import HomeContent from 'components/Home';
-import Header from 'components/Header';
-import MainContainer from 'components/layout/MainContainer';
-
 const Home = () => (
-  <MainContainer>
+  <>
     <Head>
       <title>Terre Rouge - Accueil</title>
-      <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Header />
     <HomeContent />
-  </MainContainer>
+  </>
 );
 export default Home;
