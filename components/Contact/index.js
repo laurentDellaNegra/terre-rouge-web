@@ -1,8 +1,8 @@
 import Box from 'components/primitives/Box';
 
-const Content = () => (
+const Contact = () => (
   <Box color="black" bg="blue">
-    Coucou toi
+    Contact
   </Box>
 );
-export default Content;
+export default Contact;

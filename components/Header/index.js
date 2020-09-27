@@ -1,5 +1,6 @@
 import Box from 'components/primitives/Box';
 import Flex from 'components/primitives/Flex';
+import Link from 'components/Link';
 
 const Header = () => (
   <Flex flexDirection="row" alignItems="center" justifyContent="space-evenly">
@@ -10,12 +11,12 @@ const Header = () => (
 
     {/* Links */}
     <Flex flex={3} justifyContent="space-evenly">
-      <Box>Accueil</Box>
-      <Box>Epices</Box>
-      <Box>Contact</Box>
+      <Link href="/">Accueil</Link>
+      <Link href="/products">Epices</Link>
+      <Link href="/contact">Contact</Link>
     </Flex>
 
-    {/* login button */}
+    {/* Cart button */}
     <Flex flex={2} justifyContent="flex-end">
       <Box>Panier</Box>
     </Flex>
