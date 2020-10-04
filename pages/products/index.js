@@ -14,7 +14,6 @@ const Products = ({ productsData }) => (
 
 export async function getStaticProps({ params }) {
   const productsData = await getProductsData();
-  console.log(productsData.photos.length);
   return {
     props: {
       productsData,

@@ -2,13 +2,12 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 
-import PageTransition from 'components/PageTransition';
-
 import theme from '../styles/theme';
+import PageTransition from 'components/PageTransition';
 import Header from 'components/Header';
 import MainContainer from 'components/layout/MainContainer';
 
-const App = ({ Component, pageProps }) => (
+const App = ({ Component, pageProps, router }) => (
   <>
     <Head>
       <link rel="icon" href="/favicon.ico" />
@@ -18,11 +17,10 @@ const App = ({ Component, pageProps }) => (
       <MainContainer>
         <Header />
         <PageTransition>
-          <Component {...pageProps} />
+          <Component {...pageProps} key={router.route} />
         </PageTransition>
       </MainContainer>
     </ThemeProvider>
   </>
 );
-
 export default App;
