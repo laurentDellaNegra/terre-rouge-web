@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { getShopPageForHome } from '@/lib/api'
+
 import Button from '@/components/Button'
+import { getShopPageForHome } from '@/lib/api'
 
 const Home: NextPage = ({ shop, products }: any) => {
   console.log('shop', shop)
