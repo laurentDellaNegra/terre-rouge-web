@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { getShopPageForHome } from '../lib/api'
+import { getShopPageForHome } from '@/lib/api'
+import Button from '@/components/Button'
 
 const Home: NextPage = ({ shop, products }: any) => {
   console.log('shop', shop)
@@ -15,6 +16,7 @@ const Home: NextPage = ({ shop, products }: any) => {
 
       <main>
         <h1 className="text-3xl font-bold text-blue-500 underline">Hello {shop.name} !</h1>
+        <Button />
       </main>
 
       <footer>Footer</footer>
