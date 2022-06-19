@@ -16,10 +16,11 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@/atomic/*": ["atomic/*"],
+      "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"],
-      "@/components/*": ["components/*"]
+      "@/styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
