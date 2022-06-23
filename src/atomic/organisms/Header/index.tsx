@@ -654,7 +654,7 @@ export default function Header() {
               {collections.map((collection) => (
                 <div
                   key={collection.name}
-                  className="group relative bg-white rounded-lg shadow-xl sm:h-auto aspect-square sm:aspect-[4/5]"
+                  className="group relative h-96 bg-white rounded-lg shadow-xl sm:h-auto aspect-square sm:aspect-[4/5]"
                 >
                   <div>
                     <div aria-hidden="true" className="absolute inset-0 rounded-lg overflow-hidden">
