@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Header from '@/atomic/organisms/Header'
 import Button from '@/components/Button'
 import { getShopPageForHome } from '@/lib/api'
+import Banner from '@/atomic/organisms/Banner'
+import TrustBox from '@/components/TrustBox'
 
 const Home: NextPage = ({ shop, products }: any) => {
   console.log('shop', shop)
@@ -16,6 +18,8 @@ const Home: NextPage = ({ shop, products }: any) => {
         <link rel="icon" href="favicon/favicon.ico" />
       </Head>
 
+      {/* <Banner /> */}
+      <TrustBox />
       <Header />
       {/*
       <main>
