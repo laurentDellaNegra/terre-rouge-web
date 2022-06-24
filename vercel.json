@@ -1,15 +1,4 @@
 {
-  "headers": [
-    {
-      "source": "/proxytown/trustpilot",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    }
-  ],
   "rewrites": [
     {
       "source": "/proxytown/trustpilot",
