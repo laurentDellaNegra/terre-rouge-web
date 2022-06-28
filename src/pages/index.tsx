@@ -2,12 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import Header from '@/atomic/organisms/Header'
-import Button from '@/components/Button'
-import { getShopPageForHome } from '@/lib/api'
-import Banner from '@/atomic/organisms/Banner'
 import TrustBox from '@/components/TrustBox'
+import { getShopPageForHome } from '@/lib/api'
+import getTrustpilotReviews from '@/lib/trustpilot'
 
-const Home: NextPage = ({ shop, products }: any) => {
+const Home: NextPage = ({ shop, products, reviews }: any) => {
   console.log('shop', shop)
   console.log('products', products)
   return (
@@ -18,8 +17,7 @@ const Home: NextPage = ({ shop, products }: any) => {
         <link rel="icon" href="favicon/favicon.ico" />
       </Head>
 
-      {/* <Banner /> */}
-      <TrustBox />
+      <TrustBox nbReviews={reviews.nbReviews} rating={reviews.rating} />
       <Header />
       {/*
       <main>
@@ -34,7 +32,8 @@ const Home: NextPage = ({ shop, products }: any) => {
 
 export async function getStaticProps() {
   const data = await getShopPageForHome()
-  return { props: { ...data } }
+  const reviews = await getTrustpilotReviews()
+  return { props: { ...data, reviews } }
 }
 
 export default Home
