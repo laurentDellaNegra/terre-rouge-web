@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import Banner from '@/atomic/atoms/Banner'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
 import trustPilotlogo from '@/public/logos/trustpilot.svg'
@@ -21,14 +19,18 @@ export default function TrustBox(props: Props) {
         <p>
           <span className="font-semibold">Excellent</span>
         </p>
-        <Image width={100} height={20} src={ratingImg} alt="4.5 stars" />
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img width={100} height={20} src="logos/trustpilot-rating.svg" alt="4.5 stars" />
         <p className="hidden sm:inline">
           <span className="hidden lg:inline">
             <span className="font-semibold">{rating}</span> sur 5 basé sur{' '}
           </span>
           <span className="font-semibold">{nbReviews} avis</span> sur
         </p>
-        <Image width={20} height={20} src={trustPilotlogo} alt="Trustpilot logo" />
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img width={20} height={20} src="logos/trustpilot.svg" alt="Trustpilot logo" />
         <p>Trustpilot</p>
       </div>
     </Banner>

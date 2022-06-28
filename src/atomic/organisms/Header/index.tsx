@@ -9,9 +9,6 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { Fragment, useState } from 'react'
 
-import LargeLogo from '@/public/logos/large-terre-rouge.webp'
-import smallLogo from '@/public/logos/small-terre-rouge.svg'
-
 const navigation = {
   categories: [
     {
@@ -97,7 +94,8 @@ export default function Header(props: HeaderProps) {
               <div className="-mt-5 hidden lg:flex lg:flex-1 lg:items-center">
                 <a href="#">
                   <span className="sr-only">Terre Rouge</span>
-                  <Image width={140} height={94} src={LargeLogo} alt="" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img width={140} height={94} src="logos/large-terre-rouge.webp" alt="" />
                 </a>
               </div>
 
@@ -228,7 +226,13 @@ export default function Header(props: HeaderProps) {
               {/* Logo (lg-) */}
               <a href="#" className="lg:hidden">
                 <span className="sr-only">Workflow</span>
-                <Image width={48} height={48} src={smallLogo} alt="Terre Rouge logo" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  width={35}
+                  height={35}
+                  src="logos/small-terre-rouge.svg"
+                  alt="Terre Rouge logo"
+                />
               </a>
 
               <div className="flex flex-1 items-center justify-end">
