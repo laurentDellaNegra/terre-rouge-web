@@ -55,7 +55,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <CollectionCards />
+      <CollectionCards className="-mt-96 sm:mt-0" />
     </div>
   )
 }
