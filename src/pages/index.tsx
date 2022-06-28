@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import Header from '@/atomic/organisms/Header'
+import Hero from '@/atomic/organisms/Hero'
+import HeaderMenu from '@/components/HeaderMenu'
 import TrustBox from '@/components/TrustBox'
 import { getShopPageForHome } from '@/lib/api'
-import getTrustpilotReviews from '@/lib/trustpilot'
+import { getTrustpilotReviews } from '@/lib/trustpilot'
 
 const Home: NextPage = ({ shop, products, reviews }: any) => {
   console.log('shop', shop)
@@ -18,14 +19,13 @@ const Home: NextPage = ({ shop, products, reviews }: any) => {
       </Head>
 
       <TrustBox nbReviews={reviews.nbReviews} rating={reviews.rating} />
-      <Header />
-      {/*
+      <HeaderMenu />
+
       <main>
-        <h1 className="text-3xl font-bold text-blue-500 underline">Hello {shop.name} !</h1>
-        <Button />
+        <Hero />
       </main>
 
-      <footer>Footer</footer> */}
+      {/* <footer>Footer</footer> */}
     </div>
   )
 }

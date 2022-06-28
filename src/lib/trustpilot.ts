@@ -1,4 +1,4 @@
-export default async function getTrustpilotReviews() {
+export async function getTrustpilotReviews() {
   try {
     const response = await fetch(
       'https://fr.trustpilot.com/review/terre-rouge.shop?utm_medium=trustbox&utm_source=MicroReviewCount'
