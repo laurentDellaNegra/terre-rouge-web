@@ -4,7 +4,7 @@ import React from 'react'
 import Component from '.'
 
 export default {
-  title: 'Organisms/Header',
+  title: 'Organisms/Hero',
   component: Component,
 } as ComponentMeta<typeof Component>
 

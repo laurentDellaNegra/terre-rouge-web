@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Banner from '@/atomic/organisms/Banner'
+import Banner from '@/atomic/atoms/Banner'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
 import trustPilotlogo from '@/public/logos/trustpilot.svg'
 

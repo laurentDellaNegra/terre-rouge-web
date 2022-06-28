@@ -4,10 +4,13 @@ import React from 'react'
 import Component from '.'
 
 export default {
-  title: 'Organisms/Header',
+  title: 'Organisms/MobileMenu',
   component: Component,
 } as ComponentMeta<typeof Component>
 
 const Template: ComponentStory<typeof Component> = () => <Component />
 
-export const Primary = Template.bind({})
+export const Open = Template.bind({})
+Open.args = {
+  open: true,
+}
