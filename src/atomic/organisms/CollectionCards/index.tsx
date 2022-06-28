@@ -1,27 +1,39 @@
+import clsx from 'clsx'
+import Image from 'next/image'
+
+import artTableImg from '@/public/images/art-table.jpeg'
+import clothesImg from '@/public/images/clothes.jpeg'
+import spiciesImg from '@/public/images/spicies.jpeg'
+
 const collections = [
   {
-    name: "Women's",
+    name: 'Épices',
     href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-04-collection-01.jpg',
-    imageAlt: 'Woman wearing a comfortable cotton t-shirt.',
+    imageSrc: spiciesImg,
+    imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
   {
-    name: "Men's",
+    name: 'Art de la table',
     href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-04-collection-02.jpg',
-    imageAlt: 'Man wearing a comfortable and casual cotton t-shirt.',
+    imageSrc: artTableImg,
+    imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
   {
-    name: 'Desk Accessories',
+    name: 'Vêtements',
     href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-04-collection-03.jpg',
-    imageAlt: 'Person sitting at a wooden desk with paper note organizer, pencil and tablet.',
+    imageSrc: clothesImg,
+    imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
 ]
 
-export default function CollectionCards() {
+interface CollectionCardsProps {
+  className?: string
+}
+
+export default function CollectionCards(props: CollectionCardsProps) {
+  const { className } = props
   return (
-    <section aria-labelledby="collection-heading" className="relative -mt-96 sm:mt-0">
+    <section aria-labelledby="collection-heading" className={clsx('relative', className)}>
       <h2 id="collection-heading" className="sr-only">
         Collections
       </h2>
@@ -34,10 +46,11 @@ export default function CollectionCards() {
             <div>
               <div aria-hidden="true" className="absolute inset-0 overflow-hidden rounded-lg">
                 <div className="absolute inset-0 overflow-hidden group-hover:opacity-75">
-                  <img
+                  <Image
                     src={collection.imageSrc}
                     alt={collection.imageAlt}
-                    className="h-full w-full object-cover object-center"
+                    layout="fill"
+                    objectFit="cover"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50" />

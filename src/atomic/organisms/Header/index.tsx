@@ -97,7 +97,7 @@ export default function Header(props: HeaderProps) {
               <div className="-mt-5 hidden lg:flex lg:flex-1 lg:items-center">
                 <a href="#">
                   <span className="sr-only">Terre Rouge</span>
-                  <Image width={140} height={91} src={LargeLogo} alt="" />
+                  <Image width={140} height={94} src={LargeLogo} alt="" />
                 </a>
               </div>
 
