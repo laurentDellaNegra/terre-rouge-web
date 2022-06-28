@@ -1,36 +1,36 @@
-import Script from 'next/script'
-import React from 'react'
+import Image from 'next/image'
 
-export default function TrustBox() {
-  // Créez une référence qui renvoie à l'élément <div> qui va représenter la TrustBox
-  const ref = React.useRef(null)
-  React.useEffect(() => {
-    // Si window.Trustpilot est disponible, cela signifie que nous devons charger la TrustBox depuis notre référence.
-    // Si ce n'est pas le cas, cela signifie que le script que vous avez collé dans <head /> n'est pas encore chargé.
-    // Quand il sera chargé, la TrustBox sera automatiquement affichée.
-    if ((window as any).Trustpilot) {
-      ;(window as any).Trustpilot.loadFromElement(ref.current, true)
-    }
-  }, [])
+import Banner from '@/atomic/organisms/Banner'
+import ratingImg from '@/public/logos/trustpilot-rating.svg'
+import trustPilotlogo from '@/public/logos/trustpilot.svg'
+
+interface Props {
+  nbReviews: number
+  rating: number
+}
+export default function TrustBox(props: Props) {
+  const { nbReviews, rating } = props
   return (
-    <>
-      <Script
-        src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
-        strategy="lazyOnload"
-      />
-      <div
-        suppressHydrationWarning // TODO: TMP solution
-        ref={ref} // Nous avons besoin d'une référence à cet élément pour charger la TrustBox dans l'effet (effect).
-        className="trustpilot-widget bg-primary-light p-1 text-center" // Cette classe a été renommée « className ».
-        data-locale="fr-FR"
-        data-template-id="5419b6a8b0d04a076446a9ad"
-        data-businessunit-id="5fbae7dd7f46530001caa378"
-        data-style-height="24px"
-        data-style-width="100%"
-        data-theme="light"
-      >
-        Chargement des avis Trustpilot...
+    <Banner
+      onClick={() =>
+        (location.href =
+          'https://fr.trustpilot.com/review/terre-rouge.shop?utm_medium=trustbox&utm_source=MicroReviewCount')
+      }
+    >
+      <div className="flex justify-center text-sm content-center gap-1">
+        <p>
+          <span className="font-semibold">Excellent</span>
+        </p>
+        <Image width={100} height={20} src={ratingImg} alt="4.5 stars" />
+        <p className="hidden sm:inline">
+          <span className="hidden lg:inline">
+            <span className="font-semibold">{rating}</span> sur 5 basé sur{' '}
+          </span>
+          <span className="font-semibold">{nbReviews} avis</span> sur
+        </p>
+        <Image width={20} height={20} src={trustPilotlogo} alt="Trustpilot logo" />
+        <p>Trustpilot</p>
       </div>
-    </>
+    </Banner>
   )
 }

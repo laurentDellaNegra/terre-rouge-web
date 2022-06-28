@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        {/* Font */}
         <link
           rel="preload"
           href="fonts/Inter-roman-latin-var.woff2"
