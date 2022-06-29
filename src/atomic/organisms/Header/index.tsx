@@ -16,11 +16,11 @@ export default function Header(props: HeaderProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               {/* Logo (lg+) */}
-              <div className="-mt-5 hidden lg:flex lg:flex-1 lg:items-center">
+              <div className="-mt-8 hidden lg:flex lg:flex-1 lg:items-center">
                 <a href="#">
                   <span className="sr-only">Terre Rouge</span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img width={140} height={94} src="logos/large-terre-rouge.webp" alt="" />
+                  <img className="h-24 w-auto" src="logos/large-terre-rouge.webp" alt="" />
                 </a>
               </div>
 
