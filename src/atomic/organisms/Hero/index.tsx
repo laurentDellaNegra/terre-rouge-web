@@ -21,7 +21,7 @@ export default function Hero() {
               priority
             />
           </div>
-          <div className="absolute inset-0 bg-gray-900 opacity-50" />
+          <div className="absolute inset-0 bg-gray-900 opacity-25" />
         </div>
         <div className="h-32 w-full bg-white md:h-40 lg:h-48" />
       </div>
@@ -36,10 +36,11 @@ export default function Hero() {
                 alt="Hand picking vanilla bean"
                 layout="fill"
                 objectFit="cover"
+                placeholder="blur"
                 priority
               />
             </div>
-            <div className="absolute inset-0 bg-gray-900 opacity-50" />
+            <div className="absolute inset-0 bg-gray-900 opacity-25" />
           </div>
           <div className="h-48 w-full bg-white" />
         </div>

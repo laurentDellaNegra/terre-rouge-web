@@ -51,6 +51,7 @@ export default function CollectionCards(props: CollectionCardsProps) {
                     alt={collection.imageAlt}
                     layout="fill"
                     objectFit="cover"
+                    placeholder="blur"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50" />
