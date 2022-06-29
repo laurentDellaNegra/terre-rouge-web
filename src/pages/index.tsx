@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import Hero from '@/atomic/organisms/Hero'
+import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
 import HeaderMenu from '@/components/HeaderMenu'
 import TrustBox from '@/components/TrustBox'
 import { getShopPageForHome } from '@/lib/api'
@@ -23,6 +24,7 @@ const Home: NextPage = ({ shop, products, reviews }: any) => {
 
       <main>
         <Hero />
+        <HorizontalProducts />
       </main>
 
       {/* <footer>Footer</footer> */}
