@@ -16,7 +16,7 @@ export default function Header(props: HeaderProps) {
   return (
     <header
       className={clsx('sticky top-[29.12px] sm:top-[37.12px] z-40 ', {
-        'bg-white/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-white/80': isScrolled,
+        'bg-white/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-white/90': isScrolled,
         'bg-white': !isScrolled,
       })}
     >
