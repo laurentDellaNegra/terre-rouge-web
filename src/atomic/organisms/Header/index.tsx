@@ -1,6 +1,7 @@
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline'
 import clsx from 'clsx'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
@@ -15,6 +16,7 @@ export default function Header(props: HeaderProps) {
 
   return (
     <header
+      //  Arbitrary value for banner height
       className={clsx('sticky top-[29.12px] sm:top-[37.12px] z-40 ', {
         'bg-white/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-white/90': isScrolled,
         'bg-white': !isScrolled,
@@ -48,13 +50,16 @@ export default function Header(props: HeaderProps) {
               </button>
 
               {/* Search */}
-              <a href="#" className="ml-2 p-2 text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Rechercher</span>
-                <SearchIcon className="h-6 w-6" aria-hidden="true" />
-              </a>
+              <Link href="/products">
+                <a className="ml-2 p-2 text-gray-400 hover:text-gray-500">
+                  <span className="sr-only">Rechercher</span>
+                  <SearchIcon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              </Link>
             </div>
 
             {/* Logo (lg-) */}
+
             <a href="#" className="lg:hidden">
               <span className="sr-only">Workflow</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -67,12 +72,11 @@ export default function Header(props: HeaderProps) {
             </a>
 
             <div className="flex flex-1 items-center justify-end">
-              <a
-                href="#"
-                className="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block"
-              >
-                Rechercher
-              </a>
+              <Link href="/products">
+                <a className="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">
+                  Rechercher
+                </a>
+              </Link>
 
               <div className="flex items-center lg:ml-8">
                 {/* Cart */}
