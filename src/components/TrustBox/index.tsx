@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 import Banner from '@/atomic/atoms/Banner'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
 import trustPilotlogo from '@/public/logos/trustpilot.svg'
@@ -5,11 +7,17 @@ import trustPilotlogo from '@/public/logos/trustpilot.svg'
 interface Props {
   nbReviews: number
   rating: number
+  isScrolled?: boolean
 }
 export default function TrustBox(props: Props) {
-  const { nbReviews, rating } = props
+  const { nbReviews, rating, isScrolled } = props
   return (
     <Banner
+      className={clsx('sticky top-0 z-40', {
+        'bg-primary-extra-light/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-primary-extra-light/75':
+          isScrolled,
+        'bg-primary-extra-light': !isScrolled,
+      })}
       onClick={() =>
         (location.href =
           'https://fr.trustpilot.com/review/terre-rouge.shop?utm_medium=trustbox&utm_source=MicroReviewCount')
