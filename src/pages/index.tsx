@@ -11,6 +11,7 @@ import { getTrustpilotReviews } from '@/lib/trustpilot'
 const Home: NextPage = ({ shop, products, reviews }: any) => {
   console.log('shop', shop)
   console.log('products', products)
+  console.log('reviews', reviews)
   return (
     <div>
       <Head>
@@ -19,8 +20,7 @@ const Home: NextPage = ({ shop, products, reviews }: any) => {
         <link rel="icon" href="favicon/favicon.ico" />
       </Head>
 
-      <TrustBox nbReviews={reviews.nbReviews} rating={reviews.rating} />
-      <HeaderMenu />
+      <HeaderMenu reviews={reviews} />
 
       <main>
         <Hero />

@@ -84,7 +84,7 @@ export default function MobileMenu(props: MobileMenuProps) {
   const { open = false, onClose = () => {} } = props
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-40 lg:hidden" onClose={onClose}>
+      <Dialog as="div" className="relative z-50 lg:hidden" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
