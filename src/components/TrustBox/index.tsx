@@ -1,19 +1,23 @@
 import clsx from 'clsx'
 
 import Banner from '@/atomic/atoms/Banner'
+import { ScrollDirecton } from '@/hooks/useScrollDirection'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
 import trustPilotlogo from '@/public/logos/trustpilot.svg'
 
 interface Props {
   nbReviews: number
   rating: number
-  isScrolled?: boolean
+  scrollDirection: ScrollDirecton
 }
 export default function TrustBox(props: Props) {
-  const { nbReviews, rating, isScrolled } = props
+  const { nbReviews, rating, scrollDirection } = props
+  const isScrolled = scrollDirection !== null
   return (
     <Banner
-      className={clsx('sticky top-0 z-40', {
+      className={clsx('sticky z-40 transition-all duration-500', {
+        'top-0': scrollDirection === 'up',
+        '-top-[29.12px] sm:-top-[37.12px]': scrollDirection === 'down',
         'bg-primary-extra-light/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-primary-extra-light/75':
           isScrolled,
         'bg-primary-extra-light': !isScrolled,
