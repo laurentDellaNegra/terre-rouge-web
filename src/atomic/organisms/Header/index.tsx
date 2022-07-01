@@ -1,11 +1,10 @@
-import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline'
-import clsx from 'clsx'
+import Image from 'next/future/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
-import { ScrollDirecton } from '@/hooks/useScrollDirection'
+import largeLogo from '@/public/logos/large-terre-rouge.webp'
+import smallLogo from '@/public/logos/small-terre-rouge.svg'
 
 interface HeaderProps {
   onMobileMenuClick?: () => void
@@ -23,8 +22,7 @@ export default function Header(props: HeaderProps) {
             <div className="-mt-8 hidden lg:flex lg:flex-1 lg:items-center">
               <a href="#">
                 <span className="sr-only">Terre Rouge</span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="h-24 w-auto" src="logos/large-terre-rouge.webp" alt="" />
+                <Image className="h-24 w-auto" src={largeLogo} alt="" />
               </a>
             </div>
 
@@ -53,16 +51,9 @@ export default function Header(props: HeaderProps) {
             </div>
 
             {/* Logo (lg-) */}
-
             <a href="#" className="lg:hidden">
               <span className="sr-only">Workflow</span>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                width={35}
-                height={35}
-                src="logos/small-terre-rouge.svg"
-                alt="Terre Rouge logo"
-              />
+              <Image width={35} height={35} src={smallLogo} alt="Terre Rouge logo" />
             </a>
 
             <div className="flex flex-1 items-center justify-end">

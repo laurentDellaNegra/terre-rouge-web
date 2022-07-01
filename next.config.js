@@ -5,6 +5,8 @@ const nextConfig = {
   images: {
     domains: ['cdn.shopify.com'],
   },
+  //TODO: might break in the future
+  experimental: { images: { allowFutureImage: true } },
 }
 
 module.exports = nextConfig
