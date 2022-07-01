@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-
 import Banner from '@/atomic/atoms/Banner'
 import { ScrollDirecton } from '@/hooks/useScrollDirection'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
@@ -8,20 +6,13 @@ import trustPilotlogo from '@/public/logos/trustpilot.svg'
 interface Props {
   nbReviews: number
   rating: number
-  scrollDirection?: ScrollDirecton
+  className?: string
 }
 export default function TrustBox(props: Props) {
-  const { nbReviews, rating, scrollDirection = null } = props
-  const isScrolled = scrollDirection !== null
+  const { nbReviews, rating, className = '' } = props
   return (
     <Banner
-      className={clsx('sticky z-40 transition-all duration-500', {
-        'top-0': scrollDirection === 'up',
-        '-top-[29.12px] sm:-top-[37.12px]': scrollDirection === 'down',
-        'bg-primary-extra-light/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-primary-extra-light/75':
-          isScrolled,
-        'bg-primary-extra-light': !isScrolled,
-      })}
+      className={className}
       onClick={() =>
         (location.href =
           'https://fr.trustpilot.com/review/terre-rouge.shop?utm_medium=trustbox&utm_source=MicroReviewCount')

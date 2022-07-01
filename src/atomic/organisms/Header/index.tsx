@@ -9,23 +9,13 @@ import { ScrollDirecton } from '@/hooks/useScrollDirection'
 
 interface HeaderProps {
   onMobileMenuClick?: () => void
-  scrollDirection?: ScrollDirecton
+  className?: string
 }
 
 export default function Header(props: HeaderProps) {
-  const { onMobileMenuClick, scrollDirection = null } = props
-  const isScrolled = scrollDirection !== null
-
+  const { onMobileMenuClick, className = '' } = props
   return (
-    <header
-      //  Arbitrary value for banner height
-      className={clsx('sticky z-40 transition-all duration-500', {
-        'top-[29.12px]': scrollDirection === 'up',
-        '-top-[93.12px] sm:-top-[101.12px]': scrollDirection === 'down',
-        'bg-white/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-white/90': isScrolled,
-        'bg-white': !isScrolled,
-      })}
-    >
+    <header className={className}>
       <nav aria-label="Top">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
