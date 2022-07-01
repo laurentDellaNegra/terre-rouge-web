@@ -9,11 +9,11 @@ import { ScrollDirecton } from '@/hooks/useScrollDirection'
 
 interface HeaderProps {
   onMobileMenuClick?: () => void
-  scrollDirection: ScrollDirecton
+  scrollDirection?: ScrollDirecton
 }
 
 export default function Header(props: HeaderProps) {
-  const { onMobileMenuClick, scrollDirection } = props
+  const { onMobileMenuClick, scrollDirection = null } = props
   const isScrolled = scrollDirection !== null
 
   return (
