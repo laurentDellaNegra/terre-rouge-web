@@ -8,10 +8,10 @@ import trustPilotlogo from '@/public/logos/trustpilot.svg'
 interface Props {
   nbReviews: number
   rating: number
-  scrollDirection: ScrollDirecton
+  scrollDirection?: ScrollDirecton
 }
 export default function TrustBox(props: Props) {
-  const { nbReviews, rating, scrollDirection } = props
+  const { nbReviews, rating, scrollDirection = null } = props
   const isScrolled = scrollDirection !== null
   return (
     <Banner
