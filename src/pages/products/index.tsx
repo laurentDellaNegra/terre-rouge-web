@@ -1,7 +1,15 @@
 import algoliasearch from 'algoliasearch/lite'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Hits, InstantSearch, SearchBox } from 'react-instantsearch-hooks-web'
+import {
+  Configure,
+  Highlight,
+  Hits,
+  InstantSearch,
+  Pagination,
+  RefinementList,
+  SearchBox,
+} from 'react-instantsearch-hooks-web'
 
 import { getShopPageForHome } from '@/lib/api'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
@@ -17,7 +25,9 @@ function Hit({ hit }: any) {
     <article>
       <img src={hit.image} alt={hit.name} />
       <p>{hit.category}</p>
-      <h1>{hit.title}</h1>
+      <h1>
+        <Highlight attribute="title" hit={hit} />
+      </h1>
       <p>${hit.price}</p>
     </article>
   )
@@ -32,8 +42,11 @@ const Home: NextPage = ({ shop, products, reviews }: any) => {
         <link rel="icon" href="favicon/favicon.ico" />
       </Head>
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME}>
+        <Configure hitsPerPage={40} />
         <SearchBox />
+        <RefinementList attribute="category" />
         <Hits hitComponent={Hit} />
+        <Pagination />
       </InstantSearch>
     </>
   )
