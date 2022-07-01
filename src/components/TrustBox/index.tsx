@@ -1,3 +1,5 @@
+import Image from 'next/future/image'
+
 import Banner from '@/atomic/atoms/Banner'
 import { ScrollDirecton } from '@/hooks/useScrollDirection'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
@@ -23,8 +25,7 @@ export default function TrustBox(props: Props) {
           <span className="font-semibold">Excellent</span>
         </p>
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img width={100} height={20} src="logos/trustpilot-rating.svg" alt="4.5 stars" />
+        <Image width={100} height={20} src={ratingImg} alt="4.5 stars" />
         <p className="hidden sm:inline">
           <span className="hidden lg:inline">
             <span className="font-semibold">{rating}</span> sur 5 basé sur{' '}
