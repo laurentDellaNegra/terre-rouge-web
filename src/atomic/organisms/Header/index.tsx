@@ -5,19 +5,23 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
+import { ScrollDirecton } from '@/hooks/useScrollDirection'
 
 interface HeaderProps {
   onMobileMenuClick?: () => void
-  isScrolled?: boolean
+  scrollDirection: ScrollDirecton
 }
 
 export default function Header(props: HeaderProps) {
-  const { onMobileMenuClick, isScrolled } = props
+  const { onMobileMenuClick, scrollDirection } = props
+  const isScrolled = scrollDirection !== null
 
   return (
     <header
       //  Arbitrary value for banner height
-      className={clsx('sticky top-[29.12px] sm:top-[37.12px] z-40 ', {
+      className={clsx('sticky z-40 transition-all duration-500', {
+        'top-[29.12px]': scrollDirection === 'up',
+        '-top-[93.12px] sm:-top-[101.12px]': scrollDirection === 'down',
         'bg-white/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-white/90': isScrolled,
         'bg-white': !isScrolled,
       })}
