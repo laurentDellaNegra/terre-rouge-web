@@ -14,6 +14,7 @@ import {
   Pagination,
   RefinementList,
   SearchBox,
+  SortBy,
 } from 'react-instantsearch-hooks-web'
 
 import { getShopPageForHome } from '@/lib/api'
@@ -22,6 +23,8 @@ import { getTrustpilotReviews } from '@/lib/trustpilot'
 const APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || ''
 const API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY || ''
 const INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || ''
+const INDEX_NAME_PRICE_ASC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_ASC || ''
+const INDEX_NAME_PRICE_DESC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_DESC || ''
 
 const searchClient = algoliasearch(APP_ID, API_KEY)
 
@@ -70,8 +73,15 @@ export default function Products({ serverState, url }: any) {
             }),
           }}
         >
-          <Configure hitsPerPage={5} />
           <SearchBox />
+          <SortBy
+            items={[
+              { label: 'Featured', value: INDEX_NAME },
+              { label: 'Price (asc)', value: INDEX_NAME_PRICE_ASC },
+              { label: 'Price (desc)', value: INDEX_NAME_PRICE_DESC },
+            ]}
+          />
+          <Configure hitsPerPage={5} />
           <RefinementList attribute="category" />
           <Hits hitComponent={Hit} />
           <Pagination />

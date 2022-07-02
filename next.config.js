@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
-  reactStrictMode: true,
+  //TODO: Workaround to make SSR works with InstantSearch
+  // https://github.com/algolia/react-instantsearch/issues/3537
+  // reactStrictMode: true,
   images: {
     domains: ['cdn.shopify.com'],
   },
