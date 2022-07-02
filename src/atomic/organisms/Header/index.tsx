@@ -8,11 +8,12 @@ import smallLogo from '@/public/logos/small-terre-rouge.svg'
 
 interface HeaderProps {
   onMobileMenuClick?: () => void
+  onCartClick?: () => void
   className?: string
 }
 
 export default function Header(props: HeaderProps) {
-  const { onMobileMenuClick, className = '' } = props
+  const { onMobileMenuClick, className = '', onCartClick } = props
   return (
     <header className={className}>
       <nav aria-label="Top">
@@ -66,7 +67,7 @@ export default function Header(props: HeaderProps) {
               <div className="flex items-center lg:ml-8">
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-8">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  {/* <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -75,7 +76,22 @@ export default function Header(props: HeaderProps) {
                       0
                     </span>
                     <span className="sr-only">produits dans le panier, voir panier</span>
-                  </a>
+                  </a> */}
+                  <button
+                    type="button"
+                    className="group -m-2 flex items-center p-2"
+                    onClick={onCartClick}
+                  >
+                    <span className="sr-only">Open cart</span>
+                    <ShoppingBagIcon
+                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                      0
+                    </span>
+                    <span className="sr-only">produits dans le panier, voir panier</span>
+                  </button>
                 </div>
               </div>
             </div>
