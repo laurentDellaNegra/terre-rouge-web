@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import Header from '@/atomic/organisms/Header'
 import MobileMenu from '@/atomic/organisms/MobileMenu'
+import SlideOverCart from '@/atomic/organisms/SlideOverCart'
 import TrustBox from '@/components/TrustBox'
 import useScrollDirection from '@/hooks/useScrollDirection'
 
@@ -13,6 +14,7 @@ interface Props {
 export default function HeaderMenu(props: Props) {
   const { reviews } = props
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isCartOpen, setCartOpen] = useState(false)
 
   const scrollDirection = useScrollDirection()
   const isScrolled = scrollDirection !== null
@@ -40,8 +42,10 @@ export default function HeaderMenu(props: Props) {
           !isScrolled && 'bg-white'
         )}
         onMobileMenuClick={() => setMobileMenuOpen(true)}
+        onCartClick={() => setCartOpen(true)}
       />
       <MobileMenu open={isMobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <SlideOverCart open={isCartOpen} onClose={() => setCartOpen(false)} />
     </div>
   )
 }
