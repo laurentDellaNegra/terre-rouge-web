@@ -33,7 +33,7 @@ const searchClient = algoliasearch(APP_ID, API_KEY)
 function Hit({ hit }: any) {
   return (
     <article>
-      <div className="h-72 w-72 relative">
+      <div className="relative h-72 w-72">
         <Image
           src={hit.image}
           alt={hit.title}

@@ -46,29 +46,29 @@ const products = [
 export default function HorizontalProducts() {
   return (
     <div className="bg-gray-100">
-      <div className="py-16 sm:py-24 lg:max-w-7xl lg:mx-auto lg:px-8">
-        <div className="px-4 flex items-center justify-between sm:px-6 lg:px-0">
+      <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-0">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
             Trending products
           </h2>
           <a
             href="#"
-            className="hidden sm:block text-sm font-semibold text-primary hover:text-primary-light"
+            className="hidden text-sm font-semibold text-primary hover:text-primary-light sm:block"
           >
             See everything<span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
 
-        <div className="mt-8 relative">
-          <div className="relative w-full pb-6 -mb-6 overflow-x-auto">
+        <div className="relative mt-8">
+          <div className="relative -mb-6 w-full overflow-x-auto pb-6">
             <ul
               role="list"
-              className="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:space-x-0 lg:grid lg:grid-cols-4 lg:gap-x-8"
+              className="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:space-x-0"
             >
               {products.map((product) => (
-                <li key={product.id} className="w-64 inline-flex flex-col text-center lg:w-auto">
+                <li key={product.id} className="inline-flex w-64 flex-col text-center lg:w-auto">
                   <div className="group relative">
-                    <div className="w-full bg-gray-200 rounded-md overflow-hidden aspect-w-1 aspect-h-1">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200">
                       <Image
                         src={product.imageSrc}
                         alt={product.imageAlt}
