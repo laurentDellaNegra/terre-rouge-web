@@ -93,7 +93,7 @@ export default function Products() {
               <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
 
-            <div className="fixed inset-0 flex z-40">
+            <div className="fixed inset-0 z-40 flex">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
@@ -103,12 +103,12 @@ export default function Products() {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
-                  <div className="px-4 flex items-center justify-between">
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+                  <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">Filtres</h2>
                     <button
                       type="button"
-                      className="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400"
+                      className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
                       onClick={() => setMobileFiltersOpen(false)}
                     >
                       <span className="sr-only">Fermer le menu</span>
@@ -119,7 +119,7 @@ export default function Products() {
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
                     <h3 className="sr-only">Categories</h3>
-                    <ul role="list" className="font-medium text-gray-900 px-2 py-3">
+                    <ul role="list" className="px-2 py-3 font-medium text-gray-900">
                       {subCategories.map((category) => (
                         <li key={category.name}>
                           <a href={category.href} className="block px-2 py-3">
@@ -138,7 +138,7 @@ export default function Products() {
                         {({ open }) => (
                           <>
                             <h3 className="-mx-2 -my-3 flow-root">
-                              <Disclosure.Button className="px-2 py-3 bg-white w-full flex items-center justify-between text-gray-400 hover:text-gray-500">
+                              <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
                                 <span className="font-medium text-gray-900">{section.name}</span>
                                 <span className="ml-6 flex items-center">
                                   {open ? (
@@ -159,7 +159,7 @@ export default function Products() {
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
-                                      className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
                                       htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -182,8 +182,8 @@ export default function Products() {
           </Dialog>
         </Transition.Root>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
               Tous nos produits
             </h1>
@@ -194,7 +194,7 @@ export default function Products() {
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                     Trier par
                     <ChevronDownIcon
-                      className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
                   </Menu.Button>
@@ -209,7 +209,7 @@ export default function Products() {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
@@ -241,11 +241,11 @@ export default function Products() {
               </button> */}
               <button
                 type="button"
-                className="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden"
+                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="sr-only">Filtres</span>
-                <FilterIcon className="w-5 h-5" aria-hidden="true" />
+                <FilterIcon className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -255,14 +255,14 @@ export default function Products() {
               Produits
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <aside>
                 <form className="hidden lg:block">
                   <h3 className="sr-only">Categories</h3>
                   <ul
                     role="list"
-                    className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200"
+                    className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
                   >
                     {subCategories.map((category) => (
                       <li key={category.name}>
@@ -276,7 +276,7 @@ export default function Products() {
                       {({ open }) => (
                         <>
                           <h3 className="-my-3 flow-root">
-                            <Disclosure.Button className="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500">
+                            <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
                               <span className="font-medium text-gray-900">{section.name}</span>
                               <span className="ml-6 flex items-center">
                                 {open ? (
@@ -297,7 +297,7 @@ export default function Products() {
                                     defaultValue={option.value}
                                     type="checkbox"
                                     defaultChecked={option.checked}
-                                    className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                   />
                                   <label
                                     htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -320,15 +320,15 @@ export default function Products() {
               <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
                 {products.map((product) => (
                   <a key={product.id} href={product.href} className="group text-sm">
-                    <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                       <img
                         src={product.imageSrc}
                         alt={product.imageAlt}
-                        className="w-full h-full object-center object-cover"
+                        className="h-full w-full object-cover object-center"
                       />
                     </div>
                     <h3 className="mt-4 font-medium text-gray-900">{product.name}</h3>
-                    <p className="text-gray-500 italic">{product.availability}</p>
+                    <p className="italic text-gray-500">{product.availability}</p>
                     <p className="mt-2 font-medium text-gray-900">{product.price}</p>
                   </a>
                 ))}

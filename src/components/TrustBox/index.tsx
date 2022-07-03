@@ -20,7 +20,7 @@ export default function TrustBox(props: Props) {
           'https://fr.trustpilot.com/review/terre-rouge.shop?utm_medium=trustbox&utm_source=MicroReviewCount')
       }
     >
-      <div className="flex justify-center text-sm content-center gap-1">
+      <div className="flex content-center justify-center gap-1 text-sm">
         <p>
           <span className="font-semibold">Excellent</span>
         </p>
