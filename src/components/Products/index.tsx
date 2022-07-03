@@ -17,6 +17,7 @@ const sortOptions = [
 ]
 
 const subCategories = [
+  { name: 'Tous', href: '#' },
   { name: 'Épice', href: '#' },
   { name: 'Produits malagasy', href: '#' },
   { name: 'Chocolat', href: '#' },
@@ -183,7 +184,9 @@ export default function Products() {
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">Nos produits</h1>
+            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+              Tous nos produits
+            </h1>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
