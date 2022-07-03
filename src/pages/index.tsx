@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { QueryClient, dehydrate, useQuery } from 'react-query'
 
 import Hero from '@/atomic/organisms/Hero'
 import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
@@ -9,12 +10,12 @@ import TrustBox from '@/components/TrustBox'
 import { getShopPageForHome } from '@/lib/api'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 
-const Home: NextPage = ({ shop, products, reviews }: any) => {
-  console.log('shop', shop)
-  console.log('products', products)
-  console.log('reviews', reviews)
+const Home: NextPage = () => {
+  // const Home: NextPage = () => {
+  const data: any = useQuery('shopPageForHome', getShopPageForHome)
+  console.log('shop', data)
   return (
-    <Layout reviews={reviews}>
+    <Layout>
       <Hero />
       <HorizontalProducts />
     </Layout>
@@ -22,9 +23,19 @@ const Home: NextPage = ({ shop, products, reviews }: any) => {
 }
 
 export async function getStaticProps() {
-  const data = await getShopPageForHome()
-  const reviews = await getTrustpilotReviews()
-  return { props: { ...data, reviews } }
+  // const data = await getShopPageForHome()
+  // const reviews = await getTrustpilotReviews()
+  // return { props: { ...data, reviews } }
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery('shopPageForHome', getShopPageForHome)
+  await queryClient.prefetchQuery('reviews', getTrustpilotReviews)
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
 }
 
 export default Home
