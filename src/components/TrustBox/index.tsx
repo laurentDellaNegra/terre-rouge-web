@@ -1,17 +1,19 @@
 import Image from 'next/future/image'
+import { useQuery } from 'react-query'
 
 import Banner from '@/atomic/atoms/Banner'
-import { ScrollDirecton } from '@/hooks/useScrollDirection'
+import { getTrustpilotReviews } from '@/lib/trustpilot'
 import ratingImg from '@/public/logos/trustpilot-rating.svg'
 import trustPilotlogo from '@/public/logos/trustpilot.svg'
 
 interface Props {
-  nbReviews: number
-  rating: number
   className?: string
 }
 export default function TrustBox(props: Props) {
-  const { nbReviews, rating, className = '' } = props
+  const { className = '' } = props
+  const {
+    data: { nbReviews, rating },
+  }: any = useQuery('reviews', getTrustpilotReviews)
   return (
     <Banner
       className={className}
