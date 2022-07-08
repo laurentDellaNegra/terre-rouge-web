@@ -8,13 +8,17 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@graphql-codegen/typescript-react-query": "^3.5.15",
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "algoliasearch": "^4.13.1",
     "clsx": "^1.1.1",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "next": "^12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -24,6 +28,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "@graphql-codegen/cli": "^2.7.0",
+    "@graphql-codegen/typescript": "^2.6.0",
+    "@graphql-codegen/typescript-operations": "^2.4.3",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
