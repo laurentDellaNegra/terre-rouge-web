@@ -1,19 +1,19 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { QueryClient, dehydrate, useQuery } from 'react-query'
+import { QueryClient, dehydrate } from 'react-query'
+import { useGetShopPageForHomeQuery } from 'types/Shopify'
 
 import Hero from '@/atomic/organisms/Hero'
 import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
-import HeaderMenu from '@/components/HeaderMenu'
 import Layout from '@/components/Layout'
-import TrustBox from '@/components/TrustBox'
-import { getShopPageForHome } from '@/lib/api'
+import graphQLRequestClient from '@/lib/clients/graphQLRequestClient'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 
 const Home: NextPage = () => {
-  // const Home: NextPage = () => {
-  const data: any = useQuery('shopPageForHome', getShopPageForHome)
+  const { status, data, error, isFetching } = useGetShopPageForHomeQuery(graphQLRequestClient)
   console.log('shop', data)
+  console.log('status', status)
+  console.log('error', error)
+  console.log('isFetching', isFetching)
   return (
     <Layout>
       <Hero />
@@ -23,12 +23,12 @@ const Home: NextPage = () => {
 }
 
 export async function getStaticProps() {
-  // const data = await getShopPageForHome()
-  // const reviews = await getTrustpilotReviews()
-  // return { props: { ...data, reviews } }
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery('shopPageForHome', getShopPageForHome)
+  await queryClient.prefetchQuery(
+    useGetShopPageForHomeQuery.getKey(),
+    useGetShopPageForHomeQuery.fetcher(graphQLRequestClient)
+  )
   await queryClient.prefetchQuery('reviews', getTrustpilotReviews)
 
   return {

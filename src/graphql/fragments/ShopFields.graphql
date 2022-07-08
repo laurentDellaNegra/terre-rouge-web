@@ -1,0 +1,15 @@
+fragment ShopFields on Shop {
+  name
+  privacyPolicy {
+    title
+    handle
+  }
+  refundPolicy {
+    title
+    handle
+  }
+  termsOfService {
+    title
+    handle
+  }
+}
