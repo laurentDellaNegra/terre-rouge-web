@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import TextLink from '@/atomic/atoms/TextLink'
+import TitleSection from '@/atomic/atoms/TitleSection'
 
 const products = [
   {
@@ -50,7 +51,7 @@ export default function HorizontalProducts() {
     <div className="bg-gray-100">
       <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-0">
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Notre sélection</h2>
+          <TitleSection>Notre sélection</TitleSection>
           <TextLink href="#" className="hidden sm:block">
             Voir tout
           </TextLink>
