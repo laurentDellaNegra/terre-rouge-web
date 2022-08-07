@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import TextLink from '@/atomic/atoms/TextLink'
+
 const products = [
   {
     id: 1,
@@ -49,12 +51,9 @@ export default function HorizontalProducts() {
       <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-0">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Notre sélection</h2>
-          <a
-            href="#"
-            className="hidden text-sm font-semibold text-primary hover:text-primary-light sm:block"
-          >
-            Voir tout<span aria-hidden="true"> &rarr;</span>
-          </a>
+          <TextLink href="#" className="hidden sm:block">
+            Voir tout
+          </TextLink>
         </div>
 
         <div className="relative mt-8">
@@ -94,9 +93,7 @@ export default function HorizontalProducts() {
         </div>
 
         <div className="mt-12 flex px-4 sm:hidden">
-          <a href="#" className="text-sm font-semibold text-primary hover:text-primary-light">
-            Voir tout<span aria-hidden="true"> &rarr;</span>
-          </a>
+          <TextLink href="#">Voir tout</TextLink>
         </div>
       </div>
     </div>
