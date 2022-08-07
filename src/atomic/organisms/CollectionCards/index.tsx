@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import Image from 'next/image'
 
 import artTableImg from '@/public/images/art-table.jpeg'
-import clothesImg from '@/public/images/clothes.jpeg'
-import spiciesImg from '@/public/images/spicies.jpeg'
+import condimentsImg from '@/public/images/condiments.jpeg'
+import spiciesImg from '@/public/images/spices.jpeg'
 
 const collections = [
   {
@@ -15,7 +15,7 @@ const collections = [
   {
     name: 'Condiments',
     href: '#',
-    imageSrc: clothesImg,
+    imageSrc: condimentsImg,
     imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
   {
