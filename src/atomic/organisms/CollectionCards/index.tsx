@@ -12,18 +12,18 @@ const collections = [
     imageSrc: spiciesImg,
     imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
-  {
-    name: 'Art de la table',
-    href: '#',
-    imageSrc: artTableImg,
-    imageAlt: 'Cuillères joliement disposées contenant des épices',
-  },
-  {
-    name: 'Vêtements',
-    href: '#',
-    imageSrc: clothesImg,
-    imageAlt: 'Cuillères joliement disposées contenant des épices',
-  },
+  // {
+  //   name: 'Art de la table',
+  //   href: '#',
+  //   imageSrc: artTableImg,
+  //   imageAlt: 'Cuillères joliement disposées contenant des épices',
+  // },
+  // {
+  //   name: 'Vêtements',
+  //   href: '#',
+  //   imageSrc: clothesImg,
+  //   imageAlt: 'Cuillères joliement disposées contenant des épices',
+  // },
 ]
 
 interface CollectionCardsProps {
@@ -59,7 +59,7 @@ export default function CollectionCards(props: CollectionCardsProps) {
               <div className="absolute inset-0 flex items-end rounded-lg p-6">
                 <div>
                   <p aria-hidden="true" className="text-sm text-white">
-                    Shop the collection
+                    Continuer vers ces produits
                   </p>
                   <h3 className="mt-1 font-semibold text-white">
                     <a href={collection.href}>

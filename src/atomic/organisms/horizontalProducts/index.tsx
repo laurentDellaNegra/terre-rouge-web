@@ -48,14 +48,12 @@ export default function HorizontalProducts() {
     <div className="bg-gray-100">
       <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-0">
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-            Trending products
-          </h2>
+          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Notre sélection</h2>
           <a
             href="#"
             className="hidden text-sm font-semibold text-primary hover:text-primary-light sm:block"
           >
-            See everything<span aria-hidden="true"> &rarr;</span>
+            Voir tout<span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
 
@@ -96,8 +94,8 @@ export default function HorizontalProducts() {
         </div>
 
         <div className="mt-12 flex px-4 sm:hidden">
-          <a href="#" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500">
-            See everything<span aria-hidden="true"> &rarr;</span>
+          <a href="#" className="text-sm font-semibold text-primary hover:text-primary-light">
+            Voir tout<span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
       </div>
