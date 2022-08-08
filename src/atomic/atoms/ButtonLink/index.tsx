@@ -1,21 +1,30 @@
+import clsx from 'clsx'
+import Link from 'next/link'
 import { ReactNode } from 'react'
 
 interface ButtonLinkProps {
   children: ReactNode
   href: string
+  size?: 'small' | 'medium' | 'large'
   className?: string
 }
 
 export default function ButtonLink(props: ButtonLinkProps) {
-  const { children, className = '', href } = props
+  const { children, className = '', href, size = 'medium' } = props
   return (
     <div className={className}>
-      <a
-        href={href}
-        className="inline-block rounded-md border border-transparent bg-primary py-3 px-8 font-medium hover:bg-primary-dark"
-      >
-        {children}
-      </a>
+      <Link href={href}>
+        <a
+          className={clsx(
+            size === 'small' && '', //TODO
+            size === 'medium' && 'px-4 py-2 text-sm',
+            size === 'large' && 'py-3 px-8 font-medium',
+            'inline-block items-center rounded-md border border-transparent bg-primary hover:bg-primary-dark text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light'
+          )}
+        >
+          {children}
+        </a>
+      </Link>
     </div>
   )
 }
