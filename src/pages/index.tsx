@@ -4,6 +4,7 @@ import { useGetShopPageForHomeQuery } from 'types/Shopify'
 
 import Hero from '@/atomic/organisms/Hero'
 import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
+import Incentives from '@/components/Incentives'
 import Layout from '@/components/Layout'
 import Story from '@/components/Story'
 import graphQLRequestClient from '@/lib/clients/graphQLRequestClient'
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
       <Hero />
       <HorizontalProducts />
       <Story />
+      <Incentives />
     </Layout>
   )
 }
