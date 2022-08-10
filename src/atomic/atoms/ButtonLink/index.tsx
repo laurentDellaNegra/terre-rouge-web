@@ -19,7 +19,7 @@ export default function ButtonLink(props: ButtonLinkProps) {
             size === 'small' && '', //TODO
             size === 'medium' && 'px-4 py-2 text-sm',
             size === 'large' && 'py-3 px-8 font-medium',
-            'inline-block items-center rounded-md border border-transparent bg-primary hover:bg-primary-dark text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light'
+            'inline-block items-center rounded-md border border-transparent bg-primary text-white hover:bg-primary-dark  focus:outline-none focus:ring-2 focus:ring-primary-light focus:ring-offset-2'
           )}
         >
           {children}

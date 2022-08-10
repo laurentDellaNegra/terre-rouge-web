@@ -59,14 +59,18 @@ export default function Header(props: HeaderProps) {
 
             <div className="flex flex-1 items-center justify-end">
               <Link href="/products">
-                <a className="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">
+                {/* <a className="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">
                   Rechercher
+                </a> */}
+                <a className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block">
+                  <span className="sr-only">Rechercher</span>
+                  <SearchIcon className="h-6 w-6" aria-hidden="true" />
                 </a>
               </Link>
 
-              <div className="flex items-center lg:ml-8">
+              <div className="flex items-center">
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-8">
+                <div className="ml-4 flow-root">
                   {/* <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"

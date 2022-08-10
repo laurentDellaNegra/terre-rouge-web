@@ -8,8 +8,8 @@ export default function Story() {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         {/* <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8"> */}
-        <div className="flex flex-col xl:flex-row items-center gap-16">
-          <div className="xl:w-[432px] xl:order-2">
+        <div className="flex flex-col items-center gap-16 xl:flex-row">
+          <div className="xl:order-2 xl:w-[432px]">
             <TitleSection className="mb-4">Notre histoire</TitleSection>
             <p className="text-gray-500">
               Derrière Terre rouge se cache une jeune auto-entrepreneuse malgache. Passionnée de
@@ -21,10 +21,10 @@ export default function Story() {
               rouge.
             </p>
           </div>
-          <div className="w-full xl:w-1/2 flex-auto text-center">
+          <div className="w-full flex-auto text-center xl:w-1/2">
             <Image
               // className="block h-96 w-auto m-auto"
-              className="w-full aspect-square"
+              className="aspect-square w-full"
               src={picture}
               placeholder="blur"
               alt="photos d'épices"

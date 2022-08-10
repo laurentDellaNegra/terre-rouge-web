@@ -9,8 +9,8 @@ interface TextLinkProps {
 export default function TitleSection(props: TextLinkProps) {
   const { children, className = '' } = props
   return (
-    <div className={clsx('flex flex-row gap-2 items-center', className)}>
-      <div className="bg-primary w-[6px] h-6 rounded-full" />
+    <div className={clsx('flex flex-row items-center gap-2', className)}>
+      <div className="h-6 w-[6px] rounded-full bg-primary" />
       <h2 className="text-2xl font-bold tracking-tight text-gray-900">{children}</h2>
     </div>
   )
