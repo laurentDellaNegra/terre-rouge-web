@@ -66,8 +66,8 @@ const incentives = [
   {
     name: 'Sécurité',
     icon: (
-      <div className="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-pink-200">
-        <ShieldIcon className="h-8 w-8 text-pink-700" />
+      <div className="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-blue-200">
+        <ShieldIcon className="h-8 w-8 text-blue-700" />
       </div>
     ),
     description:
@@ -76,8 +76,8 @@ const incentives = [
   {
     name: 'Service client',
     icon: (
-      <div className="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-blue-200">
-        <DiscussionIcon className="h-8 w-8 text-blue-700" />
+      <div className="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-amber-100">
+        <DiscussionIcon className="h-8 w-8 text-amber-600" />
       </div>
     ),
     description:
@@ -88,7 +88,7 @@ const incentives = [
 export default function Incentives() {
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 py-12 lg:py-16 sm:px-6 lg:px-8">
         <div className="bg-secondary-light/30 rounded-2xl px-6 py-16 sm:p-16">
           <div className="max-w-xl mx-auto lg:max-w-none">
             <div className="text-center">

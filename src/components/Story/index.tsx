@@ -8,17 +8,20 @@ export default function Story() {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         {/* <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8"> */}
-        <div className="flex flex-col xl:flex-row items-center gap-16 xl:gap-32 mb-8 sm:mb-16 lg:mb-28">
+        <div className="flex flex-col xl:flex-row items-center gap-16">
           <div className="xl:w-[432px] xl:order-2">
             <TitleSection className="mb-4">Notre histoire</TitleSection>
             <p className="text-gray-500">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown
-              printer took a galley of type and scrambled it to make a type specimen book. It has
-              survived not only five.
+              Derrière Terre rouge se cache une jeune auto-entrepreneuse malgache. Passionnée de
+              voyage et de cuisine, elle a décidé de commercialiser et de promouvoir des épices
+              provennant de son île natale Madagascar. Pour elle les épices sont une invitation à
+              une évasion culinaire. Terre rouge récolte mais sème également.
+              <br />
+              En effet, elle aide l&apos;association ALA à restaurer le poumon vert de l&apos;île
+              rouge.
             </p>
           </div>
-          <div className="sm:w-1/2 flex-auto text-center">
+          <div className="w-full xl:w-1/2 flex-auto text-center">
             <Image
               // className="block h-96 w-auto m-auto"
               className="w-full aspect-square"
