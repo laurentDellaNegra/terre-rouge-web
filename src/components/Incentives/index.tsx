@@ -57,8 +57,8 @@ const incentives = [
   {
     name: 'Livraison',
     icon: (
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-200">
-        <TruckIcon className="h-8 w-8 text-emerald-700" />
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white">
+        <TruckIcon className="h-8 w-8 text-primary" />
       </div>
     ),
     description: 'Gratuite à partir de 30€, expédié par colisimo en 24H et livré en 48h !',
@@ -66,8 +66,8 @@ const incentives = [
   {
     name: 'Sécurité',
     icon: (
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-200">
-        <ShieldIcon className="h-8 w-8 text-blue-700" />
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white">
+        <ShieldIcon className="h-8 w-8 text-primary" />
       </div>
     ),
     description:
@@ -76,8 +76,8 @@ const incentives = [
   {
     name: 'Service client',
     icon: (
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-        <DiscussionIcon className="h-8 w-8 text-amber-600" />
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white">
+        <DiscussionIcon className="h-8 w-8 text-primary" />
       </div>
     ),
     description:
@@ -107,7 +107,7 @@ export default function Incentives() {
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-6 lg:mt-6 lg:ml-0">
                     <h3 className="text-sm font-medium text-gray-900">{incentive.name}</h3>
-                    <p className="mt-2 text-sm text-gray-500">{incentive.description}</p>
+                    <p className="mt-2 text-sm text-gray-600">{incentive.description}</p>
                   </div>
                 </div>
               ))}

@@ -27,7 +27,7 @@ export default function TrustBox(props: Props) {
           <span className="font-semibold">Excellent</span>
         </p>
 
-        <Image width={100} height={20} src={ratingImg} alt="4.5 stars" />
+        <Image className="h-5 w-auto" src={ratingImg} alt="4.5 stars" />
         <p className="hidden sm:inline">
           <span className="hidden lg:inline">
             <span className="font-semibold">{rating}</span> sur 5 basé sur{' '}
