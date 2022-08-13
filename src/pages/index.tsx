@@ -8,6 +8,7 @@ import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
 import Incentives from '@/components/Incentives'
 import Layout from '@/components/Layout'
 import Story from '@/components/Story'
+import Testimonial from '@/components/Testimonial'
 import graphQLRequestClient from '@/lib/clients/graphQLRequestClient'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
         <Hero />
         <HorizontalProducts />
         <Story />
+        <Testimonial />
         <Incentives />
       </Layout>
     </>
@@ -42,7 +44,6 @@ export async function getStaticProps() {
     useGetShopPageForHomeQuery.fetcher(graphQLRequestClient)
   )
   await queryClient.prefetchQuery('reviews', getTrustpilotReviews)
-
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
