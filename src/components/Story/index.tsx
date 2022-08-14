@@ -1,5 +1,6 @@
 import Image from 'next/future/image'
 
+import P from '@/atomic/atoms/P'
 import TitleSection from '@/atomic/atoms/TitleSection'
 import picture from '@/public/images/story.webp'
 
@@ -11,7 +12,7 @@ export default function Story() {
         <div className="flex flex-col items-center gap-16 xl:flex-row">
           <div className="xl:order-2 xl:w-[432px]">
             <TitleSection className="mb-4">Notre histoire</TitleSection>
-            <p className="text-gray-500">
+            <P>
               Derrière Terre rouge se cache une jeune auto-entrepreneuse malgache. Passionnée de
               voyage et de cuisine, elle a décidé de commercialiser et de promouvoir des épices
               provennant de son île natale Madagascar. Pour elle les épices sont une invitation à
@@ -19,7 +20,7 @@ export default function Story() {
               <br />
               En effet, elle aide l&apos;association ALA à restaurer le poumon vert de l&apos;île
               rouge.
-            </p>
+            </P>
           </div>
           <div className="w-full flex-auto text-center xl:w-1/2">
             <Image

@@ -3,8 +3,8 @@ import { useQuery } from 'react-query'
 
 import Banner from '@/atomic/atoms/Banner'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
-import ratingImg from '@/public/logos/trustpilot-rating.svg'
-import trustPilotlogo from '@/public/logos/trustpilot.svg'
+import trustpilotImg from '@/public/logos/trustpilot/logo.svg'
+import ratingImg from '@/public/logos/trustpilot/rating-4.5.svg'
 
 interface Props {
   className?: string
@@ -34,9 +34,7 @@ export default function TrustBox(props: Props) {
           </span>
           <span className="font-semibold">{nbReviews} avis</span> sur
         </p>
-
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img width={20} height={20} src="logos/trustpilot.svg" alt="Trustpilot logo" />
+        <Image className="h-5 w-auto" src={trustpilotImg} alt="Trustpilot logo" />
         <p>Trustpilot</p>
       </div>
     </Banner>

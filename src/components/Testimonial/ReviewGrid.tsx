@@ -15,7 +15,6 @@ function splitArray(array: IReviews, numParts: number) {
     }
     result[index].push(array[i])
   }
-  console.log('result', result)
   return result
 }
 
@@ -28,7 +27,6 @@ export default function ReviewGrid(props: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, amount: 0.4 })
   let columns = splitArray(reviews, 3)
-  console.log('columns[2]', columns[2])
   columns = [columns[0], columns[1], splitArray(columns[2], 2) as any]
 
   return (

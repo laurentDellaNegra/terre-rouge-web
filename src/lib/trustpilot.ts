@@ -1,6 +1,4 @@
-import { IReviews } from '@/types/Reviews'
-
-import { truncateString } from './string'
+import { IReview, IReviews } from '@/types/Reviews'
 
 const URL_TRUSTPILOT = 'https://fr.trustpilot.com/review/terre-rouge.shop'
 
@@ -47,23 +45,33 @@ function getFirst3Reviews(content: string): IReviews {
   const regexBodies = /data-service-review-text-typography=\"true\">(.*?)<\/p>/g
   //get title
   const regexTitles = /data-review-title-typography=\"true\">(.*?)<\/a>/g
+  //get rating
+  const regexRatings = /data-service-review-rating=\"(\d)\"/g
   let authors = regexAuthors.exec(content)
   let bodies = regexBodies.exec(content)
   let titles = regexTitles.exec(content)
+  let ratings = regexRatings.exec(content)
 
   const MAX_REVIEWS = 100
   let counter = 1
   const reviews: IReviews = []
-  while (authors != null && bodies != null && titles != null && counter <= MAX_REVIEWS) {
+  while (
+    authors != null &&
+    bodies != null &&
+    titles != null &&
+    ratings != null &&
+    counter <= MAX_REVIEWS
+  ) {
     reviews.push({
       author: authors[1],
-      body: truncateString(bodies[1], 180),
-      rating: 5,
+      body: bodies[1],
+      rating: Number(ratings[1]) as IReview['rating'],
       title: titles[1],
     })
     authors = regexAuthors.exec(content)
     bodies = regexBodies.exec(content)
     titles = regexTitles.exec(content)
+    ratings = regexRatings.exec(content)
     counter += 1
   }
   if (reviews.length === 0) throw new Error('Could not get reviews on trustpilot')

@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query'
 
+import P from '@/atomic/atoms/P'
 import TextLink from '@/atomic/atoms/TextLink'
+import TitleSection from '@/atomic/atoms/TitleSection'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 
 import ReviewGrid from './ReviewGrid'
@@ -18,16 +20,13 @@ export default function Reviews() {
         className="pt-20 pb-16 sm:pt-32 sm:pb-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2
-            id="reviews-title"
-            className="text-3xl font-medium tracking-tight text-gray-900 sm:text-center"
-          >
+          <TitleSection id="reviews-title" center>
             Nos avis certifiés
-          </h2>
-          <p className="mt-2 text-lg text-gray-600 sm:text-center">
-            Tous les avis de nos clients sont certifiés sur la plateforme{' '}
+          </TitleSection>
+          <P className="mt-5 md:mt-8 text-center">
+            Tous nos avis clients sont certifiés par la plateforme{' '}
             <TextLink href="https://fr.trustpilot.com/review/terre-rouge.shop">Trustpilot</TextLink>
-          </p>
+          </P>
           <ReviewGrid reviews={reviews} />
         </div>
       </section>
