@@ -1,16 +1,17 @@
 import { IReview, IReviews } from '@/types/Reviews'
 
+import { shuffleArray } from './array'
+
 const URL_TRUSTPILOT = 'https://fr.trustpilot.com/review/terre-rouge.shop'
 
 export async function getTrustpilotReviews() {
   try {
     const response = await fetch(URL_TRUSTPILOT)
     const content = await response.text()
-    getFirst3Reviews(content)
     return {
       nbReviews: getNbReviews(content),
       rating: getRating(content),
-      reviews: getFirst3Reviews(content),
+      reviews: getReviews(content),
     }
   } catch (error) {
     //TODO: use Sentry
@@ -38,7 +39,7 @@ function getRating(content: string) {
   return rating[1]
 }
 
-function getFirst3Reviews(content: string): IReviews {
+function getReviews(content: string): IReviews {
   // get name
   const regexAuthors = /data-consumer-name-typography=\"true\">(.*?)<\/div>/g
   //get comment
@@ -75,5 +76,6 @@ function getFirst3Reviews(content: string): IReviews {
     counter += 1
   }
   if (reviews.length === 0) throw new Error('Could not get reviews on trustpilot')
-  return reviews
+  // We shuffle the result
+  return shuffleArray(reviews)
 }

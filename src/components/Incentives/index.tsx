@@ -87,7 +87,7 @@ const incentives = [
 
 export default function Incentives() {
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
         <div className="rounded-2xl bg-secondary-light/30 px-6 py-16 sm:p-16">
           <div className="mx-auto max-w-xl lg:max-w-none">

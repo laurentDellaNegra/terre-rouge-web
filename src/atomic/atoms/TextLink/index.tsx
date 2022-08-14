@@ -13,7 +13,7 @@ export default function TextLink(props: TextLinkProps) {
   return (
     <a
       href={href}
-      className={clsx('text-sm font-semibold text-primary hover:text-primary-light', className)}
+      className={clsx('font-semibold text-primary hover:text-primary-light', className)}
     >
       {children}
       {!hideArrow && <span aria-hidden="true"> &rarr;</span>}

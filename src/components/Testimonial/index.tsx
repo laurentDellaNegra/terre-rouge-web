@@ -25,7 +25,9 @@ export default function Reviews() {
           </TitleSection>
           <P className="mt-5 md:mt-8 text-center">
             Tous nos avis clients sont certifiés par la plateforme{' '}
-            <TextLink href="https://fr.trustpilot.com/review/terre-rouge.shop">Trustpilot</TextLink>
+            <TextLink href="https://fr.trustpilot.com/review/terre-rouge.shop" hideArrow>
+              Trustpilot
+            </TextLink>
           </P>
           <ReviewGrid reviews={reviews} />
         </div>
