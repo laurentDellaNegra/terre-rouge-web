@@ -1,5 +1,7 @@
 import Image from 'next/future/image'
 
+import TitleSection from '@/atomic/atoms/TitleSection'
+
 const TruckIcon = ({ className }: { className: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -80,8 +82,7 @@ const incentives = [
         <DiscussionIcon className="h-8 w-8 text-primary" />
       </div>
     ),
-    description:
-      'Joignables 6/7 jours de 9h à 17h par mail ou chat. Tous nos avis sont 100% vérifiés sur Trustpilot',
+    description: 'Joignables 6/7 jours de 9h à 17h par mail ou chat.',
   },
 ]
 
@@ -92,9 +93,9 @@ export default function Incentives() {
         <div className="rounded-2xl bg-secondary-light/30 px-6 py-16 sm:p-16">
           <div className="mx-auto max-w-xl lg:max-w-none">
             <div className="text-center">
-              <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-                Nous avons bâti notre entreprise sur le service client
-              </h2>
+              <TitleSection center>
+                Nous avons bâti notre entreprise autour du service client
+              </TitleSection>
             </div>
             <div className="mx-auto mt-12 grid max-w-sm grid-cols-1 gap-y-10 gap-x-8 sm:max-w-none lg:grid-cols-3">
               {incentives.map((incentive) => (

@@ -20,7 +20,7 @@ export default function TitleSection(props: TextLinkProps) {
       )}
     >
       {!center && <div className="h-6 w-[6px] rounded-full bg-primary" />}
-      <h2 id={id} className="text-2xl font-bold tracking-tight text-gray-900">
+      <h2 id={id} className="text-2xl md:text-4xl font-bold tracking-tight text-gray-900">
         {children}
       </h2>
       {center && <div className="w-6 h-[6px] rounded-full bg-primary" />}
