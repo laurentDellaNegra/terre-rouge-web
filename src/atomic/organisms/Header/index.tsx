@@ -54,7 +54,7 @@ export default function Header(props: HeaderProps) {
             {/* Logo (lg-) */}
             <a href="#" className="lg:hidden">
               <span className="sr-only">Workflow</span>
-              <Image width={35} height={35} src={smallLogo} alt="Terre Rouge logo" />
+              <Image className="h-auto w-9" src={smallLogo} alt="Terre Rouge logo" />
             </a>
 
             <div className="flex flex-1 items-center justify-end">

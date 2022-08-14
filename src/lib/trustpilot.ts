@@ -1,3 +1,5 @@
+import { IReviews } from '@/types/Reviews'
+
 import { truncateString } from './string'
 
 const URL_TRUSTPILOT = 'https://fr.trustpilot.com/review/terre-rouge.shop'
@@ -38,24 +40,32 @@ function getRating(content: string) {
   return rating[1]
 }
 
-function getFirst3Reviews(content: string) {
+function getFirst3Reviews(content: string): IReviews {
   // get name
-  const regexNames = /data-consumer-name-typography=\"true\">(.*?)<\/div>/g
+  const regexAuthors = /data-consumer-name-typography=\"true\">(.*?)<\/div>/g
   //get comment
-  const regexComments = /data-service-review-text-typography=\"true\">(.*?)<\/p>/g
-  let names = regexNames.exec(content)
-  let comments = regexComments.exec(content)
+  const regexBodies = /data-service-review-text-typography=\"true\">(.*?)<\/p>/g
+  //get title
+  const regexTitles = /data-review-title-typography=\"true\">(.*?)<\/a>/g
+  let authors = regexAuthors.exec(content)
+  let bodies = regexBodies.exec(content)
+  let titles = regexTitles.exec(content)
 
-  const MAX_REVIEWS = 3
+  const MAX_REVIEWS = 100
   let counter = 1
-  const reviews: Array<{ name: string; comment: string }> = []
-  while (names != null && comments != null && counter <= MAX_REVIEWS) {
-    reviews.push({ name: names[1], comment: truncateString(comments[1], 180) })
-    names = regexNames.exec(content)
-    comments = regexComments.exec(content)
-    if (!names || !comments) throw new Error('Could not get reviews on trustpilot')
+  const reviews: IReviews = []
+  while (authors != null && bodies != null && titles != null && counter <= MAX_REVIEWS) {
+    reviews.push({
+      author: authors[1],
+      body: truncateString(bodies[1], 180),
+      rating: 5,
+      title: titles[1],
+    })
+    authors = regexAuthors.exec(content)
+    bodies = regexBodies.exec(content)
+    titles = regexTitles.exec(content)
     counter += 1
   }
-  console.log('getFirst3Reviews', reviews)
+  if (reviews.length === 0) throw new Error('Could not get reviews on trustpilot')
   return reviews
 }

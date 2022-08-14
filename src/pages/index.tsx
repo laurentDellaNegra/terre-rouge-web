@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { QueryClient, dehydrate } from 'react-query'
-import { useGetShopPageForHomeQuery } from 'types/Shopify'
 
 import Hero from '@/atomic/organisms/Hero'
 import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
@@ -11,6 +10,7 @@ import Story from '@/components/Story'
 import Testimonial from '@/components/Testimonial'
 import graphQLRequestClient from '@/lib/clients/graphQLRequestClient'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
+import { useGetShopPageForHomeQuery } from '@/types/Shopify'
 
 const Home: NextPage = () => {
   const { status, data, error, isFetching } = useGetShopPageForHomeQuery(graphQLRequestClient)

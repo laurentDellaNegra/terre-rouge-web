@@ -7,8 +7,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      animation: {
+        'fade-in': 'fade-in 0.5s linear forwards',
+        marquee: 'marquee var(--marquee-duration) linear infinite',
       },
       colors: {
         primary: '#579660',
@@ -17,6 +18,24 @@ module.exports = {
         'primary-extra-light': '#EEF4EF',
         secondary: '#87563B',
         'secondary-light': '#F5DDD2',
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      keyframes: {
+        'fade-in': {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+        marquee: {
+          '100%': {
+            transform: 'translateY(-50%)',
+          },
+        },
       },
     },
   },
