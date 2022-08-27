@@ -1,6 +1,6 @@
+import { QueryClient, dehydrate } from '@tanstack/react-query'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { QueryClient, dehydrate } from 'react-query'
 
 import Hero from '@/atomic/organisms/Hero'
 import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
@@ -43,7 +43,7 @@ export async function getStaticProps() {
     useGetShopPageForHomeQuery.getKey(),
     useGetShopPageForHomeQuery.fetcher(graphQLRequestClient)
   )
-  await queryClient.prefetchQuery('reviews', getTrustpilotReviews)
+  await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

@@ -1,6 +1,6 @@
+import { UseQueryOptions, useQuery } from '@tanstack/react-query'
 import { GraphQLClient } from 'graphql-request'
 import { RequestInit } from 'graphql-request/dist/types.dom'
-import { UseQueryOptions, useQuery } from 'react-query'
 
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>

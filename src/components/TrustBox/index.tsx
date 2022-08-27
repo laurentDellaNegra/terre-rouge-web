@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/future/image'
-import { useQuery } from 'react-query'
 
 import Banner from '@/atomic/atoms/Banner'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
@@ -13,7 +13,7 @@ export default function TrustBox(props: Props) {
   const { className = '' } = props
   const {
     data: { nbReviews, rating },
-  }: any = useQuery('reviews', getTrustpilotReviews)
+  }: any = useQuery(['reviews'], getTrustpilotReviews)
   return (
     <Banner
       className={className}

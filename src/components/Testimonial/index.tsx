@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import P from '@/atomic/atoms/P'
 import TextLink from '@/atomic/atoms/TextLink'
@@ -10,7 +10,7 @@ import ReviewGrid from './ReviewGrid'
 export default function Reviews() {
   const {
     data: { reviews },
-  }: any = useQuery('reviews', getTrustpilotReviews)
+  }: any = useQuery(['reviews'], getTrustpilotReviews)
 
   return (
     <div className="bg-gray-50">

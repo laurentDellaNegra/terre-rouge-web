@@ -37,3 +37,6 @@ yarn-error.log*
 # codegen
 codegen.yml
 
+
+# Sentry
+.sentryclirc
