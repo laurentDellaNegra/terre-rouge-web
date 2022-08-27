@@ -1,0 +1,7 @@
+#import "./ShopFields.graphql"
+
+fragment RootFields on QueryRoot {
+  shop {
+    ...ShopFields
+  }
+}

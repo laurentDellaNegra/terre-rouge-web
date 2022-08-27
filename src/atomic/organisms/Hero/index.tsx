@@ -8,7 +8,7 @@ import hero from '@/public/images/hero.png'
 
 export default function Hero() {
   return (
-    <div className="relative">
+    <div className="relative mb-24">
       {/* Background image and overlap */}
       <div aria-hidden="true" className="absolute inset-0 hidden sm:flex sm:flex-col">
         <div className="relative w-full flex-1 bg-gray-800">
@@ -17,7 +17,7 @@ export default function Hero() {
           </div>
           <div className="absolute inset-0 bg-gray-900 opacity-30" />
         </div>
-        <div className="h-32 w-full bg-white md:h-40 lg:h-48" />
+        <div className="h-48 w-full bg-white md:h-56 lg:h-64" />
       </div>
 
       <div className="relative mx-auto max-w-3xl px-4 pb-96 text-center sm:px-6 sm:pb-0 lg:px-8">
@@ -44,7 +44,7 @@ export default function Hero() {
             Terre rouge propose des épices de Madagascar. Riche de sa biodiversité, nous vous
             proposons les meilleures épices que l&apos;île puisse offrir
           </SubTitle>
-          <ButtonLink href="#" className="mt-8 sm:mt-6">
+          <ButtonLink size="large" href="/products" className="mt-8 sm:mt-6">
             Voir nos produits
           </ButtonLink>
         </div>

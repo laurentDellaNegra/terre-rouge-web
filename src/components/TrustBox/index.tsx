@@ -1,17 +1,19 @@
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/future/image'
 
 import Banner from '@/atomic/atoms/Banner'
-import { ScrollDirecton } from '@/hooks/useScrollDirection'
-import ratingImg from '@/public/logos/trustpilot-rating.svg'
-import trustPilotlogo from '@/public/logos/trustpilot.svg'
+import { getTrustpilotReviews } from '@/lib/trustpilot'
+import trustpilotImg from '@/public/logos/trustpilot/logo.svg'
+import ratingImg from '@/public/logos/trustpilot/rating-4.5.svg'
 
 interface Props {
-  nbReviews: number
-  rating: number
   className?: string
 }
 export default function TrustBox(props: Props) {
-  const { nbReviews, rating, className = '' } = props
+  const { className = '' } = props
+  const {
+    data: { nbReviews, rating },
+  }: any = useQuery(['reviews'], getTrustpilotReviews)
   return (
     <Banner
       className={className}
@@ -25,16 +27,14 @@ export default function TrustBox(props: Props) {
           <span className="font-semibold">Excellent</span>
         </p>
 
-        <Image width={100} height={20} src={ratingImg} alt="4.5 stars" />
+        <Image className="h-5 w-auto" src={ratingImg} alt="4.5 stars" />
         <p className="hidden sm:inline">
           <span className="hidden lg:inline">
             <span className="font-semibold">{rating}</span> sur 5 basé sur{' '}
           </span>
           <span className="font-semibold">{nbReviews} avis</span> sur
         </p>
-
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img width={20} height={20} src="logos/trustpilot.svg" alt="Trustpilot logo" />
+        <Image className="h-5 w-auto" src={trustpilotImg} alt="Trustpilot logo" />
         <p>Trustpilot</p>
       </div>
     </Banner>

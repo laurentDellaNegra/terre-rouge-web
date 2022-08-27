@@ -1,0 +1,17 @@
+overwrite: true
+schema:
+  - https://graphql.myshopify.com/api/graphql:
+      headers:
+        X-Shopify-Storefront-Access-Token: xxxxxxxxxxxxxxx
+documents: './src/**/*.graphql'
+generates:
+  src/types/Shopify.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      exposeQueryKeys: true
+      exposeFetcher: true
+      fetcher: graphql-request
+      typesPrefix: I

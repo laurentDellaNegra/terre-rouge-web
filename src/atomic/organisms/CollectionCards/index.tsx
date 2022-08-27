@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import Image from 'next/image'
 
 import artTableImg from '@/public/images/art-table.jpeg'
-import clothesImg from '@/public/images/clothes.jpeg'
-import spiciesImg from '@/public/images/spicies.jpeg'
+import condimentsImg from '@/public/images/condiments.jpeg'
+import spiciesImg from '@/public/images/spices.jpeg'
 
 const collections = [
   {
@@ -13,15 +13,15 @@ const collections = [
     imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
   {
-    name: 'Art de la table',
+    name: 'Condiments',
     href: '#',
-    imageSrc: artTableImg,
+    imageSrc: condimentsImg,
     imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
   {
-    name: 'Vêtements',
+    name: 'Art de la table',
     href: '#',
-    imageSrc: clothesImg,
+    imageSrc: artTableImg,
     imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
 ]
@@ -59,7 +59,7 @@ export default function CollectionCards(props: CollectionCardsProps) {
               <div className="absolute inset-0 flex items-end rounded-lg p-6">
                 <div>
                   <p aria-hidden="true" className="text-sm text-white">
-                    Shop the collection
+                    Continuez vers ces produits
                   </p>
                   <h3 className="mt-1 font-semibold text-white">
                     <a href={collection.href}>

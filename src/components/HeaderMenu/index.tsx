@@ -1,16 +1,13 @@
 import clsx from 'clsx'
 import { useState } from 'react'
-import { useQuery } from 'react-query'
 
 import Header from '@/atomic/organisms/Header'
 import MobileMenu from '@/atomic/organisms/MobileMenu'
 import SlideOverCart from '@/atomic/organisms/SlideOverCart'
 import TrustBox from '@/components/TrustBox'
 import useScrollDirection from '@/hooks/useScrollDirection'
-import { getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function HeaderMenu() {
-  const { data: reviews }: any = useQuery('reviews', getTrustpilotReviews, { staleTime: Infinity })
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isCartOpen, setCartOpen] = useState(false)
 
@@ -30,8 +27,6 @@ export default function HeaderMenu() {
             'bg-primary-extra-light/95 backdrop-blur [@supports(backdrop-filter:blur(0))]:bg-primary-extra-light/75',
           !isScrolled && 'bg-primary-extra-light'
         )}
-        nbReviews={reviews?.nbReviews}
-        rating={reviews?.rating}
       />
       <Header
         className={clsx(
