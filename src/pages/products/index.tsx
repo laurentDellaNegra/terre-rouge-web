@@ -63,7 +63,7 @@ export function ProductsBody({ serverState, url }: any) {
           }),
         }}
       >
-        <SearchBox />
+        {/* <SearchBox />
         <SortBy
           items={[
             { label: 'Featured', value: INDEX_NAME },
@@ -74,8 +74,8 @@ export function ProductsBody({ serverState, url }: any) {
         <Configure hitsPerPage={5} />
         <RefinementList attribute="category" />
         <Hits hitComponent={Hit} />
-        <Pagination />
-        {/* <ProductsComponent /> */}
+        <Pagination /> */}
+        <ProductsComponent />
       </InstantSearch>
     </InstantSearchSSRProvider>
   )
