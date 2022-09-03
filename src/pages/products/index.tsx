@@ -71,10 +71,10 @@ export function ProductsBody({ serverState, url }: any) {
             { label: 'Price (desc)', value: INDEX_NAME_PRICE_DESC },
           ]}
         />
-        <Configure hitsPerPage={5} />
         <RefinementList attribute="category" />
         <Hits hitComponent={Hit} />
-        <Pagination /> */}
+      <Pagination /> */}
+        <Configure hitsPerPage={20} />
         <ProductsComponent />
       </InstantSearch>
     </InstantSearchSSRProvider>

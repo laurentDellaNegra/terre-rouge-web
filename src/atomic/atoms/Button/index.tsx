@@ -1,49 +1,27 @@
-import React from 'react'
+import clsx from 'clsx'
+import { MouseEventHandler, ReactNode } from 'react'
 
-import './index.css'
-
-interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large'
-  /**
-   * Button contents
-   */
-  label: string
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void
+interface ActionButtonLinkProps {
+  disabled?: boolean
+  children: ReactNode
+  onClick: MouseEventHandler<HTMLButtonElement>
+  className?: string
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary'
+export default function Button(props: ActionButtonLinkProps) {
+  const { children, className = '', onClick, disabled = false } = props
   return (
     <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
+      disabled={disabled}
+      aria-disabled={disabled}
+      onClick={onClick}
+      className={clsx(
+        disabled ? 'bg-primary text-white' : 'bg-white hover:bg-primary-extra-light',
+        'inline-flex h-10 items-center rounded-md border border-gray-300 px-4 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-25 focus:ring-offset-1 focus:ring-offset-primary',
+        className
+      )}
     >
-      {label}
+      <a className="">{children}</a>
     </button>
   )
 }

@@ -6,8 +6,8 @@ import IconButton from '@/atomic/atoms/IconButton'
 import TitleSection from '@/atomic/atoms/TitleSection'
 import FilterAside from '@/components/Filter/FilterAside'
 import FilterDrawer from '@/components/Filter/FilterDrawer'
-import Pagination from '@/components/Pagination'
 import ProductCard from '@/components/ProductCard'
+import ProductsPagination from '@/components/ProductsPagination'
 import SortMenu from '@/components/SortMenu'
 
 export default function Products() {
@@ -60,7 +60,7 @@ export default function Products() {
             </div>
           </div>
           {/* Pagination */}
-          <Pagination />
+          <ProductsPagination />
         </section>
       </main>
     </div>
