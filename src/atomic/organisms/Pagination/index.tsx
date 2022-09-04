@@ -22,7 +22,12 @@ export default function Pagination(props: Props) {
       </div>
       <div className="hidden space-x-2 md:flex">
         {pages.map((page: number) => (
-          <Button disabled={currentPage === page} key={page} onClick={() => onChange(page)}>
+          <Button
+            active={currentPage === page}
+            disabled={currentPage === page}
+            key={page}
+            onClick={() => onChange(page)}
+          >
             {page + 1}
           </Button>
         ))}

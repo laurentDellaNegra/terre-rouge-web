@@ -2,14 +2,22 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import { Fragment } from 'react'
+import { useSortBy } from 'react-instantsearch-hooks-web'
 
-export const sortOptions = [
-  { name: 'Terre Rouge présente', href: '#', current: true },
-  { name: 'Prix: moins cher', href: '#', current: false },
-  { name: 'Prix: plus cher', href: '#', current: false },
+const INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || ''
+const INDEX_NAME_PRICE_ASC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_ASC || ''
+const INDEX_NAME_PRICE_DESC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_DESC || ''
+
+const sortOptions = [
+  { label: 'Terre rouge présente', value: INDEX_NAME },
+  { label: 'Prix croissant', value: INDEX_NAME_PRICE_ASC },
+  { label: 'Prix décroissant', value: INDEX_NAME_PRICE_DESC },
 ]
 
 export default function SortMenu() {
+  const sort = useSortBy({ items: sortOptions })
+  console.log('sort', sort)
+  const { options, currentRefinement, refine } = sort
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -31,21 +39,24 @@ export default function SortMenu() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
-            {sortOptions.map((option) => (
-              <Menu.Item key={option.name}>
+        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="px-1 py-1 ">
+            {options.map((option) => (
+              <Menu.Item key={option.label}>
                 {({ active }) => (
-                  <a
-                    href={option.href}
+                  <button
+                    onClick={() => refine(option.value)}
                     className={clsx(
-                      option.current ? 'font-medium text-gray-900' : 'text-gray-500',
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm'
+                      active
+                        ? 'bg-primary text-white'
+                        : currentRefinement === option.value
+                        ? 'bg-primary-extra-light text-primary font-medium'
+                        : 'text-gray-500',
+                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
                     )}
                   >
-                    {option.name}
-                  </a>
+                    {option.label}
+                  </button>
                 )}
               </Menu.Item>
             ))}
