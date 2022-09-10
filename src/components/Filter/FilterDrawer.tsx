@@ -3,38 +3,8 @@ import { XIcon } from '@heroicons/react/outline'
 import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
 import { Fragment } from 'react'
 
-export const subCategories = [
-  { name: 'Tous', href: '#' },
-  { name: 'Épice', href: '#' },
-  { name: 'Produits malagasy', href: '#' },
-  { name: 'Chocolat', href: '#' },
-  { name: 'Vanille', href: '#' },
-  { name: 'Coffret', href: '#' },
-]
-export const filters = [
-  {
-    id: 'price',
-    name: 'Prix',
-    options: [
-      { value: '0', label: '0€ - 3€', checked: false },
-      { value: '3', label: '3€ - 6€', checked: false },
-      { value: '6', label: '6€ - 10€', checked: false },
-      { value: '10', label: '+10€', checked: false },
-    ],
-  },
-  {
-    id: 'tags',
-    name: 'Tags',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-    ],
-  },
-]
+import CategoryList from './CategoryList'
+import PriceAccordion from './PriceAccordion'
 
 interface Props {
   open: boolean
@@ -84,17 +54,14 @@ export default function FilterDrawer(props: Props) {
               {/* Filters */}
               <form className="mt-4 border-t border-gray-200">
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href} className="block px-2 py-3">
-                        {category.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <div className="px-2 py-3 border-b border-gray-200">
+                  <CategoryList />
+                </div>
 
-                {filters.map((section) => (
+                <div className="px-4 border-b border-gray-200">
+                  <PriceAccordion />
+                </div>
+                {/* {filters.map((section) => (
                   <Disclosure
                     as="div"
                     key={section.id}
@@ -139,7 +106,7 @@ export default function FilterDrawer(props: Props) {
                       </>
                     )}
                   </Disclosure>
-                ))}
+                ))} */}
               </form>
             </Dialog.Panel>
           </Transition.Child>

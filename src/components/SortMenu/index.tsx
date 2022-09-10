@@ -16,7 +16,6 @@ const sortOptions = [
 
 export default function SortMenu() {
   const sort = useSortBy({ items: sortOptions })
-  console.log('sort', sort)
   const { options, currentRefinement, refine } = sort
   return (
     <Menu as="div" className="relative inline-block text-left">

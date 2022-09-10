@@ -13,8 +13,6 @@ import SortMenu from '@/components/SortMenu'
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const { hits } = useHits()
-  console.log(hits)
-
   return (
     <div className="bg-gray-50">
       {/* Mobile filter dialog */}

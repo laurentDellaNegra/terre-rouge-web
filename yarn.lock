@@ -3602,6 +3602,13 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/rheostat@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/@types/rheostat/-/rheostat-3.0.2.tgz#2f7e0f5ba7726fc23f1cdc3b6f752bfaae05e4be"
+  integrity sha512-ySdwQat0OvtN8nY4L2BZZ8pUTuYIFtDZb27sgd8eWob3QeWAOgphcosQjCvcXzTaKBoUeEUvdj1W3CIICbhU4A==
+  dependencies:
+    "@types/react" "*"
+
 "@types/scheduler@*":
   version "0.16.2"
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
@@ -10643,7 +10650,7 @@ prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.0.0, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -11305,6 +11312,14 @@ rfdc@^1.3.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/rfdc/-/rfdc-1.3.0.tgz#d0b7c441ab2720d05dc4cf26e01c89631d9da08b"
   integrity sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==
+
+rheostat@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/rheostat/-/rheostat-2.2.0.tgz#d6b388e21f9c6bf5753a8e9518a8eea3467287d2"
+  integrity sha512-cO6MvZ3fXtgP7NH7smWZhZczropunZJ50cdCLdlXR5Rhw0FNRaMM23Wx4NJjs5TGta3jOec39A/L0Lg8h8bPRQ==
+  dependencies:
+    object.assign "^4.1.0"
+    prop-types "^15.6.0"
 
 rimraf@^2.5.4, rimraf@^2.6.3:
   version "2.7.1"

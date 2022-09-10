@@ -13,7 +13,6 @@
     "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
-    "@graphql-codegen/typescript-react-query": "^4.0.1",
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@sentry/nextjs": "^7.10.0",
@@ -28,13 +27,15 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-instantsearch-hooks-server": "^6.31.1",
-    "react-instantsearch-hooks-web": "^6.31.1"
+    "react-instantsearch-hooks-web": "^6.31.1",
+    "rheostat": "2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@graphql-codegen/cli": "^2.11.6",
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@graphql-codegen/typescript-react-query": "^4.0.1",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/addon-interactions": "^6.5.10",
@@ -50,6 +51,7 @@
     "@types/node": "18.7.3",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@types/rheostat": "^3.0.2",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
     "eslint": "8.22.0",

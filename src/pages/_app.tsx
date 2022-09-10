@@ -5,6 +5,8 @@ import type { AppProps } from 'next/app'
 import { useState } from 'react'
 
 import '@/styles/globals.css'
+// TODO: improve this
+import '@/styles/rheostat.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(

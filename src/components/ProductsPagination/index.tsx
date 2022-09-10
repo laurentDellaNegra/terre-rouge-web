@@ -4,7 +4,6 @@ import Pagination from '@/atomic/organisms/Pagination'
 
 export default function ProductsPagination() {
   const pagination = usePagination()
-  console.log(pagination)
   const { isFirstPage, isLastPage, nbPages, pages, refine, currentRefinement } = pagination
   return (
     <Pagination

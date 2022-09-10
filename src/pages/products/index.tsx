@@ -71,9 +71,11 @@ export function ProductsBody({ serverState, url }: any) {
             { label: 'Price (desc)', value: INDEX_NAME_PRICE_DESC },
           ]}
         />
-        <RefinementList attribute="category" />
         <Hits hitComponent={Hit} />
       <Pagination /> */}
+        {/* <RefinementList attribute="category" operator="and" />
+        <RefinementList attribute="price" />
+        <RefinementList attribute="tags" /> */}
         <Configure hitsPerPage={20} />
         <ProductsComponent />
       </InstantSearch>
