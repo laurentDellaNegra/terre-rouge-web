@@ -23,7 +23,6 @@ export default function PriceAccordion() {
   }
 
   const handleChange = ({ values: [min, max] }: { values: Array<number> }) => {
-    console.log('handleChange', [min, max])
     // Check if we put button slider too close, we reset with currentRefinement
     if (min >= max) {
       refine([currentRefinement.min, currentRefinement.max])
@@ -39,7 +38,7 @@ export default function PriceAccordion() {
   }
 
   return (
-    <Disclosure as="div" defaultOpen={true} className="border-b border-gray-200 py-6">
+    <Disclosure as="div" defaultOpen={true} className="py-6">
       {({ open }) => (
         <>
           <h3 className="-my-3 flow-root">
