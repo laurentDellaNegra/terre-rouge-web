@@ -1,8 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
 import CategoryList from './CategoryList'
+import ClearFilterButton from './ClearFilterButton'
 import PriceAccordion from './PriceAccordion'
 import { TagsAccordion } from './TagsAccordion'
 
@@ -13,9 +14,14 @@ interface Props {
 
 export default function FilterDrawer(props: Props) {
   const { open, onClose } = props
+  const [unmountOnInit, setUnmountOnInit] = useState(true)
+  // Hack to avoid focustrap error and keep the focus
+  useEffect(() => {
+    if (open) setUnmountOnInit(false)
+  }, [open])
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-40 lg:hidden" onClose={onClose}>
+    <Transition.Root unmount={unmountOnInit} show={open} as={Fragment}>
+      <Dialog static as="div" className="relative z-40 lg:hidden" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
@@ -24,6 +30,8 @@ export default function FilterDrawer(props: Props) {
           leave="transition-opacity ease-linear duration-300"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
+          unmount={false}
+          static
         >
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
@@ -37,6 +45,8 @@ export default function FilterDrawer(props: Props) {
             leave="transition ease-in-out duration-300 transform"
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
+            unmount={false}
+            static
           >
             <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
               <div className="flex items-center justify-between px-4">
@@ -52,8 +62,13 @@ export default function FilterDrawer(props: Props) {
               </div>
 
               {/* Filters */}
-              <form className="mt-4 border-t border-gray-200" onSubmit={(e) => e.preventDefault()}>
+              <div className="mt-4 border-t border-gray-200" onSubmit={(e) => e.preventDefault()}>
                 <h3 className="sr-only">Categories</h3>
+
+                <div className="px-4 py-3">
+                  <ClearFilterButton />
+                </div>
+
                 <div className="px-2 py-3 border-b border-gray-200">
                   <CategoryList />
                 </div>
@@ -64,7 +79,7 @@ export default function FilterDrawer(props: Props) {
                 <div className="px-4 border-b border-gray-200">
                   <TagsAccordion />
                 </div>
-              </form>
+              </div>
             </Dialog.Panel>
           </Transition.Child>
         </div>

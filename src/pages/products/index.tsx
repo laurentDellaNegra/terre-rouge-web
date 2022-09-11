@@ -53,19 +53,7 @@ export function ProductsBody({ serverState, url }: any) {
   return (
     <InstantSearchSSRProvider {...serverState}>
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={routing(url)}>
-        {/* <SearchBox />
-        <SortBy
-          items={[
-            { label: 'Featured', value: INDEX_NAME },
-            { label: 'Price (asc)', value: INDEX_NAME_PRICE_ASC },
-            { label: 'Price (desc)', value: INDEX_NAME_PRICE_DESC },
-          ]}
-        />
-        <Hits hitComponent={Hit} />
-      <Pagination /> */}
-        {/* <RefinementList attribute="category" operator="and" />
-        <RefinementList attribute="price" />
-        <RefinementList attribute="tags" /> */}
+        <SearchBox />
         <Configure hitsPerPage={20} />
         <ProductsComponent />
       </InstantSearch>
