@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRange } from 'react-instantsearch-hooks-web'
 import Rheostat from 'rheostat'
 
@@ -16,6 +16,17 @@ export default function PriceAccordion() {
 
   const [stateMin, setStateMin] = useState(min || 0)
   const [stateMax, setStateMax] = useState(max || 100)
+
+  useEffect(() => {
+    if (canRefine) {
+      setStateMin(currentRefinement.min)
+      if (currentRefinement.max > (max as number)) {
+        setStateMax(max as number)
+      } else {
+        setStateMax(currentRefinement.max)
+      }
+    }
+  }, [currentRefinement.min, currentRefinement.max]) // eslint-dis
 
   const onValuesUpdated = ({ values: [min, max] }: { values: Array<number> }) => {
     setStateMin(min)

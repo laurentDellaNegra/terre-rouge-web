@@ -20,6 +20,7 @@ import Hit from '@/components/Hit'
 import Layout from '@/components/Layout'
 import ProductsComponent from '@/components/Products'
 import { getShopPageForHome } from '@/lib/api'
+import { routing } from '@/lib/betterUrl'
 import graphQLRequestClient from '@/lib/clients/graphQLRequestClient'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 import { useGetShopPageForHomeQuery } from '@/types/Shopify'
@@ -51,18 +52,7 @@ export default function Products(props: any) {
 export function ProductsBody({ serverState, url }: any) {
   return (
     <InstantSearchSSRProvider {...serverState}>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName={INDEX_NAME}
-        routing={{
-          router: history({
-            getLocation: () =>
-              typeof window === 'undefined'
-                ? (new URL(url!) as unknown as Location)
-                : window.location,
-          }),
-        }}
-      >
+      <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={routing(url)}>
         {/* <SearchBox />
         <SortBy
           items={[
