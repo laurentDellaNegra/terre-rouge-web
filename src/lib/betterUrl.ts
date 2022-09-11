@@ -1,6 +1,25 @@
 import { history } from 'instantsearch.js/es/lib/routers'
 
 const INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || ''
+const INDEX_NAME_PRICE_ASC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_ASC || ''
+const INDEX_NAME_PRICE_DESC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_DESC || ''
+
+const INDEXES = {
+  [INDEX_NAME_PRICE_ASC]: 'asc',
+  [INDEX_NAME_PRICE_DESC]: 'desc',
+}
+
+function getKeyByValue(object: any, value: string) {
+  return Object.keys(object).find((key) => object[key] === value)
+}
+
+function getSortBySlug(name: string) {
+  return INDEXES[name]
+}
+
+function getSortByName(slug: string) {
+  return getKeyByValue(INDEXES, slug)
+}
 
 function getCategorySlug(name: string) {
   return name.split(' ').join('-')
@@ -72,9 +91,12 @@ export const routing = (url: string) => ({
       if (routeState.tags) {
         queryParameters.tags = (routeState.tags as any).map(encodeURIComponent)
       }
-      console.log('createURL routeState.price', routeState.price)
       if (routeState.price) {
         queryParameters.price = getPriceSlug(routeState.price as string)
+      }
+      console.log('createURL routeState.sortBy', getSortBySlug(routeState.sortBy as string))
+      if (routeState.sortBy) {
+        queryParameters.sortBy = getSortBySlug(routeState.sortBy as string)
       }
 
       const queryString = qsModule.stringify(queryParameters, {
@@ -91,11 +113,12 @@ export const routing = (url: string) => ({
         category = '',
         price = '',
         tags,
+        sortBy,
       } = qsModule.parse(location.search.slice(1))
       // `qs` does not return an array when there's a single value.
       const alltags = Array.isArray(tags) ? tags : [tags].filter(Boolean)
 
-      console.log('parseURL routeState.price', price)
+      console.log('parseURL routeState.sortBy', sortBy)
 
       return {
         query: decodeURIComponent(query as string),
@@ -103,6 +126,7 @@ export const routing = (url: string) => ({
         tags: alltags.map(decodeURIComponent as any),
         category: getCategoryName(category as string),
         price: getPriceName(price as string),
+        sortBy: getSortByName(sortBy as string),
       }
     },
   }),

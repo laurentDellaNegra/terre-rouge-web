@@ -9,7 +9,7 @@ const INDEX_NAME_PRICE_ASC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_AS
 const INDEX_NAME_PRICE_DESC = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_PRICE_DESC || ''
 
 const sortOptions = [
-  { label: 'Terre rouge présente', value: INDEX_NAME },
+  { label: 'Pertinence', value: INDEX_NAME },
   { label: 'Prix croissant', value: INDEX_NAME_PRICE_ASC },
   { label: 'Prix décroissant', value: INDEX_NAME_PRICE_DESC },
 ]
