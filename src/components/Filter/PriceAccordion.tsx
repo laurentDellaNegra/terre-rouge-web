@@ -1,32 +1,25 @@
 import { Disclosure } from '@headlessui/react'
 import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRange } from 'react-instantsearch-hooks-web'
 import Rheostat from 'rheostat'
 
 import { scrollToTop } from '@/lib/window'
 
 export default function PriceAccordion() {
-  const { refine, range, start, canRefine } = useRange({ attribute: 'price', min: 0, precision: 2 })
+  const { refine, range, start, canRefine } = useRange({ attribute: 'price', precision: 2 })
   const currentRefinement = {
     min: start[0] as number,
     max: start[1] as number,
   }
-  const { min, max } = range
+  const { min = 0, max = 100 } = range
 
-  const [stateMin, setStateMin] = useState(min || 0)
-  const [stateMax, setStateMax] = useState(max || 100)
-
-  useEffect(() => {
-    if (canRefine) {
-      setStateMin(currentRefinement.min)
-      if (currentRefinement.max > (max as number)) {
-        setStateMax(max as number)
-      } else {
-        setStateMax(currentRefinement.max)
-      }
-    }
-  }, [currentRefinement.min, currentRefinement.max]) // eslint-dis
+  const [stateMin, setStateMin] = useState(
+    currentRefinement.min === -Infinity ? min : currentRefinement.min
+  )
+  const [stateMax, setStateMax] = useState(
+    currentRefinement.max === Infinity ? max : currentRefinement.max
+  )
 
   const onValuesUpdated = ({ values: [min, max] }: { values: Array<number> }) => {
     setStateMin(min)

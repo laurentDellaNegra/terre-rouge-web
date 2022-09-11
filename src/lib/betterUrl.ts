@@ -11,10 +11,23 @@ function getCategoryName(slug: string) {
 }
 
 function getPriceSlug(name: string) {
-  return name.split(':').join('-')
+  const prices = name.split(':')
+  // no price min
+  if (prices[0] === '') return `min-${prices[1]}`
+  // no price max
+  if (prices[1] === '') return `${prices[0]}-max`
+  // min and max are set
+  return `${prices[0]}-${prices[1]}`
 }
 
 function getPriceName(slug: string) {
+  const prices = slug.split('-')
+  if (prices.length === 1) return ''
+  // no price min
+  if (prices[0] === '') return `:${prices[0]}`
+  // no price max
+  if (prices[1] === '') return `${prices[0]}:`
+  // min and max are set
   return slug.split('-').join(':')
 }
 
@@ -59,7 +72,8 @@ export const routing = (url: string) => ({
       if (routeState.tags) {
         queryParameters.tags = (routeState.tags as any).map(encodeURIComponent)
       }
-      if (routeState.price !== '0:') {
+      console.log('createURL routeState.price', routeState.price)
+      if (routeState.price) {
         queryParameters.price = getPriceSlug(routeState.price as string)
       }
 
@@ -80,6 +94,8 @@ export const routing = (url: string) => ({
       } = qsModule.parse(location.search.slice(1))
       // `qs` does not return an array when there's a single value.
       const alltags = Array.isArray(tags) ? tags : [tags].filter(Boolean)
+
+      console.log('parseURL routeState.price', price)
 
       return {
         query: decodeURIComponent(query as string),

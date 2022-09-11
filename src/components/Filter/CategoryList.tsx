@@ -3,13 +3,13 @@ import { MouseEvent } from 'react'
 import { useMenu } from 'react-instantsearch-hooks-web'
 
 export default function CategoryList() {
-  const { items: categories, refine: refineCategories } = useMenu({ attribute: 'category' })
+  const { items, refine } = useMenu({ attribute: 'category' })
 
-  const noMenuSelected = categories.every((category) => category.isRefined === false)
+  const noMenuSelected = items.every((category) => category.isRefined === false)
 
   const selectMenu = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, value: string) => {
     e.preventDefault()
-    refineCategories(value)
+    refine(value)
   }
 
   return (
@@ -27,7 +27,7 @@ export default function CategoryList() {
           Tous
         </button>
       </li>
-      {categories.map((category) => (
+      {items.map((category) => (
         <li key={category.value}>
           <button
             onClick={(e) => selectMenu(e, category.value)}
