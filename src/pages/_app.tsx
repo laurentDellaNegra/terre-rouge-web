@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            // By default we disable the auto refetch on all requests
+            // CORS errors By default we disable the auto refetch on all requests
             // Because all pages are statically generated
             // TODO: create a proxy with rewrite to avoid that
             staleTime: Infinity,

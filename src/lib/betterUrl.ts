@@ -94,7 +94,6 @@ export const routing = (url: string) => ({
       if (routeState.price) {
         queryParameters.price = getPriceSlug(routeState.price as string)
       }
-      console.log('createURL routeState.sortBy', getSortBySlug(routeState.sortBy as string))
       if (routeState.sortBy) {
         queryParameters.sortBy = getSortBySlug(routeState.sortBy as string)
       }
@@ -117,8 +116,6 @@ export const routing = (url: string) => ({
       } = qsModule.parse(location.search.slice(1))
       // `qs` does not return an array when there's a single value.
       const alltags = Array.isArray(tags) ? tags : [tags].filter(Boolean)
-
-      console.log('parseURL routeState.sortBy', sortBy)
 
       return {
         query: decodeURIComponent(query as string),

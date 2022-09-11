@@ -25,7 +25,7 @@ export default function Button(props: ActionButtonLinkProps) {
         className
       )}
     >
-      <a className="">{children}</a>
+      {children}
     </button>
   )
 }

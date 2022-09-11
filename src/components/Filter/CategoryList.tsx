@@ -1,22 +1,16 @@
 import clsx from 'clsx'
-import { MouseEvent } from 'react'
 import { useMenu } from 'react-instantsearch-hooks-web'
 
 export default function CategoryList() {
   const { items, refine } = useMenu({ attribute: 'category' })
 
-  const noMenuSelected = items.every((category) => category.isRefined === false)
-
-  const selectMenu = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, value: string) => {
-    e.preventDefault()
-    refine(value)
-  }
+  // const noMenuSelected = items.every((category) => category.isRefined === false)
 
   return (
     <ul role="list" className="space-y-4 pb-6 text-sm font-medium text-gray-900">
-      <li>
+      {/* <li>
         <button
-          onClick={(e) => selectMenu(e, '')}
+          onClick={() => refine('')}
           className={clsx(
             noMenuSelected
               ? 'bg-primary-extra-light text-primary font-medium'
@@ -26,11 +20,11 @@ export default function CategoryList() {
         >
           Tous
         </button>
-      </li>
+      </li> */}
       {items.map((category) => (
         <li key={category.value}>
           <button
-            onClick={(e) => selectMenu(e, category.value)}
+            onClick={() => refine(category.value)}
             className={clsx(
               category.isRefined
                 ? 'bg-primary-extra-light text-primary font-medium'

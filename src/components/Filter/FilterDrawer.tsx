@@ -52,7 +52,7 @@ export default function FilterDrawer(props: Props) {
               </div>
 
               {/* Filters */}
-              <form className="mt-4 border-t border-gray-200">
+              <form className="mt-4 border-t border-gray-200" onSubmit={(e) => e.preventDefault()}>
                 <h3 className="sr-only">Categories</h3>
                 <div className="px-2 py-3 border-b border-gray-200">
                   <CategoryList />

@@ -3,7 +3,7 @@ import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
 import { useRefinementList } from 'react-instantsearch-hooks-web'
 
 export function TagsAccordion() {
-  const { items: tags, refine: refineTags } = useRefinementList({
+  const { items, refine } = useRefinementList({
     attribute: 'tags',
     limit: 1000,
   })
@@ -25,16 +25,15 @@ export function TagsAccordion() {
           </h3>
           <Disclosure.Panel className="pt-6">
             <div className="space-y-4">
-              {tags.map((tag, index) => (
+              {items.map((tag, index) => (
                 <div key={tag.value} className="flex items-center">
                   <input
                     id={`filter-${tag.label}`}
                     name={`${tag.label}[]`}
-                    defaultValue={tag.value}
+                    checked={tag.isRefined}
                     type="checkbox"
-                    defaultChecked={tag.isRefined}
                     onChange={() => {
-                      refineTags(tag.value)
+                      refine(tag.value)
                     }}
                     className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary-light"
                   />
