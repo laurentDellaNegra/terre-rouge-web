@@ -1,4 +1,4 @@
-import { FilterIcon } from '@heroicons/react/solid'
+import { FunnelIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import { useHits } from 'react-instantsearch-hooks-web'
 
@@ -34,7 +34,7 @@ export default function Products() {
             {/* Filter Icon */}
             <IconButton onClick={() => setMobileFiltersOpen(true)}>
               <span className="sr-only">Filtres</span>
-              <FilterIcon className="h-5 w-5" aria-hidden="true" />
+              <FunnelIcon className="h-5 w-5" aria-hidden="true" />
             </IconButton>
           </div>
         </div>

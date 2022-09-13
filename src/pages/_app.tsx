@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 
+import UIStateProvider from '@/context/UIState/UIStateProvider'
 import '@/styles/globals.css'
 // TODO: improve this
 import '@/styles/rheostat.css'
@@ -37,7 +38,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        <UIStateProvider>
+          <Component {...pageProps} />
+        </UIStateProvider>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react'
-import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
+import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import { useEffect, useState } from 'react'
 import { useRange } from 'react-instantsearch-hooks-web'
 import Rheostat from 'rheostat'
@@ -59,9 +59,9 @@ export default function PriceAccordion() {
               <span className="font-medium text-gray-900">Prix</span>
               <span className="ml-6 flex items-center">
                 {open ? (
-                  <MinusSmIcon className="h-5 w-5" aria-hidden="true" />
+                  <MinusIcon className="h-5 w-5" aria-hidden="true" />
                 ) : (
-                  <PlusSmIcon className="h-5 w-5" aria-hidden="true" />
+                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
                 )}
               </span>
             </Disclosure.Button>

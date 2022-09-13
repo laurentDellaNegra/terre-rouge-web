@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react'
-import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
+import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import { useRefinementList } from 'react-instantsearch-hooks-web'
 
 export function TagsAccordion() {
@@ -16,9 +16,9 @@ export function TagsAccordion() {
               <span className="font-medium text-gray-900">Tags</span>
               <span className="ml-6 flex items-center">
                 {open ? (
-                  <MinusSmIcon className="h-5 w-5" aria-hidden="true" />
+                  <MinusIcon className="h-5 w-5" aria-hidden="true" />
                 ) : (
-                  <PlusSmIcon className="h-5 w-5" aria-hidden="true" />
+                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
                 )}
               </span>
             </Disclosure.Button>

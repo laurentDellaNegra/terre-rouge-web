@@ -13,8 +13,8 @@
     "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.4",
-    "@heroicons/react": "^1.0.6",
+    "@headlessui/react": "^1.7.1",
+    "@heroicons/react": "^2.0.11",
     "@sentry/nextjs": "^7.10.0",
     "@tanstack/react-query": "^4.2.3",
     "@tanstack/react-query-devtools": "^4.2.3",

@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Fragment, useEffect, useRef, useState } from 'react'
 
 import CategoryList from './CategoryList'
@@ -57,7 +57,7 @@ export default function FilterDrawer(props: Props) {
                   onClick={onClose}
                 >
                   <span className="sr-only">Fermer le menu</span>
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 

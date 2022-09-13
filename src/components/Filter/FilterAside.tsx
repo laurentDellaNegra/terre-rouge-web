@@ -1,9 +1,3 @@
-import { XIcon } from '@heroicons/react/outline'
-
-import Button from '@/atomic/atoms/Button'
-import ButtonLink from '@/atomic/atoms/ButtonLink'
-import IconButton from '@/atomic/atoms/IconButton'
-
 import CategoryList from './CategoryList'
 import ClearFilterButton from './ClearFilterButton'
 import PriceAccordion from './PriceAccordion'
