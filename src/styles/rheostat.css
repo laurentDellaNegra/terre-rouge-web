@@ -1,0 +1,138 @@
+/**
+* rheostat rangeslider styles
+* TODO: We need to move this style into a module with price-range slider
+*/
+
+.rheostat-progress {
+  background-color: #579660;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  width: 15px;
+  cursor: pointer;
+}
+.DefaultProgressBar_background__horizontal {
+  height: 5px;
+  top: -3px;
+}
+.rheostat-handle {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #579660;
+  background-color: #ffff !important;
+  border-radius: 50%;
+  outline: none;
+  z-index: 1;
+  box-shadow: 0 2px 2px #dbdbdb;
+  margin-left: -12px;
+  top: -8px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.rheostat-handle:focus {
+  border: 2px solid white;
+  outline: 2px solid #579660;
+}
+
+@media screen and (min-width: 320px) {
+  .rheostat-handle {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.rheostat-handle:focus {
+  box-shadow: #abc4e8 0 0 1px 1px;
+}
+.rheostat-handle:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #dadfe8;
+}
+.rheostat-handle:before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #dadfe8;
+}
+
+.rheostat-handle:active {
+  cursor: grabbing;
+}
+
+.DefaultHandle_handle__vertical {
+  margin-top: -12px;
+  left: -10px;
+}
+.DefaultHandle_handle__vertical:before {
+  top: 10px;
+}
+.DefaultHandle_handle__vertical:after {
+  top: 13px;
+  left: 8px;
+  height: 1px;
+  width: 10px;
+}
+.DefaultHandle_handle__disabled {
+  border-color: #dbdbdb;
+}
+.rheostat-background {
+  background-color: #e4e4e4;
+  height: 4px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.DefaultBackground_background__horizontal {
+  height: 4px;
+  top: -2px;
+  left: -2px;
+  bottom: 4px;
+  width: 100%;
+}
+.DefaultBackground_background__vertical {
+  width: 15px;
+  top: 0px;
+  height: 100%;
+}
+.rheostat {
+  position: relative;
+  overflow: visible;
+  margin: 15px 5px;
+}
+@media (min-width: 1128px) {
+  .autoAdjustVerticalPosition {
+    top: 12px;
+  }
+}
+.rheostat__vertical {
+  height: 100%;
+}
+.handleContainer {
+  height: 5px;
+  top: 0px;
+  left: -2px;
+  bottom: 4px;
+  width: 100%;
+  position: absolute;
+  border: none;
+}
+.rheostat_background {
+  background-color: #e4e4e4;
+  position: relative;
+  border: none;
+}
+.rheostat_background__horizontal {
+  height: 15px;
+  top: -2px;
+  left: -2px;
+  bottom: 4px;
+  width: 100%;
+}
+.rheostat_background__vertical {
+  width: 15px;
+  top: 0px;
+  height: 100%;
+}

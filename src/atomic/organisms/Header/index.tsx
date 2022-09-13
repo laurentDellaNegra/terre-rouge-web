@@ -1,8 +1,10 @@
-import { MenuIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline'
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import Image from 'next/future/image'
 import Link from 'next/link'
 
 import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
+import SearchPalette from '@/components/SearchPalette'
+import useUIState from '@/context/UIState/useUIState'
 import largeLogo from '@/public/logos/large-terre-rouge.webp'
 import smallLogo from '@/public/logos/small-terre-rouge.svg'
 
@@ -14,6 +16,7 @@ interface HeaderProps {
 
 export default function Header(props: HeaderProps) {
   const { onMobileMenuClick, className = '', onCartClick } = props
+  const { openSearchPalette, toggleSearch } = useUIState()
   return (
     <header className={className}>
       <nav aria-label="Top">
@@ -39,16 +42,24 @@ export default function Header(props: HeaderProps) {
                 onClick={onMobileMenuClick}
               >
                 <span className="sr-only">Open menu</span>
-                <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
               {/* Search */}
-              <Link href="/products">
+              {/* <Link href="/products">
                 <a className="ml-2 p-2 text-gray-400 hover:text-gray-500">
                   <span className="sr-only">Rechercher</span>
-                  <SearchIcon className="h-6 w-6" aria-hidden="true" />
+                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
                 </a>
-              </Link>
+              </Link> */}
+              <button
+                type="button"
+                className="ml-2 p-2 text-gray-400 hover:text-gray-500"
+                onClick={toggleSearch}
+              >
+                <span className="sr-only">Rechercher</span>
+                <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+              </button>
             </div>
 
             {/* Logo (lg-) */}
@@ -58,29 +69,24 @@ export default function Header(props: HeaderProps) {
             </a>
 
             <div className="flex flex-1 items-center justify-end">
-              <Link href="/products">
-                {/* <a className="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">
-                  Rechercher
-                </a> */}
+              {/* <Link href="/products">
                 <a className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block">
                   <span className="sr-only">Rechercher</span>
-                  <SearchIcon className="h-6 w-6" aria-hidden="true" />
+                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
                 </a>
-              </Link>
+              </Link> */}
+              <button
+                type="button"
+                className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block"
+                onClick={toggleSearch}
+              >
+                <span className="sr-only">Rechercher</span>
+                <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+              </button>
 
               <div className="flex items-center">
                 {/* Cart */}
                 <div className="ml-4 flow-root">
-                  {/* <a href="#" className="group -m-2 flex items-center p-2">
-                    <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
-                    </span>
-                    <span className="sr-only">produits dans le panier, voir panier</span>
-                  </a> */}
                   <button
                     type="button"
                     className="group -m-2 flex items-center p-2"
@@ -102,6 +108,7 @@ export default function Header(props: HeaderProps) {
           </div>
         </div>
       </nav>
+      <SearchPalette onClose={toggleSearch} open={openSearchPalette} />
     </header>
   )
 }

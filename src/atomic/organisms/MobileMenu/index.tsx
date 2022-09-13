@@ -1,5 +1,5 @@
 import { Dialog, Tab, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import { Fragment } from 'react'
 
@@ -115,7 +115,7 @@ export default function MobileMenu(props: MobileMenuProps) {
                   onClick={onClose}
                 >
                   <span className="sr-only">Close menu</span>
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 

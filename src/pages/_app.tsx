@@ -4,7 +4,10 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 
+import UIStateProvider from '@/context/UIState/UIStateProvider'
 import '@/styles/globals.css'
+// TODO: improve this
+import '@/styles/rheostat.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -12,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            // By default we disable the auto refetch on all requests
+            // CORS errors By default we disable the auto refetch on all requests
             // Because all pages are statically generated
             // TODO: create a proxy with rewrite to avoid that
             staleTime: Infinity,
@@ -35,7 +38,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        <UIStateProvider>
+          <Component {...pageProps} />
+        </UIStateProvider>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

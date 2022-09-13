@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Fragment, useState } from 'react'
 
 const products = [
@@ -78,7 +78,7 @@ export default function SlideOverCart(props: Props) {
                             onClick={onClose}
                           >
                             <span className="sr-only">Fermer le panneau</span>
-                            <XIcon className="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                           </button>
                         </div>
                       </div>
