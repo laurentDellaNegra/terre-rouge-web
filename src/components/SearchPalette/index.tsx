@@ -63,15 +63,15 @@ export default function SearchPalette(props: Props) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="mx-auto max-w-2xl transform divide-y divide-gray-500 divide-opacity-10 overflow-hidden rounded-xl bg-white bg-opacity-80 shadow-2xl ring-1 ring-black ring-opacity-5 backdrop-blur backdrop-filter transition-all">
+            <Dialog.Panel className="mx-auto max-w-2xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
               <Combobox onChange={(item: any) => (window.location = item.url)}>
                 <div className="relative">
                   <MagnifyingGlassIcon
-                    className="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-900 text-opacity-40"
+                    className="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
                   <Combobox.Input
-                    className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
+                    className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
                     placeholder="Search..."
                     onChange={(event) => setQuery(event.target.value)}
                   />
@@ -80,11 +80,11 @@ export default function SearchPalette(props: Props) {
                 {(query === '' || filteredProjects.length > 0) && (
                   <Combobox.Options
                     static
-                    className="max-h-80 scroll-py-2 divide-y divide-gray-500 divide-opacity-10 overflow-y-auto"
+                    className="max-h-80 scroll-py-2 divide-y divide-gray-100 overflow-y-auto"
                   >
                     <li className="p-2">
                       {query === '' && (
-                        <h2 className="mt-4 mb-2 px-3 text-xs font-semibold text-gray-900">
+                        <h2 className="mt-4 mb-2 px-3 text-xs font-semibold text-gray-500">
                           Recent searches
                         </h2>
                       )}
@@ -96,7 +96,7 @@ export default function SearchPalette(props: Props) {
                             className={({ active }) =>
                               clsx(
                                 'flex cursor-default select-none items-center rounded-md px-3 py-2',
-                                active && 'bg-gray-900 bg-opacity-5 text-gray-900'
+                                active && 'bg-primary text-white'
                               )
                             }
                           >
@@ -104,14 +104,14 @@ export default function SearchPalette(props: Props) {
                               <>
                                 <FolderIcon
                                   className={clsx(
-                                    'h-6 w-6 flex-none text-gray-900 text-opacity-40',
-                                    active && 'text-opacity-100'
+                                    'h-6 w-6 flex-none',
+                                    active ? 'text-white' : 'text-gray-400'
                                   )}
                                   aria-hidden="true"
                                 />
                                 <span className="ml-3 flex-auto truncate">{project.name}</span>
                                 {active && (
-                                  <span className="ml-3 flex-none text-gray-500">Jump to...</span>
+                                  <span className="ml-3 flex-none text-indigo-100">Jump to...</span>
                                 )}
                               </>
                             )}
@@ -130,7 +130,7 @@ export default function SearchPalette(props: Props) {
                               className={({ active }) =>
                                 clsx(
                                   'flex cursor-default select-none items-center rounded-md px-3 py-2',
-                                  active && 'bg-gray-900 bg-opacity-5 text-gray-900'
+                                  active && 'bg-primary text-white'
                                 )
                               }
                             >
@@ -138,13 +138,18 @@ export default function SearchPalette(props: Props) {
                                 <>
                                   <action.icon
                                     className={clsx(
-                                      'h-6 w-6 flex-none text-gray-900 text-opacity-40',
-                                      active && 'text-opacity-100'
+                                      'h-6 w-6 flex-none',
+                                      active ? 'text-white' : 'text-gray-400'
                                     )}
                                     aria-hidden="true"
                                   />
                                   <span className="ml-3 flex-auto truncate">{action.name}</span>
-                                  <span className="ml-3 flex-none text-xs font-semibold text-gray-500">
+                                  <span
+                                    className={clsx(
+                                      'ml-3 flex-none text-xs font-semibold',
+                                      active ? 'text-indigo-100' : 'text-gray-400'
+                                    )}
+                                  >
                                     <kbd className="font-sans">⌘</kbd>
                                     <kbd className="font-sans">{action.shortcut}</kbd>
                                   </span>
@@ -160,12 +165,9 @@ export default function SearchPalette(props: Props) {
 
                 {query !== '' && filteredProjects.length === 0 && (
                   <div className="py-14 px-6 text-center sm:px-14">
-                    <FolderIcon
-                      className="mx-auto h-6 w-6 text-gray-900 text-opacity-40"
-                      aria-hidden="true"
-                    />
+                    <FolderIcon className="mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
                     <p className="mt-4 text-sm text-gray-900">
-                      We couldn&apos;t find any projects with that term. Please try again.
+                      We couldn&nbsp;t find any projects with that term. Please try again.
                     </p>
                   </div>
                 )}
