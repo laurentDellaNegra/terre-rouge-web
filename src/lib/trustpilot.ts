@@ -26,7 +26,7 @@ export async function getTrustpilotReviews() {
 }
 
 function getNbReviews(content: string) {
-  const regexNbReviews = /data-reviews-count-typography=\"true\">([0-9]*)<\/span>/g
+  const regexNbReviews = /data-reviews-count-typography=\"true\">Total : <!-- -->([0-9]*)<\/p>/g
   const nbReviews = regexNbReviews.exec(content)
   if (!nbReviews) throw new Error('Could not get number of reviews on trustpilot')
   return nbReviews[1]
@@ -41,11 +41,11 @@ function getRating(content: string) {
 
 function getReviews(content: string): IReviews {
   // get name
-  const regexAuthors = /data-consumer-name-typography=\"true\">(.*?)<\/div>/g
+  const regexAuthors = /data-consumer-name-typography=\"true\">(.*?)<\/span>/g
   //get comment
   const regexBodies = /data-service-review-text-typography=\"true\">(.*?)<\/p>/g
   //get title
-  const regexTitles = /data-review-title-typography=\"true\">(.*?)<\/a>/g
+  const regexTitles = /data-service-review-title-typography=\"true\">(.*?)<\/h2>/g
   //get rating
   const regexRatings = /data-service-review-rating=\"(\d)\"/g
   let authors = regexAuthors.exec(content)
