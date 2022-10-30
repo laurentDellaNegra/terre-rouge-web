@@ -1,6 +1,7 @@
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import Image from 'next/future/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
 import SearchPalette from '@/components/SearchPalette'
@@ -17,6 +18,8 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
   const { onMobileMenuClick, className = '', onCartClick } = props
   const { openSearchPalette, toggleSearch } = useUIState()
+  const router = useRouter()
+  const displaySearch = !router.asPath.startsWith('/products')
   return (
     <header className={className}>
       <nav aria-label="Top">
@@ -24,10 +27,12 @@ export default function Header(props: HeaderProps) {
           <div className="flex h-16 items-center justify-between">
             {/* Logo (lg+) */}
             <div className="-mt-8 hidden lg:flex lg:flex-1 lg:items-center">
-              <a href="#">
-                <span className="sr-only">Terre Rouge</span>
-                <Image className="h-24 w-auto" src={largeLogo} alt="" />
-              </a>
+              <Link href="/">
+                <a>
+                  <span className="sr-only">Terre Rouge</span>
+                  <Image className="h-24 w-auto" src={largeLogo} alt="" />
+                </a>
+              </Link>
             </div>
 
             <div className="hidden h-full lg:flex">
@@ -45,44 +50,37 @@ export default function Header(props: HeaderProps) {
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
-              {/* Search */}
-              {/* <Link href="/products">
-                <a className="ml-2 p-2 text-gray-400 hover:text-gray-500">
+              {displaySearch && (
+                <button
+                  type="button"
+                  className="ml-2 p-2 text-gray-400 hover:text-gray-500"
+                  onClick={toggleSearch}
+                >
                   <span className="sr-only">Rechercher</span>
                   <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              </Link> */}
-              <button
-                type="button"
-                className="ml-2 p-2 text-gray-400 hover:text-gray-500"
-                onClick={toggleSearch}
-              >
-                <span className="sr-only">Rechercher</span>
-                <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
+                </button>
+              )}
             </div>
 
             {/* Logo (lg-) */}
-            <a href="#" className="lg:hidden">
-              <span className="sr-only">Workflow</span>
-              <Image className="h-auto w-9" src={smallLogo} alt="Terre Rouge logo" />
-            </a>
+            <Link href="/">
+              <a className="lg:hidden">
+                <span className="sr-only">Workflow</span>
+                <Image className="h-auto w-9" src={smallLogo} alt="Terre Rouge logo" />
+              </a>
+            </Link>
 
             <div className="flex flex-1 items-center justify-end">
-              {/* <Link href="/products">
-                <a className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block">
+              {displaySearch && (
+                <button
+                  type="button"
+                  className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block"
+                  onClick={toggleSearch}
+                >
                   <span className="sr-only">Rechercher</span>
                   <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              </Link> */}
-              <button
-                type="button"
-                className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block"
-                onClick={toggleSearch}
-              >
-                <span className="sr-only">Rechercher</span>
-                <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
+                </button>
+              )}
 
               <div className="flex items-center">
                 {/* Cart */}

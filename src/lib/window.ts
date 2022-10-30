@@ -9,6 +9,6 @@ export const scrollToTop = () => {
       behavior: 'smooth',
     })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
   }
 }

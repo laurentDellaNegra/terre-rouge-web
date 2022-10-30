@@ -53,7 +53,6 @@ export function ProductsBody({ serverState, url }: any) {
   return (
     <InstantSearchSSRProvider {...serverState}>
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={routing(url)}>
-        <SearchBox />
         <Configure hitsPerPage={20} />
         <ProductsComponent />
       </InstantSearch>

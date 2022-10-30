@@ -14,10 +14,10 @@ import { useGetShopPageForHomeQuery } from '@/types/Shopify'
 
 const Home: NextPage = () => {
   const { status, data, error, isFetching } = useGetShopPageForHomeQuery(graphQLRequestClient)
-  console.log('shop', data)
-  console.log('status', status)
-  console.log('error', error)
-  console.log('isFetching', isFetching)
+  // console.log('shop', data)
+  // console.log('status', status)
+  // console.log('error', error)
+  // console.log('isFetching', isFetching)
   return (
     <>
       <Head>

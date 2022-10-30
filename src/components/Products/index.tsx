@@ -1,6 +1,8 @@
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { FunnelIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import { useHits } from 'react-instantsearch-hooks-web'
+import { useSearchBox } from 'react-instantsearch-hooks-web'
 
 import IconButton from '@/atomic/atoms/IconButton'
 import TitleSection from '@/atomic/atoms/TitleSection'
@@ -9,6 +11,8 @@ import FilterDrawer from '@/components/Filter/FilterDrawer'
 import ProductCard from '@/components/ProductCard'
 import ProductsPagination from '@/components/ProductsPagination'
 import SortMenu from '@/components/SortMenu'
+
+import SearchBox from '../SearchBox'
 
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -19,12 +23,21 @@ export default function Products() {
       <FilterDrawer open={mobileFiltersOpen} onClose={() => setMobileFiltersOpen(false)} />
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative z-10 flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
+        <div className="relative z-10 flex gap-5 items-baseline justify-between pt-24 pb-6">
           {/* Title */}
           {/* <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
             Tous nos produits
           </h1> */}
-          <TitleSection>Tous nos produits</TitleSection>
+          {/* <TitleSection>Tous nos produits</TitleSection> */}
+          {/* <SearchBox
+            placeholder="Que cherchez vous ?"
+            autoFocus
+            searchAsYouType={false}
+            submitIconComponent={() => (
+              <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+            )}
+          /> */}
+          <SearchBox />
 
           {/* Right menu */}
           <div className="flex items-center">
