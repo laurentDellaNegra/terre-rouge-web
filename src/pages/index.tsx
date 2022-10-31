@@ -34,7 +34,6 @@ const Home: NextPage = () => {
     </>
   )
 }
-
 export async function getStaticProps() {
   const queryClient = new QueryClient()
 
@@ -49,5 +48,4 @@ export async function getStaticProps() {
     },
   }
 }
-
 export default Home
