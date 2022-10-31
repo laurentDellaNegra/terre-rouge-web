@@ -29,6 +29,14 @@ function getCategoryName(slug: string) {
   return slug.split('-').join(' ')
 }
 
+function getQueryToUrl(query: string) {
+  return query.split(' ').join('_')
+}
+
+function getUrlToQuery(query: string) {
+  return query.split('_').join(' ')
+}
+
 function getPriceSlug(name: string) {
   const prices = name.split(':')
   // no price min
@@ -83,7 +91,7 @@ export const routing = (url: string) => ({
       }
 
       if (routeState.query) {
-        queryParameters.query = encodeURIComponent(routeState.query as string)
+        queryParameters.query = getQueryToUrl(routeState.query as string)
       }
       if (routeState.page !== 1) {
         queryParameters.page = routeState.page
@@ -118,7 +126,7 @@ export const routing = (url: string) => ({
       const alltags = Array.isArray(tags) ? tags : [tags].filter(Boolean)
 
       return {
-        query: decodeURIComponent(query as string),
+        query: getUrlToQuery(query as string),
         page,
         tags: alltags.map(decodeURIComponent as any),
         category: getCategoryName(category as string),
