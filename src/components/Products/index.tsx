@@ -64,7 +64,6 @@ export default function Products() {
 
             {/* Product grid */}
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
-              {/* TODO: Remove any */}
               {hits.map((product: any, index) => (
                 <ProductCard key={product.title} product={product} position={index} />
               ))}
