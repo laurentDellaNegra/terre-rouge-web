@@ -14,4 +14,5 @@ Sentry.init({
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so
   // that it will also get attached to your source maps
   dryRun: process.env.VERCEL_ENV !== 'production',
+  enabled: process.env.NODE_ENV === 'production',
 })
