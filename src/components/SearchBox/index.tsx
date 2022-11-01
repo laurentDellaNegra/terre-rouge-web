@@ -6,7 +6,7 @@ export default function SearchBox(props: UseSearchBoxProps) {
   const { query, refine, clear } = useSearchBox(props)
 
   return (
-    <div className="group border-b-2 border-gray-300 focus-within:border-primary flex-1 flex items-center">
+    <div className="group border-b-2 border-gray-300 focus-within:border-primary flex-1 flex items-center w-full">
       <MagnifyingGlassIcon
         className="h-6 w-6 text-gray-400 group-focus-within:text-primary"
         aria-hidden="true"
