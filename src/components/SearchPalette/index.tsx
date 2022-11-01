@@ -168,14 +168,16 @@ export default function SearchPalette(props: Props) {
                     className="h-12 w-full border-0 bg-transparent px-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
                     {...autocomplete.getInputProps({ inputElement: inputRef.current })}
                   />
-                  <button
-                    title="Clear"
-                    type="reset"
-                    className="text-gray-400 hover:text-gray-500 pr-4"
-                  >
-                    <span className="sr-only">Effacer la recherche</span>
-                    <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                  </button>
+                  {inputRef.current && inputRef.current.value.length > 0 && (
+                    <button
+                      title="Clear"
+                      type="reset"
+                      className="text-gray-400 hover:text-gray-500 pr-4"
+                    >
+                      <span className="sr-only">Effacer la recherche</span>
+                      <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                  )}
                 </form>
 
                 {autocompleteState.isOpen && (
@@ -209,7 +211,7 @@ export default function SearchPalette(props: Props) {
                           </Combobox.Option>
                         ))
                       })}
-                      {/* <Combobox.Option value={inputRef?.current?.value} /> */}
+                      <Combobox.Option value={inputRef?.current?.value} />
                     </Combobox.Options>
                   </div>
                 )}

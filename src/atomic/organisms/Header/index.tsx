@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
 import SearchPalette from '@/components/SearchPalette'
 import useUIState from '@/context/UIState/useUIState'
+import useCmdK from '@/hooks/useCmdK'
 import largeLogo from '@/public/logos/large-terre-rouge.webp'
 import smallLogo from '@/public/logos/small-terre-rouge.svg'
 
@@ -20,6 +21,7 @@ export default function Header(props: HeaderProps) {
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
   const displaySearch = !router.asPath.startsWith('/products')
+  useCmdK(() => toggleSearch())
   return (
     <header className={className}>
       <nav aria-label="Top">
