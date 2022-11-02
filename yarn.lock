@@ -2,14 +2,45 @@
 # yarn lockfile v1
 
 
-"@algolia/autocomplete-core@^1.7.2":
+"@algolia/autocomplete-core@1.7.2", "@algolia/autocomplete-core@^1.7.2":
   version "1.7.2"
   resolved "https://registry.npmjs.org/@algolia/autocomplete-core/-/autocomplete-core-1.7.2.tgz#8abbed88082f611997538760dffcb43b33b1fd1d"
   integrity sha512-eclwUDC6qfApNnEfu1uWcL/rudQsn59tjEoUYZYE2JSXZrHLRjBUGMxiCoknobU2Pva8ejb0eRxpIYDtVVqdsw==
   dependencies:
     "@algolia/autocomplete-shared" "1.7.2"
 
-"@algolia/autocomplete-preset-algolia@^1.7.2":
+"@algolia/autocomplete-js@1.7.2", "@algolia/autocomplete-js@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/@algolia/autocomplete-js/-/autocomplete-js-1.7.2.tgz#6104b6547e47232a591baa7aae770714caff88be"
+  integrity sha512-/x0r0510yEHtTt9+JIhWa9CIvS2s95n5eSyKrCXA6QF8DYKJV+LQpGCpHnO4gEHJFEe0itVdmws3DzOZrBGa9Q==
+  dependencies:
+    "@algolia/autocomplete-core" "1.7.2"
+    "@algolia/autocomplete-preset-algolia" "1.7.2"
+    "@algolia/autocomplete-shared" "1.7.2"
+    htm "^3.0.0"
+    preact "^10.0.0"
+
+"@algolia/autocomplete-plugin-query-suggestions@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/@algolia/autocomplete-plugin-query-suggestions/-/autocomplete-plugin-query-suggestions-1.7.2.tgz#1739484e9fd7dcdf097c4375731509df319805fd"
+  integrity sha512-lM1B4tsJP+5ePHqXl4kuanmclu8uppmknNTTzWfinjuNRY2WrypwfqrBaCIztbZZYAfs7s0qeC/XXhA4PPSqoA==
+  dependencies:
+    "@algolia/autocomplete-core" "1.7.2"
+    "@algolia/autocomplete-js" "1.7.2"
+    "@algolia/autocomplete-preset-algolia" "1.7.2"
+    "@algolia/autocomplete-shared" "1.7.2"
+
+"@algolia/autocomplete-plugin-recent-searches@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/@algolia/autocomplete-plugin-recent-searches/-/autocomplete-plugin-recent-searches-1.7.2.tgz#b4276d769b97508cb8e4064050dc3ebd984289d0"
+  integrity sha512-T9Iz+48fw4D1g3VfJu1ZMfG5vecCOTH+2kKuLZ+6SpedSfJIgL7mRPIXY3mwxlkkCB+k9IRNrMGja1rg/haVjw==
+  dependencies:
+    "@algolia/autocomplete-core" "1.7.2"
+    "@algolia/autocomplete-js" "1.7.2"
+    "@algolia/autocomplete-preset-algolia" "1.7.2"
+    "@algolia/autocomplete-shared" "1.7.2"
+
+"@algolia/autocomplete-preset-algolia@1.7.2", "@algolia/autocomplete-preset-algolia@^1.7.2":
   version "1.7.2"
   resolved "https://registry.npmjs.org/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.7.2.tgz#9cd4f64b3d64399657ee2dc2b7e0a939e0713a26"
   integrity sha512-+RYEG6B0QiGGfRb2G3MtPfyrl0dALF3cQNTWBzBX6p5o01vCCGTTinAm2UKG3tfc2CnOMAtnPLkzNZyJUpnVJw==
@@ -20,6 +51,11 @@
   version "1.7.2"
   resolved "https://registry.npmjs.org/@algolia/autocomplete-shared/-/autocomplete-shared-1.7.2.tgz#daa23280e78d3b42ae9564d12470ae034db51a89"
   integrity sha512-QCckjiC7xXHIUaIL3ektBtjJ0w7tTA3iqKcAE/Hjn1lZ5omp7i3Y4e09rAr9ZybqirL7AbxCLLq0Ra5DDPKeug==
+
+"@algolia/autocomplete-theme-classic@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/@algolia/autocomplete-theme-classic/-/autocomplete-theme-classic-1.7.2.tgz#1656a12093eaf6a5cfbfdb8d2c4b699e0aa2c226"
+  integrity sha512-bUoT4wdScyAY4oZrk3zcaGwSKYJ11MGXNFIckWWN/Bd9xqoFu8/09Ujyw5WyzYZidHrs8D3FSTJi6sfHz5g3/Q==
 
 "@algolia/cache-browser-local-storage@4.14.2":
   version "4.14.2"
@@ -10603,7 +10639,7 @@ postcss@^8.2.15, postcss@^8.4.14, postcss@^8.4.16:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-preact@^10.10.0:
+preact@^10.0.0, preact@^10.10.0:
   version "10.11.2"
   resolved "https://registry.npmjs.org/preact/-/preact-10.11.2.tgz#e43f2a2f2985dedb426bb4c765b7bb037734f8a8"
   integrity sha512-skAwGDFmgxhq1DCBHke/9e12ewkhc7WYwjuhHB8HHS8zkdtITXLRmUMTeol2ldxvLwYtwbFeifZ9uDDWuyL4Iw==

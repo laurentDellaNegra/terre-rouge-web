@@ -1,3 +1,4 @@
+import '@algolia/autocomplete-theme-classic'
 import { captureException, captureMessage } from '@sentry/nextjs'
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -5,8 +6,9 @@ import type { AppProps } from 'next/app'
 import { useState } from 'react'
 
 import UIStateProvider from '@/context/UIState/UIStateProvider'
-import '@/styles/globals.css'
 // TODO: improve this
+import '@/styles/algolia.css'
+import '@/styles/globals.css'
 import '@/styles/rheostat.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
