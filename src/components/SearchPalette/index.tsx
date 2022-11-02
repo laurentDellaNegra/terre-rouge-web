@@ -3,6 +3,7 @@ import { createQuerySuggestionsPlugin } from '@algolia/autocomplete-plugin-query
 import { createLocalStorageRecentSearchesPlugin } from '@algolia/autocomplete-plugin-recent-searches'
 import { Dialog, Transition } from '@headlessui/react'
 import algoliasearch from 'algoliasearch/lite'
+import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 
 import { Autocomplete } from '../Autocomplete'
@@ -19,6 +20,7 @@ interface Props {
 
 export default function SearchPalette(props: Props) {
   const { open, onClose } = props
+  const router = useRouter()
 
   const recentSearchesPlugin: any = createLocalStorageRecentSearchesPlugin({
     key: 'queries-history',
@@ -27,6 +29,10 @@ export default function SearchPalette(props: Props) {
     transformSource({ source }) {
       return {
         ...source,
+        onSelect({ item }: any) {
+          router.push('/products?query=' + item.label)
+          onClose()
+        },
         templates: {
           ...source.templates,
           header({ state }) {
@@ -50,13 +56,17 @@ export default function SearchPalette(props: Props) {
     getSearchParams() {
       if (!recentSearchesPlugin)
         return recentSearchesPlugin.data.getAlgoliaSearchParams({
-          hitsPerPage: 5,
+          hitsPerPage: 10,
         })
     },
     // @ts-ignore
     transformSource({ source }) {
       return {
         ...source,
+        onSelect({ item }: any) {
+          router.push('/products?query=' + item.query)
+          onClose()
+        },
         templates: {
           ...source.templates,
           header({ state }) {
@@ -106,27 +116,6 @@ export default function SearchPalette(props: Props) {
               <Autocomplete
                 autofocus
                 openOnFocus={true}
-                getSources={({ query }: any) => [
-                  {
-                    sourceId: 'keywords',
-                    getItems() {
-                      return getAlgoliaResults({
-                        searchClient,
-                        queries: [
-                          {
-                            indexName: INDEX_QUERY_SUGGESTIONS,
-                            query,
-                          },
-                        ],
-                      })
-                    },
-                    templates: {
-                      item({ item, components }: any) {
-                        return <ProductItem hit={item} components={components} />
-                      },
-                    },
-                  },
-                ]}
                 plugins={[recentSearchesPlugin, querySuggestionsPlugin]}
               />
             </Dialog.Panel>
@@ -142,7 +131,7 @@ export function ProductItem({ hit, components }: any) {
     <a href={hit.url} className="aa-ItemLink">
       <div className="aa-ItemContent">
         <div className="aa-ItemTitle">
-          <components.Highlight hit={hit} attribute="name" />
+          <components.Highlight hit={hit} attribute="query" />
         </div>
       </div>
     </a>
