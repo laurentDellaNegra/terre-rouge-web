@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@algolia/autocomplete-core@1.7.2", "@algolia/autocomplete-core@^1.7.2":
+"@algolia/autocomplete-core@1.7.2":
   version "1.7.2"
   resolved "https://registry.npmjs.org/@algolia/autocomplete-core/-/autocomplete-core-1.7.2.tgz#8abbed88082f611997538760dffcb43b33b1fd1d"
   integrity sha512-eclwUDC6qfApNnEfu1uWcL/rudQsn59tjEoUYZYE2JSXZrHLRjBUGMxiCoknobU2Pva8ejb0eRxpIYDtVVqdsw==
