@@ -4,6 +4,7 @@ import { IncomingMessage } from 'http'
 import { history } from 'instantsearch.js/es/lib/routers/index.js'
 import type { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next'
 import Head from 'next/head'
+import { renderToString } from 'react-dom/server'
 import { getServerState } from 'react-instantsearch-hooks-server'
 import {
   Configure,
@@ -74,7 +75,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
   const dehydratedState = dehydrate(queryClient)
 
-  const serverState = await getServerState(<ProductsBody url={url} />)
+  const serverState = await getServerState(<ProductsBody url={url} />, { renderToString })
   return {
     props: {
       dehydratedState,
