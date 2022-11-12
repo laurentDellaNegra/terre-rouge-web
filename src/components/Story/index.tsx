@@ -13,13 +13,31 @@ export default function Story() {
           <div className="lg:order-2 lg:w-[432px]">
             <TitleSection className="mb-4">Notre histoire</TitleSection>
             <P>
-              Derrière Terre rouge se cache une jeune auto-entrepreneuse malgache. Passionnée de
-              voyage et de cuisine, elle a décidé de commercialiser et de promouvoir des épices
-              provennant de son île natale Madagascar. Pour elle les épices sont une invitation à
-              une évasion culinaire. Terre rouge récolte mais sème également.
-              <br />
-              En effet, elle aide l&apos;association ALA à restaurer le poumon vert de l&apos;île
-              rouge.
+              Notre histoire débute avec l&apos;amour de la cuisine, nous voulons vous faire
+              profiter de la richesse culinaire que peut offrir l&apos;île de Madagascar, le
+              carrefour entre l&apos;Afrique et l&apos;Asie.
+            </P>
+            <P>
+              Terre rouge vous donne de multiples choix d&apos;épices et de condiments. Pour
+              sublimer la beauté culinaire, l&apos;art de table est mis en avant avec le produit
+              phare malagasy: le raphia. Notre raphia est travaillé à la main afin de garantir une
+              meilleure qualité.
+            </P>{' '}
+            <P>
+              Faire parvenir ces épices nous amène à un choix du respect de l&apos;environnement, à
+              travers nos emballages parfaitement compostables, biodégradables et bioressources.
+            </P>
+            <P>
+              Nos partenaires partagent les mêmes valeurs que nous, ils mettent en place des
+              contenants en verre, en kraft et en raphia , sans matière plastique.
+            </P>
+            <P>
+              Nous participons également à la reforestation de Madagascar en aidant
+              l&apos;association ALA à restaurer le poumon vert de Madagascar.
+            </P>
+            <P>
+              Nous travaillons avec des entrepreneurs et entreprises malagasy afin de favoriser
+              l&apos;emploi à Madagascar.
             </P>
           </div>
           <div className="w-full flex-auto text-center lg:w-1/2">

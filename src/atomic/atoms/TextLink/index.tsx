@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import Link from 'next/link'
 import { ReactNode } from 'react'
 
 interface TextLinkProps {
@@ -11,12 +12,11 @@ interface TextLinkProps {
 export default function TextLink(props: TextLinkProps) {
   const { href, children, className = '', hideArrow = false } = props
   return (
-    <a
-      href={href}
-      className={clsx('font-semibold text-primary hover:text-primary-light', className)}
-    >
-      {children}
-      {!hideArrow && <span aria-hidden="true"> &rarr;</span>}
-    </a>
+    <Link href={href}>
+      <a className={clsx('font-semibold text-primary hover:text-primary-light', className)}>
+        {children}
+        {!hideArrow && <span aria-hidden="true"> &rarr;</span>}
+      </a>
+    </Link>
   )
 }

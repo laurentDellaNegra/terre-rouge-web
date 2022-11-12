@@ -8,5 +8,5 @@ interface Props {
 
 export default function P(props: Props) {
   const { className = '', children } = props
-  return <p className={clsx('text-gray-500', className)}>{children}</p>
+  return <p className={clsx('mb-2 text-gray-500', className)}>{children}</p>
 }

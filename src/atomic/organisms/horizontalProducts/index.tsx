@@ -52,7 +52,7 @@ export default function HorizontalProducts() {
       <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-0">
           <TitleSection>Notre sélection</TitleSection>
-          <TextLink href="#" className="hidden sm:block text-sm">
+          <TextLink href="/products" className="hidden sm:block text-sm">
             Voir tout
           </TextLink>
         </div>

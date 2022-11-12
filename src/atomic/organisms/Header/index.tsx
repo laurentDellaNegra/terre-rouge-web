@@ -21,7 +21,7 @@ export default function Header(props: HeaderProps) {
   const { onMobileMenuClick, className = '', onCartClick } = props
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
-  const displaySearch = !router.asPath.startsWith('/products')
+  const displaySearch = router.pathname !== '/products'
   useCmdK(() => toggleSearch())
   return (
     <header className={className}>
@@ -51,6 +51,18 @@ export default function Header(props: HeaderProps) {
                     )}
                   >
                     Epices
+                  </a>
+                </Link>
+                <Link href="/products">
+                  <a
+                    className={clsx(
+                      router.pathname === '/products1'
+                        ? 'border-primary text-gray-900'
+                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                    )}
+                  >
+                    Comdiments
                   </a>
                 </Link>
                 <Link href="/products">
