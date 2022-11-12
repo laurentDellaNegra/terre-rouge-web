@@ -65,10 +65,12 @@ export const routingLegacy = (url: string) => ({
   }),
 })
 
-export const routing = (url: string) => ({
+export const routing = (url?: string) => ({
   router: history({
     getLocation: () =>
-      typeof window === 'undefined' ? (new URL(url!) as unknown as Location) : window.location,
+      typeof window === 'undefined' && url
+        ? (new URL(url!) as unknown as Location)
+        : window.location,
 
     windowTitle({ category, query }) {
       const queryTitle = query ? `Results for "${query}"` : 'Search'
