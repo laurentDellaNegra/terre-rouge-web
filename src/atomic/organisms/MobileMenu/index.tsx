@@ -1,6 +1,8 @@
-import { Dialog, Tab, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { Dialog, Disclosure, Tab, Transition } from '@headlessui/react'
+import { BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 
 const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
@@ -82,6 +84,7 @@ interface MobileMenuProps {
 }
 export default function MobileMenu(props: MobileMenuProps) {
   const { open = false, onClose = () => {} } = props
+  const router = useRouter()
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-50 lg:hidden" onClose={onClose}>
@@ -120,117 +123,66 @@ export default function MobileMenu(props: MobileMenuProps) {
               </div>
 
               {/* Links */}
-              <Tab.Group as="div" className="mt-2">
-                <div className="border-b border-gray-200">
-                  <Tab.List className="-mb-px flex space-x-8 px-4">
-                    {navigation.categories.map((category) => (
-                      <Tab
-                        key={category.name}
-                        className={({ selected }) =>
-                          clsx(
-                            selected && 'border-indigo-600 text-indigo-600',
-                            !selected && 'border-transparent text-gray-900',
-                            'flex-1 whitespace-nowrap border-b-2 py-4 px-1 text-base font-medium'
-                          )
-                        }
+              <nav className="space-y-1 pt-2 pb-3">
+                <ul>
+                  <li>
+                    <Link href="/">
+                      <a
+                        className={clsx(
+                          router.pathname === '/'
+                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                        )}
                       >
-                        {category.name}
-                      </Tab>
-                    ))}
-                  </Tab.List>
-                </div>
-                <Tab.Panels as={Fragment}>
-                  {navigation.categories.map((category) => (
-                    <Tab.Panel key={category.name} className="space-y-12 px-4 py-6">
-                      <div className="grid grid-cols-2 gap-x-4 gap-y-10">
-                        {category.featured.map((item) => (
-                          <div key={item.name} className="group relative">
-                            <div className="aspect-square overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
-                              <img
-                                src={item.imageSrc}
-                                alt={item.imageAlt}
-                                className="object-cover object-center"
-                              />
-                            </div>
-                            <a
-                              href={item.href}
-                              className="mt-6 block text-sm font-medium text-gray-900"
-                            >
-                              <span className="absolute inset-0 z-10" aria-hidden="true" />
-                              {item.name}
-                            </a>
-                            <p aria-hidden="true" className="mt-1 text-sm text-gray-500">
-                              Shop now
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </Tab.Panel>
-                  ))}
-                </Tab.Panels>
-              </Tab.Group>
-
-              <div className="space-y-6 border-t border-gray-200 py-6 px-4">
-                {navigation.pages.map((page) => (
-                  <div key={page.name} className="flow-root">
-                    <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
-                      {page.name}
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-6 border-t border-gray-200 py-6 px-4">
-                <div className="flow-root">
-                  <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                    Create an account
-                  </a>
-                </div>
-                <div className="flow-root">
-                  <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                    Sign in
-                  </a>
-                </div>
-              </div>
-
-              <div className="space-y-6 border-t border-gray-200 py-6 px-4">
-                {/* Currency selector */}
-                <form>
-                  <div className="inline-block">
-                    <label htmlFor="mobile-currency" className="sr-only">
-                      Currency
-                    </label>
-                    <div className="group relative -ml-2 rounded-md border-transparent focus-within:ring-2 focus-within:ring-white">
-                      <select
-                        id="mobile-currency"
-                        name="currency"
-                        className="flex items-center rounded-md border-transparent bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-gray-700 focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-800"
+                        Accueil
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products">
+                      <a
+                        className={clsx(
+                          router.pathname === '/products'
+                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                        )}
                       >
-                        {currencies.map((currency) => (
-                          <option key={currency}>{currency}</option>
-                        ))}
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center">
-                        <svg
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 20"
-                          className="h-5 w-5 text-gray-500"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="1.5"
-                            d="M6 8l4 4 4-4"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+                        Epices
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products">
+                      <a
+                        className={clsx(
+                          router.pathname === '/products2'
+                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                        )}
+                      >
+                        Art de la table
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products">
+                      <a
+                        className={clsx(
+                          router.pathname === '/products3'
+                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                        )}
+                      >
+                        Engagement
+                      </a>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
             </Dialog.Panel>
           </Transition.Child>
         </div>

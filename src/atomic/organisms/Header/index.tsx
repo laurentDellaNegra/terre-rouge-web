@@ -1,4 +1,5 @@
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -38,7 +39,45 @@ export default function Header(props: HeaderProps) {
             </div>
 
             <div className="hidden h-full lg:flex">
-              <FlyoutMenu />
+              {/* <FlyoutMenu /> */}
+              <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <Link href="/products">
+                  <a
+                    className={clsx(
+                      router.pathname === '/products'
+                        ? 'border-primary text-gray-900'
+                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                    )}
+                  >
+                    Epices
+                  </a>
+                </Link>
+                <Link href="/products">
+                  <a
+                    className={clsx(
+                      router.pathname === '/products2'
+                        ? 'border-primary text-gray-900'
+                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                    )}
+                  >
+                    Art de la table
+                  </a>
+                </Link>
+                <Link href="/products">
+                  <a
+                    className={clsx(
+                      router.pathname === '/products3'
+                        ? 'border-primary text-gray-900'
+                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                    )}
+                  >
+                    Engagement
+                  </a>
+                </Link>
+              </div>
             </div>
 
             {/* Mobile menu and search (lg-) */}
