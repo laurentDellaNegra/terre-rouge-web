@@ -15,7 +15,6 @@ export default function ProductCard(props: Props) {
     product: { href, image, title, price, currency, handle },
     position,
   } = props
-  console.log('handle', handle)
   return (
     <Link href={`/products/${handle}`}>
       <a className="group text-sm">
