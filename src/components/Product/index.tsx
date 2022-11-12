@@ -113,10 +113,10 @@ export default function Product(props: Props) {
 
   return (
     <div className="bg-gray-50">
-      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl py-4 xs:py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
-          <div className="sticky top-32 col-span-8">
+          <div className="lg:sticky lg:top-32 col-span-8">
             <Tab.Group as="div" className="flex flex-col-reverse">
               {/* Image selector */}
               <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
