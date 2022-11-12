@@ -2,12 +2,17 @@ import Footer from '@/components/Footer'
 import HeaderMenu from '@/components/HeaderMenu'
 import Meta from '@/components/Meta'
 
-export default function Layout({ children }: any) {
+import Breadcrumb from '../Breadcrumb'
+
+export default function Layout({ children, crumb }: any) {
   return (
     <>
       <Meta />
       <HeaderMenu />
-      <main>{children}</main>
+      <main>
+        <Breadcrumb className="pt-8 bg-slate-50" crumb={crumb} />
+        {children}
+      </main>
       <Footer />
     </>
   )

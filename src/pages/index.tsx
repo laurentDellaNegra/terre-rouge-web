@@ -1,4 +1,4 @@
-import { QueryClient, dehydrate } from '@tanstack/react-query'
+import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -8,16 +8,15 @@ import Incentives from '@/components/Incentives'
 import Layout from '@/components/Layout'
 import Story from '@/components/Story'
 import Testimonial from '@/components/Testimonial'
-import graphQLRequestClient from '@/lib/clients/graphQLRequestClient'
+import getShopPageForHome from '@/lib/getShopPageForHome'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
-import { useGetShopPageForHomeQuery } from '@/types/Shopify'
 
 const Home: NextPage = () => {
-  const { status, data, error, isFetching } = useGetShopPageForHomeQuery(graphQLRequestClient)
-  // console.log('shop', data)
-  // console.log('status', status)
-  // console.log('error', error)
-  // console.log('isFetching', isFetching)
+  const { status, data, error, isFetching } = useQuery(['shopHome'], getShopPageForHome)
+  console.log('shop', data)
+  console.log('status', status)
+  console.log('error', error)
+  console.log('isFetching', isFetching)
   return (
     <>
       <Head>
@@ -37,10 +36,7 @@ const Home: NextPage = () => {
 export async function getStaticProps() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(
-    useGetShopPageForHomeQuery.getKey(),
-    useGetShopPageForHomeQuery.fetcher(graphQLRequestClient)
-  )
+  await queryClient.prefetchQuery(['shopHome'], getShopPageForHome)
   await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
   return {
     props: {

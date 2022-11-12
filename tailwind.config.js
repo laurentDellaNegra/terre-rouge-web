@@ -3,7 +3,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+  ],
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {

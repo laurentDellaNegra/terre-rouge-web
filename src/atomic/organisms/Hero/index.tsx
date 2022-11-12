@@ -47,9 +47,6 @@ export default function Hero() {
           <ButtonLink size="large" href="/products" className="mt-8 sm:mt-6">
             Voir nos produits
           </ButtonLink>
-          <ButtonLink size="large" href="/products/test" className="mt-8 sm:mt-6">
-            Product detail test
-          </ButtonLink>
         </div>
       </div>
 
