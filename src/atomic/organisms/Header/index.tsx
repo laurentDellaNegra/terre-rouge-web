@@ -4,7 +4,6 @@ import Image from 'next/future/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import FlyoutMenu from '@/atomic/molecules/FlyoutMenu'
 import SearchPalette from '@/components/SearchPalette'
 import useUIState from '@/context/UIState/useUIState'
 import useCmdK from '@/hooks/useCmdK'

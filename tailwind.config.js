@@ -11,11 +11,13 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      ringColor: {
+        DEFAULT: '#579660',
+      },
       animation: {
         'fade-in': 'fade-in 0.5s linear forwards',
         marquee: 'marquee var(--marquee-duration) linear infinite',
       },
-      ringColor: '#579660',
       colors: {
         primary: '#579660',
         'primary-dark': '#4d8455',
