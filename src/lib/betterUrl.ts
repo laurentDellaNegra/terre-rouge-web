@@ -67,9 +67,7 @@ export const routingLegacy = (url: string) => ({
 
 export const routing = {
   router: history({
-    getLocation: () => {
-      return window.location
-    },
+    getLocation: () => window.location,
 
     windowTitle({ category, query }) {
       const queryTitle = query ? `Results for "${query}"` : 'Search'
