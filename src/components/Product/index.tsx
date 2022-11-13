@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 
 import getShopPageForProduct from '@/lib/getShopPageForProduct'
+import { price } from '@/lib/price'
 import { GetShopPageForProductQuery } from '@/types/gql/graphql'
 
 const productDummy = {
@@ -106,10 +107,6 @@ interface Props {
 
 export default function Product(props: Props) {
   const { product } = props
-  const formatter = new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: product.productByHandle?.variants.edges[0].node.priceV2.currencyCode,
-  })
 
   return (
     <div className="bg-gray-50">
@@ -175,7 +172,10 @@ export default function Product(props: Props) {
 
             <div className="mt-3">
               <p className="text-3xl tracking-tight text-gray-900">
-                {formatter.format(product.productByHandle?.variants.edges[0].node.priceV2.amount)}
+                {price(
+                  product.productByHandle?.variants.edges[0].node.priceV2.amount,
+                  product.productByHandle?.variants.edges[0].node.priceV2.currencyCode
+                )}
               </p>
             </div>
 

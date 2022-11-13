@@ -2,8 +2,9 @@ import { PhotoIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { CURRENCIES } from '@/types/Currencies'
+import { price } from '@/lib/price'
 import { IProductHit } from '@/types/IProductHits'
+import { CurrencyCode } from '@/types/gql/graphql'
 
 interface Props {
   product: IProductHit
@@ -12,7 +13,7 @@ interface Props {
 
 export default function ProductCard(props: Props) {
   const {
-    product: { href, image, title, price, currency, handle },
+    product: { href, image, title, price: amount, currency, handle },
     position,
   } = props
   return (
@@ -36,8 +37,7 @@ export default function ProductCard(props: Props) {
         </div>
         <h3 className="mt-4 text-sm text-gray-700">{title}</h3>
         <p className="mt-1 text-lg font-medium text-gray-900">
-          {price}
-          {CURRENCIES.get(currency)?.symbol}
+          {price(amount, currency as CurrencyCode)}
         </p>
       </a>
     </Link>
