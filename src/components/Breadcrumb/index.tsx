@@ -15,7 +15,10 @@ export default function Breadcrumb(props: Props) {
           {crumb.map((c, index, array) => {
             if (index === array.length - 1) {
               return (
-                <li key={c.title} className="text-sm">
+                <li
+                  key={c.title}
+                  className="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap"
+                >
                   {c.title}
                 </li>
               )
