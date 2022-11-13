@@ -155,7 +155,7 @@ export default function Product(props: Props) {
 
               <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
                 {product.productByHandle?.images.edges.map((image, index) => (
-                  <Tab.Panel key={index}>
+                  <Tab.Panel key={index} className="focus:outline-none focus:ring">
                     <img
                       src={image.node.transformedSrc}
                       alt={image.node.altText || product.productByHandle?.title}
