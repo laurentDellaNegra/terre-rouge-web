@@ -65,12 +65,11 @@ export const routingLegacy = (url: string) => ({
   }),
 })
 
-export const routing = (url?: string) => ({
+export const routing = {
   router: history({
-    getLocation: () =>
-      typeof window === 'undefined' && url
-        ? (new URL(url!) as unknown as Location)
-        : window.location,
+    getLocation: () => {
+      return window.location
+    },
 
     windowTitle({ category, query }) {
       const queryTitle = query ? `Results for "${query}"` : 'Search'
@@ -84,6 +83,7 @@ export const routing = (url?: string) => ({
 
     createURL({ qsModule, routeState, location }) {
       const urlParts = location.href.match(/^(.*?)\/products/)
+      if (!urlParts) return location.href
       const baseUrl = `${urlParts ? urlParts[1] : ''}/`
 
       const queryParameters: any = {}
@@ -170,4 +170,4 @@ export const routing = (url?: string) => ({
       }
     },
   },
-})
+}
