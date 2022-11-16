@@ -1,3 +1,5 @@
+import LogoClouds from '../LogoClouds'
+
 const navigation = {
   products: [
     { name: 'Chocolats', href: '#' },
@@ -146,37 +148,8 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="mt-8 xl:mt-0">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              S&apos;inscrire à notre newsletter
-            </h3>
-            <p className="mt-4 text-base text-gray-300">
-              Les dernières nouvelles et produits, envoyés une fois par mois dans votre boîte de
-              réception.
-            </p>
-            <form className="mt-4 sm:flex sm:max-w-md">
-              <label htmlFor="email-address" className="sr-only">
-                Adresse email
-              </label>
-              <input
-                type="email"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                required
-                className="w-full min-w-0 appearance-none rounded-md border border-transparent bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:border-white focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                placeholder="Saisir votre email"
-              />
-              <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  S&apos;inscrire
-                </button>
-              </div>
-            </form>
-          </div>
+          {/* Newsletter */}
+          <div className="mt-8 xl:mt-0"></div>
         </div>
         <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">

@@ -6,10 +6,11 @@ interface TextLinkProps {
   id?: string
   className?: string
   center?: boolean
+  variant?: 'white'
 }
 
 export default function TitleSection(props: TextLinkProps) {
-  const { children, className = '', id = '', center = false } = props
+  const { children, className = '', id = '', center = false, variant = '' } = props
   return (
     <div
       className={clsx(
@@ -19,11 +20,31 @@ export default function TitleSection(props: TextLinkProps) {
         className
       )}
     >
-      {!center && <div className="h-6 w-[6px] rounded-full bg-primary" />}
-      <h2 id={id} className="text-2xl md:text-4xl font-bold tracking-tight text-gray-900">
+      {!center && (
+        <div
+          className={clsx(
+            'h-6 w-[6px] rounded-full',
+            variant === 'white' ? 'bg-white' : 'bg-primary'
+          )}
+        />
+      )}
+      <h2
+        id={id}
+        className={clsx(
+          'text-2xl md:text-4xl font-bold tracking-tight',
+          variant === 'white' ? 'text-white' : 'text-gray-900'
+        )}
+      >
         {children}
       </h2>
-      {center && <div className="w-6 h-[6px] rounded-full bg-primary" />}
+      {center && (
+        <div
+          className={clsx(
+            'w-6 h-[6px] rounded-full',
+            variant === 'white' ? 'bg-white' : 'bg-primary'
+          )}
+        />
+      )}
     </div>
   )
 }

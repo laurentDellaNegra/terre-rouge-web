@@ -6,6 +6,7 @@ import Hero from '@/atomic/organisms/Hero'
 import HorizontalProducts from '@/atomic/organisms/horizontalProducts'
 import Incentives from '@/components/Incentives'
 import Layout from '@/components/Layout'
+import LogoClouds from '@/components/LogoClouds'
 import Story from '@/components/Story'
 import Testimonial from '@/components/Testimonial'
 import getShopPageForHome from '@/lib/getShopPageForHome'
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
         <Hero />
         <HorizontalProducts />
         <Story />
+        <LogoClouds />
         <Testimonial />
         <Incentives />
       </Layout>
