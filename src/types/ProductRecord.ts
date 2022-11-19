@@ -1,4 +1,4 @@
-export interface IProductHit {
+export interface ProductRecord {
   category: string
   currency: string
   description: string
@@ -10,4 +10,4 @@ export interface IProductHit {
   title: string
   href: string
 }
-export type IProductHits = Array<IProductHit>
+export type ProductRecords = Array<ProductRecord>

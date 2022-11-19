@@ -3,11 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { price } from '@/lib/price'
-import { IProductHit } from '@/types/IProductHits'
+import { ProductRecord } from '@/types/ProductRecord'
 import { CurrencyCode } from '@/types/gql/graphql'
 
 interface Props {
-  product: IProductHit
+  product: ProductRecord
   position: number
 }
 
