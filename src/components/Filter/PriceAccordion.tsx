@@ -50,8 +50,6 @@ export default function PriceAccordion() {
   if (min === max || !canRefine) {
     return null
   }
-  console.log('range', range)
-  console.log('start', start)
 
   return (
     <Disclosure as="div" defaultOpen={true} className="py-6">
