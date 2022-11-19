@@ -73,7 +73,7 @@ export default function Header(props: HeaderProps) {
                       'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
                     )}
                   >
-                    Art de la table
+                    Arts de table
                   </a>
                 </Link>
                 <Link href="/products">

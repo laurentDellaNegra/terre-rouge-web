@@ -10,6 +10,7 @@
     "format": "prettier --write .",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook",
+    "generate-watch": "graphql-codegen --watch",
     "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {

@@ -104,7 +104,7 @@ export default function MobileMenu(props: MobileMenuProps) {
                           'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
                         )}
                       >
-                        Art de la table
+                        Arts de table
                       </a>
                     </Link>
                   </li>

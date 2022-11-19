@@ -36,7 +36,7 @@ const navigation = {
       ],
     },
     {
-      name: 'Art de la table',
+      name: 'Arts de table',
       featured: [
         {
           name: 'New Arrivals',

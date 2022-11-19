@@ -19,7 +19,7 @@ const collections = [
     imageAlt: 'Cuillères joliement disposées contenant des épices',
   },
   {
-    name: 'Art de la table',
+    name: 'Arts de table',
     href: '#',
     imageSrc: artTableImg,
     imageAlt: 'Cuillères joliement disposées contenant des épices',

@@ -43,7 +43,7 @@ export const GetShopPageForProduct = graphql(`
         }
       }
       descriptionHtml
-      variants(first: 100) {
+      variants(first: 1) {
         edges {
           node {
             id
@@ -70,6 +70,18 @@ export const GetShopPageForProduct = graphql(`
             }
           }
         }
+      }
+      application: metafield(namespace: "custom", key: "application") {
+        key
+        value
+      }
+      benefits: metafield(namespace: "custom", key: "benefits") {
+        key
+        value
+      }
+      composition: metafield(namespace: "custom", key: "composition") {
+        key
+        value
       }
     }
   }

@@ -1,119 +1,55 @@
-import { Disclosure, RadioGroup, Tab } from '@headlessui/react'
-import { StarIcon } from '@heroicons/react/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { useQuery } from '@tanstack/react-query'
+import { Disclosure, Tab } from '@headlessui/react'
+import { MinusIcon, PlusIcon, ShieldCheckIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import { useState } from 'react'
 
-import getShopPageForProduct from '@/lib/getShopPageForProduct'
 import { price } from '@/lib/price'
 import { GetShopPageForProductQuery } from '@/types/gql/graphql'
-
-const productDummy = {
-  name: 'Zip Tote Basket',
-  price: '$140',
-  rating: 4,
-  images: [
-    {
-      id: 1,
-      name: 'Angled view',
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
-      alt: 'Angled front view with bag zipped and handles upright.',
-    },
-    // More images...
-  ],
-  description: `
-    <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
-  `,
-  details: [
-    {
-      name: 'Features',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Features1',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Features2',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Features3',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Features4',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Features5',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-  ],
-}
 
 interface Props {
   product: GetShopPageForProductQuery
 }
 
+const UNIT_STRING: any = {
+  KILOGRAMS: 'kg',
+  GRAMS: 'g',
+}
+
 export default function Product(props: Props) {
   const { product } = props
+  //TMP: Format metafields
+  const metafields = [
+    {
+      ...product.productByHandle?.application,
+      list:
+        product.productByHandle?.application?.value.indexOf('*') !== -1
+          ? product.productByHandle?.application?.value.split('*').map((value) => value.trim())
+          : null,
+      name: 'Utilisation',
+    },
+    {
+      ...product.productByHandle?.benefits,
+      list:
+        product.productByHandle?.benefits?.value.indexOf('*') !== -1
+          ? product.productByHandle?.benefits?.value.split('*').map((value) => value.trim())
+          : null,
+      name: 'Bienfaits',
+    },
+    {
+      ...product.productByHandle?.composition,
+      list:
+        product.productByHandle?.composition?.value.indexOf('*') !== -1
+          ? product.productByHandle?.composition?.value.split('*').map((value) => value.trim())
+          : null,
+      name: 'Composition',
+    },
+  ]
 
   return (
     <div className="bg-gray-50">
       <div className="mx-auto max-w-2xl py-4 xs:py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
-          <div className="lg:sticky lg:top-32 col-span-8">
+          <div className="lg:sticky lg:top-32 col-span-7">
             <Tab.Group as="div" className="flex flex-col-reverse">
               {/* Image selector */}
               <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
@@ -165,86 +101,157 @@ export default function Product(props: Props) {
           </div>
 
           {/* Product info */}
-          <div className="col-span-4 mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+          <div className="col-span-5 mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               {product.productByHandle?.title}
             </h1>
 
-            <div className="mt-3">
+            {/* Price / weight */}
+            <div className="mt-3 flex gap-4">
               <p className="text-3xl tracking-tight text-gray-900">
                 {price(
                   product.productByHandle?.variants.edges[0].node.priceV2.amount,
                   product.productByHandle?.variants.edges[0].node.priceV2.currencyCode
                 )}
               </p>
+              {product.productByHandle &&
+              product.productByHandle.variants.edges[0].node.weight &&
+              product.productByHandle.variants.edges[0].node.weightUnit ? (
+                <p className="text-gray-600 bg-gray-200 rounded px-2 flex items-center">
+                  <span>{product.productByHandle?.variants.edges[0].node.weight}</span>
+                  <span>
+                    {UNIT_STRING[product.productByHandle?.variants.edges[0].node.weightUnit]}
+                  </span>
+                </p>
+              ) : null}
             </div>
 
+            {/* Available */}
+            <div className="mt-3">
+              <h3 className="sr-only">Disponibilité</h3>
+              {product.productByHandle?.variants.edges[0].node.availableForSale ? (
+                <span className="bg-primary-extra-light text-primary py-1 px-3 rounded-full">
+                  En stock
+                </span>
+              ) : (
+                <span className="bg-red-100 text-red-500 py-1 px-3 rounded-full">
+                  Rupture de stock
+                </span>
+              )}
+            </div>
+
+            {/* Description */}
             <div className="mt-6">
-              <h2 className="text-sm font-medium text-gray-900">Description</h2>
+              <h3 className="sr-only">Description</h3>
               <div
-                className="prose prose-sm mt-4 text-gray-500"
+                className="prose prose-sm space-y-6 text-base text-gray-700"
                 dangerouslySetInnerHTML={{ __html: product.productByHandle?.descriptionHtml }}
               />
             </div>
 
-            <form className="mt-6">
-              <div className="sm:flex-col1 mt-10 flex">
-                <button
-                  type="submit"
-                  className="flex flex-1 items-center justify-center rounded-md border border-transparent bg-primary py-3 px-8 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primarytext-primary-light focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+            {/* Add to cart button */}
+            <div className="mt-6 flex gap-3 items-center">
+              <div className="">
+                <label htmlFor="quantity" className="sr-only">
+                  Quantité
+                </label>
+                <select
+                  id="quantity"
+                  name="quantity"
+                  className="max-w-full rounded-md border border-gray-300 py-3 text-left text-base font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 >
-                  Ajouter au panier
-                </button>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                </select>
               </div>
-            </form>
+              <button
+                type="submit"
+                disabled={!product.productByHandle?.variants.edges[0].node.availableForSale}
+                className={clsx(
+                  product.productByHandle?.variants.edges[0].node.availableForSale
+                    ? 'bg-primary text-white hover:bg-primary-dark'
+                    : 'bg-gray-200 text-gray-600 cursor-not-allowed',
+                  'flex flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full'
+                )}
+                onClick={() => console.log('Add to cart')}
+              >
+                Ajouter au panier
+              </button>
+            </div>
+            <div className="mt-6 text-center">
+              <a href="#" className="group inline-flex text-base font-medium">
+                <ShieldCheckIcon
+                  className="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  aria-hidden="true"
+                />
+                <span className="text-gray-500 hover:text-gray-700">Paiement sécurisé</span>
+              </a>
+            </div>
 
+            {/* Metafields */}
             <section aria-labelledby="details-heading" className="mt-12">
               <h2 id="details-heading" className="sr-only">
                 Informations supplémentaires
               </h2>
 
-              <div className="divide-y divide-gray-200 border-t">
-                {productDummy.details.map((detail) => (
-                  <Disclosure as="div" key={detail.name}>
-                    {({ open }) => (
-                      <>
-                        <h3>
-                          <Disclosure.Button className="group relative flex w-full items-center justify-between py-6 text-left">
-                            <span
-                              className={clsx(
-                                open ? 'text-primary' : 'text-gray-900',
-                                'text-sm font-medium'
-                              )}
-                            >
-                              {detail.name}
-                            </span>
-                            <span className="ml-6 flex items-center">
-                              {open ? (
-                                <MinusIcon
-                                  className="block h-6 w-6 text-indigo-400 group-hover:text-primary-light"
-                                  aria-hidden="true"
-                                />
+              {metafields.length > 0 ? (
+                <div className="divide-y divide-gray-200 border-t">
+                  {metafields.map((metafield) =>
+                    metafield.key ? (
+                      <Disclosure as="div" key={metafield.key}>
+                        {({ open }) => (
+                          <>
+                            <h3>
+                              <Disclosure.Button className="group relative flex w-full items-center justify-between py-6 text-left">
+                                <span
+                                  className={clsx(
+                                    open ? 'text-primary' : 'text-gray-900',
+                                    'text-sm font-medium'
+                                  )}
+                                >
+                                  {metafield.name}
+                                </span>
+                                <span className="ml-6 flex items-center">
+                                  {open ? (
+                                    <MinusIcon
+                                      className="block h-6 w-6 text-primary-light group-hover:text-primary"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <PlusIcon
+                                      className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                                      aria-hidden="true"
+                                    />
+                                  )}
+                                </span>
+                              </Disclosure.Button>
+                            </h3>
+                            <Disclosure.Panel as="div" className="prose prose-sm pb-6">
+                              {metafield.list && metafield.list?.length > 0 ? (
+                                <ul role="list">
+                                  {metafield.list?.map((value) => (
+                                    <li key={value} className="first-letter:capitalize">
+                                      {value}
+                                    </li>
+                                  ))}
+                                </ul>
                               ) : (
-                                <PlusIcon
-                                  className="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                                  aria-hidden="true"
-                                />
+                                <p>{metafield.value}</p>
                               )}
-                            </span>
-                          </Disclosure.Button>
-                        </h3>
-                        <Disclosure.Panel as="div" className="prose prose-sm pb-6">
-                          <ul role="list">
-                            {detail.items.map((item) => (
-                              <li key={item}>{item}</li>
-                            ))}
-                          </ul>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                ))}
-              </div>
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
+                    ) : null
+                  )}
+                </div>
+              ) : null}
             </section>
           </div>
         </div>
