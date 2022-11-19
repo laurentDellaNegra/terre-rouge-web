@@ -7,7 +7,8 @@ import Rheostat from 'rheostat'
 import { scrollToTop } from '@/lib/window'
 
 export default function PriceAccordion() {
-  const { refine, range, start } = useRange({ attribute: 'price', precision: 2 })
+  const { refine, range, start, canRefine } = useRange({ attribute: 'price', precision: 2 })
+
   const currentRefinement = {
     min: start[0] as number,
     max: start[1] as number,
@@ -28,7 +29,7 @@ export default function PriceAccordion() {
       setStateMax(currentRefinement.max)
     if (currentRefinement.min === -Infinity && currentRefinement.min !== stateMin) setStateMin(min)
     if (currentRefinement.max === Infinity && currentRefinement.max !== stateMax) setStateMax(max)
-  }, [currentRefinement.min, currentRefinement.max])
+  }, [currentRefinement.min, currentRefinement.max, min, max])
 
   const onValuesUpdated = ({ values: [min, max] }: { values: Array<number> }) => {
     setStateMin(min)
@@ -46,9 +47,11 @@ export default function PriceAccordion() {
     }
   }
 
-  if (min === max) {
+  if (min === max || !canRefine) {
     return null
   }
+  console.log('range', range)
+  console.log('start', start)
 
   return (
     <Disclosure as="div" defaultOpen={true} className="py-6">
