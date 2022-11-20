@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export async function getStaticPaths() {
   const allProducts = await getAllProductsWithSlug()
-  console.log('allProducts', allProducts)
+  // console.log('allProducts', allProducts)
   return {
     paths: allProducts.products.edges.map(({ node }: any) => `/product/${node.handle}`),
     fallback: false,

@@ -53,73 +53,68 @@ export default function MobileMenu(props: MobileMenuProps) {
               <nav className="space-y-1 pt-2 pb-3">
                 <ul>
                   <li>
-                    <Link href="/">
-                      <a
-                        className={clsx(
-                          router.pathname === '/'
-                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
-                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
-                        )}
-                      >
-                        Accueil
-                      </a>
+                    <Link
+                      href="/"
+                      className={clsx(
+                        router.pathname === '/'
+                          ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                      )}
+                    >
+                      Accueil
                     </Link>
                   </li>
                   <li>
-                    <Link href="/products">
-                      <a
-                        className={clsx(
-                          router.pathname === '/products'
-                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
-                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
-                        )}
-                      >
-                        Epices
-                      </a>
+                    <Link
+                      href="/products"
+                      className={clsx(
+                        router.pathname === '/products'
+                          ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                      )}
+                    >
+                      Epices
                     </Link>
                   </li>
                   <li>
-                    <Link href="/products">
-                      <a
-                        className={clsx(
-                          router.pathname === '/products2'
-                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
-                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
-                        )}
-                      >
-                        Condiments
-                      </a>
+                    <Link
+                      href="/products"
+                      className={clsx(
+                        router.pathname === '/products2'
+                          ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                      )}
+                    >
+                      Condiments
                     </Link>
                   </li>
                   <li>
-                    <Link href="/products">
-                      <a
-                        className={clsx(
-                          router.pathname === '/products2'
-                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
-                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
-                        )}
-                      >
-                        Arts de table
-                      </a>
+                    <Link
+                      href="/products"
+                      className={clsx(
+                        router.pathname === '/products2'
+                          ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                      )}
+                    >
+                      Arts de table
                     </Link>
                   </li>
                   <li>
-                    <Link href="/products">
-                      <a
-                        className={clsx(
-                          router.pathname === '/products3'
-                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
-                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
-                        )}
-                      >
-                        Engagement
-                      </a>
+                    <Link
+                      href="/products"
+                      className={clsx(
+                        router.pathname === '/products3'
+                          ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
+                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
+                      )}
+                    >
+                      Engagement
                     </Link>
                   </li>
                 </ul>

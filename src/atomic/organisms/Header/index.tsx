@@ -1,6 +1,6 @@
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -30,63 +30,57 @@ export default function Header(props: HeaderProps) {
             {/* Logo (lg+) */}
             <div className="-mt-8 hidden lg:flex lg:flex-1 lg:items-center">
               <Link href="/">
-                <a>
-                  <span className="sr-only">Terre Rouge</span>
-                  <Image className="h-24 w-auto" src={largeLogo} alt="" />
-                </a>
+                <span className="sr-only">Terre Rouge</span>
+                <Image className="h-24 w-auto" src={largeLogo} alt="" />
               </Link>
             </div>
 
             <div className="hidden h-full lg:flex">
               {/* <FlyoutMenu /> */}
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <Link href="/products">
-                  <a
-                    className={clsx(
-                      router.pathname === '/products'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Epices
-                  </a>
+                <Link
+                  href="/products"
+                  className={clsx(
+                    router.pathname === '/products'
+                      ? 'border-primary text-gray-900'
+                      : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                    'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                  )}
+                >
+                  Epices
                 </Link>
-                <Link href="/products">
-                  <a
-                    className={clsx(
-                      router.pathname === '/products1'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Comdiments
-                  </a>
+                <Link
+                  href="/products"
+                  className={clsx(
+                    router.pathname === '/products1'
+                      ? 'border-primary text-gray-900'
+                      : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                    'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                  )}
+                >
+                  Comdiments
                 </Link>
-                <Link href="/products">
-                  <a
-                    className={clsx(
-                      router.pathname === '/products2'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Arts de table
-                  </a>
+                <Link
+                  href="/products"
+                  className={clsx(
+                    router.pathname === '/products2'
+                      ? 'border-primary text-gray-900'
+                      : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                    'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                  )}
+                >
+                  Arts de table
                 </Link>
-                <Link href="/products">
-                  <a
-                    className={clsx(
-                      router.pathname === '/products3'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Engagement
-                  </a>
+                <Link
+                  href="/products"
+                  className={clsx(
+                    router.pathname === '/products3'
+                      ? 'border-primary text-gray-900'
+                      : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                    'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
+                  )}
+                >
+                  Engagement
                 </Link>
               </div>
             </div>
@@ -115,11 +109,9 @@ export default function Header(props: HeaderProps) {
             </div>
 
             {/* Logo (lg-) */}
-            <Link href="/">
-              <a className="lg:hidden">
-                <span className="sr-only">Workflow</span>
-                <Image className="h-auto w-9" src={smallLogo} alt="Terre Rouge logo" />
-              </a>
+            <Link href="/" className="lg:hidden">
+              <span className="sr-only">Workflow</span>
+              <Image className="h-auto w-9" src={smallLogo} alt="Terre Rouge logo" />
             </Link>
 
             <div className="flex flex-1 items-center justify-end">

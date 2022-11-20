@@ -1,4 +1,4 @@
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 import TitleSection from '@/atomic/atoms/TitleSection'
 import ala from '@/public/logos/partners/ala.svg'

@@ -1,5 +1,3 @@
-import Image from 'next/future/image'
-
 import TitleSection from '@/atomic/atoms/TitleSection'
 
 const TruckIcon = ({ className }: { className: string }) => (

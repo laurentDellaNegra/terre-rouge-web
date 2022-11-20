@@ -1,4 +1,4 @@
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 import srcStar15 from '@/public/logos/trustpilot/rating-1.5.svg'
 import srcStar1 from '@/public/logos/trustpilot/rating-1.svg'

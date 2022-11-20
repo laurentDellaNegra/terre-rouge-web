@@ -13,11 +13,11 @@ import getShopPageForHome from '@/lib/getShopPageForHome'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 
 const Home: NextPage = () => {
-  const { status, data, error, isFetching } = useQuery(['shopHome'], getShopPageForHome)
-  console.log('shop', data)
-  console.log('status', status)
-  console.log('error', error)
-  console.log('isFetching', isFetching)
+  // const { status, data, error, isFetching } = useQuery(['shopHome'], getShopPageForHome)
+  // console.log('shop', data)
+  // console.log('status', status)
+  // console.log('error', error)
+  // console.log('isFetching', isFetching)
   return (
     <>
       <Head>

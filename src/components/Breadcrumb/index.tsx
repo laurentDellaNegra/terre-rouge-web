@@ -26,8 +26,8 @@ export default function Breadcrumb(props: Props) {
             return (
               <li key={c.title}>
                 <div className="flex items-center">
-                  <Link href={c.route || '#'}>
-                    <a className="mr-4 text-sm font-medium text-gray-900">{c.title}</a>
+                  <Link href={c.route || '#'} className="mr-4 text-sm font-medium text-gray-900">
+                    {c.title}
                   </Link>
                   <svg
                     viewBox="0 0 6 20"
