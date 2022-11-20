@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
@@ -27,7 +25,7 @@ module.exports = {
         'secondary-light': '#F5DDD2',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-inter)'],
       },
       keyframes: {
         'fade-in': {

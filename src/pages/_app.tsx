@@ -13,6 +13,7 @@ import '@/styles/rheostat.css'
 
 const inter = Inter({
   subsets: ['latin'],
+  variable: '--font-inter',
 })
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -45,7 +46,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <UIStateProvider>
-          <div className={inter.className}>
+          <div className={`${inter.variable} font-sans`}>
             <Component {...pageProps} />
           </div>
         </UIStateProvider>
