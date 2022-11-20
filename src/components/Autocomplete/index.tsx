@@ -32,14 +32,14 @@ export function Autocomplete(props: Props) {
     transformSource({ source }) {
       return {
         ...source,
-        onSelect({ item }: any) {
+        onSelect({ item }) {
           router.push('/products?query=' + item.label)
           onClose()
         },
       }
     },
   })
-  const querySuggestionsPlugin: any = createQuerySuggestionsPlugin({
+  const querySuggestionsPlugin = createQuerySuggestionsPlugin({
     searchClient,
     indexName: INDEX_QUERY_SUGGESTIONS,
     getSearchParams() {
@@ -93,6 +93,7 @@ export function Autocomplete(props: Props) {
     }
 
     const search = autocomplete({
+      placeholder: 'Vous cherchez ?',
       autoFocus: true,
       openOnFocus: true,
       container: containerRef.current,
@@ -107,11 +108,25 @@ export function Autocomplete(props: Props) {
 
         panelRootRef.current.render(children)
       },
-      detachedMediaQuery: 'none',
       classNames: {
+        root: 'font-sans',
+        form: 'outline-none bg-white rounded-lg border-slate-200 overflow-hidden',
+        inputWrapper: 'bg-white',
+        inputWrapperPrefix: 'bg-white rounded-l-lg',
+        inputWrapperSuffix: 'bg-white rounded-r-lg',
         input: 'focus:ring-0',
-        form: 'focus-within:ring-2 border-2 border-white rounded-none sm:rounded-md',
-        panel: 'mt-0 sm:mt-2 rounded-none sm:rounded-md',
+        panel: 'z-40 mt-0 lg:mt-2 rounded-none lg:rounded-md',
+        panelLayout: 'text-gray-600',
+        detachedSearchButtonPlaceholder: 'text-gray-400 text-sm sm:text-base font-normal',
+        detachedSearchButtonIcon: 'text-gray-400',
+        detachedSearchButton: 'rounded-lg border-none ring-1 ring-slate-200 hover:ring-slate-300',
+        detachedCancelButton: 'text-gray-500',
+      },
+      translations: {
+        detachedCancelButtonText: 'Fermer',
+      },
+      onStateChange: ({ state }) => {
+        console.log(containerRef.current)
       },
       plugins: [recentSearchesPlugin, querySuggestionsPlugin, productsPlugin],
       // @ts-ignore

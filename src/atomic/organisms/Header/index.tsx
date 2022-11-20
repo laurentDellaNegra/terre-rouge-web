@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { Autocomplete } from '@/components/Autocomplete'
 import SearchPalette from '@/components/SearchPalette'
 import useUIState from '@/context/UIState/useUIState'
 import useCmdK from '@/hooks/useCmdK'
@@ -86,7 +87,7 @@ export default function Header(props: HeaderProps) {
             </div>
 
             {/* Mobile menu and search (lg-) */}
-            <div className="flex flex-1 items-center lg:hidden">
+            <div className="flex items-center lg:hidden">
               <button
                 type="button"
                 className="-ml-2 rounded-md p-2 text-gray-400"
@@ -95,26 +96,24 @@ export default function Header(props: HeaderProps) {
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
-
-              {displaySearch && (
-                <button
-                  type="button"
-                  className="ml-2 p-2 text-gray-400 hover:text-gray-500"
-                  onClick={toggleSearch}
-                >
-                  <span className="sr-only">Rechercher</span>
-                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-              )}
             </div>
 
             {/* Logo (lg-) */}
             <Link href="/" className="lg:hidden">
               <span className="sr-only">Workflow</span>
-              <Image className="h-auto w-9" src={smallLogo} alt="Terre Rouge logo" />
+              <Image
+                className="h-auto w-6 sm:w-7 ml-1 mr-2 sm:mx-3"
+                src={smallLogo}
+                alt="Terre Rouge logo"
+              />
             </Link>
 
-            <div className="flex flex-1 items-center justify-end">
+            {/* Search (lg-) */}
+            <div className="flex-1 ml-2 sm:ml-3 lg:hidden">
+              <Autocomplete onClose={() => {}} />
+            </div>
+
+            <div className="flex lg:flex-1 items-center justify-end">
               {displaySearch && (
                 <button
                   type="button"

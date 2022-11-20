@@ -2,4 +2,6 @@
   --aa-primary-color-rgb: 87, 150, 96;
   --aa-selected-color-rgb: 238, 244, 239;
   --aa-selected-color-alpha: 1;
+  --aa-detached-media-query: (max-width: 1024px);
+  --aa-detached-modal-media-query: (min-width: 1024px);
 }

@@ -1,4 +1,6 @@
 import { AutocompleteComponents, getAlgoliaResults } from '@algolia/autocomplete-js'
+import { PhotoIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
@@ -67,8 +69,12 @@ function ProductItem({ hit, components }: ProductItemProps) {
   return (
     <Link href={hit.handle} className="aa-ItemLink">
       <div className="aa-ItemContent">
-        <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
-          <img src={hit.image} alt={hit.title} width="40" height="40" />
+        <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop !border-gray-200 rounded-md">
+          {hit.image ? (
+            <Image src={hit.image} alt={hit.title} width={70} height={70} />
+          ) : (
+            <PhotoIcon className="!h-16 !w-16 text-gray-200" />
+          )}
         </div>
 
         <div className="aa-ItemContentBody">
@@ -76,33 +82,13 @@ function ProductItem({ hit, components }: ProductItemProps) {
             <components.Snippet hit={hit} attribute="title" />
           </div>
           <div className="aa-ItemContentDescription">
-            In <strong>{hit.category}</strong>
+            Dans <strong>{hit.category}</strong>
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-            }}
-          >
-            <div
-              style={{
-                display: 'grid',
-                gridAutoFlow: 'column',
-                justifyContent: 'start',
-                alignItems: 'center',
-                gap: 4,
-              }}
-            >
+          <div className="flex items-center gap-2">
+            <div className="grid grid-flow-col justify-start items-center gap-1">
               <div>
-                <span
-                  style={{
-                    color: '#000',
-                    fontSize: '0.9em',
-                    fontWeight: 'bold',
-                  }}
-                >
+                <span className="text-gray-900 font-bold text-sm">
                   {price(hit.price, hit.currency as CurrencyCode)}
                 </span>
               </div>

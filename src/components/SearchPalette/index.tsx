@@ -26,7 +26,7 @@ export default function SearchPalette(props: Props) {
           <div className="fixed inset-0 bg-gray-500 bg-opacity-25 backdrop-blur-sm transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto pt-[93px] sm:p-28">
+        <div className="fixed inset-0 overflow-y-auto pt-8 sm:pt-9 lg:p-28 z-40">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -36,7 +36,7 @@ export default function SearchPalette(props: Props) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="mx-auto max-w-2xl transform overflow-hidden bg-white transition-all sm:rounded-md">
+            <Dialog.Panel className="mx-auto lg:max-w-2xl transform overflow-hidden bg-white transition-all lg:rounded-md">
               <Autocomplete onClose={onClose} />
             </Dialog.Panel>
           </Transition.Child>

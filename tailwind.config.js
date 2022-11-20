@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   plugins: [
@@ -25,7 +26,7 @@ module.exports = {
         'secondary-light': '#F5DDD2',
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-inter)', ...fontFamily.sans],
       },
       keyframes: {
         'fade-in': {

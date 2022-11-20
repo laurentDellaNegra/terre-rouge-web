@@ -43,15 +43,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   )
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <UIStateProvider>
-          <div className={`${inter.variable} font-sans`}>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <UIStateProvider>
             <Component {...pageProps} />
-          </div>
-        </UIStateProvider>
-      </Hydrate>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+          </UIStateProvider>
+        </Hydrate>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </>
   )
 }
