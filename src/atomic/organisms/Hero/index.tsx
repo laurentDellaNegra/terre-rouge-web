@@ -13,7 +13,13 @@ export default function Hero() {
       <div aria-hidden="true" className="absolute inset-0 hidden sm:flex sm:flex-col">
         <div className="relative w-full flex-1 bg-gray-800">
           <div className="absolute inset-0 overflow-hidden">
-            <Image src={hero} alt="Hand picking vanilla bean" layout="fill" objectFit="cover" />
+            <Image
+              src={hero}
+              alt="Hand picking vanilla bean"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
           </div>
           <div className="absolute inset-0 bg-gray-900 opacity-30" />
         </div>
@@ -28,10 +34,11 @@ export default function Hero() {
               <Image
                 src={hero}
                 alt="Hand picking vanilla bean"
-                layout="fill"
-                objectFit="cover"
                 placeholder="blur"
                 priority
+                fill
+                className="object-cover"
+                sizes="100vw"
               />
             </div>
             <div className="absolute inset-0 bg-gray-900 opacity-30" />

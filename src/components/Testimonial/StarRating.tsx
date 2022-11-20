@@ -29,5 +29,16 @@ interface Props {
 
 export function StarRating({ rating }: Props) {
   const src = RATINGS.get(rating)
-  return src ? <Image priority className="h-5 w-auto" src={src} alt={`${rating} stars`} /> : null
+  return src ? (
+    <Image
+      priority
+      className="h-5 w-auto"
+      src={src}
+      alt={`${rating} stars`}
+      style={{
+        maxWidth: '100%',
+        height: 'auto',
+      }}
+    />
+  ) : null
 }

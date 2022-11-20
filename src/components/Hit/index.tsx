@@ -8,11 +8,10 @@ export default function Hit({ hit }: any) {
         <Image
           src={hit.image}
           alt={hit.title}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          priority
+          fill
           sizes="50vw"
-          priority // TODO: set priority only on firsts images
+          className="object-cover object-center"
         />
       </div>
       <p>{hit.category}</p>

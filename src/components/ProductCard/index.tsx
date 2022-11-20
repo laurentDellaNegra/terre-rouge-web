@@ -23,10 +23,10 @@ export default function ProductCard(props: Props) {
           <Image
             src={image}
             alt={title}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
             priority={position < 3}
+            className="object-cover object-center"
+            fill
+            sizes="100vw"
           />
         ) : (
           <div className="p-24">

@@ -21,7 +21,15 @@ export default function LogoClouds() {
             <Image className="h-36 w-52" src={ctht} alt="Logo de Ctht" />
           </div>
           <div className="h-44 flex items-center justify-center">
-            <Image className="h-36 w-52" src={talantana} alt="Logo de Talantana" />
+            <Image
+              className="h-36 w-52"
+              src={talantana}
+              alt="Logo de Talantana"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
+            />
           </div>
           <div className="h-44 flex items-center justify-center">
             <Image className="h-36 w-52" src={vaoSuzette} alt="Logo de Vao Suzette" />

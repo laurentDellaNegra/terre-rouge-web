@@ -49,9 +49,10 @@ export default function CollectionCards(props: CollectionCardsProps) {
                   <Image
                     src={collection.imageSrc}
                     alt={collection.imageAlt}
-                    layout="fill"
-                    objectFit="cover"
                     placeholder="blur"
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50" />

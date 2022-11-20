@@ -70,10 +70,9 @@ export default function HorizontalProducts() {
                       <Image
                         src={product.imageSrc}
                         alt={product.imageAlt}
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
-                        className="group-hover:opacity-75"
+                        className="object-cover object-center group-hover:opacity-75"
+                        fill
+                        sizes="100vw"
                       />
                     </div>
                     <div className="mt-6">
