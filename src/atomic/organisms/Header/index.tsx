@@ -22,7 +22,7 @@ export default function Header(props: HeaderProps) {
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
   const displaySearch = router.pathname !== '/products'
-  useCmdK(() => toggleSearch())
+  // useCmdK(() => toggleSearch())
   return (
     <header className={className}>
       <nav aria-label="Top">
