@@ -16,11 +16,11 @@ import { ProductHit } from './types/ProductHit'
 const INDEX_QUERY_SUGGESTIONS = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_QUERY_SUGGESTIONS || ''
 
 interface Props {
-  onClose: () => void
+  onClose?: () => void
 }
 
 export function Autocomplete(props: Props) {
-  const { onClose } = props
+  const { onClose = () => {} } = props
   const containerRef: any = useRef(null)
   const panelRootRef: any = useRef(null)
   const rootRef: any = useRef(null)

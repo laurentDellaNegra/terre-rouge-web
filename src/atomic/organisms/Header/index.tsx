@@ -22,7 +22,7 @@ export default function Header(props: HeaderProps) {
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
   const displaySearch = router.pathname !== '/products'
-  // useCmdK(() => toggleSearch())
+
   return (
     <header className={className}>
       <nav aria-label="Top">
@@ -110,7 +110,7 @@ export default function Header(props: HeaderProps) {
 
             {/* Search (lg-) */}
             <div className="flex-1 ml-2 sm:ml-3 lg:hidden">
-              <Autocomplete onClose={() => {}} />
+              <Autocomplete />
             </div>
 
             <div className="flex lg:flex-1 items-center justify-end">
