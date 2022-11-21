@@ -117,7 +117,7 @@ export function Autocomplete(props: Props) {
         input: 'focus:ring-0',
         panel: 'z-40 mt-0 lg:mt-2 rounded-none lg:rounded-md',
         panelLayout: 'text-gray-600',
-        detachedSearchButtonPlaceholder: 'text-gray-400 text-sm sm:text-base font-normal',
+        detachedSearchButtonPlaceholder: 'text-gray-400 text-xs sm:text-base font-normal',
         detachedSearchButtonIcon: 'text-gray-400',
         detachedSearchButton: 'rounded-lg border-none ring-1 ring-slate-200 hover:ring-slate-300',
         detachedCancelButton: 'text-gray-500',
