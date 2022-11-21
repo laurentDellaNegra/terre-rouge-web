@@ -97,6 +97,10 @@ export function Autocomplete(props: Props) {
       autoFocus: true,
       openOnFocus: true,
       container: containerRef.current,
+      onSubmit: ({ state }) => {
+        router.push('/products?query=' + state.query)
+        onClose()
+      },
       renderer: { createElement, Fragment, render: () => {} },
       render({ children }, root) {
         if (!panelRootRef.current || rootRef.current !== root) {

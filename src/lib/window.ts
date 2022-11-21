@@ -1,12 +1,12 @@
-export const scrollToTop = () => {
+export const scrollToTop = (mode: 'smooth' | 'auto' = 'auto') => {
   try {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: mode,
     })
     window.parent.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: mode,
     })
   } catch (error) {
     // console.log(error)
