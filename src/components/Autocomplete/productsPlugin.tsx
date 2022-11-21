@@ -67,7 +67,7 @@ type ProductItemProps = {
 
 function ProductItem({ hit, components }: ProductItemProps) {
   return (
-    <Link href={hit.handle} className="aa-ItemLink">
+    <Link href={`/product/${hit.handle}`} className="aa-ItemLink">
       <div className="aa-ItemContent">
         <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop !border-gray-200 rounded-md">
           {hit.image ? (

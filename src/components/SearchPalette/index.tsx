@@ -1,5 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
+
+import useWindowSize from '@/hooks/useWindowSize'
+import { fullConfig, getBreakpoint } from '@/lib/tailwindConfig'
 
 import { Autocomplete } from '../Autocomplete'
 
@@ -10,6 +13,14 @@ interface Props {
 
 export default function SearchPalette(props: Props) {
   const { open, onClose } = props
+
+  // Close SearchPalette on sm screen
+  const { width } = useWindowSize()
+  useEffect(() => {
+    if (width < getBreakpoint('lg')) {
+      if (open) onClose()
+    }
+  }, [onClose, open, width])
 
   return (
     <Transition.Root show={open} as={Fragment} appear>
@@ -26,7 +37,7 @@ export default function SearchPalette(props: Props) {
           <div className="fixed inset-0 bg-gray-500 bg-opacity-25 backdrop-blur-sm transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto pt-8 sm:pt-9 lg:p-28 z-40">
+        <div className="fixed inset-0 overflow-y-auto p-28 z-40">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -36,7 +47,7 @@ export default function SearchPalette(props: Props) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="mx-auto lg:max-w-2xl transform overflow-hidden bg-white transition-all lg:rounded-md">
+            <Dialog.Panel className="mx-auto max-w-2xl transform overflow-hidden bg-white transition-all rounded-lg">
               <Autocomplete onClose={onClose} />
             </Dialog.Panel>
           </Transition.Child>

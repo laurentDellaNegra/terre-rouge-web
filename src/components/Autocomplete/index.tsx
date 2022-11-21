@@ -115,7 +115,7 @@ export function Autocomplete(props: Props) {
         inputWrapperPrefix: 'bg-white rounded-l-lg',
         inputWrapperSuffix: 'bg-white rounded-r-lg',
         input: 'focus:ring-0',
-        panel: 'z-40 mt-0 lg:mt-2 rounded-none lg:rounded-md',
+        panel: 'z-40 mt-2 rounded-lg',
         panelLayout: 'text-gray-600',
         detachedSearchButtonPlaceholder: 'text-gray-400 sm:text-base font-normal',
         detachedSearchButtonIcon: 'text-gray-400',
@@ -124,9 +124,6 @@ export function Autocomplete(props: Props) {
       },
       translations: {
         detachedCancelButtonText: 'Fermer',
-      },
-      onStateChange: ({ state }) => {
-        console.log(containerRef.current)
       },
       plugins: [recentSearchesPlugin, querySuggestionsPlugin, productsPlugin],
       // @ts-ignore
