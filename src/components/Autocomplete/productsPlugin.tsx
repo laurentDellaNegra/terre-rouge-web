@@ -4,11 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import { searchClient } from '@/lib/clients/searchClient'
 import { price } from '@/lib/price'
 import { ProductRecord } from '@/types/ProductRecord'
 import { CurrencyCode } from '@/types/gql/graphql'
 
-import { searchClient } from './searchClient'
 import { ProductHit } from './types/ProductHit'
 
 const INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || ''

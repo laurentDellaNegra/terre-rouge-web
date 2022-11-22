@@ -21,10 +21,9 @@ export default function Header(props: HeaderProps) {
   const { onMobileMenuClick, className = '', onCartClick } = props
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
-  const displaySearch = router.pathname !== '/products'
 
   return (
-    <header className={className}>
+    <header className={clsx('relative', className)}>
       <nav aria-label="Top">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
@@ -114,16 +113,14 @@ export default function Header(props: HeaderProps) {
             </div>
 
             <div className="flex lg:flex-1 items-center justify-end">
-              {displaySearch && (
-                <button
-                  type="button"
-                  className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block"
-                  onClick={toggleSearch}
-                >
-                  <span className="sr-only">Rechercher</span>
-                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-              )}
+              <button
+                type="button"
+                className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block"
+                onClick={toggleSearch}
+              >
+                <span className="sr-only">Rechercher</span>
+                <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+              </button>
 
               <div className="flex items-center">
                 {/* Cart */}
@@ -149,7 +146,19 @@ export default function Header(props: HeaderProps) {
           </div>
         </div>
       </nav>
-      <SearchPalette onClose={toggleSearch} open={openSearchPalette} />
+      {/* <SearchPalette onClose={toggleSearch} open={openSearchPalette} /> */}
+      <div
+        className={clsx(
+          openSearchPalette ? 'absolute' : 'hidden',
+          'mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 left-0 right-0 h-full '
+        )}
+      >
+        <div
+          className="fixed inset-0 bg-gray-500 bg-opacity-25 backdrop-blur-sm transition-opacity"
+          onClick={() => toggleSearch()}
+        />
+        <Autocomplete />
+      </div>
     </header>
   )
 }

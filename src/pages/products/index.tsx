@@ -10,14 +10,9 @@ import { Configure, InstantSearch, InstantSearchSSRProvider } from 'react-instan
 import Layout from '@/components/Layout'
 import ProductsComponent from '@/components/Products'
 import { routing } from '@/lib/betterUrl'
+import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
 import getShopPageForProducts from '@/lib/getShopPageForProducts'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
-
-const APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || ''
-const API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY || ''
-const INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || ''
-
-const searchClient = algoliasearch(APP_ID, API_KEY)
 
 export default function Products({ serverState }: any) {
   return (

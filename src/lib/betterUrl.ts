@@ -29,7 +29,7 @@ function getCategoryName(slug: string) {
   return slug.split('-').join(' ')
 }
 
-function getQueryToUrl(query: string) {
+export function getQueryToUrl(query: string) {
   return query.split(' ').join('_')
 }
 

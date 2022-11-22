@@ -24,10 +24,10 @@ export default function Products() {
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 flex gap-5 items-baseline justify-between pt-6 sm:pt-12 xl:pt-24 sm:pb-6 flex-col sm:flex-row">
-          <SearchBox />
+          {/* <SearchBox /> */}
 
           {/* Right menu */}
-          <div className="flex items-center self-end">
+          <div className="flex items-center self-end ml-auto">
             {/* Sort Menu */}
             <SortMenu />
 

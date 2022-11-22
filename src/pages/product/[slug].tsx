@@ -2,9 +2,11 @@ import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { InstantSearch } from 'react-instantsearch-hooks-web'
 
 import Layout from '@/components/Layout'
 import ProductComponent from '@/components/Product'
+import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
 import getAllProductsWithSlug from '@/lib/getAllProductsWithSlug'
 import getShopPageForProduct from '@/lib/getShopPageForProduct'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
@@ -18,15 +20,18 @@ export default function Product() {
       <Head>
         <title>Product detail</title>
       </Head>
-      <Layout
-        crumb={[
-          { title: 'Accueil', route: '/' },
-          { title: 'Produits', route: '/products' },
-          { title: product?.productByHandle?.title },
-        ]}
-      >
-        {product && <ProductComponent product={product} />}
-      </Layout>
+
+      <InstantSearch searchClient={searchClient} indexName={INDEX_NAME}>
+        <Layout
+          crumb={[
+            { title: 'Accueil', route: '/' },
+            { title: 'Produits', route: '/products' },
+            { title: product?.productByHandle?.title },
+          ]}
+        >
+          {product && <ProductComponent product={product} />}
+        </Layout>
+      </InstantSearch>
     </>
   )
 }

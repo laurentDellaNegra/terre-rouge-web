@@ -3,28 +3,47 @@ import { createQuerySuggestionsPlugin } from '@algolia/autocomplete-plugin-query
 import { createLocalStorageRecentSearchesPlugin } from '@algolia/autocomplete-plugin-recent-searches'
 import { useRouter } from 'next/router'
 import { pipe } from 'ramda'
-import React, { Fragment, createElement, useEffect, useRef } from 'react'
+import React, { Fragment, createElement, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { useSearchBox } from 'react-instantsearch-hooks-web'
+
+import useUIState from '@/context/UIState/useUIState'
+import { getQueryToUrl } from '@/lib/betterUrl'
+import { INDEX_QUERY_SUGGESTIONS, searchClient } from '@/lib/clients/searchClient'
 
 import { groupBy } from './functions/groupBy'
 import { limit } from './functions/limit'
 import { uniqBy } from './functions/uniqBy'
 import { productsPlugin } from './productsPlugin'
-import { searchClient } from './searchClient'
 import { ProductHit } from './types/ProductHit'
 
-const INDEX_QUERY_SUGGESTIONS = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME_QUERY_SUGGESTIONS || ''
-
-interface Props {
-  onClose?: () => void
-}
-
-export function Autocomplete(props: Props) {
-  const { onClose = () => {} } = props
+export function Autocomplete() {
   const containerRef: any = useRef(null)
   const panelRootRef: any = useRef(null)
   const rootRef: any = useRef(null)
   const router = useRouter()
+  const { openSearchPalette, toggleSearch } = useUIState()
+  const isOnSamePage = router.pathname === '/products'
+
+  const { query, refine: setQuery } = useSearchBox()
+
+  const [instantSearchUiState, setInstantSearchUiState] = useState<{ query: string }>({
+    query,
+  })
+
+  // Manage Autofocus on open
+  useEffect(() => {
+    if (!openSearchPalette) return
+    const input = document.getElementById('autocomplete-1-input')
+    if (!input) return
+    setTimeout(() => {
+      input.focus()
+    })
+  }, [openSearchPalette])
+
+  useEffect(() => {
+    setQuery(instantSearchUiState.query)
+  }, [instantSearchUiState])
 
   const recentSearchesPlugin: any = createLocalStorageRecentSearchesPlugin({
     key: 'search',
@@ -33,8 +52,12 @@ export function Autocomplete(props: Props) {
       return {
         ...source,
         onSelect({ item }) {
-          router.push('/products?query=' + item.label)
-          onClose()
+          if (isOnSamePage) {
+            setInstantSearchUiState({ query: item.label })
+          } else {
+            router.push('/products?query=' + getQueryToUrl(item.label))
+          }
+          toggleSearch()
         },
       }
     },
@@ -52,8 +75,12 @@ export function Autocomplete(props: Props) {
       return {
         ...source,
         onSelect({ item }: any) {
-          router.push('/products?query=' + item.query)
-          onClose()
+          if (isOnSamePage) {
+            setInstantSearchUiState({ query: item.query })
+          } else {
+            router.push('/products?query=' + getQueryToUrl(item.query))
+          }
+          toggleSearch()
         },
       }
     },
@@ -98,8 +125,15 @@ export function Autocomplete(props: Props) {
       openOnFocus: true,
       container: containerRef.current,
       onSubmit: ({ state }) => {
-        router.push('/products?query=' + state.query)
-        onClose()
+        if (isOnSamePage) {
+          setInstantSearchUiState({ query: state.query })
+        } else {
+          router.push('/products?query=' + getQueryToUrl(state.query))
+        }
+        toggleSearch()
+      },
+      onReset() {
+        setInstantSearchUiState({ query: '' })
       },
       renderer: { createElement, Fragment, render: () => {} },
       render({ children }, root) {

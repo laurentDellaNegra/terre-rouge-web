@@ -6,7 +6,7 @@ export default function SearchBox(props: UseSearchBoxProps) {
   const { query, refine, clear } = useSearchBox(props)
 
   return (
-    <div className="group border-b-2 border-gray-300 focus-within:border-primary flex-1 flex items-center w-full">
+    <div className="flex-1 flex items-center">
       <MagnifyingGlassIcon
         className="h-6 w-6 text-gray-400 group-focus-within:text-primary"
         aria-hidden="true"
@@ -17,7 +17,7 @@ export default function SearchBox(props: UseSearchBoxProps) {
         id="name"
         value={query}
         onChange={(e) => refine(e.target.value)}
-        className="bg-transparent block w-full border-0 focus:ring-0 sm:text-sm"
+        className="bg-transparent block border-0 focus:ring-0 sm:text-sm"
         placeholder="Que cherchez vous ?"
       />
       {query.length > 0 && (
