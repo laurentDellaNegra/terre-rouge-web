@@ -15,7 +15,7 @@ const navigation = {
     { name: 'API Status', href: '#' },
   ],
   company: [
-    { name: 'Engagements', href: '#' },
+    { name: 'Engagements', href: '/engagements' },
     { name: "Conditions d'utilisation", href: '#' },
   ],
   legal: [

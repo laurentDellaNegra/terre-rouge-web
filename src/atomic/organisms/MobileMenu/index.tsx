@@ -106,15 +106,15 @@ export default function MobileMenu(props: MobileMenuProps) {
                   </li>
                   <li>
                     <Link
-                      href="/products"
+                      href="/engagements"
                       className={clsx(
-                        router.pathname === '/products3'
+                        router.pathname === '/engagements'
                           ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
                           : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
                         'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
                       )}
                     >
-                      Engagement
+                      Engagements
                     </Link>
                   </li>
                 </ul>
