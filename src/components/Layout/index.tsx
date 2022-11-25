@@ -9,10 +9,8 @@ export default function Layout({ children, crumb }: any) {
     <>
       <Meta />
       <HeaderMenu />
-      <main>
-        <Breadcrumb className="pt-8 bg-slate-50" crumb={crumb} />
-        {children}
-      </main>
+      <Breadcrumb className="pt-8 bg-white" crumb={crumb} />
+      {children}
       <Footer />
     </>
   )

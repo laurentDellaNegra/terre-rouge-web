@@ -18,7 +18,7 @@ export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const { hits } = useHits()
   return (
-    <div className="bg-gray-50">
+    <div className="bg-white">
       {/* Mobile filter dialog */}
       <FilterDrawer open={mobileFiltersOpen} onClose={() => setMobileFiltersOpen(false)} />
 

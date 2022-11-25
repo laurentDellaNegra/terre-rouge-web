@@ -25,8 +25,8 @@ export default function Header(props: HeaderProps) {
   return (
     <>
       <header className={clsx('relative', className)}>
-        <nav aria-label="Top">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="border-b border-gray-200">
             <div className="flex h-16 items-center justify-between">
               {/* Logo (lg+) */}
               <div className="-mt-8 hidden lg:flex lg:flex-1 lg:items-center">
