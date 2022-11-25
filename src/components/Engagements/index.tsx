@@ -60,61 +60,26 @@ const stats = [
 
 export default function Engagements() {
   return (
-    <div className="bg-gray-50">
-      {/* HEADER */}
-      <div className="lg:relative">
-        <div className="mx-auto w-full max-w-7xl pt-16 pb-20 lg:py-48 lg:text-left">
-          <div className="px-4 sm:px-8 lg:w-1/2 xl:pr-16">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-              <span className="block xl:inline">Nos emballages</span>{' '}
-              <span className="block text-primary xl:inline">Terre Rouge</span>
-            </h1>
-            <p className="my-3 text-base text-gray-500 sm:text-lg md:my-10">
-              Nos produits sont conditionnés dans des emballages{' '}
-              <span className="font-bold">100%</span> compostables en foyer et biodégradables. Ils
-              sont certifiés selon la norme européenne{' '}
-              <a
-                className="text-primary underline decoration-double font-bold"
-                href="https://docs.european-bioplastics.org/publications/bp/EUBP_BP_En_13432.pdf"
-              >
-                EN 13432
-              </a>
-              .
-              <br />
-              <br />
-              La fermeture à glissière est fabriquée en biomatériaux synthétiques (
-              <span className="font-bold">PLA</span>: d&apos;amidons de maïs ou de betteraves et au
-              bilan carbone neutre).
-            </p>
-            <div className="rounded-md bg-blue-50 p-4">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
-                </div>
-                <div className="ml-3 flex-1 md:flex md:justify-between">
-                  <p className="text-sm text-blue-700">
-                    Vous pouvez jeter les emballages avec les déchets verts ou vos composts.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="my-3 max-w-md text-sm italic text-gray-500 sm:text-base md:my-5 md:max-w-3xl">
-              Les produits de nos partenaires sont en verre ou en papier Kraft (sans matière
-              plastique).
-            </p>
-          </div>
-        </div>
-        <div className="relative  h-64 w-full sm:h-72 md:h-96 lg:rounded-l-3xl shadow-xl lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:h-full lg:w-1/2">
-          <Image
-            className="absolute lg:rounded-l-3xl inset-0 h-full w-full object-cover"
-            src={imgBiodegradable}
-            alt="Emballage biodegradable"
-          />
+    <div className="bg-white">
+      {/* Intro */}
+      <div className="mx-auto py-14 sm:py-28 lg:py-40 max-w-7xl px-4 sm:px-6">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+            <span className="block">Avec ALA redonnons à</span>
+            <span className="block text-primary">Madagascar son poumon vert</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-md text-base text-gray-500 sm:text-lg md:mt-8 md:max-w-3xl md:text-xl">
+            L&apos;association Ala travaille main dans la main avec les{' '}
+            <strong>communautés locales </strong>
+            malgaches afin d&apos;améliorer leur sécurité alimentaire et économique tout en faisant
+            la promotion de <strong>l&apos;agroécologie</strong>. Elle a pour objet également
+            d&apos;agir en faveur de la préservation de l&apos;environnement à Madagascar.
+          </p>
         </div>
       </div>
 
       {/* QUOTE */}
-      <div className="mt-28 bg-gradient-to-r from-teal-500 to-primary pb-16 lg:relative lg:z-10 lg:pb-0">
+      <div className="sm:my-20 my-16 lg:my-32 bg-gradient-to-r from-teal-500 to-primary lg:relative lg:z-10">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
           <div className="relative lg:-my-8">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden" />
@@ -128,7 +93,7 @@ export default function Engagements() {
               </div>
             </div>
           </div>
-          <div className="mt-12 lg:col-span-2 lg:m-0 lg:pl-8">
+          <div className="mt-12 pb-12 lg:pb-0 lg:col-span-2 lg:m-0 lg:pl-8">
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
               <blockquote>
                 <div>
@@ -146,7 +111,7 @@ export default function Engagements() {
                     ces problèmes.
                   </p>
                 </div>
-                <footer className="mt-6">
+                <footer className="my-6">
                   <p className="text-base font-medium text-white">Elliot Rantriamandrato</p>
                   <p className="text-base font-medium text-cyan-100">
                     Président de l&apos;association
@@ -157,10 +122,9 @@ export default function Engagements() {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-gray-50 to-white h-6" />
 
       {/* Feature section with grid */}
-      <div className="relative bg-white py-16 sm:py-24 lg:py-32">
+      <div className="relative pt-10 pb-7 sm:pt-20 sm:pb-14 lg:pt-32 lg:pb-28">
         <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
           <TitleSection center>Les objectifs d&apos;Ala</TitleSection>
           <div className="mt-16">
@@ -186,168 +150,232 @@ export default function Engagements() {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-white to-gray-50 h-11" />
 
       {/* Projects */}
-      <div className="relative bg-gray-50 pt-16 sm:pt-24 lg:pt-32">
-        <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-          <div>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Où vont les 5% de vos achats?
-            </h2>
-            <p className="mx-auto mt-5 max-w-prose text-xl text-gray-500">
-              Terre rouge aide l&apos;association malgache Ala pour ces deux projets. Lorsque vous
-              achetez des épices, 5% du prix d&apos;achat aide à développer et concrétiser ces
-              projets.
-            </p>
+      <div className="my-14 sm:my-28 lg:my-56">
+        <div className="relative">
+          <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+            <div>
+              <TitleSection center>Où vont les 5% de vos achats?</TitleSection>
+              <p className="mx-auto mt-5 max-w-prose text-xl text-gray-500">
+                Terre rouge aide l&apos;association malgache Ala pour ces deux projets. Lorsque vous
+                achetez des épices, 5% du prix d&apos;achat aide à développer et concrétiser ces
+                projets.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="overflow-hidden pt-8 sm:pt-12 lg:relative lg:py-48">
-        <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div className="mt-20">
-            <div className="mt-6 sm:max-w-xl">
-              <TitleSection>Projet LOVAIN-JAFY</TitleSection>
-              <div className="mt-6 space-y-6 text-gray-500">
-                <p className="text-lg">
-                  LOVAIN-JAFY représente la revalorisation des techniques traditionnelles malagasy
-                  et l&apos;introduction de l&apos;agroécologie en faveur de la production des
-                  épices malagasy sur la commune d&apos;Ambohimanga.
-                </p>
-                <p className="text-md font-semibold">Les activités sont:</p>
-                <ul className="list-disc ml-4 text-base leading-7">
-                  <li>Aménagement de parcelles en diguettes en demi lune et plates bandes.</li>
-                  <li>Mises en place de systèmes de rétention des eaux de pluie.</li>
-                  <li>
-                    Transmission de techniques et pratiques pour régénérer et protéger les sols.
-                  </li>
-                  <li>Reboisement avec des espèces aromatiques et fruitières.</li>
-                  <li>Plantation des épices selon les principes de la permaculture.</li>
-                </ul>
+        <div className="overflow-hidden pt-8 sm:pt-12 lg:relative lg:py-48">
+          <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-24 lg:px-8">
+            <div className="mt-20">
+              <div className="mt-6 sm:max-w-xl">
+                <h3 className="text-3xl font-bold tracking-tight text-gray-900">
+                  Projet <span className="text-primary">LOVAIN-JAFY</span>
+                </h3>
+                <div className="mt-6 space-y-6 text-gray-500">
+                  <p className="text-lg">
+                    LOVAIN-JAFY représente la revalorisation des techniques traditionnelles malagasy
+                    et l&apos;introduction de l&apos;agroécologie en faveur de la production des
+                    épices malagasy sur la commune d&apos;Ambohimanga.
+                  </p>
+                  <p className="text-md font-semibold">Les activités sont:</p>
+                  <ul className="list-disc ml-4 text-base leading-7">
+                    <li>Aménagement de parcelles en diguettes en demi lune et plates bandes.</li>
+                    <li>Mises en place de systèmes de rétention des eaux de pluie.</li>
+                    <li>
+                      Transmission de techniques et pratiques pour régénérer et protéger les sols.
+                    </li>
+                    <li>Reboisement avec des espèces aromatiques et fruitières.</li>
+                    <li>Plantation des épices selon les principes de la permaculture.</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
-          <div className="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <div className="hidden sm:block">
-              <div className="absolute inset-y-0 left-1/2 w-screen rounded-l-3xl bg-gray-50 lg:left-80 lg:right-0 lg:w-full" />
-              <svg
-                className="absolute top-8 right-1/2 -mr-3 lg:left-0 lg:m-0"
-                width={404}
-                height={392}
-                fill="none"
-                viewBox="0 0 404 392"
-              >
-                <defs>
-                  <pattern
-                    id="837c3e70-6c3a-44e6-8854-cc48c737b659"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
+          <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
+            <div className="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+              <div className="hidden sm:block">
+                <div className="absolute inset-y-0 left-1/2 w-screen rounded-l-3xl bg-primary-extra-light lg:left-80 lg:right-0 lg:w-full" />
+                <svg
+                  className="absolute top-8 right-1/2 -mr-3 lg:left-0 lg:m-0"
+                  width={404}
+                  height={392}
+                  fill="none"
+                  viewBox="0 0 404 392"
+                >
+                  <defs>
+                    <pattern
+                      id="837c3e70-6c3a-44e6-8854-cc48c737b659"
                       x={0}
                       y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect width={404} height={392} fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)" />
-              </svg>
-            </div>
-            <div className="relative -mr-40 pl-4 sm:mx-auto sm:max-w-3xl sm:px-0 lg:h-full lg:max-w-none lg:pl-12">
-              <Image
-                className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
-                src={imgAlaLovain}
-                alt="Malgache creusant le sol"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="relative my-20">
-        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
-          <div className="relative sm:py-16 lg:py-0">
-            <div
-              aria-hidden="true"
-              className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
-            >
-              <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72" />
-              <svg
-                className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
-                width={404}
-                height={392}
-                fill="none"
-                viewBox="0 0 404 392"
-              >
-                <defs>
-                  <pattern
-                    id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect width={404} height={392} fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
-              </svg>
-            </div>
-            <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
-              {/* Testimonial card*/}
-              <div className="relative overflow-hidden rounded-2xl pt-[600px] pb-10 shadow-xl">
+                      width={20}
+                      height={20}
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <rect
+                        x={0}
+                        y={0}
+                        width={4}
+                        height={4}
+                        className="text-gray-200"
+                        fill="currentColor"
+                      />
+                    </pattern>
+                  </defs>
+                  <rect
+                    width={404}
+                    height={392}
+                    fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
+                  />
+                </svg>
+              </div>
+              <div className="relative -mr-40 pl-4 sm:mx-auto sm:max-w-3xl sm:px-0 lg:h-full lg:max-w-none lg:pl-12">
                 <Image
-                  className="absolute inset-0 h-full w-full object-cover"
-                  src={imgAlaCnc}
+                  className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
+                  src={imgAlaLovain}
                   alt="Malgache creusant le sol"
                 />
               </div>
             </div>
           </div>
-          <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
-            {/* Content area */}
-            <div className="pt-12 sm:pt-16 lg:pt-20">
-              <TitleSection>Reboisement et gestion d&apos;un domaine forestier</TitleSection>
-              <div className="mt-6 space-y-6 text-gray-500">
-                <p className="text-lg">
-                  Il s&apos;agit de mettre en place et d&apos;accompagner une association locale sur
-                  la mise en place d&apos;une plantation agro-forestière et d&apos;un système de
-                  canaux d&apos;irrigation afin de valoriser 10 hectares dans le district
-                  d&apos;Ambohidratrimo. Avec la participation des communautés locales
-                  d&apos;Ambohimanjaka.
-                </p>
-                <p className="text-md font-semibold">TETIKASA ALA met en oeuvre:</p>
-                <ul className="list-disc ml-4 text-base leading-7">
-                  <li>Des études de viabilité de projet de plantation agroforestière.</li>
-                  <li>
-                    Des formations et sensibilisations des communautés locales aux techniques
-                    d&apos;agroécologies.
-                  </li>
-                  <li>Des chantiers de reboisement sur 2,5 hectares.</li>
-                  <li>
-                    Des systèmes d&apos;irrigation et d&apos;adduction d&apos;eau pour les habitants
-                    de la commune.
-                  </li>
-                </ul>
+        </div>
+        <div className="relative my-20">
+          <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
+            <div className="relative sm:py-16 lg:py-0">
+              <div
+                aria-hidden="true"
+                className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
+              >
+                <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-primary-extra-light lg:right-72" />
+                <svg
+                  className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+                  width={404}
+                  height={392}
+                  fill="none"
+                  viewBox="0 0 404 392"
+                >
+                  <defs>
+                    <pattern
+                      id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
+                      x={0}
+                      y={0}
+                      width={20}
+                      height={20}
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <rect
+                        x={0}
+                        y={0}
+                        width={4}
+                        height={4}
+                        className="text-gray-200"
+                        fill="currentColor"
+                      />
+                    </pattern>
+                  </defs>
+                  <rect
+                    width={404}
+                    height={392}
+                    fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
+                  />
+                </svg>
+              </div>
+              <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
+                {/* Testimonial card*/}
+                <div className="relative overflow-hidden rounded-2xl pt-[600px] pb-10 shadow-xl">
+                  <Image
+                    className="absolute inset-0 h-full w-full object-cover"
+                    src={imgAlaCnc}
+                    alt="Malgache creusant le sol"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+              {/* Content area */}
+              <div className="pt-12 sm:pt-16 lg:pt-20">
+                <h3 className="text-3xl font-bold tracking-tight text-gray-900">
+                  Reboisement et gestion{' '}
+                  <span className="text-primary">d&apos;un domaine forestier</span>
+                </h3>
+                <div className="mt-6 space-y-6 text-gray-500">
+                  <p className="text-lg">
+                    Il s&apos;agit de mettre en place et d&apos;accompagner une association locale
+                    sur la mise en place d&apos;une plantation agro-forestière et d&apos;un système
+                    de canaux d&apos;irrigation afin de valoriser 10 hectares dans le district
+                    d&apos;Ambohidratrimo. Avec la participation des communautés locales
+                    d&apos;Ambohimanjaka.
+                  </p>
+                  <p className="text-md font-semibold">TETIKASA ALA met en oeuvre:</p>
+                  <ul className="list-disc ml-4 text-base leading-7">
+                    <li>Des études de viabilité de projet de plantation agroforestière.</li>
+                    <li>
+                      Des formations et sensibilisations des communautés locales aux techniques
+                      d&apos;agroécologies.
+                    </li>
+                    <li>Des chantiers de reboisement sur 2,5 hectares.</li>
+                    <li>
+                      Des systèmes d&apos;irrigation et d&apos;adduction d&apos;eau pour les
+                      habitants de la commune.
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Nos Emballages */}
+      <div className="lg:relative my-14 sm:my-28 lg:my-56">
+        <div className="mx-auto w-full max-w-7xl pt-16 pb-20 lg:py-48 lg:text-left">
+          <div className="px-4 sm:px-8 lg:w-1/2 xl:pr-16">
+            <h1 className="text-center lg:text-left text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+              <span className="block xl:inline">Nos emballages</span>{' '}
+              <span className="block text-primary xl:inline">Terre Rouge</span>
+            </h1>
+            <p className="mx-auto max-w-prose my-3 text-base text-gray-500 sm:text-lg md:my-10">
+              Nos produits sont conditionnés dans des emballages{' '}
+              <span className="font-bold">100%</span> compostables en foyer et biodégradables. Ils
+              sont certifiés selon la norme européenne{' '}
+              <a
+                className="text-primary underline decoration-double font-bold"
+                href="https://docs.european-bioplastics.org/publications/bp/EUBP_BP_En_13432.pdf"
+              >
+                EN 13432
+              </a>
+              .
+              <br />
+              <br />
+              La fermeture à glissière est fabriquée en biomatériaux synthétiques (
+              <span className="font-bold">PLA</span>: d&apos;amidons de maïs ou de betteraves et au
+              bilan carbone neutre).
+            </p>
+            <div className="mx-auto max-w-prose rounded-md bg-blue-50 p-4">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
+                </div>
+                <div className="ml-3 flex-1 md:flex md:justify-between">
+                  <p className="text-sm text-blue-700">
+                    Vous pouvez jeter les emballages avec les déchets verts ou vos composts.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p className="mx-auto max-w-prose my-3 text-base text-gray-500 sm:text-lg md:my-10">
+              Les produits de nos partenaires sont en verre ou en papier Kraft (sans matière
+              plastique).
+            </p>
+          </div>
+        </div>
+        <div className="relative  h-64 w-full sm:h-72 md:h-96 lg:rounded-l-3xl shadow-xl lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:h-full lg:w-1/2">
+          <Image
+            className="absolute lg:rounded-l-3xl inset-0 h-full w-full object-cover"
+            src={imgBiodegradable}
+            alt="Emballage biodegradable"
+          />
         </div>
       </div>
     </div>
