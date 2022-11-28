@@ -204,7 +204,7 @@ export default function Product(props: Props) {
                 <div className="divide-y divide-gray-200 border-t">
                   {metafields.map((metafield) =>
                     metafield.key ? (
-                      <Disclosure as="div" key={metafield.key}>
+                      <Disclosure as="div" defaultOpen={true} key={metafield.key}>
                         {({ open }) => (
                           <>
                             <h3>

@@ -5,8 +5,8 @@
 @layer base {
   a,
   button {
-    @apply outline-none;
-    @apply focus:ring;
+    @apply outline-primary;
+    @apply outline-offset-4;
   }
 }
 

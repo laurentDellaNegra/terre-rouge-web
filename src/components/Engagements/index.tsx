@@ -365,7 +365,7 @@ export default function Engagements() {
               </div>
             </div>
             <p className="mx-auto max-w-prose my-3 text-base text-gray-500 sm:text-lg md:my-10">
-              Les produits de nos partenaires sont en verre ou en papier Kraft (sans matière
+              Les produits de nos partenaires sont en verre ou en papier Kraft (95% sans matière
               plastique).
             </p>
           </div>

@@ -10,9 +10,9 @@ export default function FilterAside() {
       <form className="hidden lg:block" onSubmit={(e) => e.preventDefault()}>
         <h3 className="sr-only">Categories</h3>
 
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <ClearFilterButton />
-        </div>
+        </div> */}
 
         <div className="border-b border-gray-200">
           <CategoryList />

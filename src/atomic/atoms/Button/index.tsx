@@ -17,9 +17,7 @@ export default function Button(props: ActionButtonLinkProps) {
       aria-disabled={disabled}
       onClick={onClick}
       className={clsx(
-        active
-          ? 'bg-primary-extra-light text-primary'
-          : 'bg-white hover:bg-primary hover:text-white',
+        active ? 'border-primary ring-1' : 'bg-white hover:bg-primary-extra-light',
         disabled && 'cursor-not-allowed',
         'inline-flex h-10 items-center rounded-md border border-gray-300 px-4 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-25 focus:ring-offset-1 focus:ring-offset-primary',
         className
