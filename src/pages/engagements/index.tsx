@@ -6,9 +6,7 @@ import { InstantSearch } from 'react-instantsearch-hooks-web'
 
 import Engagements from '@/components/Engagements'
 import Layout from '@/components/Layout'
-import ProductComponent from '@/components/Product'
 import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
-import getAllProductsWithSlug from '@/lib/getAllProductsWithSlug'
 import getShopPageForProduct from '@/lib/getShopPageForProduct'
 import { getTrustpilotReviews } from '@/lib/trustpilot'
 
