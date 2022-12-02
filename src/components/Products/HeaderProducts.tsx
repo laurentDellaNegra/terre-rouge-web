@@ -25,7 +25,7 @@ export default function HeaderProducts(props: Props) {
     <>
       <div className="py-24 px-4 text-center sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-          Tous nos <Stats />
+          Nos <Stats />
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base text-gray-500">
           Tous les produits disponibles dans notre boutique et n&apos;oubliez pas la livraison est

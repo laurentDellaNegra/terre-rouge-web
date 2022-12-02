@@ -17,60 +17,64 @@ export const GetShopPageForHome = graphql(`
         handle
       }
     }
-    products(
-      first: 100
-      query: "product_type:vanille OR product_type:epice OR product_type:coffret"
-    ) {
-      edges {
-        node {
-          id
-          handle
-          title
-          productType
-          tags
-          priceRange {
-            maxVariantPrice {
-              amount
-              currencyCode
-            }
-            minVariantPrice {
-              amount
-              currencyCode
-            }
-          }
-          images(first: 100) {
-            edges {
-              node {
-                altText
-                originalSrc
-                transformedSrc(maxHeight: $maxHeight, maxWidth: $maxWidth, crop: CENTER, scale: 3)
+    collection(handle: "frontpage") {
+      products(first: 4) {
+        edges {
+          node {
+            id
+            handle
+            title
+            productType
+            tags
+            priceRange {
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+              minVariantPrice {
+                amount
+                currencyCode
               }
             }
-          }
-          variants(first: 10) {
-            edges {
-              node {
-                id
-                title
-                availableForSale
-                weight
-                weightUnit
-                priceV2 {
-                  amount
-                  currencyCode
-                }
-                compareAtPriceV2 {
-                  amount
-                  currencyCode
-                }
-                selectedOptions {
-                  name
-                  value
-                }
-                image {
+            images(first: 100) {
+              edges {
+                node {
                   altText
                   originalSrc
                   transformedSrc(maxHeight: $maxHeight, maxWidth: $maxWidth, crop: CENTER, scale: 3)
+                }
+              }
+            }
+            variants(first: 10) {
+              edges {
+                node {
+                  id
+                  title
+                  availableForSale
+                  weight
+                  weightUnit
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
+                  compareAtPriceV2 {
+                    amount
+                    currencyCode
+                  }
+                  selectedOptions {
+                    name
+                    value
+                  }
+                  image {
+                    altText
+                    originalSrc
+                    transformedSrc(
+                      maxHeight: $maxHeight
+                      maxWidth: $maxWidth
+                      crop: CENTER
+                      scale: 3
+                    )
+                  }
                 }
               }
             }

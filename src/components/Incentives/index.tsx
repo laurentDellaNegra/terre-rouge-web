@@ -61,7 +61,7 @@ const incentives = [
         <TruckIcon className="h-8 w-8 text-primary" />
       </div>
     ),
-    description: 'Gratuite à partir de 30€, expédié par colisimo en 24H et livré en 48h !',
+    description: 'Gratuite à partir de 50€, expédié par colisimo en 24H et livré en 48h !',
   },
   {
     name: 'Sécurité',
