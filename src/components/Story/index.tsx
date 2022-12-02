@@ -1,3 +1,4 @@
+import { Disclosure, Transition } from '@headlessui/react'
 import Image from 'next/image'
 
 import P from '@/atomic/atoms/P'
@@ -23,22 +24,45 @@ export default function Story() {
               phare malagasy: le raphia. Notre raphia est travaillé à la main afin de garantir une
               meilleure qualité.
             </P>{' '}
-            <P>
-              Faire parvenir ces épices nous amène à un choix du respect de l&apos;environnement, à
-              travers nos emballages parfaitement compostables, biodégradables et bioressources.
-            </P>
-            <P>
-              Nos partenaires partagent les mêmes valeurs que nous, ils mettent en place des
-              contenants en verre, en kraft et en raphia , sans matière plastique.
-            </P>
-            <P>
-              Nous participons également à la reforestation de Madagascar en aidant
-              l&apos;association ALA à restaurer le poumon vert de Madagascar.
-            </P>
-            <P>
-              Nous travaillons avec des entrepreneurs et entreprises malagasy afin de favoriser
-              l&apos;emploi à Madagascar.
-            </P>
+            <Disclosure>
+              {({ open }) => (
+                <>
+                  {!open && (
+                    <Disclosure.Button className="py-2 font-semibold text-primary hover:text-primary-light">
+                      Lire la suite
+                    </Disclosure.Button>
+                  )}
+                  <Transition
+                    enter="transition duration-100 ease-out"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leave="transition duration-75 ease-out"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
+                  >
+                    <Disclosure.Panel>
+                      <P>
+                        Faire parvenir ces épices nous amène à un choix du respect de
+                        l&apos;environnement, à travers nos emballages parfaitement compostables,
+                        biodégradables et bioressources.
+                      </P>
+                      <P>
+                        Nos partenaires partagent les mêmes valeurs que nous, ils mettent en place
+                        des contenants en verre, en kraft et en raphia , sans matière plastique.
+                      </P>
+                      <P>
+                        Nous participons également à la reforestation de Madagascar en aidant
+                        l&apos;association ALA à restaurer le poumon vert de Madagascar.
+                      </P>
+                      <P>
+                        Nous travaillons avec des entrepreneurs et entreprises malagasy afin de
+                        favoriser l&apos;emploi à Madagascar.
+                      </P>
+                    </Disclosure.Panel>
+                  </Transition>
+                </>
+              )}
+            </Disclosure>
           </div>
           <div className="w-full flex-auto text-center lg:w-1/2">
             <Image
