@@ -23,7 +23,7 @@ export default function HeaderProducts(props: Props) {
 
   const { items } = useCurrentRefinements()
   const nbFilterText =
-    items.length > 0 ? `${items.length} Filtre${items.length > 1 ? 's' : ''}` : 'Filtrer'
+    items.length > 0 ? `${items.length} Filtre${items.length > 1 ? 's' : ''}` : ''
   return (
     <>
       <div className="py-24 px-4 text-center sm:px-6 lg:px-8">
@@ -51,7 +51,7 @@ export default function HeaderProducts(props: Props) {
                   className="mr-2 h-5 w-5 flex-none text-gray-400 group-hover:text-gray-500"
                   aria-hidden="true"
                 />
-                {nbFilterText}
+                {nbFilterText || 'Filtrer'}
               </button>
               {canRefine && (
                 <div className="pl-4 border-l border-gray-200">
