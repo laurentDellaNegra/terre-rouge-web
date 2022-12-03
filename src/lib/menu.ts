@@ -51,6 +51,5 @@ export const getMenuCollections = (collections: Array<CollectionEdge>) => {
     const element = collectionsRaw[index]
     element.categories = [...new Map(element.categories.map((c) => [c.name, c])).values()]
   }
-  console.log(collectionsRaw)
   return collectionsRaw
 }
