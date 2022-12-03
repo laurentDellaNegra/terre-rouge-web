@@ -8,14 +8,17 @@ import Layout from '@/components/Layout'
 import ProductComponent from '@/components/Product'
 import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
 import getAllProductsWithSlug from '@/lib/getAllProductsWithSlug'
-import getShopPageForProduct, { GET_PRODUCT_QUERY_KEY } from '@/lib/getProduct'
+import { GET_PRODUCT_QUERY_KEY, getProduct } from '@/lib/getProduct'
 import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
 import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Product() {
   const router = useRouter()
   const { slug } = router.query
-  const { data: product } = useQuery(['shopProduct', slug], getShopPageForProduct)
+  const { data } = useQuery([GET_PRODUCT_QUERY_KEY, slug], getProduct)
+  if (!data) return null
+  const { productByHandle: product } = data
+  if (!product) return null
   return (
     <>
       <Head>
@@ -27,10 +30,10 @@ export default function Product() {
           crumb={[
             { title: 'Accueil', route: '/' },
             { title: 'Produits', route: '/produits' },
-            { title: product?.productByHandle?.title },
+            { title: product.title },
           ]}
         >
-          {product && <ProductComponent product={product} />}
+          {product && <ProductComponent productQuery={data} />}
         </Layout>
       </InstantSearch>
     </>
@@ -40,10 +43,7 @@ export default function Product() {
 export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery([GET_SHOP_QUERY_KEY], getShop)
-  await queryClient.prefetchQuery(
-    [GET_PRODUCT_QUERY_KEY, context.params?.slug],
-    getShopPageForProduct
-  )
+  await queryClient.prefetchQuery([GET_PRODUCT_QUERY_KEY, context.params?.slug], getProduct)
   await queryClient.prefetchQuery([TRUSTPILOT_QUERY_KEY], getTrustpilotReviews)
   return {
     props: {

@@ -1,44 +1,48 @@
 import { Disclosure, Tab } from '@headlessui/react'
-import { MinusIcon, PlusIcon, ShieldCheckIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { MinusIcon, PlusIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import Image from 'next/image'
 
 import { price } from '@/lib/price'
-import { GetShopPageForProductQuery } from '@/types/gql/graphql'
-
-interface Props {
-  product: GetShopPageForProductQuery
-}
+import { GetProductQuery } from '@/types/gql/graphql'
 
 const UNIT_STRING: any = {
   KILOGRAMS: 'kg',
   GRAMS: 'g',
 }
 
+interface Props {
+  productQuery: GetProductQuery
+}
+
 export default function Product(props: Props) {
-  const { product } = props
+  const { productQuery } = props
+  if (!productQuery) return null
+  const { productByHandle: product } = productQuery
+  if (!product) return null
   //TMP: Format metafields
   const metafields = [
     {
-      ...product.productByHandle?.application,
+      ...product.application,
       list:
-        product.productByHandle?.application?.value.indexOf('*') !== -1
-          ? product.productByHandle?.application?.value.split('*').map((value) => value.trim())
+        product.application?.value.indexOf('*') !== -1
+          ? product.application?.value.split('*').map((value) => value.trim())
           : null,
       name: 'Utilisation',
     },
     {
-      ...product.productByHandle?.benefits,
+      ...product.benefits,
       list:
-        product.productByHandle?.benefits?.value.indexOf('*') !== -1
-          ? product.productByHandle?.benefits?.value.split('*').map((value) => value.trim())
+        product.benefits?.value.indexOf('*') !== -1
+          ? product.benefits?.value.split('*').map((value) => value.trim())
           : null,
       name: 'Bienfaits',
     },
     {
-      ...product.productByHandle?.composition,
+      ...product.composition,
       list:
-        product.productByHandle?.composition?.value.indexOf('*') !== -1
-          ? product.productByHandle?.composition?.value.split('*').map((value) => value.trim())
+        product.composition?.value.indexOf('*') !== -1
+          ? product.composition?.value.split('*').map((value) => value.trim())
           : null,
       name: 'Composition',
     },
@@ -54,21 +58,18 @@ export default function Product(props: Props) {
               {/* Image selector */}
               <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                 <Tab.List className="grid grid-cols-4 gap-6">
-                  {product.productByHandle?.images.edges.map((image, index) => (
+                  {product.images.edges.map((image, index) => (
                     <Tab
                       key={index}
                       className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
                     >
                       {({ selected }) => (
                         <>
-                          <span className="sr-only">
-                            {' '}
-                            {image.node.altText || product.productByHandle?.title}{' '}
-                          </span>
+                          <span className="sr-only"> {image.node.altText || product.title} </span>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <img
+                            <Image
                               src={image.node.transformedSrc}
-                              alt={image.node.altText || product.productByHandle?.title}
+                              alt={image.node.altText || product.title}
                               className="h-full w-full object-cover object-center"
                             />
                           </span>
@@ -87,11 +88,11 @@ export default function Product(props: Props) {
               </div>
 
               <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
-                {product.productByHandle?.images.edges.map((image, index) => (
+                {product.images.edges.map((image, index) => (
                   <Tab.Panel key={index} className="focus:outline-none focus:ring">
-                    <img
+                    <Image
                       src={image.node.transformedSrc}
-                      alt={image.node.altText || product.productByHandle?.title}
+                      alt={image.node.altText || product.title}
                       className="h-full w-full object-cover object-center sm:rounded-lg"
                     />
                   </Tab.Panel>
@@ -102,26 +103,21 @@ export default function Product(props: Props) {
 
           {/* Product info */}
           <div className="col-span-5 mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              {product.productByHandle?.title}
-            </h1>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.title}</h1>
 
             {/* Price / weight */}
             <div className="mt-3 flex gap-4">
               <p className="text-3xl tracking-tight text-gray-900">
                 {price(
-                  product.productByHandle?.variants.edges[0].node.priceV2.amount,
-                  product.productByHandle?.variants.edges[0].node.priceV2.currencyCode
+                  product.variants.edges[0].node.priceV2.amount,
+                  product.variants.edges[0].node.priceV2.currencyCode
                 )}
               </p>
-              {product.productByHandle &&
-              product.productByHandle.variants.edges[0].node.weight &&
-              product.productByHandle.variants.edges[0].node.weightUnit ? (
+              {product.variants.edges[0].node.weight &&
+              product.variants.edges[0].node.weightUnit ? (
                 <p className="text-gray-600 bg-gray-200 rounded px-2 flex items-center">
-                  <span>{product.productByHandle?.variants.edges[0].node.weight}</span>
-                  <span>
-                    {UNIT_STRING[product.productByHandle?.variants.edges[0].node.weightUnit]}
-                  </span>
+                  <span>{product.variants.edges[0].node.weight}</span>
+                  <span>{UNIT_STRING[product.variants.edges[0].node.weightUnit]}</span>
                 </p>
               ) : null}
             </div>
@@ -129,7 +125,7 @@ export default function Product(props: Props) {
             {/* Available */}
             <div className="mt-3">
               <h3 className="sr-only">Disponibilité</h3>
-              {product.productByHandle?.variants.edges[0].node.availableForSale ? (
+              {product.variants.edges[0].node.availableForSale ? (
                 <span className="bg-primary-extra-light text-primary py-1 px-3 rounded-full">
                   En stock
                 </span>
@@ -145,7 +141,7 @@ export default function Product(props: Props) {
               <h3 className="sr-only">Description</h3>
               <div
                 className="prose prose-sm space-y-6 text-base text-gray-700"
-                dangerouslySetInnerHTML={{ __html: product.productByHandle?.descriptionHtml }}
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
               />
             </div>
 
@@ -172,9 +168,9 @@ export default function Product(props: Props) {
               </div>
               <button
                 type="submit"
-                disabled={!product.productByHandle?.variants.edges[0].node.availableForSale}
+                disabled={!product.variants.edges[0].node.availableForSale}
                 className={clsx(
-                  product.productByHandle?.variants.edges[0].node.availableForSale
+                  product.variants.edges[0].node.availableForSale
                     ? 'bg-primary text-white hover:bg-primary-dark'
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full'
