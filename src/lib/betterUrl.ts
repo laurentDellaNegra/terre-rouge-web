@@ -65,23 +65,25 @@ export const routingLegacy = (url: string) => ({
   }),
 })
 
-export const routing = {
+export const routing = (collection: string) => ({
   router: history({
     getLocation: () => window.location,
 
     windowTitle({ category, query }) {
-      const queryTitle = query ? `Results for "${query}"` : 'Search'
+      const queryTitle = query ? `Resultas pour "${query}"` : 'Recherche'
 
       if (category) {
-        return `${category} – ${queryTitle}`
+        return `${category} - ${queryTitle}`
       }
 
       return queryTitle
     },
 
     createURL({ qsModule, routeState, location }) {
-      const urlParts = location.href.match(/^(.*?)\/produits/)
+      const urlParts = location.href.match(/^(.*?)\/(produits|epices|condiments|arts-de-table)/)
       if (!urlParts) return location.href
+      console.log('location.href', location.href)
+      console.log('urlParts', urlParts)
       const baseUrl = `${urlParts ? urlParts[1] : ''}/`
 
       const queryParameters: any = {}
@@ -110,7 +112,7 @@ export const routing = {
         addQueryPrefix: true,
         arrayFormat: 'repeat',
       })
-      return `${baseUrl}products${queryString}`
+      return `${baseUrl}${collection}${queryString}`
     },
 
     parseURL({ qsModule, location }): any {
@@ -168,4 +170,4 @@ export const routing = {
       }
     },
   },
-}
+})

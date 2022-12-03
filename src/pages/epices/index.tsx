@@ -45,7 +45,7 @@ function InstantSearchSSRProviderWrapper({ serverState, children }: any) {
       </InstantSearch>
     </InstantSearchSSRProvider>
   ) : (
-    <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={routing}>
+    <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={routing('epices')}>
       {children}
     </InstantSearch>
   )
