@@ -1,9 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useQuery } from '@tanstack/react-query'
+import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
+import { useMenu } from 'react-instantsearch-hooks-web'
 
 import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
 import { getMenuCollections } from '@/lib/menu'
@@ -16,6 +18,11 @@ interface MobileMenuProps {
 export default function MobileMenu(props: MobileMenuProps) {
   const { open = false, onClose = () => {} } = props
   const router = useRouter()
+  const { refine, items, createURL } = useMenu({
+    attribute: 'category',
+    limit: 50,
+    sortBy: ['name'],
+  })
   const { data } = useQuery([GET_SHOP_QUERY_KEY], getShop)
   if (!data) return null
   const { collections } = data
@@ -23,7 +30,10 @@ export default function MobileMenu(props: MobileMenuProps) {
     collections: getMenuCollections(collections.edges as Array<CollectionEdge>),
     pages: [{ name: 'Engagements', href: '/engagements' }],
   }
-
+  console.log('router', router)
+  console.log('items', items)
+  console.log('link', navigation.collections[0].categories[0].name)
+  console.log('createURL', createURL(navigation.collections[0].name))
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-50 lg:hidden" onClose={onClose}>
@@ -63,7 +73,7 @@ export default function MobileMenu(props: MobileMenuProps) {
 
               {/* Links */}
               {navigation.collections.map((collection, collectionIdx) => (
-                <div key={collection.name} className="space-y-12 px-4 pt-10 pb-6">
+                <div key={collection.name} className="space-y-6 px-4 pt-5 pb-6">
                   <p id={`mobile-collection-heading-${collectionIdx}`} className="flow-root">
                     <Link
                       href={collection.href}
@@ -75,13 +85,24 @@ export default function MobileMenu(props: MobileMenuProps) {
                   <ul
                     role="list"
                     aria-labelledby="mobile-collection-heading"
-                    className="mt-6 space-y-6"
+                    className="mt-3 space-y-3"
                   >
                     {collection.categories.map((item) => (
                       <li key={item.name} className="flex">
-                        <Link href={item.href} className="text-gray-500">
-                          {item.name}
-                        </Link>
+                        {router.pathname === collection.href ? (
+                          <button
+                            onClick={() => refine(item.name)}
+                            className={clsx(
+                              false ? 'text-primary' : 'text-gray-500 hover:text-gray-700'
+                            )}
+                          >
+                            {item.name}
+                          </button>
+                        ) : (
+                          <Link href={item.href} className="text-gray-500">
+                            {item.name}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
