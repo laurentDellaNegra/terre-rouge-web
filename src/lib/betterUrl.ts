@@ -82,8 +82,6 @@ export const routing = (collection: string) => ({
     createURL({ qsModule, routeState, location }) {
       const urlParts = location.href.match(/^(.*?)\/(produits|epices|condiments|arts-de-table)/)
       if (!urlParts) return location.href
-      console.log('location.href', location.href)
-      console.log('urlParts', urlParts)
       const baseUrl = `${urlParts ? urlParts[1] : ''}/`
 
       const queryParameters: any = {}

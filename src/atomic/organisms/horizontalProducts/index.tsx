@@ -10,7 +10,6 @@ import { CurrencyCode } from '@/types/gql/graphql'
 
 export default function HorizontalProducts() {
   const { data } = useQuery(['shopHome'], getShopPageForHome)
-  console.log('shopHome', data?.collection?.products)
   const products = data?.collection?.products
   if (!products) return null
   return (

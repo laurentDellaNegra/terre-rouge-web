@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useMenu } from 'react-instantsearch-hooks-web'
 
 export default function CategoryList() {
-  const { items, refine } = useMenu({ attribute: 'category', limit: 50 })
+  const { items, refine } = useMenu({ attribute: 'category', limit: 50, sortBy: ['name'] })
 
   // const noMenuSelected = items.every((category) => category.isRefined === false)
 

@@ -6,6 +6,7 @@ export function TagsAccordion() {
   const { items, refine } = useRefinementList({
     attribute: 'tags',
     limit: 1000,
+    sortBy: ['name'],
   })
   return items.length > 0 ? (
     <Disclosure as="div" className="py-6">
