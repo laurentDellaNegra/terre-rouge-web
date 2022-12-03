@@ -18,7 +18,7 @@ interface MobileMenuProps {
 export default function MobileMenu(props: MobileMenuProps) {
   const { open = false, onClose = () => {} } = props
   const router = useRouter()
-  const { refine, items, createURL } = useMenu({
+  const { refine } = useMenu({
     attribute: 'category',
     limit: 50,
     sortBy: ['name'],
@@ -30,10 +30,6 @@ export default function MobileMenu(props: MobileMenuProps) {
     collections: getMenuCollections(collections.edges as Array<CollectionEdge>),
     pages: [{ name: 'Engagements', href: '/engagements' }],
   }
-  console.log('router', router)
-  console.log('items', items)
-  console.log('link', navigation.collections[0].categories[0].name)
-  console.log('createURL', createURL(navigation.collections[0].name))
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-50 lg:hidden" onClose={onClose}>
