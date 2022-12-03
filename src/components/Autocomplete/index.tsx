@@ -23,7 +23,7 @@ export function Autocomplete() {
   const rootRef: any = useRef(null)
   const router = useRouter()
   const { openSearchPalette, toggleSearch } = useUIState()
-  const isOnSamePage = router.pathname === '/products'
+  const isOnSamePage = router.pathname === '/produits'
 
   const { query, refine: setQuery } = useSearchBox()
 
@@ -55,7 +55,7 @@ export function Autocomplete() {
           if (isOnSamePage) {
             setInstantSearchUiState({ query: item.label })
           } else {
-            router.push('/products?query=' + getQueryToUrl(item.label))
+            router.push('/produits?query=' + getQueryToUrl(item.label))
           }
           toggleSearch()
         },
@@ -78,7 +78,7 @@ export function Autocomplete() {
           if (isOnSamePage) {
             setInstantSearchUiState({ query: item.query })
           } else {
-            router.push('/products?query=' + getQueryToUrl(item.query))
+            router.push('/produits?query=' + getQueryToUrl(item.query))
           }
           toggleSearch()
         },
@@ -128,7 +128,7 @@ export function Autocomplete() {
         if (isOnSamePage) {
           setInstantSearchUiState({ query: state.query })
         } else {
-          router.push('/products?query=' + getQueryToUrl(state.query))
+          router.push('/produits?query=' + getQueryToUrl(state.query))
         }
         toggleSearch()
       },

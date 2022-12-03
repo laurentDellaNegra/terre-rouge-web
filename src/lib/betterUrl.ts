@@ -80,7 +80,7 @@ export const routing = {
     },
 
     createURL({ qsModule, routeState, location }) {
-      const urlParts = location.href.match(/^(.*?)\/products/)
+      const urlParts = location.href.match(/^(.*?)\/produits/)
       if (!urlParts) return location.href
       const baseUrl = `${urlParts ? urlParts[1] : ''}/`
 

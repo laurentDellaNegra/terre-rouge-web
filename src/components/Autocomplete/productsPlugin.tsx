@@ -43,7 +43,7 @@ export const productsPlugin = {
           header() {
             return (
               <Fragment>
-                <span className="aa-SourceHeaderTitle">Products</span>
+                <span className="aa-SourceHeaderTitle">Produits</span>
                 <div className="aa-SourceHeaderLine" />
               </Fragment>
             )
@@ -52,7 +52,7 @@ export const productsPlugin = {
             return <ProductItem hit={item} components={components} />
           },
           noResults() {
-            return 'No products for this query.'
+            return 'Pas de résultats pour cette requête.'
           },
         },
       },
@@ -67,7 +67,7 @@ type ProductItemProps = {
 
 function ProductItem({ hit, components }: ProductItemProps) {
   return (
-    <Link href={`/product/${hit.handle}`} className="aa-ItemLink">
+    <Link href={`/produit/${hit.handle}`} className="aa-ItemLink">
       <div className="aa-ItemContent">
         <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop !border-gray-200 rounded-md">
           {hit.image ? (

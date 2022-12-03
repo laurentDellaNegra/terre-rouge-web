@@ -25,7 +25,7 @@ export default function Product() {
         <Layout
           crumb={[
             { title: 'Accueil', route: '/' },
-            { title: 'Produits', route: '/products' },
+            { title: 'Produits', route: '/produits' },
             { title: product?.productByHandle?.title },
           ]}
         >
@@ -52,7 +52,7 @@ export async function getStaticPaths() {
   const allProducts = await getAllProductsWithSlug()
   // console.log('allProducts', allProducts)
   return {
-    paths: allProducts.products.edges.map(({ node }: any) => `/product/${node.handle}`),
+    paths: allProducts.products.edges.map(({ node }: any) => `/produit/${node.handle}`),
     fallback: false,
   }
 }

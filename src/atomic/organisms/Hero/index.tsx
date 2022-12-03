@@ -51,7 +51,7 @@ export default function Hero() {
             Terre rouge propose des épices de Madagascar. Riche de sa biodiversité, nous vous
             proposons les meilleures épices que l&apos;île puisse offrir
           </SubTitle>
-          <ButtonLink size="large" href="/products" className="mt-8 sm:mt-6">
+          <ButtonLink size="large" href="/produits" className="mt-8 sm:mt-6">
             Voir nos produits
           </ButtonLink>
         </div>

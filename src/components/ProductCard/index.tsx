@@ -17,7 +17,7 @@ export default function ProductCard(props: Props) {
     position,
   } = props
   return (
-    <Link href={`/product/${handle}`} className="group text-sm">
+    <Link href={`/produit/${handle}`} className="group text-sm">
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
         {image ? (
           <Image
