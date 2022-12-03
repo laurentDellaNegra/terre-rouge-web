@@ -51,12 +51,6 @@ const features = [
     icon: BoltIcon,
   },
 ]
-const stats = [
-  { label: 'Founded', value: '2021' },
-  { label: 'Employees', value: '5' },
-  { label: 'Beta Users', value: '521' },
-  { label: 'Raised', value: '$25M' },
-]
 
 export default function Engagements() {
   return (
@@ -152,7 +146,7 @@ export default function Engagements() {
       </div>
 
       {/* Projects */}
-      <div className="my-14 sm:my-28 lg:my-56">
+      <div className="bg-gray-50 py-14 sm:py-28 lg:py-56">
         <div className="relative">
           <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
             <div>
