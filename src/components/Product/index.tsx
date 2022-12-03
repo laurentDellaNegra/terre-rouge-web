@@ -68,9 +68,11 @@ export default function Product(props: Props) {
                           <span className="sr-only"> {image.node.altText || product.title} </span>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
                             <Image
-                              src={image.node.transformedSrc}
+                              src={image.node.originalSrc}
                               alt={image.node.altText || product.title}
                               className="h-full w-full object-cover object-center"
+                              fill
+                              sizes="100vw"
                             />
                           </span>
                           <span
@@ -91,9 +93,11 @@ export default function Product(props: Props) {
                 {product.images.edges.map((image, index) => (
                   <Tab.Panel key={index} className="focus:outline-none focus:ring">
                     <Image
-                      src={image.node.transformedSrc}
+                      src={image.node.originalSrc}
                       alt={image.node.altText || product.title}
                       className="h-full w-full object-cover object-center sm:rounded-lg"
+                      fill
+                      sizes="100vw"
                     />
                   </Tab.Panel>
                 ))}

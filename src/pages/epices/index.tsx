@@ -23,7 +23,7 @@ export default function Products({ serverState }: any) {
       <InstantSearchSSRProviderWrapper serverState={serverState}>
         <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Épices' }]}>
           <Configure
-            filters="collections: epice"
+            filters="collections: epices"
             hitsPerPage={50}
             analyticsTags={['browse', 'epices']}
           />
@@ -55,7 +55,7 @@ function ProductsBodySSR() {
     <InstantSearchSSRProvider>
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={false}>
         <Configure
-          filters="collections: epice"
+          filters="collections: epices"
           hitsPerPage={50}
           analyticsTags={['browse', 'epices']}
         />
