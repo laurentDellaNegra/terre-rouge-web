@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import { Autocomplete } from '@/components/Autocomplete'
 import useUIState from '@/context/UIState/useUIState'
-import { MENU } from '@/lib/menu'
+import { MENU_ROOT } from '@/lib/menu'
 import largeLogo from '@/public/logos/large-terre-rouge.webp'
 import smallLogo from '@/public/logos/small-terre-rouge.svg'
 
@@ -38,7 +38,7 @@ export default function Header(props: HeaderProps) {
               <div className="hidden h-full lg:flex">
                 {/* <FlyoutMenu /> */}
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  {MENU.map((menuItem) => (
+                  {MENU_ROOT.map((menuItem) => (
                     <Link
                       key={menuItem.href}
                       href={menuItem.href}

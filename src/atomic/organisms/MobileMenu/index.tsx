@@ -1,47 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import clsx from 'clsx'
+import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 
-import { MENU } from '@/lib/menu'
-
-const navigation = {
-  collections: [
-    {
-      name: 'Épices',
-      href: '#',
-      categories: [
-        { name: 'Sleep', href: '#' },
-        { name: 'Swimwear', href: '#' },
-        { name: 'Underwear', href: '#' },
-      ],
-    },
-    {
-      name: 'Comdiments',
-      href: '#',
-      categories: [
-        { name: 'Everything', href: '#' },
-        { name: 'Core', href: '#' },
-        { name: 'New Arrivals', href: '#' },
-        { name: 'Sale', href: '#' },
-      ],
-    },
-    {
-      name: 'Arts de table',
-      href: '#',
-      categories: [
-        { name: 'Basic Tees', href: '#' },
-        { name: 'Artwork Tees', href: '#' },
-        { name: 'Bottoms', href: '#' },
-        { name: 'Underwear', href: '#' },
-        { name: 'Accessories', href: '#' },
-      ],
-    },
-  ],
-  pages: [{ name: 'Engagements', href: '#' }],
-}
+import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
+import { getMenuCollections } from '@/lib/menu'
+import { CollectionEdge } from '@/types/gql/graphql'
 
 interface MobileMenuProps {
   open?: boolean
@@ -50,6 +16,14 @@ interface MobileMenuProps {
 export default function MobileMenu(props: MobileMenuProps) {
   const { open = false, onClose = () => {} } = props
   const router = useRouter()
+  const { data } = useQuery([GET_SHOP_QUERY_KEY], getShop)
+  if (!data) return null
+  const { collections } = data
+  const navigation = {
+    collections: getMenuCollections(collections.edges as Array<CollectionEdge>),
+    pages: [{ name: 'Engagements', href: '/engagements' }],
+  }
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-50 lg:hidden" onClose={onClose}>
@@ -88,33 +62,33 @@ export default function MobileMenu(props: MobileMenuProps) {
               </div>
 
               {/* Links */}
-              <div className="border-b border-gray-200">
-                {navigation.collections.map((collection, collectionIdx) => (
-                  <div key={collection.name} className="space-y-12 px-4 pt-10 pb-6">
-                    <p id={`mobile-collection-heading-${collectionIdx}`} className="flow-root">
-                      <Link
-                        href={collection.href}
-                        className="-m-2 block p-2 font-medium text-gray-900"
-                      >
-                        {collection.name}
-                      </Link>
-                    </p>
-                    <ul
-                      role="list"
-                      aria-labelledby="mobile-collection-heading"
-                      className="mt-6 space-y-6"
+              {navigation.collections.map((collection, collectionIdx) => (
+                <div key={collection.name} className="space-y-12 px-4 pt-10 pb-6">
+                  <p id={`mobile-collection-heading-${collectionIdx}`} className="flow-root">
+                    <Link
+                      href={collection.href}
+                      className="-m-2 block p-2 font-medium text-gray-900"
                     >
-                      {collection.categories.map((item) => (
-                        <li key={item.name} className="flex">
-                          <Link href={item.href} className="text-gray-500">
-                            {item.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+                      {collection.name}
+                    </Link>
+                  </p>
+                  <ul
+                    role="list"
+                    aria-labelledby="mobile-collection-heading"
+                    className="mt-6 space-y-6"
+                  >
+                    {collection.categories.map((item) => (
+                      <li key={item.name} className="flex">
+                        <Link href={item.href} className="text-gray-500">
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              {/* Pages */}
               <div className="space-y-6 border-t border-gray-200 py-6 px-4">
                 {navigation.pages.map((page) => (
                   <div key={page.name} className="flow-root">

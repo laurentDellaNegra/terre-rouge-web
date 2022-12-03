@@ -1,5 +1,4 @@
 import { QueryClient, dehydrate } from '@tanstack/react-query'
-import algoliasearch from 'algoliasearch/lite'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
@@ -11,8 +10,8 @@ import Layout from '@/components/Layout'
 import ProductsComponent from '@/components/Products'
 import { routing } from '@/lib/betterUrl'
 import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
-import getShopPageForProducts from '@/lib/getShopPageForProducts'
-import { getTrustpilotReviews } from '@/lib/trustpilot'
+import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
+import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Products({ serverState }: any) {
   return (
@@ -72,9 +71,8 @@ function ProductsBodySSR() {
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery(['shopProducts'], getShopPageForProducts)
-  await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
+  await queryClient.prefetchQuery([GET_SHOP_QUERY_KEY], getShop)
+  await queryClient.prefetchQuery([TRUSTPILOT_QUERY_KEY], getTrustpilotReviews)
   const serverState = await getServerState(<ProductsBodySSR />, { renderToString })
   return {
     props: {

@@ -4,12 +4,12 @@ import Link from 'next/link'
 
 import TextLink from '@/atomic/atoms/TextLink'
 import TitleSection from '@/atomic/atoms/TitleSection'
-import getShopPageForHome from '@/lib/getShopPageForHome'
+import { GET_HOME_PAGE_PRODUCTS_QUERY_KEY, getOurSelection } from '@/lib/getOurSelection'
 import { price } from '@/lib/price'
 import { CurrencyCode } from '@/types/gql/graphql'
 
 export default function HorizontalProducts() {
-  const { data } = useQuery(['shopHome'], getShopPageForHome)
+  const { data } = useQuery([GET_HOME_PAGE_PRODUCTS_QUERY_KEY], getOurSelection)
   const products = data?.collection?.products
   if (!products) return null
   return (

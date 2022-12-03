@@ -1,4 +1,4 @@
-import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query'
+import { QueryClient, dehydrate } from '@tanstack/react-query'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { InstantSearch } from 'react-instantsearch-hooks-web'
@@ -10,17 +10,12 @@ import Layout from '@/components/Layout'
 import LogoClouds from '@/components/LogoClouds'
 import Story from '@/components/Story'
 import Testimonial from '@/components/Testimonial'
-import { routing } from '@/lib/betterUrl'
 import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
-import getShopPageForHome from '@/lib/getShopPageForHome'
-import { getTrustpilotReviews } from '@/lib/trustpilot'
+import { GET_HOME_PAGE_PRODUCTS_QUERY_KEY, getOurSelection } from '@/lib/getOurSelection'
+import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
+import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 const Home: NextPage = () => {
-  // const { status, data, error, isFetching } = useQuery(['shopHome'], getShopPageForHome)
-  // console.log('shop', data)
-  // console.log('status', status)
-  // console.log('error', error)
-  // console.log('isFetching', isFetching)
   return (
     <>
       <Head>
@@ -42,9 +37,9 @@ const Home: NextPage = () => {
 }
 export async function getStaticProps() {
   const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery(['shopHome'], getShopPageForHome)
-  await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
+  await queryClient.prefetchQuery([GET_SHOP_QUERY_KEY], getShop)
+  await queryClient.prefetchQuery([GET_HOME_PAGE_PRODUCTS_QUERY_KEY], getOurSelection)
+  await queryClient.prefetchQuery([TRUSTPILOT_QUERY_KEY], getTrustpilotReviews)
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

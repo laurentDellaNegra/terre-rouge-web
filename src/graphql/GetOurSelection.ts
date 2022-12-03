@@ -1,22 +1,7 @@
 import { graphql } from '@/types/gql'
 
-export const GetShopPageForHome = graphql(`
-  query GetShopPageForHome($maxWidth: Int = 384, $maxHeight: Int = 384) {
-    shop {
-      name
-      privacyPolicy {
-        title
-        handle
-      }
-      refundPolicy {
-        title
-        handle
-      }
-      termsOfService {
-        title
-        handle
-      }
-    }
+export const GetOurSelection = graphql(`
+  query GetOurSelection($maxWidth: Int = 384, $maxHeight: Int = 384) {
     collection(handle: "frontpage") {
       products(first: 4) {
         edges {

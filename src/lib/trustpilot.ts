@@ -4,6 +4,8 @@ import { shuffleArray } from './array'
 
 const URL_TRUSTPILOT = 'https://fr.trustpilot.com/review/terre-rouge.shop'
 
+export const TRUSTPILOT_QUERY_KEY = 'trustpilot'
+
 export async function getTrustpilotReviews() {
   try {
     const response = await fetch(URL_TRUSTPILOT)

@@ -8,8 +8,9 @@ import Layout from '@/components/Layout'
 import ProductComponent from '@/components/Product'
 import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
 import getAllProductsWithSlug from '@/lib/getAllProductsWithSlug'
-import getShopPageForProduct from '@/lib/getShopPageForProduct'
-import { getTrustpilotReviews } from '@/lib/trustpilot'
+import getShopPageForProduct, { GET_PRODUCT_QUERY_KEY } from '@/lib/getProduct'
+import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
+import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Product() {
   const router = useRouter()
@@ -38,9 +39,12 @@ export default function Product() {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery(['shopProduct', context.params?.slug], getShopPageForProduct)
-  await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
+  await queryClient.prefetchQuery([GET_SHOP_QUERY_KEY], getShop)
+  await queryClient.prefetchQuery(
+    [GET_PRODUCT_QUERY_KEY, context.params?.slug],
+    getShopPageForProduct
+  )
+  await queryClient.prefetchQuery([TRUSTPILOT_QUERY_KEY], getTrustpilotReviews)
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

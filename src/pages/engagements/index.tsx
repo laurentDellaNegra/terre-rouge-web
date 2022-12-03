@@ -1,19 +1,15 @@
 import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { InstantSearch } from 'react-instantsearch-hooks-web'
 
-import Engagements from '@/components/Engagements'
+import EngagementsComponent from '@/components/Engagements'
 import Layout from '@/components/Layout'
 import { INDEX_NAME, searchClient } from '@/lib/clients/searchClient'
-import getShopPageForProduct from '@/lib/getShopPageForProduct'
-import { getTrustpilotReviews } from '@/lib/trustpilot'
+import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
+import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
-export default function Product() {
-  const router = useRouter()
-  const { slug } = router.query
-  const { data: product } = useQuery(['shopProduct', slug], getShopPageForProduct)
+export default function Engagements() {
   return (
     <>
       <Head>
@@ -22,7 +18,7 @@ export default function Product() {
 
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME}>
         <Layout>
-          <Engagements />
+          <EngagementsComponent />
         </Layout>
       </InstantSearch>
     </>
@@ -31,7 +27,8 @@ export default function Product() {
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['reviews'], getTrustpilotReviews)
+  await queryClient.prefetchQuery([GET_SHOP_QUERY_KEY], getShop)
+  await queryClient.prefetchQuery([TRUSTPILOT_QUERY_KEY], getTrustpilotReviews)
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

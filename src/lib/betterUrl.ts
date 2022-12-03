@@ -21,7 +21,7 @@ function getSortByName(slug: string) {
   return getKeyByValue(INDEXES, slug)
 }
 
-function getCategorySlug(name: string) {
+export function getCategorySlug(name: string) {
   return name.split(' ').join('-')
 }
 

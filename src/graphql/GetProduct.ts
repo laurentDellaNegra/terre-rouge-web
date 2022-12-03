@@ -1,22 +1,7 @@
 import { graphql } from '@/types/gql'
 
-export const GetShopPageForProduct = graphql(`
-  query GetShopPageForProduct($handle: String!, $maxWidth: Int = 600, $maxHeight: Int = 600) {
-    shop {
-      name
-      privacyPolicy {
-        title
-        handle
-      }
-      refundPolicy {
-        title
-        handle
-      }
-      termsOfService {
-        title
-        handle
-      }
-    }
+export const GetProduct = graphql(`
+  query GetProduct($handle: String!, $maxWidth: Int = 600, $maxHeight: Int = 600) {
     productByHandle(handle: $handle) {
       id
       handle
