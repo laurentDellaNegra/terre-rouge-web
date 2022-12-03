@@ -17,7 +17,7 @@ export default function Breadcrumb(props: Props) {
               return (
                 <li
                   key={c.title}
-                  className="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap"
+                  className="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap text-gray-600"
                 >
                   {c.title}
                 </li>

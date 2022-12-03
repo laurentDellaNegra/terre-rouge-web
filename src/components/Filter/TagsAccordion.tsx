@@ -7,7 +7,7 @@ export function TagsAccordion() {
     attribute: 'tags',
     limit: 1000,
   })
-  return (
+  return items.length > 0 ? (
     <Disclosure as="div" className="py-6">
       {({ open }) => (
         <>
@@ -47,5 +47,5 @@ export function TagsAccordion() {
         </>
       )}
     </Disclosure>
-  )
+  ) : null
 }

@@ -1,4 +1,5 @@
 import { QueryClient, dehydrate } from '@tanstack/react-query'
+import algoliasearch from 'algoliasearch/lite'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
@@ -17,13 +18,17 @@ export default function Products({ serverState }: any) {
   return (
     <>
       <Head>
-        <title>Terre Rouge - Produits</title>
-        <meta name="description" content="Tous nos produits" />
+        <title>Terre Rouge - Condiments</title>
+        <meta name="description" content="Notre sélection de condiments" />
       </Head>
       <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Produits' }]}>
-          <Configure hitsPerPage={20} />
-          <ProductsComponent />
+        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Condiments' }]}>
+          <Configure
+            filters="collections: condiments"
+            hitsPerPage={50}
+            analyticsTags={['browse', 'condiments']}
+          />
+          <ProductsComponent title="condiments" />
         </Layout>
       </InstantSearchSSRProviderWrapper>
     </>
@@ -50,8 +55,12 @@ function ProductsBodySSR() {
   return (
     <InstantSearchSSRProvider>
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={false}>
-        <Configure hitsPerPage={20} />
-        <ProductsComponent />
+        <Configure
+          filters="collections: condiments"
+          hitsPerPage={50}
+          analyticsTags={['browse', 'condiments']}
+        />
+        <ProductsComponent title="condiments" />
       </InstantSearch>
     </InstantSearchSSRProvider>
   )

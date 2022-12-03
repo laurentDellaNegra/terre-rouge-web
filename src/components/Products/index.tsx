@@ -6,9 +6,15 @@ import FilterDrawer from '@/components/Filter/FilterDrawer'
 import ProductCard from '@/components/ProductCard'
 import ProductsPagination from '@/components/ProductsPagination'
 
+import { Stats } from '../Stats'
 import HeaderProducts from './HeaderProducts'
 
-export default function Products() {
+interface Props {
+  title?: string
+}
+
+export default function Products(props: Props) {
+  const { title } = props
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const { hits } = useHits()
   return (
@@ -18,12 +24,12 @@ export default function Products() {
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header products */}
-        <HeaderProducts onFilterClick={() => setMobileFiltersOpen(true)} />
+        <HeaderProducts title={title} onFilterClick={() => setMobileFiltersOpen(true)} />
 
         <section aria-labelledby="products-heading" className="pb-24">
           {/* SEO */}
           <h2 id="products-heading" className="sr-only">
-            Produits
+            <Stats title={title} />
           </h2>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 pb-36">

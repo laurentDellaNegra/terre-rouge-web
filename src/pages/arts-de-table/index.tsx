@@ -1,4 +1,5 @@
 import { QueryClient, dehydrate } from '@tanstack/react-query'
+import algoliasearch from 'algoliasearch/lite'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
@@ -17,13 +18,17 @@ export default function Products({ serverState }: any) {
   return (
     <>
       <Head>
-        <title>Terre Rouge - Produits</title>
-        <meta name="description" content="Tous nos produits" />
+        <title>Terre Rouge - Arts de table</title>
+        <meta name="description" content="Notre sélection d'arts de table" />
       </Head>
       <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Produits' }]}>
-          <Configure hitsPerPage={20} />
-          <ProductsComponent />
+        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Arts de table' }]}>
+          <Configure
+            filters="collections: arts-de-table"
+            hitsPerPage={50}
+            analyticsTags={['browse', 'arts-de-table']}
+          />
+          <ProductsComponent title="arts de tables" />
         </Layout>
       </InstantSearchSSRProviderWrapper>
     </>
@@ -50,8 +55,12 @@ function ProductsBodySSR() {
   return (
     <InstantSearchSSRProvider>
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME} routing={false}>
-        <Configure hitsPerPage={20} />
-        <ProductsComponent />
+        <Configure
+          filters="collections: arts-de-table"
+          hitsPerPage={50}
+          analyticsTags={['browse', 'arts-de-table']}
+        />
+        <ProductsComponent title="arts de tables" />
       </InstantSearch>
     </InstantSearchSSRProvider>
   )

@@ -5,9 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { Autocomplete } from '@/components/Autocomplete'
-import SearchPalette from '@/components/SearchPalette'
 import useUIState from '@/context/UIState/useUIState'
-import useCmdK from '@/hooks/useCmdK'
+import { MENU } from '@/lib/menu'
 import largeLogo from '@/public/logos/large-terre-rouge.webp'
 import smallLogo from '@/public/logos/small-terre-rouge.svg'
 
@@ -39,50 +38,20 @@ export default function Header(props: HeaderProps) {
               <div className="hidden h-full lg:flex">
                 {/* <FlyoutMenu /> */}
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  <Link
-                    href="/products"
-                    className={clsx(
-                      router.pathname === '/products'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Epices
-                  </Link>
-                  <Link
-                    href="/products"
-                    className={clsx(
-                      router.pathname === '/products1'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Comdiments
-                  </Link>
-                  <Link
-                    href="/products"
-                    className={clsx(
-                      router.pathname === '/products2'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Arts de table
-                  </Link>
-                  <Link
-                    href="/engagements"
-                    className={clsx(
-                      router.pathname === '/engagements'
-                        ? 'border-primary text-gray-900'
-                        : 'text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'inline-flex items-center border-b-2 border-white px-1 pt-1 text-sm font-medium'
-                    )}
-                  >
-                    Engagements
-                  </Link>
+                  {MENU.map((menuItem) => (
+                    <Link
+                      key={menuItem.href}
+                      href={menuItem.href}
+                      className={clsx(
+                        router.pathname === menuItem.href
+                          ? 'border-primary text-gray-900'
+                          : 'text-gray-500 border-white hover:border-gray-300 hover:text-gray-700',
+                        'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
+                      )}
+                    >
+                      {menuItem.title}
+                    </Link>
+                  ))}
                 </div>
               </div>
 

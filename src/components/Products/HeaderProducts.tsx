@@ -13,10 +13,11 @@ import { Stats } from '../Stats'
 
 interface Props {
   onFilterClick: () => void
+  title?: string
 }
 
 export default function HeaderProducts(props: Props) {
-  const { onFilterClick } = props
+  const { onFilterClick, title } = props
   const { refine, canRefine } = useClearRefinements()
   const { items } = useCurrentRefinements()
   const nbFilterText =
@@ -25,12 +26,12 @@ export default function HeaderProducts(props: Props) {
     <>
       <div className="py-24 px-4 text-center sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-          Nos <Stats />
+          <Stats title={title} />
         </h1>
-        <p className="mx-auto mt-4 max-w-xl text-base text-gray-500">
+        {/* <p className="mx-auto mt-4 max-w-xl text-base text-gray-500">
           Tous les produits disponibles dans notre boutique et n&apos;oubliez pas la livraison est
           offerte à partir de <strong>50€</strong> d&apos;achats.
-        </p>
+        </p> */}
       </div>
       <div className="relative grid items-center border-t border-gray-200 pt-6 pb-8">
         {/* Clear filter */}

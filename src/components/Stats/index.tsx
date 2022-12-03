@@ -5,7 +5,12 @@ export function useStats(props: any) {
   return useConnector(connectStats, props)
 }
 
-export function Stats(props: any) {
+interface Props {
+  title?: string
+}
+
+export function Stats(props: Props) {
+  const { title } = props
   const {
     // hitsPerPage,
     nbHits,
@@ -14,13 +19,24 @@ export function Stats(props: any) {
     // nbPages,
     // page,
     // processingTimeMS,
-    // query,
+    query,
   } = useStats(props) as any
 
-  return (
+  return query ? (
     <span className="">
       <span className="text-primary">{nbHits}&nbsp;</span>
-      <span>produit{nbHits > 1 ? 's' : ''}</span>
+      <span>produit{nbHits > 1 ? 's' : ''} pour&nbsp;</span>
+      <span className="text-primary">&quot;{query}&quot;</span>
+    </span>
+  ) : title ? (
+    <span className="">
+      <span>Nos&nbsp;</span>
+      <span className="text-primary">{title}</span>
+    </span>
+  ) : (
+    <span className="">
+      <span>Tous nos&nbsp;</span>
+      <span className="text-primary">produits</span>
     </span>
   )
 }
