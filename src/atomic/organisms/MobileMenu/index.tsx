@@ -7,6 +7,42 @@ import { Fragment } from 'react'
 
 import { MENU } from '@/lib/menu'
 
+const navigation = {
+  collections: [
+    {
+      name: 'Épices',
+      href: '#',
+      categories: [
+        { name: 'Sleep', href: '#' },
+        { name: 'Swimwear', href: '#' },
+        { name: 'Underwear', href: '#' },
+      ],
+    },
+    {
+      name: 'Comdiments',
+      href: '#',
+      categories: [
+        { name: 'Everything', href: '#' },
+        { name: 'Core', href: '#' },
+        { name: 'New Arrivals', href: '#' },
+        { name: 'Sale', href: '#' },
+      ],
+    },
+    {
+      name: 'Arts de table',
+      href: '#',
+      categories: [
+        { name: 'Basic Tees', href: '#' },
+        { name: 'Artwork Tees', href: '#' },
+        { name: 'Bottoms', href: '#' },
+        { name: 'Underwear', href: '#' },
+        { name: 'Accessories', href: '#' },
+      ],
+    },
+  ],
+  pages: [{ name: 'Engagements', href: '#' }],
+}
+
 interface MobileMenuProps {
   open?: boolean
   onClose?: () => void
@@ -46,31 +82,48 @@ export default function MobileMenu(props: MobileMenuProps) {
                   className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
                   onClick={onClose}
                 >
-                  <span className="sr-only">Close menu</span>
+                  <span className="sr-only">Fermer le menu</span>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 
               {/* Links */}
-              <nav className="space-y-1 pt-2 pb-3">
-                <ul>
-                  {MENU.map((menuItem) => (
-                    <li key={menuItem.href}>
+              <div className="border-b border-gray-200">
+                {navigation.collections.map((collection, collectionIdx) => (
+                  <div key={collection.name} className="space-y-12 px-4 pt-10 pb-6">
+                    <p id={`mobile-collection-heading-${collectionIdx}`} className="flow-root">
                       <Link
-                        href={menuItem.href}
-                        className={clsx(
-                          router.pathname === menuItem.href
-                            ? 'border-primary-light bg-primary-extra-light  text-primary-dark'
-                            : 'border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                          'block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
-                        )}
+                        href={collection.href}
+                        className="-m-2 block p-2 font-medium text-gray-900"
                       >
-                        {menuItem.title}
+                        {collection.name}
                       </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+                    </p>
+                    <ul
+                      role="list"
+                      aria-labelledby="mobile-collection-heading"
+                      className="mt-6 space-y-6"
+                    >
+                      {collection.categories.map((item) => (
+                        <li key={item.name} className="flex">
+                          <Link href={item.href} className="text-gray-500">
+                            {item.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-6 border-t border-gray-200 py-6 px-4">
+                {navigation.pages.map((page) => (
+                  <div key={page.name} className="flow-root">
+                    <Link href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
+                      {page.name}
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </Dialog.Panel>
           </Transition.Child>
         </div>
