@@ -34,7 +34,7 @@ export function Autocomplete() {
   // Manage Autofocus on open
   useEffect(() => {
     if (!openSearchPalette) return
-    const input = document.getElementById('autocomplete-1-input')
+    const input: any = document.getElementsByClassName('aa-Input aa-Input aa-Input')[1]
     if (!input) return
     setTimeout(() => {
       input.focus()
@@ -178,6 +178,7 @@ export function Autocomplete() {
     })
 
     return () => {
+      console.log('destroy')
       search.destroy()
     }
   }, [])
