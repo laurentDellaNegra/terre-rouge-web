@@ -4,7 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { Autocomplete } from '@/components/Autocomplete'
+import Autocomplete from '@/components/Autocomplete/Autocomplete'
+import AutocompleteWithInstantSearch from '@/components/Autocomplete/AutocompleteWithInstantSearch'
 import useUIState from '@/context/UIState/useUIState'
 import { MENU_ROOT } from '@/lib/menu'
 import largeLogo from '@/public/logos/large-terre-rouge.webp'
@@ -14,10 +15,11 @@ interface HeaderProps {
   onMobileMenuClick?: () => void
   onCartClick?: () => void
   className?: string
+  withInstantSearch: boolean
 }
 
 export default function Header(props: HeaderProps) {
-  const { onMobileMenuClick, className = '', onCartClick } = props
+  const { onMobileMenuClick, className = '', onCartClick, withInstantSearch } = props
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
 
@@ -79,7 +81,7 @@ export default function Header(props: HeaderProps) {
 
               {/* Search (lg-) */}
               <div className="flex-1 ml-2 sm:ml-3 lg:hidden">
-                <Autocomplete />
+                {withInstantSearch ? <AutocompleteWithInstantSearch /> : <Autocomplete />}
               </div>
 
               <div className="flex lg:flex-1 items-center justify-end">
@@ -116,7 +118,6 @@ export default function Header(props: HeaderProps) {
             </div>
           </div>
         </nav>
-        {/* <SearchPalette onClose={toggleSearch} open={openSearchPalette} /> */}
       </header>
       {/* Move this in it component */}
       <div
@@ -135,7 +136,7 @@ export default function Header(props: HeaderProps) {
             overflow-y: ${openSearchPalette ? 'hidden' : 'auto'};
           }
         `}</style>
-        <Autocomplete />
+        {withInstantSearch ? <AutocompleteWithInstantSearch /> : <Autocomplete />}
       </div>
     </>
   )

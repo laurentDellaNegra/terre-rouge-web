@@ -1,15 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useQuery } from '@tanstack/react-query'
-import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
-import { useMenu } from 'react-instantsearch-hooks-web'
 
 import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
 import { getMenuCollections } from '@/lib/menu'
 import { CollectionEdge } from '@/types/gql/graphql'
+
+import MenuItemInstantSearch from './MenuItemInstantSearch'
 
 interface MobileMenuProps {
   open?: boolean
@@ -18,11 +18,6 @@ interface MobileMenuProps {
 export default function MobileMenu(props: MobileMenuProps) {
   const { open = false, onClose = () => {} } = props
   const router = useRouter()
-  const { refine } = useMenu({
-    attribute: 'category',
-    limit: 50,
-    sortBy: ['name'],
-  })
   const { data } = useQuery([GET_SHOP_QUERY_KEY], getShop)
   if (!data) return null
   const { collections } = data
@@ -86,14 +81,7 @@ export default function MobileMenu(props: MobileMenuProps) {
                     {collection.categories.map((item) => (
                       <li key={item.name} className="flex">
                         {router.pathname === collection.href ? (
-                          <button
-                            onClick={() => refine(item.name)}
-                            className={clsx(
-                              false ? 'text-primary' : 'text-gray-500 hover:text-gray-700'
-                            )}
-                          >
-                            {item.name}
-                          </button>
+                          <MenuItemInstantSearch name={item.name} />
                         ) : (
                           <Link href={item.href} className="text-gray-500">
                             {item.name}

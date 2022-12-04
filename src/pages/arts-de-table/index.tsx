@@ -21,7 +21,10 @@ export default function Products({ serverState }: any) {
         <meta name="description" content="Notre sélection d'arts de table" />
       </Head>
       <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Arts de table' }]}>
+        <Layout
+          withInstantSearch
+          crumb={[{ title: 'Accueil', route: '/' }, { title: 'Arts de table' }]}
+        >
           <Configure
             filters="collections: arts-de-table"
             hitsPerPage={50}

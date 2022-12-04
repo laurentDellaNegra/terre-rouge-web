@@ -15,9 +15,8 @@ export default function Engagements() {
       <Head>
         <title>Nos engagements</title>
       </Head>
-
       <InstantSearch searchClient={searchClient} indexName={INDEX_NAME}>
-        <Layout>
+        <Layout withInstantSearch>
           <EngagementsComponent />
         </Layout>
       </InstantSearch>

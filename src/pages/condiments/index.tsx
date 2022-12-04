@@ -21,7 +21,10 @@ export default function Products({ serverState }: any) {
         <meta name="description" content="Notre sélection de condiments" />
       </Head>
       <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Condiments' }]}>
+        <Layout
+          withInstantSearch
+          crumb={[{ title: 'Accueil', route: '/' }, { title: 'Condiments' }]}
+        >
           <Configure
             filters="collections: condiments"
             hitsPerPage={50}

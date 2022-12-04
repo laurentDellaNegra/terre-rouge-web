@@ -24,18 +24,15 @@ export default function Product() {
       <Head>
         <title>Product detail</title>
       </Head>
-
-      <InstantSearch searchClient={searchClient} indexName={INDEX_NAME}>
-        <Layout
-          crumb={[
-            { title: 'Accueil', route: '/' },
-            { title: 'Produits', route: '/produits' },
-            { title: product.title },
-          ]}
-        >
-          {product && <ProductComponent productQuery={data} />}
-        </Layout>
-      </InstantSearch>
+      <Layout
+        crumb={[
+          { title: 'Accueil', route: '/' },
+          { title: 'Produits', route: '/produits' },
+          { title: product.title },
+        ]}
+      >
+        {product && <ProductComponent productQuery={data} />}
+      </Layout>
     </>
   )
 }

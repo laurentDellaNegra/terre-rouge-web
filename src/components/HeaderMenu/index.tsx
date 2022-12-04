@@ -7,7 +7,11 @@ import SlideOverCart from '@/atomic/organisms/SlideOverCart'
 import TrustBox from '@/components/TrustBox'
 import useScrollDirection from '@/hooks/useScrollDirection'
 
-export default function HeaderMenu() {
+interface Props {
+  withInstantSearch: boolean
+}
+
+export default function HeaderMenu({ withInstantSearch }: Props) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isCartOpen, setCartOpen] = useState(false)
 
@@ -36,6 +40,7 @@ export default function HeaderMenu() {
         )}
         onMobileMenuClick={() => setMobileMenuOpen(true)}
         onCartClick={() => setCartOpen(true)}
+        withInstantSearch={withInstantSearch}
       />
       <MobileMenu open={isMobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
       <SlideOverCart open={isCartOpen} onClose={() => setCartOpen(false)} />

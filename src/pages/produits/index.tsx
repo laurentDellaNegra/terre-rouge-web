@@ -21,7 +21,7 @@ export default function Products({ serverState }: any) {
         <meta name="description" content="Tous nos produits" />
       </Head>
       <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout crumb={[{ title: 'Accueil', route: '/' }, { title: 'Produits' }]}>
+        <Layout withInstantSearch crumb={[{ title: 'Accueil', route: '/' }, { title: 'Produits' }]}>
           <Configure hitsPerPage={20} />
           <ProductsComponent />
         </Layout>

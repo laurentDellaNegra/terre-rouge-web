@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { pipe } from 'ramda'
 import React, { Fragment, createElement, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { useSearchBox } from 'react-instantsearch-hooks-web'
 
 import useUIState from '@/context/UIState/useUIState'
 import { getQueryToUrl } from '@/lib/betterUrl'
@@ -17,19 +16,12 @@ import { uniqBy } from './functions/uniqBy'
 import { productsPlugin } from './productsPlugin'
 import { ProductHit } from './types/ProductHit'
 
-export function Autocomplete() {
+export default function Autocomplete() {
   const containerRef: any = useRef(null)
   const panelRootRef: any = useRef(null)
   const rootRef: any = useRef(null)
   const router = useRouter()
   const { openSearchPalette, toggleSearch } = useUIState()
-  const isOnSamePage = router.pathname === '/produits'
-
-  const { query, refine: setQuery } = useSearchBox()
-
-  const [instantSearchUiState, setInstantSearchUiState] = useState<{ query: string }>({
-    query,
-  })
 
   // Manage Autofocus on open
   useEffect(() => {
@@ -41,10 +33,6 @@ export function Autocomplete() {
     })
   }, [openSearchPalette])
 
-  useEffect(() => {
-    setQuery(instantSearchUiState.query)
-  }, [instantSearchUiState])
-
   const recentSearchesPlugin: any = createLocalStorageRecentSearchesPlugin({
     key: 'search',
     limit: 3,
@@ -52,11 +40,7 @@ export function Autocomplete() {
       return {
         ...source,
         onSelect({ item }) {
-          if (isOnSamePage) {
-            setInstantSearchUiState({ query: item.label })
-          } else {
-            router.push('/produits?query=' + getQueryToUrl(item.label))
-          }
+          router.push('/produits?query=' + getQueryToUrl(item.label))
           toggleSearch()
         },
       }
@@ -75,11 +59,7 @@ export function Autocomplete() {
       return {
         ...source,
         onSelect({ item }: any) {
-          if (isOnSamePage) {
-            setInstantSearchUiState({ query: item.query })
-          } else {
-            router.push('/produits?query=' + getQueryToUrl(item.query))
-          }
+          router.push('/produits?query=' + getQueryToUrl(item.query))
           toggleSearch()
         },
       }
@@ -125,15 +105,8 @@ export function Autocomplete() {
       openOnFocus: true,
       container: containerRef.current,
       onSubmit: ({ state }) => {
-        if (isOnSamePage) {
-          setInstantSearchUiState({ query: state.query })
-        } else {
-          router.push('/produits?query=' + getQueryToUrl(state.query))
-        }
+        router.push('/produits?query=' + getQueryToUrl(state.query))
         toggleSearch()
-      },
-      onReset() {
-        setInstantSearchUiState({ query: '' })
       },
       renderer: { createElement, Fragment, render: () => {} },
       render({ children }, root) {
@@ -178,7 +151,6 @@ export function Autocomplete() {
     })
 
     return () => {
-      console.log('destroy')
       search.destroy()
     }
   }, [])
