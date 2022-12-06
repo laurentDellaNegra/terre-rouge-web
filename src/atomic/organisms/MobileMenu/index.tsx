@@ -9,8 +9,6 @@ import { GET_SHOP_QUERY_KEY, getShop } from '@/lib/getShop'
 import { getMenuCollections } from '@/lib/menu'
 import { CollectionEdge } from '@/types/gql/graphql'
 
-import MenuItemInstantSearch from './MenuItemInstantSearch'
-
 interface MobileMenuProps {
   open?: boolean
   onClose?: () => void
@@ -80,8 +78,11 @@ export default function MobileMenu(props: MobileMenuProps) {
                   >
                     {collection.categories.map((item) => (
                       <li key={item.name} className="flex">
+                        {/* Hack because instantsearch doesnt work with Link */}
                         {router.pathname === collection.href ? (
-                          <MenuItemInstantSearch name={item.name} />
+                          <a href={item.href} className="text-gray-500">
+                            {item.name}
+                          </a>
                         ) : (
                           <Link href={item.href} className="text-gray-500">
                             {item.name}

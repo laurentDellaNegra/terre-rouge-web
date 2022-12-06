@@ -4,8 +4,6 @@ import { useMenu } from 'react-instantsearch-hooks-web'
 export default function CategoryList() {
   const { items, refine } = useMenu({ attribute: 'category', limit: 50, sortBy: ['name'] })
 
-  // const noMenuSelected = items.every((category) => category.isRefined === false)
-
   return (
     <ul role="list" className="space-y-4 pb-6 text-sm font-medium text-gray-900">
       {items.map((category) => (
