@@ -56,7 +56,7 @@ export default function Product(props: Props) {
           <div className="lg:sticky lg:top-32 col-span-7">
             <Tab.Group as="div" className="flex flex-col-reverse">
               {/* Image selector */}
-              <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+              <div className="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
                 <Tab.List className="grid grid-cols-4 gap-6">
                   {product.images.edges.map((image, index) => (
                     <Tab
