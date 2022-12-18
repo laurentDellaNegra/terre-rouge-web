@@ -49,7 +49,7 @@ export default function Product(props: Props) {
   ]
 
   return (
-    <div className="bg-gray-50">
+    <div>
       <div className="mx-auto max-w-2xl py-4 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
@@ -98,6 +98,7 @@ export default function Product(props: Props) {
                       className="h-full w-full object-cover object-center sm:rounded-lg"
                       fill
                       sizes="100vw"
+                      priority
                     />
                   </Tab.Panel>
                 ))}
