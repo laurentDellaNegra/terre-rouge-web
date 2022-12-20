@@ -80,6 +80,10 @@ export default function Autocomplete() {
         getItems() {
           return items.slice(0, 3)
         },
+        onSelect({ item }: any) {
+          router.push('/produit/' + item.handle)
+          toggleSearch()
+        },
         templates: {
           header() {
             return (

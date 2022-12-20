@@ -1,15 +1,16 @@
-import { Disclosure, Tab } from '@headlessui/react'
+import { Disclosure, RadioGroup, Tab } from '@headlessui/react'
 import { MinusIcon, PlusIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 import { price } from '@/lib/price'
-import { GetProductQuery } from '@/types/gql/graphql'
+import { UNIT_STRING } from '@/lib/weight'
+import { GetProductQuery, ProductVariant } from '@/types/gql/graphql'
 
-const UNIT_STRING: any = {
-  KILOGRAMS: 'kg',
-  GRAMS: 'g',
-}
+import VariantBoxes from './VariantBoxes'
+import VariantColors from './VariantColors'
+import { formatMetafields } from './metafields'
 
 interface Props {
   productQuery: GetProductQuery
@@ -17,36 +18,32 @@ interface Props {
 
 export default function Product(props: Props) {
   const { productQuery } = props
-  if (!productQuery) return null
-  const { productByHandle: product } = productQuery
-  if (!product) return null
-  //TMP: Format metafields
-  const metafields = [
-    {
-      ...product.application,
-      list:
-        product.application?.value.indexOf('*') !== -1
-          ? product.application?.value.split('*').map((value) => value.trim())
-          : null,
-      name: 'Utilisation',
-    },
-    {
-      ...product.benefits,
-      list:
-        product.benefits?.value.indexOf('*') !== -1
-          ? product.benefits?.value.split('*').map((value) => value.trim())
-          : null,
-      name: 'Bienfaits',
-    },
-    {
-      ...product.composition,
-      list:
-        product.composition?.value.indexOf('*') !== -1
-          ? product.composition?.value.split('*').map((value) => value.trim())
-          : null,
-      name: 'Composition',
-    },
-  ]
+  const [selectedIndexImage, setSelectedIndexImage] = useState<number>(0)
+  const [variant, setVariant] = useState(productQuery.product?.variants.edges[0].node)
+  const { product } = productQuery
+  const images = product?.images.edges ?? []
+
+  // useEffect detect when the variant changes and
+  // if the variant has an image, apply it
+  useEffect(() => {
+    const newSelectedIndex =
+      product?.images.edges.findIndex(({ node }) => node.id === variant?.image?.id) ?? -1
+    if (newSelectedIndex !== -1) setSelectedIndexImage(newSelectedIndex)
+  }, [product?.images.edges, variant])
+
+  if (!product || !variant) return null
+
+  const metafields = formatMetafields(product)
+  const nbVariants = product.variants.edges.length
+  const variantType = variant.selectedOptions[0].name
+
+  const handleChangeImage = (newIndex: number) => {
+    setSelectedIndexImage(newIndex)
+    // Check if image is linked to a variant
+    const { id } = images[newIndex].node
+    const variantFound = product.variants.edges.find(({ node }) => node.image?.id === id)
+    if (variantFound) setVariant(variantFound.node)
+  }
 
   return (
     <div>
@@ -54,55 +51,58 @@ export default function Product(props: Props) {
         <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
           <div className="lg:sticky lg:top-32 col-span-7">
-            <Tab.Group as="div" className="flex flex-col-reverse">
-              {/* Image selector */}
-              <div className="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
-                <Tab.List className="grid grid-cols-4 gap-6">
-                  {product.images.edges.map((image, index) => (
-                    <Tab
-                      key={index}
-                      className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
-                    >
-                      {({ selected }) => (
-                        <>
-                          <span className="sr-only"> {image.node.altText || product.title} </span>
-                          <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <Image
-                              src={image.node.originalSrc}
-                              alt={image.node.altText || product.title}
-                              className="h-full w-full object-cover object-center"
-                              fill
-                              sizes="100vw"
+            <Tab.Group selectedIndex={selectedIndexImage} onChange={handleChangeImage}>
+              <div className="flex flex-col-reverse">
+                {/* Image selector */}
+                <div className="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
+                  <Tab.List className="grid grid-cols-4 gap-6">
+                    {product.images.edges.map((image, index) => (
+                      <Tab
+                        key={index}
+                        className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+                      >
+                        {({ selected }) => (
+                          <>
+                            <span className="sr-only"> {image.node.altText || product.title} </span>
+                            <span className="absolute inset-0 overflow-hidden rounded-md">
+                              <Image
+                                src={image.node.smallUrl}
+                                alt={image.node.altText || product.title}
+                                className="h-full w-full object-cover object-center"
+                                fill
+                                sizes="100vw"
+                                priority
+                              />
+                            </span>
+                            <span
+                              className={clsx(
+                                selected ? 'ring-primarytext-primary-light' : 'ring-transparent',
+                                'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
+                              )}
+                              aria-hidden="true"
                             />
-                          </span>
-                          <span
-                            className={clsx(
-                              selected ? 'ring-primarytext-primary-light' : 'ring-transparent',
-                              'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
-                            )}
-                            aria-hidden="true"
-                          />
-                        </>
-                      )}
-                    </Tab>
-                  ))}
-                </Tab.List>
-              </div>
+                          </>
+                        )}
+                      </Tab>
+                    ))}
+                  </Tab.List>
+                </div>
 
-              <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
-                {product.images.edges.map((image, index) => (
-                  <Tab.Panel key={index} className="focus:outline-none focus:ring">
-                    <Image
-                      src={image.node.originalSrc}
-                      alt={image.node.altText || product.title}
-                      className="h-full w-full object-cover object-center sm:rounded-lg"
-                      fill
-                      sizes="100vw"
-                      priority
-                    />
-                  </Tab.Panel>
-                ))}
-              </Tab.Panels>
+                <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
+                  {product.images.edges.map((image, index) => (
+                    <Tab.Panel key={index} className="focus:outline-none focus:ring">
+                      <Image
+                        src={image.node.url}
+                        alt={image.node.altText || product.title}
+                        className="h-full w-full object-cover object-center sm:rounded-lg"
+                        fill
+                        sizes="100vw"
+                        priority
+                      />
+                    </Tab.Panel>
+                  ))}
+                </Tab.Panels>
+              </div>
             </Tab.Group>
           </div>
 
@@ -113,16 +113,12 @@ export default function Product(props: Props) {
             {/* Price / weight */}
             <div className="mt-3 flex gap-4">
               <p className="text-3xl tracking-tight text-gray-900">
-                {price(
-                  product.variants.edges[0].node.priceV2.amount,
-                  product.variants.edges[0].node.priceV2.currencyCode
-                )}
+                {price(variant.price.amount, variant.price.currencyCode)}
               </p>
-              {product.variants.edges[0].node.weight &&
-              product.variants.edges[0].node.weightUnit ? (
+              {variant.weight && variant.weightUnit ? (
                 <p className="text-gray-600 bg-gray-200 rounded px-2 flex items-center">
-                  <span>{product.variants.edges[0].node.weight}</span>
-                  <span>{UNIT_STRING[product.variants.edges[0].node.weightUnit]}</span>
+                  <span>{variant.weight}</span>
+                  <span>{UNIT_STRING[variant.weightUnit]}</span>
                 </p>
               ) : null}
             </div>
@@ -130,7 +126,7 @@ export default function Product(props: Props) {
             {/* Available */}
             <div className="mt-3">
               <h3 className="sr-only">Disponibilité</h3>
-              {product.variants.edges[0].node.availableForSale ? (
+              {variant.availableForSale ? (
                 <span className="bg-primary-extra-light text-primary py-1 px-3 rounded-full">
                   En stock
                 </span>
@@ -150,8 +146,20 @@ export default function Product(props: Props) {
               />
             </div>
 
-            {/* Add to cart button */}
-            <div className="mt-6 flex gap-3 items-center">
+            {/* Variant selection */}
+            {nbVariants > 1 && (
+              <div>
+                <h3 className="text-sm font-medium text-gray-900">{variantType}</h3>
+                {variantType === 'Couleur' ? (
+                  <VariantColors product={product} variant={variant} setVariant={setVariant} />
+                ) : (
+                  <VariantBoxes product={product} variant={variant} setVariant={setVariant} />
+                )}
+              </div>
+            )}
+
+            {/* Qty and Add to cart button */}
+            <div className="mt-10 flex gap-3 items-center">
               <div className="">
                 <label htmlFor="quantity" className="sr-only">
                   Quantité
@@ -161,21 +169,21 @@ export default function Product(props: Props) {
                   name="quantity"
                   className="max-w-full rounded-md border border-gray-300 py-3 text-left text-base font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 >
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={8}>8</option>
+                  {[...Array(20)].map((_e, i) => {
+                    const qty = i + 1
+                    return (
+                      <option key={qty} value={qty}>
+                        {qty}
+                      </option>
+                    )
+                  })}
                 </select>
               </div>
               <button
                 type="submit"
-                disabled={!product.variants.edges[0].node.availableForSale}
+                disabled={!variant.availableForSale}
                 className={clsx(
-                  product.variants.edges[0].node.availableForSale
+                  variant.availableForSale
                     ? 'bg-primary text-white hover:bg-primary-dark'
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full'

@@ -1,8 +1,8 @@
 import { graphql } from '@/types/gql'
 
 export const GetProduct = graphql(`
-  query GetProduct($handle: String!, $maxWidth: Int = 600, $maxHeight: Int = 600) {
-    productByHandle(handle: $handle) {
+  query GetProduct($handle: String!) {
+    product(handle: $handle) {
       id
       handle
       title
@@ -18,17 +18,18 @@ export const GetProduct = graphql(`
           currencyCode
         }
       }
-      images(first: 100) {
+      images(first: 10) {
         edges {
           node {
+            id
             altText
-            originalSrc
-            transformedSrc(maxHeight: $maxHeight, maxWidth: $maxWidth, crop: CENTER, scale: 3)
+            url(transform: { maxHeight: 700, maxWidth: 700, crop: CENTER, scale: 3 })
+            smallUrl: url(transform: { maxHeight: 160, maxWidth: 160, crop: CENTER, scale: 3 })
           }
         }
       }
       descriptionHtml
-      variants(first: 1) {
+      variants(first: 10) {
         edges {
           node {
             id
@@ -36,11 +37,11 @@ export const GetProduct = graphql(`
             availableForSale
             weight
             weightUnit
-            priceV2 {
+            price {
               amount
               currencyCode
             }
-            compareAtPriceV2 {
+            compareAtPrice {
               amount
               currencyCode
             }
@@ -49,9 +50,7 @@ export const GetProduct = graphql(`
               value
             }
             image {
-              altText
-              originalSrc
-              transformedSrc(maxHeight: $maxHeight, maxWidth: $maxWidth, crop: CENTER, scale: 3)
+              id
             }
           }
         }

@@ -17,7 +17,7 @@ export default function Product() {
   const { slug } = router.query
   const { data } = useQuery([GET_PRODUCT_QUERY_KEY, slug], getProduct)
   if (!data) return null
-  const { productByHandle: product } = data
+  const { product } = data
   if (!product) return null
   return (
     <>
