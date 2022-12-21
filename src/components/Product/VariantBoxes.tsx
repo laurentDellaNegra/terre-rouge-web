@@ -14,7 +14,7 @@ export default function VariantBoxes(props: Props) {
   return (
     <RadioGroup value={variant} onChange={setVariant} className="mt-4">
       <RadioGroup.Label className="sr-only">Choisissez une variante</RadioGroup.Label>
-      <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+      <div className="flex gap-3">
         {product?.variants.edges.map(({ node }) => (
           <RadioGroup.Option
             key={node.id}
