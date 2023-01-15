@@ -93,7 +93,7 @@ export const routing = (collection: string) => ({
       if (routeState.query) {
         queryParameters.query = getQueryToUrl(routeState.query as string)
       }
-      if (routeState.page !== 1) {
+      if ((routeState.page as number) !== 1) {
         queryParameters.page = routeState.page
       }
       if (routeState.tags) {
