@@ -11,6 +11,9 @@ const nextConfig = {
   images: {
     domains: ['cdn.shopify.com'],
   },
+  sentry: {
+    hideSourceMaps: false,
+  },
 }
 
 const sentryWebpackPluginOptions = {

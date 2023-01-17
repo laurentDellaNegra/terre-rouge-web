@@ -64,16 +64,14 @@ export default function Product(props: Props) {
                         {({ selected }) => (
                           <>
                             <span className="sr-only"> {image.node.altText || product.title} </span>
-                            <span className="absolute inset-0 overflow-hidden rounded-md">
-                              <Image
-                                src={image.node.smallUrl}
-                                alt={image.node.altText || product.title}
-                                className="h-full w-full object-cover object-center"
-                                fill
-                                sizes="100vw"
-                                priority
-                              />
-                            </span>
+                            <Image
+                              src={image.node.smallUrl}
+                              alt={image.node.altText || product.title}
+                              className="h-full w-full object-cover object-center"
+                              fill
+                              priority
+                              unoptimized
+                            />
                             <span
                               className={clsx(
                                 selected ? 'ring-primarytext-primary-light' : 'ring-transparent',
@@ -96,7 +94,7 @@ export default function Product(props: Props) {
                         alt={image.node.altText || product.title}
                         className="h-full w-full object-cover object-center sm:rounded-lg"
                         fill
-                        sizes="100vw"
+                        unoptimized
                         priority
                       />
                     </Tab.Panel>

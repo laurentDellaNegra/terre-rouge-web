@@ -26,16 +26,13 @@ export default function HeaderProducts(props: Props) {
     items.length > 0 ? `${items.length} Filtre${items.length > 1 ? 's' : ''}` : ''
   return (
     <>
-      <div className="py-24 px-4 text-center sm:px-6 lg:px-8">
+      {/* <div className="py-24 px-4 text-center sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
           <Stats title={title} />
         </h1>
-        {/* <p className="mx-auto mt-4 max-w-xl text-base text-gray-500">
-          Tous les produits disponibles dans notre boutique et n&apos;oubliez pas la livraison est
-          offerte à partir de <strong>50€</strong> d&apos;achats.
-        </p> */}
-      </div>
-      <div className="relative grid items-center border-t border-gray-200 pt-6 pb-8">
+      </div> */}
+      {/* <div className="relative grid items-center border-t border-gray-200 pt-6 pb-8"> */}
+      <div className="relative grid items-center border-t border-gray-200 pt-6 pb-8 mt-9">
         {/* Clear filter */}
         <div className="relative col-start-1 row-start-1">
           <div className="mx-auto flex max-w-7xl text-sm">

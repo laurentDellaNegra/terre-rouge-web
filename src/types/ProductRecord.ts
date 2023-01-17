@@ -9,5 +9,6 @@ export interface ProductRecord {
   tags: Array<string>
   title: string
   href: string
+  variants: Array<{ name: string; value: string }>
 }
 export type ProductRecords = Array<ProductRecord>

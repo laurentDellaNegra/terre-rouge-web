@@ -19,6 +19,7 @@ export default function Hero() {
               fill
               sizes="100vw"
               className="object-cover"
+              priority
             />
           </div>
           <div className="absolute inset-0 bg-gray-900 opacity-30" />
