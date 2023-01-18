@@ -70,7 +70,9 @@ export const routing = (collection: string) => ({
     getLocation: () => window.location,
 
     windowTitle({ category, query }) {
-      const queryTitle = query ? `Resultas pour "${query}"` : 'Recherche'
+      if (!query) return document.title
+
+      const queryTitle = `Resultas pour "${query}"`
 
       if (category) {
         return `${category} - ${queryTitle}`
