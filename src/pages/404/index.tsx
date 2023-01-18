@@ -1,9 +1,7 @@
-import Link from 'next/link'
-
 import ButtonLink from '@/atomic/atoms/ButtonLink'
 
 /* This example requires Tailwind CSS v2.0+ */
-export default function Example() {
+export default function NotFound() {
   return (
     <div className="h-screen">
       <div className="min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">

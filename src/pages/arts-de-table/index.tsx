@@ -15,25 +15,22 @@ import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Products({ serverState }: any) {
   return (
-    <>
-      <Head>
-        <title>Terre Rouge - Arts de table</title>
-        <meta name="description" content="Notre sélection d'arts de table" />
-      </Head>
-      <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout
-          withInstantSearch
-          crumb={[{ title: 'Accueil', route: '/' }, { title: 'Arts de table' }]}
-        >
-          <Configure
-            filters="collections: arts-de-table"
-            hitsPerPage={50}
-            analyticsTags={['browse', 'arts-de-table']}
-          />
-          <ProductsComponent title="arts de tables" />
-        </Layout>
-      </InstantSearchSSRProviderWrapper>
-    </>
+    <InstantSearchSSRProviderWrapper serverState={serverState}>
+      <Layout
+        withInstantSearch
+        crumb={[{ title: 'Accueil', route: '/' }, { title: 'Arts de table' }]}
+      >
+        <Head>
+          <title>Terre Rouge - Arts de table</title>
+        </Head>
+        <Configure
+          filters="collections: arts-de-table"
+          hitsPerPage={50}
+          analyticsTags={['browse', 'arts-de-table']}
+        />
+        <ProductsComponent title="arts de tables" />
+      </Layout>
+    </InstantSearchSSRProviderWrapper>
   )
 }
 

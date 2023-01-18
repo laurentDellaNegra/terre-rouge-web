@@ -9,14 +9,12 @@ import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Engagements() {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Nos engagements</title>
       </Head>
-      <Layout>
-        <EngagementsComponent />
-      </Layout>
-    </>
+      <EngagementsComponent />
+    </Layout>
   )
 }
 

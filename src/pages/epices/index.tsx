@@ -15,22 +15,19 @@ import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Products({ serverState }: any) {
   return (
-    <>
-      <Head>
-        <title>Terre Rouge - Épices</title>
-        <meta name="description" content="Notre sélection d'épices" />
-      </Head>
-      <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout withInstantSearch crumb={[{ title: 'Accueil', route: '/' }, { title: 'Épices' }]}>
-          <Configure
-            filters="collections: epices"
-            hitsPerPage={50}
-            analyticsTags={['browse', 'epices']}
-          />
-          <ProductsComponent title="épices" />
-        </Layout>
-      </InstantSearchSSRProviderWrapper>
-    </>
+    <InstantSearchSSRProviderWrapper serverState={serverState}>
+      <Layout withInstantSearch crumb={[{ title: 'Accueil', route: '/' }, { title: 'Épices' }]}>
+        <Head>
+          <title>Terre Rouge - Épices</title>
+        </Head>
+        <Configure
+          filters="collections: epices"
+          hitsPerPage={50}
+          analyticsTags={['browse', 'epices']}
+        />
+        <ProductsComponent title="épices" />
+      </Layout>
+    </InstantSearchSSRProviderWrapper>
   )
 }
 

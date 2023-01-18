@@ -20,20 +20,21 @@ export default function Product() {
   const { product } = data
   if (!product) return null
   return (
-    <>
+    <Layout
+      crumb={[
+        { title: 'Accueil', route: '/' },
+        { title: 'Produits', route: '/produits' },
+        { title: product.title },
+      ]}
+    >
       <Head>
-        <title>Product detail</title>
+        <title>{product?.title ? `Terre Rouge - ${product.title}` : ''}</title>
+        {product?.images.edges[0].node.smallUrl && (
+          <meta property="og:image" content={product?.images.edges[0].node.smallUrl} />
+        )}
       </Head>
-      <Layout
-        crumb={[
-          { title: 'Accueil', route: '/' },
-          { title: 'Produits', route: '/produits' },
-          { title: product.title },
-        ]}
-      >
-        {product && <ProductComponent productQuery={data} />}
-      </Layout>
-    </>
+      {product && <ProductComponent productQuery={data} />}
+    </Layout>
   )
 }
 

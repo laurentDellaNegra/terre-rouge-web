@@ -15,18 +15,15 @@ import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 export default function Products({ serverState }: any) {
   return (
-    <>
-      <Head>
-        <title>Terre Rouge - Produits</title>
-        <meta name="description" content="Tous nos produits" />
-      </Head>
-      <InstantSearchSSRProviderWrapper serverState={serverState}>
-        <Layout withInstantSearch crumb={[{ title: 'Accueil', route: '/' }, { title: 'Produits' }]}>
-          <Configure hitsPerPage={20} />
-          <ProductsComponent />
-        </Layout>
-      </InstantSearchSSRProviderWrapper>
-    </>
+    <InstantSearchSSRProviderWrapper serverState={serverState}>
+      <Layout withInstantSearch crumb={[{ title: 'Accueil', route: '/' }, { title: 'Produits' }]}>
+        <Head>
+          <title>Terre Rouge - Produits</title>
+        </Head>
+        <Configure hitsPerPage={20} />
+        <ProductsComponent />
+      </Layout>
+    </InstantSearchSSRProviderWrapper>
   )
 }
 
