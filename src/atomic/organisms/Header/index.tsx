@@ -100,7 +100,8 @@ export default function Header(props: HeaderProps) {
                     <button
                       type="button"
                       className="group -m-2 flex items-center p-2"
-                      onClick={onCartClick}
+                      disabled
+                      // onClick={onCartClick}
                     >
                       <span className="sr-only">Open cart</span>
                       <ShoppingBagIcon

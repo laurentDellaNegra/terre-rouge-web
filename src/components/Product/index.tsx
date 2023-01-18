@@ -177,9 +177,11 @@ export default function Product(props: Props) {
               </select>
               <button
                 type="submit"
-                disabled={!variant.availableForSale}
+                // disabled={!variant.availableForSale}
+                disabled={true}
                 className={clsx(
-                  variant.availableForSale
+                  // variant.availableForSale
+                  false
                     ? 'bg-primary text-white hover:bg-primary-dark'
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
