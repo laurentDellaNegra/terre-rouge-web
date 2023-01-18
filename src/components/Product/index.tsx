@@ -157,26 +157,24 @@ export default function Product(props: Props) {
             )}
 
             {/* Qty and Add to cart button */}
-            <div className="mt-10 flex gap-3 items-center">
-              <div className="">
-                <label htmlFor="quantity" className="sr-only">
-                  Quantité
-                </label>
-                <select
-                  id="quantity"
-                  name="quantity"
-                  className="max-w-full rounded-md border border-gray-300 py-3 text-left text-base font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                >
-                  {[...Array(20)].map((_e, i) => {
-                    const qty = i + 1
-                    return (
-                      <option key={qty} value={qty}>
-                        {qty}
-                      </option>
-                    )
-                  })}
-                </select>
-              </div>
+            <div className="mt-10 flex flex-col sm:flex-row gap-3 items-center">
+              <label htmlFor="quantity" className="sr-only">
+                Quantité
+              </label>
+              <select
+                id="quantity"
+                name="quantity"
+                className="max-w-full w-full sm:w-auto rounded-md border border-gray-300 py-3 text-left text-base font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              >
+                {[...Array(20)].map((_e, i) => {
+                  const qty = i + 1
+                  return (
+                    <option key={qty} value={qty}>
+                      {qty}
+                    </option>
+                  )
+                })}
+              </select>
               <button
                 type="submit"
                 disabled={!variant.availableForSale}
@@ -184,7 +182,7 @@ export default function Product(props: Props) {
                   variant.availableForSale
                     ? 'bg-primary text-white hover:bg-primary-dark'
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
-                  'flex flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full'
+                  'flex w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
                 onClick={() => console.log('Add to cart')}
               >
