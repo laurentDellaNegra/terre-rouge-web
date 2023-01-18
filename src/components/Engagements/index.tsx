@@ -146,7 +146,7 @@ export default function Engagements() {
       </div>
 
       {/* Projects */}
-      <div className="bg-gray-50 py-14 sm:py-28 lg:py-56">
+      <div className="bg-gray-50 py-14 sm:py-28">
         <div className="relative">
           <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
             <div>
@@ -322,7 +322,7 @@ export default function Engagements() {
       </div>
 
       {/* Nos Emballages */}
-      <div className="lg:relative my-14 sm:my-28 lg:my-56">
+      <div className="lg:relative my-14 sm:my-28">
         <div className="mx-auto w-full max-w-7xl pt-16 pb-20 lg:py-48 lg:text-left">
           <div className="px-4 sm:px-8 lg:w-1/2 xl:pr-16">
             <h1 className="text-center lg:text-left text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
@@ -331,15 +331,8 @@ export default function Engagements() {
             </h1>
             <p className="mx-auto max-w-prose my-3 text-base text-gray-500 sm:text-lg md:my-10">
               Nos produits sont conditionnés dans des emballages{' '}
-              <span className="font-bold">100%</span> compostables en foyer et biodégradables. Ils
-              sont certifiés selon la norme européenne{' '}
-              <a
-                className="text-primary underline decoration-double font-bold"
-                href="https://docs.european-bioplastics.org/publications/bp/EUBP_BP_En_13432.pdf"
-              >
-                EN 13432
-              </a>
-              .
+              <span className="font-bold">100%</span> compostables et biodégradables. Ils sont
+              certifiés selon la norme européenne <strong>EN 13432</strong>.
               <br />
               <br />
               La fermeture à glissière est fabriquée en biomatériaux synthétiques (
@@ -353,7 +346,7 @@ export default function Engagements() {
                 </div>
                 <div className="ml-3 flex-1 md:flex md:justify-between">
                   <p className="text-sm text-blue-700">
-                    Vous pouvez jeter les emballages avec les déchets verts ou vos composts.
+                    Vous pouvez jeter les emballages avec les déchets verts.
                   </p>
                 </div>
               </div>

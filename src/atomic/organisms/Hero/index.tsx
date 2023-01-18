@@ -49,8 +49,8 @@ export default function Hero() {
         <div className="relative py-32 text-white">
           <Title>Bienvenue ! Tongasoa !</Title>
           <SubTitle className="mt-4">
-            Terre rouge propose des épices de Madagascar. Riche de sa biodiversité, nous vous
-            proposons les meilleures épices que l&apos;île puisse offrir
+            Terre Rouge, L&apos;épicerie fine de Madagascar, une multitude de choix d&apos;épices,
+            de condiments et d&apos;arts de table.
           </SubTitle>
           <ButtonLink size="large" href="/produits" className="mt-8 sm:mt-6">
             Voir nos produits

@@ -19,7 +19,7 @@ export default function Story() {
               carrefour entre l&apos;Afrique et l&apos;Asie.
             </P>
             <P>
-              Terre rouge vous donne de multiples choix d&apos;épices et de condiments. Pour
+              Terre Rouge vous donne de multiples choix d&apos;épices et de condiments. Pour
               sublimer la beauté culinaire, l&apos;art de table est mis en avant avec le produit
               phare malagasy: le raphia. Notre raphia est travaillé à la main afin de garantir une
               meilleure qualité.

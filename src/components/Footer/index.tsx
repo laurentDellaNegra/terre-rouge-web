@@ -1,18 +1,13 @@
+import Link from 'next/link'
+
 import LogoClouds from '../LogoClouds'
 
 const navigation = {
   products: [
-    { name: 'Chocolats', href: '#' },
-    { name: 'Coffrets', href: '#' },
-    { name: 'Produits Malagasy', href: '#' },
-    { name: 'Vanille', href: '#' },
-    { name: 'Épices', href: '#' },
-  ],
-  support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' },
+    { name: 'Condiments', href: '/condiments' },
+    { name: 'Arts de table', href: '/arts-de-table' },
+    { name: 'Épices', href: '/epices' },
+    { name: 'Vanille', href: '/epices?category=Vanille' },
   ],
   company: [
     { name: 'Engagements', href: '/engagements' },
@@ -102,20 +97,6 @@ export default function Footer() {
                   ))}
                 </ul>
               </div>
-              {/* <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-                  Support
-                </h3>
-                <ul role="list" className="mt-4 space-y-4">
-                  {navigation.support.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
                   Notre entreprise
@@ -123,9 +104,9 @@ export default function Footer() {
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-300 hover:text-white">
+                      <Link href={item.href} className="text-base text-gray-300 hover:text-white">
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -139,9 +120,9 @@ export default function Footer() {
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-300 hover:text-white">
+                      <Link href={item.href} className="text-base text-gray-300 hover:text-white">
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
