@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 
+import ShopifyClientProvider from '@/context/ShopifyClient/ShopifyClientProvider'
 import UIStateProvider from '@/context/UIState/UIStateProvider'
 import '@/styles/algolia.css'
 import '@/styles/globals.css'
@@ -15,6 +16,11 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
+
+const SHOPIFY_STOREFRONT_ACCESS_TOKEN =
+  process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || ''
+
+const SHOPIFY_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN || ''
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -51,9 +57,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       `}</style>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <UIStateProvider>
-            <Component {...pageProps} />
-          </UIStateProvider>
+          <ShopifyClientProvider
+            domain={SHOPIFY_DOMAIN}
+            storefrontAccessToken={SHOPIFY_STOREFRONT_ACCESS_TOKEN}
+          >
+            <UIStateProvider>
+              <Component {...pageProps} />
+            </UIStateProvider>
+          </ShopifyClientProvider>
         </Hydrate>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>

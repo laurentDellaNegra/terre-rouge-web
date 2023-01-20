@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useRef } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 
 import useWindowSize from '@/hooks/useWindowSize'
 import { getBreakpoint } from '@/lib/tailwindConfig'
@@ -8,7 +8,7 @@ import UIStateContext from './UIStateContext'
 function useUIState() {
   const context = useContext(UIStateContext)
   if (context === undefined) {
-    throw new Error('useUIState must be used within a TableProvider')
+    throw new Error('useUIState must be used within a UIStateProvider')
   }
   const { state, dispatch } = context
   const { openSearchPalette } = state

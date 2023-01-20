@@ -1,18 +1,9 @@
 import { useMemo, useReducer } from 'react'
 
 import UIStateContext from './UIStateContext'
-import { Action, State } from './types'
+import UIStateReducer from './UIStateReducer'
+import { State } from './types'
 
-function UIStateReducer(state: State, action: Action) {
-  switch (action.type) {
-    case 'TOGGLE_SEARCH_PALETTE': {
-      return { ...state, openSearchPalette: !state.openSearchPalette }
-    }
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`)
-    }
-  }
-}
 interface Props {
   children: React.ReactNode
 }
