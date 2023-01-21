@@ -25,7 +25,6 @@ export default function useRemoveProduct() {
 
       // Snapshot the current cache
       const previousCart = queryClient.getQueryData<Cart>(getCartKey(cartId))
-      console.log('previousCart', previousCart)
 
       // Optimistically delete the item in the list
       if (previousCart) {

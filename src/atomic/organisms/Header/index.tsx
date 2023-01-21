@@ -23,7 +23,7 @@ export default function Header(props: HeaderProps) {
   const { onMobileMenuClick, className = '', onCartClick, withInstantSearch } = props
   const { openSearchPalette, toggleSearch } = useUIState()
   const router = useRouter()
-  const { data: cart, isLoading } = useGetCart()
+  const { data: cart } = useGetCart()
 
   return (
     <>
@@ -110,11 +110,7 @@ export default function Header(props: HeaderProps) {
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        {isLoading ? (
-                          <div className="h-5 w-2 animate-pulse bg-slate-200 rounded" />
-                        ) : (
-                          cart?.totalQuantity || 0
-                        )}
+                        {cart?.totalQuantity || 0}
                       </span>
                       <span className="sr-only">produits dans le panier, voir panier</span>
                     </button>

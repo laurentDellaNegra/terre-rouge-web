@@ -16,13 +16,9 @@ interface Props {
 }
 
 export default function Cart({ onClose }: Props) {
-  const { data: cart, isLoading: isCartLoading } = useGetCart()
-  // TODO: remove
-  // const isLoading = true
+  const { data: cart, isInitialLoading: isCartLoading } = useGetCart()
   const { mutate: removeProduct, isError, reset, isLoading: isRemoveLoading } = useRemoveProduct()
   const isEmpty = !cart || !cart.checkoutUrl || cart.lines.edges.length === 0
-  console.log('cart', cart)
-  console.log('isEmpty', isEmpty)
   return (
     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
       <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
@@ -53,7 +49,7 @@ export default function Cart({ onClose }: Props) {
                     <div className="ml-4 flex flex-1 flex-col">
                       <div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
-                          <div className="h-4 w-40 bg-slate-200 rounded" />
+                          <div className="h-4 w-20 sm:w-40 bg-slate-200 rounded" />
                           <div className="h-4 w-12 bg-slate-200 rounded" />
                         </div>
                       </div>
@@ -70,14 +66,14 @@ export default function Cart({ onClose }: Props) {
               ) : isEmpty ? (
                 <div className="flex flex-col items-center">
                   {/* <EmptyCart className="h-60 w-60 text-gray-700" /> */}
-                  <ShoppingBagIcon className="h-60 w-60 text-gray-200" />
+                  <ShoppingBagIcon className="mt-6 sm:mt-16 h-28 w-28 text-gray-200" />
                   <p className="mt-8 text-lg font-semibold leading-8 tracking-tight text-gray-900">
                     Votre panier est vide
                   </p>
                   <p className="mt-1 text-base leading-7 text-gray-500 text-center max-w-xs">
                     On dirait que vous n&apos;avez pas encore fait votre choix
                   </p>
-                  <ButtonLink size="large" href="/produits" className="mt-20">
+                  <ButtonLink size="large" href="/produits" className="mt-10 sm:mt-20">
                     Voir nos produits
                   </ButtonLink>
                 </div>

@@ -23,6 +23,7 @@ export default function Product(props: Props) {
   const { productQuery } = props
   const [selectedIndexImage, setSelectedIndexImage] = useState<number>(0)
   const [variant, setVariant] = useState(productQuery.product?.variants.edges[0].node)
+  const [qty, setQty] = useState(1)
   const { product } = productQuery
   const images = product?.images.edges ?? []
   const { mutate, isLoading, isError, reset } = useAddProduct()
@@ -169,12 +170,13 @@ export default function Product(props: Props) {
                 id="quantity"
                 name="quantity"
                 className="max-w-full w-full sm:w-auto rounded-md border border-gray-300 py-3 text-left text-base font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                onChange={(e) => setQty(Number(e.target.value))}
               >
                 {[...Array(20)].map((_e, i) => {
-                  const qty = i + 1
+                  const optionQty = i + 1
                   return (
-                    <option key={qty} value={qty}>
-                      {qty}
+                    <option key={optionQty} value={optionQty}>
+                      {optionQty}
                     </option>
                   )
                 })}
@@ -188,7 +190,7 @@ export default function Product(props: Props) {
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex gap-3 w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
-                onClick={() => mutate({ variantId: variant.id, quantity: 1 })}
+                onClick={() => !isLoading && mutate({ variantId: variant.id, quantity: qty })}
               >
                 {isLoading ? (
                   <>
@@ -202,7 +204,7 @@ export default function Product(props: Props) {
             </div>
             {isError && (
               <div className="mt-6">
-                <Alert onHide={reset}>Problème lors de l&apos;ajout du produit.</Alert>
+                <Alert onHide={reset}>Problème lors de l&apos;ajout du produit</Alert>
               </div>
             )}
             <div className="mt-6 text-center">
