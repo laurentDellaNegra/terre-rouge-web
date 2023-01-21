@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
+import useAddProduct from '@/context/ShopifyClient/addProduct/useAddProduct'
 import { price } from '@/lib/price'
 import { UNIT_STRING } from '@/lib/weight'
 import { GetProductQuery, ProductVariant } from '@/types/gql/graphql'
@@ -22,6 +23,7 @@ export default function Product(props: Props) {
   const [variant, setVariant] = useState(productQuery.product?.variants.edges[0].node)
   const { product } = productQuery
   const images = product?.images.edges ?? []
+  const mutation = useAddProduct()
 
   // useEffect detect when the variant changes and
   // if the variant has an image, apply it
@@ -177,16 +179,14 @@ export default function Product(props: Props) {
               </select>
               <button
                 type="submit"
-                // disabled={!variant.availableForSale}
-                disabled={true}
+                disabled={!variant.availableForSale}
                 className={clsx(
-                  // variant.availableForSale
-                  false
+                  variant.availableForSale
                     ? 'bg-primary text-white hover:bg-primary-dark'
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
-                onClick={() => console.log('Add to cart')}
+                onClick={() => mutation.mutate({ variantId: variant.id, quantity: 1 })}
               >
                 Ajouter au panier
               </button>

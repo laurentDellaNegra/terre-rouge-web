@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
 
-import useShopifyClient from './useShopifyClient'
+import useShopifyClient from '../useShopifyClient'
 
 export default function useSetProductQty() {
-  const { checkoutId, client } = useShopifyClient()
+  const { cartId, client } = useShopifyClient()
   return useMutation({
     mutationFn: (lineItemToUpdate: { id: string; quantity: number }) =>
-      client.checkout.updateLineItems(checkoutId!, [lineItemToUpdate]),
+      client.checkout.updateLineItems(cartId!, [lineItemToUpdate]),
   })
 }

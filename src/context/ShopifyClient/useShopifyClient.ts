@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import ShopifyClientContext from './ShopifyClientContext'
-import { removeCheckoutIdFromStorage, setCheckoutIdFromStorage } from './checkoutStorage'
+import { removeCartIdFromStorage, setCartIdFromStorage } from './cartStorage'
 
 export default function useShopifyClient() {
   const context = useContext(ShopifyClientContext)
@@ -9,17 +9,17 @@ export default function useShopifyClient() {
     throw new Error('useShopifyClient must be used within a ShopifyClientProvider')
   }
   const { state, dispatch } = context
-  const { client, checkoutId } = state
+  const { cartId } = state
 
-  const setCheckoutId = (id: string) => {
-    if (state.checkoutId === id) return
-    dispatch({ type: 'SET_CHECKOUT_ID', payload: { id } })
-    setCheckoutIdFromStorage(id)
+  const setCartId = (id: string) => {
+    if (state.cartId === id) return
+    dispatch({ type: 'SET_CART_ID', payload: { id } })
+    setCartIdFromStorage(id)
   }
-  const deleteCheckoutId = () => {
-    dispatch({ type: 'DELETE_CHECKOUT_ID' })
-    removeCheckoutIdFromStorage()
+  const deleteCartId = () => {
+    dispatch({ type: 'DELETE_CART_ID' })
+    removeCartIdFromStorage()
   }
 
-  return { state, dispatch, client, checkoutId, setCheckoutId, deleteCheckoutId }
+  return { state, dispatch, cartId, setCartId, deleteCartId }
 }

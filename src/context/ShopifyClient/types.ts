@@ -1,17 +1,14 @@
-import type { Client } from 'shopify-buy'
-
-export type SetCheckoutIdAction = {
-  type: 'SET_CHECKOUT_ID'
+export type SetCartIdAction = {
+  type: 'SET_CART_ID'
   payload: { id: string }
 }
-export type DeleteCheckoutIdAction = {
-  type: 'DELETE_CHECKOUT_ID'
+export type DeleteCartIdAction = {
+  type: 'DELETE_CART_ID'
 }
 
-export type Action = SetCheckoutIdAction | DeleteCheckoutIdAction
+export type Action = SetCartIdAction | DeleteCartIdAction
 export type Dispatch = (action: Action) => void
 
 export interface State {
-  client: Client
-  checkoutId: string | null
+  cartId: string | null
 }
