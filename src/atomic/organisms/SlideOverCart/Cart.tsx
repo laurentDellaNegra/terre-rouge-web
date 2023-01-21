@@ -133,13 +133,11 @@ export default function Cart({ onClose }: Props) {
       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
         <div className="flex justify-between text-base font-medium text-gray-900">
           <p>Sous-Total</p>
-          <p>
-            {isCartLoading || isRemoveLoading ? (
-              <div className="h-4 w-12 bg-slate-200 rounded" />
-            ) : (
-              price(cart?.cost.subtotalAmount.amount || 0)
-            )}
-          </p>
+          {isCartLoading || isRemoveLoading ? (
+            <p className="h-4 w-12 bg-slate-200 rounded" />
+          ) : (
+            <p>{price(cart?.cost.subtotalAmount.amount || 0)}</p>
+          )}
         </div>
         <p className="mt-0.5 text-sm text-gray-500">
           Livraison et taxes calculées lors du paiement.

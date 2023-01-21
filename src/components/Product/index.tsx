@@ -9,6 +9,8 @@ import { price } from '@/lib/price'
 import { UNIT_STRING } from '@/lib/weight'
 import { GetProductQuery, ProductVariant } from '@/types/gql/graphql'
 
+import Alert from '../Alert/Alert'
+import Spinner from '../Spinner'
 import VariantBoxes from './VariantBoxes'
 import VariantColors from './VariantColors'
 import { formatMetafields } from './metafields'
@@ -23,7 +25,7 @@ export default function Product(props: Props) {
   const [variant, setVariant] = useState(productQuery.product?.variants.edges[0].node)
   const { product } = productQuery
   const images = product?.images.edges ?? []
-  const mutation = useAddProduct()
+  const { mutate, isLoading, isError, reset } = useAddProduct()
 
   // useEffect detect when the variant changes and
   // if the variant has an image, apply it
@@ -184,13 +186,25 @@ export default function Product(props: Props) {
                   variant.availableForSale
                     ? 'bg-primary text-white hover:bg-primary-dark'
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
-                  'flex w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
+                  'flex gap-3 w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
-                onClick={() => mutation.mutate({ variantId: variant.id, quantity: 1 })}
+                onClick={() => mutate({ variantId: variant.id, quantity: 1 })}
               >
-                Ajouter au panier
+                {isLoading ? (
+                  <>
+                    <Spinner className="h-5 w-5 text-white" />
+                    <div>Ajout en cours...</div>
+                  </>
+                ) : (
+                  <div>Ajouter au panier</div>
+                )}
               </button>
             </div>
+            {isError && (
+              <div className="mt-6">
+                <Alert onHide={reset}>Problème lors de l&apos;ajout du produit.</Alert>
+              </div>
+            )}
             <div className="mt-6 text-center">
               <a href="#" className="group inline-flex text-base font-medium">
                 <ShieldCheckIcon

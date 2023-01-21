@@ -57,10 +57,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       `}</style>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <ShopifyClientProvider
-            domain={SHOPIFY_DOMAIN}
-            storefrontAccessToken={SHOPIFY_STOREFRONT_ACCESS_TOKEN}
-          >
+          <ShopifyClientProvider>
             <UIStateProvider>
               <Component {...pageProps} />
             </UIStateProvider>
