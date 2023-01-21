@@ -11,8 +11,6 @@ import useRemoveProduct from '@/context/ShopifyClient/removeProduct/useRemovePro
 import useUIState from '@/context/UIState/useUIState'
 import { price } from '@/lib/price'
 
-import { EmptyCart } from './EmptyCart'
-
 interface Props {
   onClose: () => void
 }
@@ -68,7 +66,6 @@ export default function Cart({ onClose }: Props) {
                 ))
               ) : isEmpty ? (
                 <div className="flex flex-col items-center">
-                  {/* <EmptyCart className="h-60 w-60 text-gray-700" /> */}
                   <ShoppingBagIcon className="mt-6 sm:mt-16 h-28 w-28 text-gray-200" />
                   <p className="mt-8 text-lg font-semibold leading-8 tracking-tight text-gray-900">
                     Votre panier est vide
@@ -130,7 +127,9 @@ export default function Cart({ onClose }: Props) {
         </div>
       </div>
 
-      {isError && <Alert onHide={reset}>Erreur lors de la suppression du produit</Alert>}
+      <Alert error show={isError} onHide={reset}>
+        Erreur lors de la suppression du produit
+      </Alert>
       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
         <div className="flex justify-between text-base font-medium text-gray-900">
           <p>Sous-Total</p>

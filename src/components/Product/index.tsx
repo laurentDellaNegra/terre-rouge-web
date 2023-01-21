@@ -27,7 +27,7 @@ export default function Product(props: Props) {
   const [qty, setQty] = useState(1)
   const { product } = productQuery
   const images = product?.images.edges ?? []
-  const { mutate, isLoading, isError, reset } = useAddProduct()
+  const { mutate, isLoading, isError, reset, isSuccess } = useAddProduct()
   const { toggleCartPanel } = useUIState()
 
   // useEffect detect when the variant changes and
@@ -37,6 +37,15 @@ export default function Product(props: Props) {
       product?.images.edges.findIndex(({ node }) => node.id === variant?.image?.id) ?? -1
     if (newSelectedIndex !== -1) setSelectedIndexImage(newSelectedIndex)
   }, [product?.images.edges, variant])
+
+  // Remove the Alert message after few seconds
+  useEffect(() => {
+    if (!isSuccess) return
+    const t = setTimeout(() => {
+      reset()
+    }, 4000)
+    return () => clearTimeout(t)
+  }, [isSuccess, reset])
 
   if (!product || !variant) return null
 
@@ -192,13 +201,7 @@ export default function Product(props: Props) {
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex gap-3 w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
-                onClick={() =>
-                  !isLoading &&
-                  mutate(
-                    { variantId: variant.id, quantity: qty },
-                    { onSuccess: () => toggleCartPanel() }
-                  )
-                }
+                onClick={() => !isLoading && mutate({ variantId: variant.id, quantity: qty })}
               >
                 {isLoading ? (
                   <>
@@ -210,11 +213,12 @@ export default function Product(props: Props) {
                 )}
               </button>
             </div>
-            {isError && (
-              <div className="mt-6">
-                <Alert onHide={reset}>Problème lors de l&apos;ajout du produit</Alert>
-              </div>
-            )}
+            <Alert error show={isError} onHide={reset} className="mt-6">
+              Problème lors de l&apos;ajout du produit
+            </Alert>
+            <Alert show={isSuccess} onHide={reset} className="mt-6">
+              Produit ajouté au panier
+            </Alert>
             <div className="mt-6 text-center">
               <a href="#" className="group inline-flex text-base font-medium">
                 <ShieldCheckIcon
