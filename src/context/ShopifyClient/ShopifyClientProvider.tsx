@@ -11,6 +11,7 @@ interface Props {
 
 export default function ShopifyClientProvider(props: Props) {
   const { children } = props
+  // TODO: Add graphql client here
   const initialState: State = {
     cartId: getCartIdFromStorage(),
   }

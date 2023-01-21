@@ -12,6 +12,7 @@ export default function UIStateProvider(props: Props) {
   const { children } = props
   const initialState: State = {
     openSearchPalette: false,
+    openCartPanel: false,
   }
   const [state, dispatch] = useReducer(UIStateReducer, initialState)
   const value = useMemo(() => ({ state, dispatch }), [state])

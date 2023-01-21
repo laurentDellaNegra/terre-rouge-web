@@ -11,10 +11,15 @@ function useUIState() {
     throw new Error('useUIState must be used within a UIStateProvider')
   }
   const { state, dispatch } = context
-  const { openSearchPalette } = state
+  const { openSearchPalette, openCartPanel } = state
 
   const toggleSearch = useCallback(
     (): void => dispatch({ type: 'TOGGLE_SEARCH_PALETTE' }),
+    [dispatch]
+  )
+
+  const toggleCartPanel = useCallback(
+    (): void => dispatch({ type: 'TOGGLE_CART_PANEL' }),
     [dispatch]
   )
 
@@ -26,7 +31,7 @@ function useUIState() {
     }
   }, [openSearchPalette, toggleSearch, width])
 
-  return { state, dispatch, openSearchPalette, toggleSearch }
+  return { state, dispatch, openSearchPalette, toggleSearch, openCartPanel, toggleCartPanel }
 }
 
 export default useUIState

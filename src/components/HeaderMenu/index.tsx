@@ -5,6 +5,7 @@ import Header from '@/atomic/organisms/Header'
 import MobileMenu from '@/atomic/organisms/MobileMenu'
 import SlideOverCart from '@/atomic/organisms/SlideOverCart'
 import TrustBox from '@/components/TrustBox'
+import useUIState from '@/context/UIState/useUIState'
 import useScrollDirection from '@/hooks/useScrollDirection'
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 
 export default function HeaderMenu({ withInstantSearch }: Props) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isCartOpen, setCartOpen] = useState(false)
+  const { openCartPanel, toggleCartPanel } = useUIState()
 
   const scrollDirection = useScrollDirection()
   const isScrolled = scrollDirection !== null
@@ -39,11 +40,11 @@ export default function HeaderMenu({ withInstantSearch }: Props) {
           !isScrolled && 'bg-white'
         )}
         onMobileMenuClick={() => setMobileMenuOpen(true)}
-        onCartClick={() => setCartOpen(true)}
+        onCartClick={toggleCartPanel}
         withInstantSearch={withInstantSearch}
       />
       <MobileMenu open={isMobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
-      <SlideOverCart open={isCartOpen} onClose={() => setCartOpen(false)} />
+      <SlideOverCart open={openCartPanel} onClose={toggleCartPanel} />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 import useAddProduct from '@/context/ShopifyClient/addProduct/useAddProduct'
+import useUIState from '@/context/UIState/useUIState'
 import { price } from '@/lib/price'
 import { UNIT_STRING } from '@/lib/weight'
 import { GetProductQuery, ProductVariant } from '@/types/gql/graphql'
@@ -27,6 +28,7 @@ export default function Product(props: Props) {
   const { product } = productQuery
   const images = product?.images.edges ?? []
   const { mutate, isLoading, isError, reset } = useAddProduct()
+  const { toggleCartPanel } = useUIState()
 
   // useEffect detect when the variant changes and
   // if the variant has an image, apply it
@@ -190,7 +192,13 @@ export default function Product(props: Props) {
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex gap-3 w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
-                onClick={() => !isLoading && mutate({ variantId: variant.id, quantity: qty })}
+                onClick={() =>
+                  !isLoading &&
+                  mutate(
+                    { variantId: variant.id, quantity: qty },
+                    { onSuccess: () => toggleCartPanel() }
+                  )
+                }
               >
                 {isLoading ? (
                   <>
