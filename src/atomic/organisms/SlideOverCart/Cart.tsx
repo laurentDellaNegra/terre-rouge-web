@@ -2,11 +2,13 @@ import { Dialog } from '@headlessui/react'
 import { ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import ButtonLink from '@/atomic/atoms/ButtonLink'
 import Alert from '@/components/Alert/Alert'
 import useGetCart from '@/context/ShopifyClient/getCart/useGetCart'
 import useRemoveProduct from '@/context/ShopifyClient/removeProduct/useRemoveProduct'
+import useUIState from '@/context/UIState/useUIState'
 import { price } from '@/lib/price'
 
 import { EmptyCart } from './EmptyCart'
@@ -16,6 +18,7 @@ interface Props {
 }
 
 export default function Cart({ onClose }: Props) {
+  const { toggleCartPanel } = useUIState()
   const { data: cart, isInitialLoading: isCartLoading } = useGetCart()
   const { mutate: removeProduct, isError, reset, isLoading: isRemoveLoading } = useRemoveProduct()
   const isEmpty = !cart || !cart.checkoutUrl || cart.lines.edges.length === 0
@@ -93,10 +96,12 @@ export default function Cart({ onClose }: Props) {
                       <div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <h3>
-                            <a href={line.merchandise.product.handle}>
-                              {' '}
-                              {line.merchandise.product.title}{' '}
-                            </a>
+                            <Link
+                              href={`/produit/${line.merchandise.product.handle}`}
+                              onClick={toggleCartPanel}
+                            >
+                              {line.merchandise.product.title}
+                            </Link>
                           </h3>
                           <p className="ml-4">{price(line.merchandise.price.amount)}</p>
                         </div>
