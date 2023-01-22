@@ -86,7 +86,6 @@ export default function Product(props: Props) {
                               className="h-full w-full object-cover object-center"
                               fill
                               priority
-                              unoptimized
                             />
                             <span
                               className={clsx(
@@ -110,7 +109,6 @@ export default function Product(props: Props) {
                         alt={image.node.altText || product.title}
                         className="h-full w-full object-cover object-center sm:rounded-lg"
                         fill
-                        unoptimized
                         priority
                       />
                     </Tab.Panel>
