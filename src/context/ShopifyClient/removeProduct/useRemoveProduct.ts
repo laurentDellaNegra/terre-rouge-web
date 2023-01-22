@@ -37,12 +37,6 @@ export default function useRemoveProduct() {
           })
         })
       }
-      // oldCart?.cart?.lines?.edges?.filter(({ node }) => node.id !== lineItemToRemove)
-      // ({
-      //   ...oldCart,
-      //   lines: {}
-      // })
-      // oldCart?.lines.edges.filter(({ node }) => node.id !== lineItemToRemove)
 
       // Return a context with the previous list in case of an error
       return { previousCart }

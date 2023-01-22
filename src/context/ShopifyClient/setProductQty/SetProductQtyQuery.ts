@@ -1,8 +1,8 @@
 import { graphql } from '@/types/gql'
 
-export const AddProductQuery = graphql(`
-  mutation AddProductQuery($cartId: ID!, $merchandiseId: ID!, $quantity: Int!) {
-    cartLinesAdd(cartId: $cartId, lines: { merchandiseId: $merchandiseId, quantity: $quantity }) {
+export const SetProductQtyQuery = graphql(`
+  mutation SetProductQtyQuery($cartId: ID!, $id: ID!, $quantity: Int!) {
+    cartLinesUpdate(cartId: $cartId, lines: { id: $id, quantity: $quantity }) {
       cart {
         id
       }

@@ -8,8 +8,11 @@ import ButtonLink from '@/atomic/atoms/ButtonLink'
 import Alert from '@/components/Alert/Alert'
 import useGetCart from '@/context/ShopifyClient/getCart/useGetCart'
 import useRemoveProduct from '@/context/ShopifyClient/removeProduct/useRemoveProduct'
+import useSetProductQty from '@/context/ShopifyClient/setProductQty/useSetProductQty'
 import useUIState from '@/context/UIState/useUIState'
 import { price } from '@/lib/price'
+
+import QtySelect from './QtySelect'
 
 interface Props {
   onClose: () => void
@@ -18,7 +21,18 @@ interface Props {
 export default function Cart({ onClose }: Props) {
   const { toggleCartPanel } = useUIState()
   const { data: cart, isInitialLoading: isCartLoading } = useGetCart()
-  const { mutate: removeProduct, isError, reset, isLoading: isRemoveLoading } = useRemoveProduct()
+  const {
+    mutate: removeProduct,
+    isError: isRemoveProductError,
+    reset: resetRemoveProduct,
+    isLoading: isRemoveProductLoading,
+  } = useRemoveProduct()
+  const {
+    mutate: setProductQty,
+    isError: isSetProductQtyError,
+    reset: resetSetProductQty,
+    isLoading: isSetProductQtyLoading,
+  } = useSetProductQty()
   const isEmpty = !cart || !cart.checkoutUrl || cart.lines.edges.length === 0
   return (
     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
@@ -78,7 +92,7 @@ export default function Cart({ onClose }: Props) {
                   </ButtonLink>
                 </div>
               ) : (
-                cart?.lines.edges.map(({ node: line }) => (
+                cart?.lines.edges.map(({ node: line }, idx) => (
                   <li key={line.merchandise.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <Image
@@ -102,20 +116,25 @@ export default function Cart({ onClose }: Props) {
                           </h3>
                           <p className="ml-4">{price(line.merchandise.price.amount)}</p>
                         </div>
-                        {/* TODO: Display weight or variant */}
-                        {/* <p className="mt-1 text-sm text-gray-500">{product.color}</p> */}
                       </div>
-                      <div className="flex flex-1 items-end justify-between text-sm">
-                        <p className="text-gray-500">Qté {line.quantity}</p>
+                      <div className="flex flex-1 items-end text-sm">
+                        <div className="flex flex-1 justify-between">
+                          <QtySelect
+                            id={idx}
+                            name={line.merchandise.product.title}
+                            value={line.quantity}
+                            onChange={(newQty) => setProductQty({ id: line.id, quantity: newQty })}
+                          />
 
-                        <div className="flex">
-                          <button
-                            type="button"
-                            className="font-medium text-primary hover:text-primary-light"
-                            onClick={() => removeProduct(line.id)}
-                          >
-                            Supprimer
-                          </button>
+                          <div className="flex">
+                            <button
+                              type="button"
+                              className="font-medium text-primary hover:text-primary-light"
+                              onClick={() => removeProduct(line.id)}
+                            >
+                              Supprimer
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -127,13 +146,16 @@ export default function Cart({ onClose }: Props) {
         </div>
       </div>
 
-      <Alert error show={isError} onHide={reset}>
+      <Alert error show={isRemoveProductError} onHide={resetRemoveProduct}>
         Erreur lors de la suppression du produit
+      </Alert>
+      <Alert error show={isSetProductQtyError} onHide={resetSetProductQty}>
+        Quantité non disponible
       </Alert>
       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
         <div className="flex justify-between text-base font-medium text-gray-900">
           <p>Sous-Total</p>
-          {isCartLoading || isRemoveLoading ? (
+          {isCartLoading || isRemoveProductLoading || isSetProductQtyLoading ? (
             <p className="h-4 w-12 bg-slate-200 rounded" />
           ) : (
             <p>{price(cart?.cost.subtotalAmount.amount || 0)}</p>
@@ -146,7 +168,7 @@ export default function Cart({ onClose }: Props) {
           <a
             href={cart?.checkoutUrl || '#'}
             className={clsx(
-              isCartLoading || isRemoveLoading || isEmpty
+              isCartLoading || isRemoveProductLoading || isSetProductQtyLoading || isEmpty
                 ? 'bg-gray-200 text-gray-600 cursor-not-allowed'
                 : 'bg-primary text-white hover:bg-primary-dark',
               'flex items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium shadow-sm'
