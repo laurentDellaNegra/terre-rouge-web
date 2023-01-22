@@ -14,7 +14,8 @@ export default function Meta() {
       <meta name="theme-color" content="#000" />
       <meta
         name="description"
-        content="Terre Rouge - Une selection de condiments et d'épices fraîchement moulues, de la vanille bourbon de Madagascar, séchée de façon artisanale."
+        content="Terre Rouge - L'épicerie fine de Madagascar, une multitude de choix d'épices,
+        de condiments et d'arts de table."
       />
       {/* https://ogp.me/ */}
       {/* https://developers.facebook.com/docs/sharing/best-practices */}
