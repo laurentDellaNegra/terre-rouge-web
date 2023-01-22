@@ -183,7 +183,7 @@ export default function Product(props: Props) {
                 className="max-w-full w-full sm:w-auto rounded-md border border-gray-300 py-3 text-left text-base font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 onChange={(e) => setQty(Number(e.target.value))}
               >
-                {[...Array(20)].map((_e, i) => {
+                {[...Array(variant.quantityAvailable || 20)].map((_e, i) => {
                   const optionQty = i + 1
                   return (
                     <option key={optionQty} value={optionQty}>

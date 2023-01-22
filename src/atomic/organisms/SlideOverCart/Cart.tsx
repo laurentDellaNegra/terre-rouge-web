@@ -123,6 +123,7 @@ export default function Cart({ onClose }: Props) {
                             id={idx}
                             name={line.merchandise.product.title}
                             value={line.quantity}
+                            size={line.merchandise.quantityAvailable || 20}
                             onChange={(newQty) => setProductQty({ id: line.id, quantity: newQty })}
                           />
 

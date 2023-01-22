@@ -37,6 +37,7 @@ export const GetProduct = graphql(`
             availableForSale
             weight
             weightUnit
+            quantityAvailable
             price {
               amount
               currencyCode

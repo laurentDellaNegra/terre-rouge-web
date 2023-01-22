@@ -26,6 +26,7 @@ export const GetCartQuery = graphql(`
                   amount
                   currencyCode
                 }
+                quantityAvailable
               }
             }
             attributes {
