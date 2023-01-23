@@ -15,6 +15,9 @@ export default function useGetCart() {
       const { cart } = await graphQLRequestClient.request(GetCartQuery, { id: cartId! })
       return cart
     },
+    onSuccess(cart) {
+      if (cart === null) deleteCartId()
+    },
     onError: deleteCartId,
     enabled: !!cartId,
   })
