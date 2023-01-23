@@ -68,6 +68,10 @@ export const GetProduct = graphql(`
         key
         value
       }
+      conditionnement: metafield(namespace: "custom", key: "conditionnement") {
+        key
+        value
+      }
     }
   }
 `)

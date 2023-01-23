@@ -27,5 +27,13 @@ export const formatMetafields = (product: GetProductQuery['product']) =>
               : null,
           name: 'Composition',
         },
+        {
+          ...product.conditionnement,
+          list:
+            product.conditionnement?.value.indexOf('*') !== -1
+              ? product.conditionnement?.value.split('*').map((value) => value.trim())
+              : null,
+          name: 'Conditionnement',
+        },
       ]
     : []
