@@ -7,13 +7,15 @@ interface ButtonLinkProps {
   href: string
   size?: 'small' | 'medium' | 'large'
   className?: string
+  onClick?: () => void
 }
 
 export default function ButtonLink(props: ButtonLinkProps) {
-  const { children, className = '', href, size = 'medium' } = props
+  const { children, className = '', href, size = 'medium', onClick } = props
   return (
     <div className={className}>
       <Link
+        onClick={onClick}
         href={href}
         className={clsx(
           size === 'small' && '', //TODO

@@ -87,7 +87,12 @@ export default function Cart({ onClose }: Props) {
                   <p className="mt-1 text-base leading-7 text-gray-500 text-center max-w-xs">
                     On dirait que vous n&apos;avez pas encore fait votre choix
                   </p>
-                  <ButtonLink size="large" href="/produits" className="mt-10 sm:mt-20">
+                  <ButtonLink
+                    size="large"
+                    href="/produits"
+                    onClick={toggleCartPanel}
+                    className="mt-10 sm:mt-20"
+                  >
                     Voir nos produits
                   </ButtonLink>
                 </div>
