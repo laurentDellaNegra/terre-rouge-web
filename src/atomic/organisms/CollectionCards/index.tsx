@@ -14,16 +14,16 @@ const collections = [
     imageAlt: 'Cuillère joliement disposée contenant du poivre noir',
   },
   {
-    name: 'Condiments',
-    href: '/condiments',
-    imageSrc: condimentsImg,
-    imageAlt: 'Ensemble de pots de confitures joliement disposés',
-  },
-  {
     name: 'Arts de table',
     href: '/arts-de-table',
     imageSrc: artTableImg,
     imageAlt: "Ensemble d'assietes joliement disposées",
+  },
+  {
+    name: 'Condiments',
+    href: '/condiments',
+    imageSrc: condimentsImg,
+    imageAlt: 'Ensemble de pots de confitures joliement disposés',
   },
 ]
 
