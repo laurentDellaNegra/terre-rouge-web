@@ -28,7 +28,7 @@ export default function Alert({
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <div className={clsx('rounded-md bg-red-50 p-4', className)}>
+      <div className={clsx(error ? 'bg-red-50 ' : 'bg-green-50', 'rounded-md p-4', className)}>
         <div className="flex">
           <div className="flex-shrink-0">
             {error ? (
