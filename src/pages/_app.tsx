@@ -4,7 +4,7 @@ import { captureException, captureMessage } from '@sentry/nextjs'
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import ShopifyClientProvider from '@/context/ShopifyClient/ShopifyClientProvider'
 import UIStateProvider from '@/context/UIState/UIStateProvider'
@@ -47,6 +47,27 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         },
       })
   )
+
+  /**
+   * WORKAROUND TO SOLVE THE NEXTJS + ALGOLIA ROUTE ISSUE
+   * https://github.com/algolia/instantsearch/issues/5241
+   *
+   */
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (/produits|epices|condiments|arts-de-table/.test(window.location.href))
+        window.location.reload()
+    }
+    window.addEventListener('popstate', handleRouteChange)
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange)
+    }
+  }, [])
+  /**
+   * ====================================================
+   * ====================================================
+   * ====================================================
+   */
 
   return (
     <>
