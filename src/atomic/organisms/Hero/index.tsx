@@ -4,7 +4,7 @@ import ButtonLink from '@/atomic/atoms/ButtonLink'
 import SubTitle from '@/atomic/atoms/Subtitle'
 import Title from '@/atomic/atoms/Title'
 import CollectionCards from '@/atomic/organisms/CollectionCards'
-import hero from '@/public/images/hero.png'
+import hero from '@/public/images/hero.webp'
 
 export default function Hero() {
   return (

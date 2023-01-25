@@ -10,10 +10,10 @@ import { GlobeEuropeAfricaIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 
 import TitleSection from '@/atomic/atoms/TitleSection'
-import imgAlaCnc from '@/public/engagements/ala-cnc.jpeg'
-import imgAlaLovain from '@/public/engagements/ala-lovain.jpeg'
-import imgAlaQuote from '@/public/engagements/ala-quote.jpeg'
-import imgBiodegradable from '@/public/engagements/biodegradable.jpg'
+import imgAlaCnc from '@/public/engagements/ala-cnc.webp'
+import imgAlaLovain from '@/public/engagements/ala-lovain.webp'
+import imgAlaQuote from '@/public/engagements/ala-quote.webp'
+import imgBiodegradable from '@/public/engagements/biodegradable.webp'
 
 const features = [
   {
@@ -46,7 +46,7 @@ const features = [
     icon: GlobeEuropeAfricaIcon,
   },
   {
-    name: 'Comsommation',
+    name: 'Consommation',
     description: 'Etablir des modes de consommation et productions durables.',
     icon: BoltIcon,
   },

@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import artTableImg from '@/public/images/art-table.jpeg'
-import condimentsImg from '@/public/images/condiments.jpeg'
-import spiciesImg from '@/public/images/spices.jpeg'
+import artTableImg from '@/public/images/art-table.webp'
+import condimentsImg from '@/public/images/condiments.webp'
+import spiciesImg from '@/public/images/spices.webp'
 
 const collections = [
   {
@@ -14,16 +14,16 @@ const collections = [
     imageAlt: 'Cuillère joliement disposée contenant du poivre noir',
   },
   {
-    name: 'Arts de table',
-    href: '/arts-de-table',
-    imageSrc: artTableImg,
-    imageAlt: "Ensemble d'assietes joliement disposées",
-  },
-  {
     name: 'Condiments',
     href: '/condiments',
     imageSrc: condimentsImg,
     imageAlt: 'Ensemble de pots de confitures joliement disposés',
+  },
+  {
+    name: 'Arts de table',
+    href: '/arts-de-table',
+    imageSrc: artTableImg,
+    imageAlt: "Ensemble d'assietes joliement disposées",
   },
 ]
 
@@ -38,7 +38,7 @@ export default function CollectionCards(props: CollectionCardsProps) {
       <h2 id="collection-heading" className="sr-only">
         Collections
       </h2>
-      <div className="mx-auto grid max-w-md grid-cols-1 gap-y-6 px-4 sm:max-w-7xl sm:grid-cols-3 sm:gap-y-0 sm:gap-x-6 sm:px-6 lg:gap-x-8 lg:px-8">
+      <div className="mx-auto grid max-w-md grid-cols-1 gap-y-6 px-4 sm:max-w-7xl sm:grid-cols-3 sm:gap-y-0 sm:gap-x-8 sm:px-6 lg:gap-x-16 lg:px-8">
         {collections.map((collection) => (
           <div
             key={collection.name}
