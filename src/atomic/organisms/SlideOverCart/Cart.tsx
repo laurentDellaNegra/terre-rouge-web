@@ -11,12 +11,19 @@ import useRemoveProduct from '@/context/ShopifyClient/removeProduct/useRemovePro
 import useSetProductQty from '@/context/ShopifyClient/setProductQty/useSetProductQty'
 import useUIState from '@/context/UIState/useUIState'
 import { price } from '@/lib/price'
+import { SelectedOption } from '@/types/gql/graphql'
 
 import QtySelect from './QtySelect'
 
 interface Props {
   onClose: () => void
 }
+
+const getVariantSubtitle = (selectedOptions: Array<SelectedOption>) =>
+  selectedOptions
+    .filter((s) => s.value !== 'Default Title')
+    .map((s) => s.value)
+    .join(' | ')
 
 export default function Cart({ onClose }: Props) {
   const { toggleCartPanel } = useUIState()
@@ -121,6 +128,11 @@ export default function Cart({ onClose }: Props) {
                           </h3>
                           <p className="ml-4">{price(line.merchandise.price.amount)}</p>
                         </div>
+                        {line.merchandise.selectedOptions && (
+                          <p className="mt-1 mb-2 text-sm text-gray-500">
+                            {getVariantSubtitle(line.merchandise.selectedOptions)}
+                          </p>
+                        )}
                       </div>
                       <div className="flex flex-1 items-end text-sm">
                         <div className="flex flex-1 justify-between">

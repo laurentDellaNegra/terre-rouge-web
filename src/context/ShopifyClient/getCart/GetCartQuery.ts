@@ -14,6 +14,10 @@ export const GetCartQuery = graphql(`
             merchandise {
               ... on ProductVariant {
                 id
+                selectedOptions {
+                  name
+                  value
+                }
                 image {
                   altText
                   url(transform: { maxHeight: 160, maxWidth: 160, crop: CENTER, scale: 3 })
