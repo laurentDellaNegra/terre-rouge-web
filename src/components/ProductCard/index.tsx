@@ -16,7 +16,7 @@ interface Props {
 
 export default function ProductCard(props: Props) {
   const {
-    product: { href, image, title, price: amount, currency, handle, variants },
+    product: { href, image, title, price: priceBase, currency, handle, variants, compareAtPrice },
     position,
   } = props
   const hasVariants = variants.length > 0
@@ -43,9 +43,21 @@ export default function ProductCard(props: Props) {
       <div className="flex justify-between">
         <div>
           <h3 className="mt-4 text-sm text-gray-700">{title}</h3>
-          <p className="mt-1 text-lg font-medium text-gray-900">
-            {price(amount, currency as CurrencyCode)}
-          </p>
+          <div className="flex items-center gap-3">
+            <p
+              className={clsx(
+                compareAtPrice ? 'text-primary-dark' : 'text-gray-900',
+                'mt-1 text-lg font-medium'
+              )}
+            >
+              {price(priceBase, currency as CurrencyCode)}
+            </p>
+            {compareAtPrice !== 0 ? (
+              <p className="mt-1 text-lg line-through font-medium text-gray-900">
+                {price(compareAtPrice, currency as CurrencyCode)}
+              </p>
+            ) : null}
+          </div>
         </div>
         {hasVariants && (
           <div>

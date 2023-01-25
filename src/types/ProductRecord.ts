@@ -6,6 +6,7 @@ export interface ProductRecord {
   image: string
   objectID: string
   price: number
+  compareAtPrice: number
   tags: Array<string>
   title: string
   href: string
