@@ -119,7 +119,7 @@ export default function Product(props: Props) {
                       {isPatille && (
                         <Image
                           src={pastille}
-                          className="absolute w-24 sm:w-36"
+                          className="absolute w-24 sm:w-36 right-12"
                           alt="biodegradable and compostable certificate"
                         />
                       )}
