@@ -8,6 +8,7 @@ import useAddProduct from '@/context/ShopifyClient/addProduct/useAddProduct'
 import useUIState from '@/context/UIState/useUIState'
 import { price } from '@/lib/price'
 import { UNIT_STRING } from '@/lib/weight'
+import pastille from '@/public/images/pastille.png'
 import { GetProductQuery, ProductVariant } from '@/types/gql/graphql'
 
 import Alert from '../Alert/Alert'
@@ -50,6 +51,10 @@ export default function Product(props: Props) {
   if (!product || !variant) return null
 
   const metafields = formatMetafields(product)
+  const isPatille = !!metafields.find(
+    (m) => m.key === 'conditionnement' && m.value?.includes('biodégradable')
+  )
+  console.log(metafields)
   const nbVariants = product.variants.edges.length
   const variantType = variant.selectedOptions[0].name
 
@@ -111,6 +116,13 @@ export default function Product(props: Props) {
                         fill
                         priority
                       />
+                      {isPatille && (
+                        <Image
+                          src={pastille}
+                          className="absolute w-24 sm:w-36"
+                          alt="biodegradable and compostable certificate"
+                        />
+                      )}
                     </Tab.Panel>
                   ))}
                 </Tab.Panels>
