@@ -11,11 +11,11 @@ const navigation = {
   ],
   company: [
     { name: 'Engagements', href: '/engagements' },
-    { name: "Conditions d'utilisation", href: '#' },
+    { name: "Conditions d'utilisation", href: '/legal/usage' },
   ],
   legal: [
-    { name: 'Confidentialité', href: '#' },
-    { name: 'Remboursement', href: '#' },
+    { name: 'Confidentialité', href: '/legal/privacy' },
+    { name: 'Remboursement', href: '/legal/refund' },
   ],
   social: [
     {
