@@ -14,6 +14,9 @@ const nextConfig = {
   sentry: {
     hideSourceMaps: false,
   },
+  experimental: {
+    nextScriptWorkers: true,
+  },
 }
 
 const sentryWebpackPluginOptions = {
