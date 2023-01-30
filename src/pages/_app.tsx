@@ -7,6 +7,7 @@ import UIStateProvider from '@/context/UIState/UIStateProvider'
 import useFixAlgoliaBackButtonBroken from '@/hooks/useFixAlgoliaBackButtonBroken'
 import QueryClientInitializer from '@/lib/clients/QueryClientInitializer'
 import FacebookPixel from '@/lib/thirdParties/FacebookPixel'
+import GoogleAnalyticsPixel from '@/lib/thirdParties/GoogleAnalyticsPixel'
 import '@/styles/algolia.css'
 import '@/styles/globals.css'
 import '@/styles/rheostat.css'
@@ -19,6 +20,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <InjectFont />
       <FacebookPixel />
+      <GoogleAnalyticsPixel />
       <QueryClientInitializer dehydratedState={pageProps.dehydratedState}>
         <ShopifyClientProvider>
           <UIStateProvider>

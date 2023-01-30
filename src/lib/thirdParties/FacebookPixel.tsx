@@ -11,7 +11,7 @@ export default function FacebookPixel() {
         };
       `}
       </Script>
-      <Script id="facebook-pixel" onLoad={() => console.log('Facebook pixel loaded')}>
+      <Script id="facebook-pixel">
         {`
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
