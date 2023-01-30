@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 import useAddProduct from '@/context/ShopifyClient/addProduct/useAddProduct'
 import useUIState from '@/context/UIState/useUIState'
+import getCookie from '@/lib/cookie'
 import { price } from '@/lib/price'
 import { UNIT_STRING } from '@/lib/weight'
 import pastille from '@/public/images/pastille.png'
@@ -64,6 +65,32 @@ export default function Product(props: Props) {
     const { id } = images[newIndex].node
     const variantFound = product.variants.edges.find(({ node }) => node.image?.id === id)
     if (variantFound) setVariant(variantFound.node)
+  }
+
+  const handleAddTocart = (variantId: string, quantity: number) => {
+    if (isLoading) return
+    mutate(
+      { variantId, quantity },
+      {
+        onSuccess: () => {
+          // Tracking
+          const eventName = 'AddToCart'
+          const eventID = `${eventName}.${new Date().getTime()}`
+          if (typeof (window as any).fbq !== 'undefined')
+            (window as any).fbq('track', eventName, { event_id: eventID })
+          fetch('/api/track', {
+            method: 'post',
+            body: JSON.stringify({
+              eventID,
+              eventName,
+              urlLocation: window?.location?.href,
+              fbp: getCookie('_fbp'),
+              fbc: getCookie('_fbc'),
+            }),
+          })
+        },
+      }
+    )
   }
 
   return (
@@ -211,7 +238,7 @@ export default function Product(props: Props) {
                     : 'bg-gray-200 text-gray-600 cursor-not-allowed',
                   'flex gap-3 w-full sm:w-auto flex-1 items-center justify-center rounded-md border border-transparent py-3 px-8 text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50'
                 )}
-                onClick={() => !isLoading && mutate({ variantId: variant.id, quantity: qty })}
+                onClick={() => handleAddTocart(variant.id, qty)}
               >
                 {isLoading ? (
                   <>
