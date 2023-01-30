@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import facebookEventFetch from '@/lib/facebook'
+import facebookEventFetch from '@/lib/thirdParties/facebook'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
