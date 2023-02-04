@@ -9,17 +9,15 @@ export default function GoogleAnalyticsPixel() {
         strategy="worker"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
-      <Script
-        id="gtag"
+      <script
+        type="text/partytown"
         dangerouslySetInnerHTML={{
           __html: `
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function gtag(){window.dataLayer.push(arguments);}
-        gtag('js', new Date());
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-        gtag('config', '${gtag.GA_TRACKING_ID}', {
-            page_path: window.location.pathname,
-        });
+          gtag('config', '${gtag.GA_TRACKING_ID}');
         `,
         }}
       />
