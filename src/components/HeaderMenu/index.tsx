@@ -8,6 +8,8 @@ import TrustBox from '@/components/TrustBox'
 import useUIState from '@/context/UIState/useUIState'
 import useScrollDirection from '@/hooks/useScrollDirection'
 
+import CouponBanner from '../CouponBanner'
+
 interface Props {
   withInstantSearch: boolean
 }
@@ -23,9 +25,13 @@ export default function HeaderMenu({ withInstantSearch }: Props) {
     <div
       className={clsx('sticky z-40 transition-all duration-500', {
         'top-0': scrollDirection === 'up',
-        '-top-[93.12px] sm:-top-[101.12px]': scrollDirection === 'down',
+        '-top-[117.12px] sm:-top-[125.12px]': scrollDirection === 'down', // with CouponBanner
+        // '-top-[93.12px] sm:-top-[101.12px]': scrollDirection === 'down',
       })}
     >
+      <CouponBanner>
+        <strong>-15%</strong> avec le code <strong>OUVERTURE15</strong>
+      </CouponBanner>
       <TrustBox
         className={clsx(
           isScrolled &&
