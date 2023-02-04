@@ -9,7 +9,7 @@ import { ChartBarSquareIcon, InformationCircleIcon } from '@heroicons/react/24/o
 import { GlobeEuropeAfricaIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 
-import TitleSection from '@/atomic/atoms/TitleSection'
+import TitleSection from '@/components/UI/TitleSection'
 import imgAlaCnc from '@/public/engagements/ala-cnc.webp'
 import imgAlaLovain from '@/public/engagements/ala-lovain.webp'
 import imgAlaQuote from '@/public/engagements/ala-quote.webp'

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
-import Banner from '@/atomic/atoms/Banner'
+import Banner from '@/components/UI/Banner'
 import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 import trustpilotImg from '@/public/logos/trustpilot/logo.svg'
 import ratingImg from '@/public/logos/trustpilot/rating-4.5.svg'

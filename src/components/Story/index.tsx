@@ -1,8 +1,8 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import Image from 'next/image'
 
-import P from '@/atomic/atoms/P'
-import TitleSection from '@/atomic/atoms/TitleSection'
+import P from '@/components/UI/P'
+import TitleSection from '@/components/UI/TitleSection'
 import picture from '@/public/images/story.webp'
 
 export default function Story() {

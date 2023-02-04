@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import Header from '@/atomic/organisms/Header'
-import MobileMenu from '@/atomic/organisms/MobileMenu'
-import SlideOverCart from '@/atomic/organisms/SlideOverCart'
 import TrustBox from '@/components/TrustBox'
+import Header from '@/components/UI/Header'
+import MobileMenu from '@/components/UI/MobileMenu'
+import SlideOverCart from '@/components/UI/SlideOverCart'
 import useUIState from '@/context/UIState/useUIState'
 import useScrollDirection from '@/hooks/useScrollDirection'
 

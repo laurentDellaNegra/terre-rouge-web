@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import P from '@/atomic/atoms/P'
-import TextLink from '@/atomic/atoms/TextLink'
-import TitleSection from '@/atomic/atoms/TitleSection'
+import P from '@/components/UI/P'
+import TextLink from '@/components/UI/TextLink'
+import TitleSection from '@/components/UI/TitleSection'
 import { TRUSTPILOT_QUERY_KEY, getTrustpilotReviews } from '@/lib/trustpilot'
 
 import ReviewGrid from './ReviewGrid'

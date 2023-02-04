@@ -1,6 +1,6 @@
 import { usePagination } from 'react-instantsearch-hooks-web'
 
-import Pagination from '@/atomic/organisms/Pagination'
+import Pagination from '@/components/UI/Pagination'
 import { scrollToTop } from '@/lib/window'
 
 export default function ProductsPagination() {

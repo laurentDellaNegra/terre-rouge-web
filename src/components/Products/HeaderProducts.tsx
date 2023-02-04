@@ -1,16 +1,8 @@
 import { FunnelIcon } from '@heroicons/react/24/solid'
-import clsx from 'clsx'
-import {
-  useClearRefinements,
-  useCurrentRefinements,
-  useInstantSearch,
-} from 'react-instantsearch-hooks-web'
-
-import IconButton from '@/atomic/atoms/IconButton'
+import { useClearRefinements, useCurrentRefinements } from 'react-instantsearch-hooks-web'
 
 import ClearFilterButton from '../Filter/ClearFilterButton'
 import SortMenu from '../SortMenu'
-import { Stats } from '../Stats'
 
 interface Props {
   onFilterClick: () => void

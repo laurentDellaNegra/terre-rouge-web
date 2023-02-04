@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import TitleSection from '@/atomic/atoms/TitleSection'
+import TitleSection from '@/components/UI/TitleSection'
 import ala from '@/public/logos/partners/ala.svg'
 import ctht from '@/public/logos/partners/ctht.svg'
 import talantana from '@/public/logos/partners/talantana.svg'

@@ -1,4 +1,4 @@
-import TitleSection from '@/atomic/atoms/TitleSection'
+import TitleSection from '@/components/UI/TitleSection'
 
 const TruckIcon = ({ className }: { className: string }) => (
   <svg

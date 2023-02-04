@@ -1,4 +1,4 @@
-import ButtonLink from '@/atomic/atoms/ButtonLink'
+import ButtonLink from '@/components/UI/ButtonLink'
 
 /* This example requires Tailwind CSS v2.0+ */
 export default function NotFound() {

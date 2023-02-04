@@ -1,4 +1,4 @@
-import Button from '@/atomic/atoms/Button'
+import Button from '@/components/UI/Button'
 
 interface Props {
   isFirstPage: boolean

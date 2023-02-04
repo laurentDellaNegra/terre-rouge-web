@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-import ButtonLink from '@/atomic/atoms/ButtonLink'
-import SubTitle from '@/atomic/atoms/Subtitle'
-import Title from '@/atomic/atoms/Title'
-import CollectionCards from '@/atomic/organisms/CollectionCards'
+import ButtonLink from '@/components/UI/ButtonLink'
+import CollectionCards from '@/components/UI/CollectionCards'
+import SubTitle from '@/components/UI/Subtitle'
+import Title from '@/components/UI/Title'
 import hero from '@/public/images/hero.webp'
 
 export default function Hero() {

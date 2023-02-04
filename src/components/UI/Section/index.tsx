@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import Container from '@/atomic/atoms/Container'
+import Container from '@/components/UI/Container'
 
 interface Props {
   children: ReactNode
