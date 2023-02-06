@@ -30,7 +30,7 @@ export default function HeaderMenu({ withInstantSearch }: Props) {
       })}
     >
       <CouponBanner>
-        <strong>-15%</strong> avec le code <strong>OUVERTURE15</strong>
+        <strong>-15%</strong> avec le code <strong>TERRE15</strong>
       </CouponBanner>
       <TrustBox
         className={clsx(
