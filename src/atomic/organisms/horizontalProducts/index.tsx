@@ -40,7 +40,6 @@ export default function HorizontalProducts() {
                         alt={product.node.images.edges[0].node.altText || product.node.title}
                         className="object-cover object-center group-hover:opacity-75"
                         fill
-                        sizes="100vw"
                       />
                     </div>
                     <div className="mt-6">
