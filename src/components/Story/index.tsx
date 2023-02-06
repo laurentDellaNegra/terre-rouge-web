@@ -69,7 +69,7 @@ export default function Story() {
               // className="block h-96 w-auto m-auto"
               className="aspect-square w-full"
               src={picture}
-              quality={60}
+              quality={80}
               placeholder="blur"
               alt="photos d'épices"
             />
