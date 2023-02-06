@@ -36,10 +36,12 @@ export default function HorizontalProducts() {
                   <div className="group relative">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200">
                       <Image
-                        src={product.node.images.edges[0].node.originalSrc}
+                        src={product.node.images.edges[0].node.transformedSrc}
                         alt={product.node.images.edges[0].node.altText || product.node.title}
                         className="object-cover object-center group-hover:opacity-75"
-                        fill
+                        width={240}
+                        height={240}
+                        quality={60}
                       />
                     </div>
                     <div className="mt-6">

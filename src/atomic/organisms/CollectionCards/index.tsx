@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import artTableImg from '@/public/images/art-table.webp'
-import condimentsImg from '@/public/images/condiments.webp'
-import spiciesImg from '@/public/images/spices.webp'
+import artTableImg from '@/public/images/art-table.avif'
+import condimentsImg from '@/public/images/condiments.avif'
+import spiciesImg from '@/public/images/spices.avif'
 
 const collections = [
   {

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import P from '@/atomic/atoms/P'
 import TitleSection from '@/atomic/atoms/TitleSection'
-import picture from '@/public/images/story.webp'
+import picture from '@/public/images/story.avif'
 
 export default function Story() {
   return (
@@ -69,7 +69,7 @@ export default function Story() {
               // className="block h-96 w-auto m-auto"
               className="aspect-square w-full"
               src={picture}
-              quality={80}
+              quality={75}
               placeholder="blur"
               alt="photos d'épices"
             />

@@ -55,7 +55,6 @@ export default function Product(props: Props) {
   const isPatille = !!metafields.find(
     (m) => m.key === 'conditionnement' && m.value?.includes('biodégradable')
   )
-  console.log(metafields)
   const nbVariants = product.variants.edges.length
   const variantType = variant.selectedOptions[0].name
 

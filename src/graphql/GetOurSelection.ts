@@ -1,7 +1,7 @@
 import { graphql } from '@/types/gql'
 
 export const GetOurSelection = graphql(`
-  query GetOurSelection($maxWidth: Int = 384, $maxHeight: Int = 384) {
+  query GetOurSelection($maxWidth: Int = 240, $maxHeight: Int = 240) {
     collection(handle: "frontpage") {
       products(first: 4) {
         edges {
