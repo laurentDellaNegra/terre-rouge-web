@@ -20,6 +20,8 @@
     "@algolia/autocomplete-preset-algolia": "^1.7.4",
     "@algolia/autocomplete-theme-classic": "^1.7.4",
     "@algolia/client-search": "^4.14.3",
+    "@algolia/recommend": "^4.14.3",
+    "@algolia/recommend-react": "^1.8.1",
     "@builder.io/partytown": "^0.7.5",
     "@headlessui/react": "^1.7.10",
     "@heroicons/react": "^2.0.14",

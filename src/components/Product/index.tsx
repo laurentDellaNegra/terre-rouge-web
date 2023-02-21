@@ -10,9 +10,10 @@ import getCookie from '@/lib/cookie'
 import { price } from '@/lib/price'
 import { UNIT_STRING } from '@/lib/weight'
 import pastille from '@/public/images/pastille.png'
-import { GetProductQuery, ProductVariant } from '@/types/gql/graphql'
+import { GetProductQuery } from '@/types/gql/graphql'
 
 import Alert from '../Alert/Alert'
+import RelatedProducts from '../RelatedProducts'
 import Spinner from '../Spinner'
 import VariantBoxes from './VariantBoxes'
 import VariantColors from './VariantColors'
@@ -326,6 +327,7 @@ export default function Product(props: Props) {
             </section>
           </div>
         </div>
+        <RelatedProducts productId={product.id} />
       </div>
     </div>
   )

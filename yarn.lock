@@ -138,6 +138,42 @@
   dependencies:
     "@algolia/logger-common" "4.14.3"
 
+"@algolia/recommend-core@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/@algolia/recommend-core/-/recommend-core-1.8.1.tgz#e5881805a9de12b9a842d10996b602b651325fa6"
+  integrity sha512-ggJGe0yxfCDQYbU2S4d44mLXiGEZRSwcXDZl20kjCH0XEfGPd0ooKmdsXGv7TlN0zSUtt80lvS69393Q+M5K0w==
+
+"@algolia/recommend-react@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/@algolia/recommend-react/-/recommend-react-1.8.1.tgz#a2edbc88e7af9034edea9571d12ec905156f842d"
+  integrity sha512-BtHoZeRn4JI3wFVi5N604UBgLuoPMwPXH4wGs45zEaFAk6axOwBXKViS4aVGpe7YsfbXpWX0G/SOjRhPUuBPOw==
+  dependencies:
+    "@algolia/recommend-core" "1.8.1"
+    "@algolia/recommend-vdom" "1.8.1"
+    dequal "^2.0.0"
+
+"@algolia/recommend-vdom@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/@algolia/recommend-vdom/-/recommend-vdom-1.8.1.tgz#dc25e936d3c15a667122d06e36b9b2c63812f530"
+  integrity sha512-YYmg89qrWUbJwyf1EgSUFaDQQWM7D0tB/G2sYrXDNxCN45T8u2PKT98pIwxYUbSpNg9GW+KWXYA6IVMffWXdcA==
+
+"@algolia/recommend@^4.14.3":
+  version "4.14.3"
+  resolved "https://registry.npmjs.org/@algolia/recommend/-/recommend-4.14.3.tgz#facb5b84c71be3c74f5b8c12e12c61fe358d4a0d"
+  integrity sha512-prN7XcOy9FCpZ1ltr6GZxvUFGlzTyZq7JjhSsoyYMvIO4EXKnVp5M9LB8kwCN0RvUH1/XKXJBrNkE0/q5227oA==
+  dependencies:
+    "@algolia/cache-browser-local-storage" "4.14.3"
+    "@algolia/cache-common" "4.14.3"
+    "@algolia/cache-in-memory" "4.14.3"
+    "@algolia/client-common" "4.14.3"
+    "@algolia/client-search" "4.14.3"
+    "@algolia/logger-common" "4.14.3"
+    "@algolia/logger-console" "4.14.3"
+    "@algolia/requester-browser-xhr" "4.14.3"
+    "@algolia/requester-common" "4.14.3"
+    "@algolia/requester-node-http" "4.14.3"
+    "@algolia/transporter" "4.14.3"
+
 "@algolia/requester-browser-xhr@4.14.3":
   version "4.14.3"
   resolved "https://registry.npmjs.org/@algolia/requester-browser-xhr/-/requester-browser-xhr-4.14.3.tgz#bcf55cba20f58fd9bc95ee55793b5219f3ce8888"
@@ -6846,6 +6882,11 @@ dependency-graph@^0.11.0:
   version "0.11.0"
   resolved "https://registry.npmjs.org/dependency-graph/-/dependency-graph-0.11.0.tgz#ac0ce7ed68a54da22165a85e97a01d53f5eb2e27"
   integrity sha512-JeMq7fEshyepOWDfcfHK06N3MhyPhz++vtqWhMT5O9A3K42rdsEDpfdVqjaqaAhsw6a+ZqeDvQVtD0hFHQWrzg==
+
+dequal@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz#2644214f1997d39ed0ee0ece72335490a7ac67be"
+  integrity sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==
 
 des.js@^1.0.0:
   version "1.0.1"
