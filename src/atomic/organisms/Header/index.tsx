@@ -90,7 +90,7 @@ export default function Header(props: HeaderProps) {
                 <button
                   type="button"
                   className="ml-2 hidden p-2 text-gray-400 hover:text-gray-500 lg:block"
-                  onClick={toggleSearch}
+                  onClick={() => toggleSearch()}
                 >
                   <span className="sr-only">Rechercher</span>
                   <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
