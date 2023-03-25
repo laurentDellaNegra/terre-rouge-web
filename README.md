@@ -8,10 +8,12 @@
 
 - [Description](#description)
 - [Tech Stack](#tech-stack)
+- [Third parties](#third-parties)
+- [Performances](#performances)
 - [Features](#features)
+- [Incoming Features](#incoming-features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+- [Deployment](#deployment)
 - [License](#license)
 
 ## Description
@@ -43,13 +45,13 @@ The application is built with Next.js, a popular React-based framework for build
 ![lighthouse](doc/lighthouse.png)
 The primary objectives of this website are to ensure it is both user-friendly and fast 🚀.
 
-In order to achieve these goals, the latest tech stack has been used.
+In order to achieve these goals, the following tools are used:
 
 🎉 Partytown is a library that uses web workers to load third-party libraries, which can otherwise negatively impact lighthouse scores.
 
 🔍 Algolia is used for fast search results, while Next.js is used for static page rendering.
 
-⚠️ However, an issue with Next.js is that it can sometimes ship excessive JavaScript, resulting in a lower performance score (76).
+⚠️ However, Next.js ships excessive JavaScript, resulting in a lower performance score (76).
 
 > I'm currently working on a migration to [Astro](https://astro.build/) to solve this issue.
 
