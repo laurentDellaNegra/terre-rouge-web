@@ -52,7 +52,7 @@ export default function Autocomplete() {
         ...source,
         onSelect({ item }) {
           setInstantSearchUiState({ query: item.label })
-          toggleSearch()
+          toggleSearch(false)
         },
       }
     },
@@ -71,7 +71,7 @@ export default function Autocomplete() {
         ...source,
         onSelect({ item }: any) {
           setInstantSearchUiState({ query: item.query })
-          toggleSearch()
+          toggleSearch(false)
         },
       }
     },
@@ -93,7 +93,7 @@ export default function Autocomplete() {
         },
         onSelect({ item }: any) {
           router.push('/produit/' + item.handle)
-          toggleSearch()
+          toggleSearch(false)
         },
         templates: {
           header() {
@@ -121,7 +121,7 @@ export default function Autocomplete() {
       container: containerRef.current,
       onSubmit: ({ state }) => {
         setInstantSearchUiState({ query: state.query })
-        toggleSearch()
+        toggleSearch(false)
       },
       onReset() {
         setInstantSearchUiState({ query: '' })

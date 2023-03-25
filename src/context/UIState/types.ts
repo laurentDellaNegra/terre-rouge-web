@@ -1,5 +1,6 @@
 export type ToggleSearchPaletteAction = {
   type: 'TOGGLE_SEARCH_PALETTE'
+  value?: boolean
 }
 export type ToggleCartPanelAction = {
   type: 'TOGGLE_CART_PANEL'

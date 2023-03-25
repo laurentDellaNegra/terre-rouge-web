@@ -33,7 +33,6 @@ export default function useSetProductQty() {
           const idxLineItemToUpdate = oldCart?.lines.edges.findIndex(
             ({ node }) => node.id === lineItemToUpdate.id
           )
-          console.log('idxLineItemToUpdate', idxLineItemToUpdate)
           if (
             idxLineItemToUpdate === null ||
             idxLineItemToUpdate === undefined ||

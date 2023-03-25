@@ -6,7 +6,8 @@ export default function UIStateReducer(state: State, action: Action) {
   switch (action.type) {
     case 'TOGGLE_SEARCH_PALETTE': {
       return produce(state, (draft) => {
-        draft.openSearchPalette = !state.openSearchPalette
+        draft.openSearchPalette =
+          action.value === undefined ? !state.openSearchPalette : action.value
       })
     }
     case 'TOGGLE_CART_PANEL': {

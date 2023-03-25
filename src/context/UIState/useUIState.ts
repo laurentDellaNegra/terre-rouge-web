@@ -14,7 +14,7 @@ function useUIState() {
   const { openSearchPalette, openCartPanel } = state
 
   const toggleSearch = useCallback(
-    (): void => dispatch({ type: 'TOGGLE_SEARCH_PALETTE' }),
+    (value?: boolean): void => dispatch({ type: 'TOGGLE_SEARCH_PALETTE', value }),
     [dispatch]
   )
 
@@ -27,7 +27,7 @@ function useUIState() {
   const { width } = useWindowSize()
   useEffect(() => {
     if (width < getBreakpoint('lg')) {
-      if (openSearchPalette) toggleSearch()
+      if (openSearchPalette) toggleSearch(false)
     }
   }, [openSearchPalette, toggleSearch, width])
 

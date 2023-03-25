@@ -3,12 +3,12 @@ import Image from 'next/image'
 
 import P from '@/components/UI/P'
 import TitleSection from '@/components/UI/TitleSection'
-import picture from '@/public/images/story.webp'
+import picture from '@/public/images/story.avif'
 
 export default function Story() {
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-32 lg:px-8">
         {/* <div className="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8"> */}
         <div className="flex flex-col items-center gap-16 lg:flex-row">
           <div className="lg:order-2 lg:w-[432px]">
@@ -69,6 +69,7 @@ export default function Story() {
               // className="block h-96 w-auto m-auto"
               className="aspect-square w-full"
               src={picture}
+              quality={75}
               placeholder="blur"
               alt="photos d'épices"
             />

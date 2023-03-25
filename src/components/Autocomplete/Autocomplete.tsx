@@ -41,7 +41,7 @@ export default function Autocomplete() {
         ...source,
         onSelect({ item }) {
           router.push('/produits?query=' + getQueryToUrl(item.label))
-          toggleSearch()
+          toggleSearch(false)
         },
       }
     },
@@ -60,7 +60,7 @@ export default function Autocomplete() {
         ...source,
         onSelect({ item }: any) {
           router.push('/produits?query=' + getQueryToUrl(item.query))
-          toggleSearch()
+          toggleSearch(false)
         },
       }
     },
@@ -82,7 +82,7 @@ export default function Autocomplete() {
         },
         onSelect({ item }: any) {
           router.push('/produit/' + item.handle)
-          toggleSearch()
+          toggleSearch(false)
         },
         templates: {
           header() {
@@ -110,7 +110,7 @@ export default function Autocomplete() {
       container: containerRef.current,
       onSubmit: ({ state }) => {
         router.push('/produits?query=' + getQueryToUrl(state.query))
-        toggleSearch()
+        toggleSearch(false)
       },
       renderer: { createElement, Fragment, render: () => {} },
       render({ children }, root) {
