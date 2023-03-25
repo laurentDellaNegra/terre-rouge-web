@@ -4,30 +4,23 @@ import ButtonLink from '@/components/UI/ButtonLink'
 import CollectionCards from '@/components/UI/CollectionCards'
 import SubTitle from '@/components/UI/Subtitle'
 import Title from '@/components/UI/Title'
-import useWindowSize from '@/hooks/useWindowSize'
-import { getBreakpoint } from '@/lib/tailwindConfig'
 import hero from '@/public/images/hero.avif'
 
 export default function Hero() {
-  const { width } = useWindowSize()
-  // we do this to prevent double load image
-  const isSmall = width < getBreakpoint('sm')
   return (
     <div className="relative mb-24">
       {/* Background image and overlap */}
       <div aria-hidden="true" className="absolute inset-0 hidden sm:flex sm:flex-col">
         <div className="relative w-full flex-1 bg-gray-800">
           <div className="absolute inset-0 overflow-hidden">
-            {!isSmall && (
-              <Image
-                src={hero}
-                alt="Hand picking vanilla bean"
-                placeholder="blur"
-                priority
-                fill
-                className="object-cover"
-              />
-            )}
+            <Image
+              src={hero}
+              alt="Hand picking vanilla bean"
+              placeholder="blur"
+              priority
+              fill
+              className="object-cover hidden sm:block"
+            />
           </div>
           <div className="absolute inset-0 bg-gray-900 opacity-30" />
         </div>
@@ -38,16 +31,14 @@ export default function Hero() {
         <div aria-hidden="true" className="absolute inset-0 flex flex-col sm:hidden">
           <div className="relative w-full flex-1 bg-gray-800">
             <div className="absolute inset-0 overflow-hidden">
-              {isSmall && (
-                <Image
-                  src={hero}
-                  alt="Hand picking vanilla bean"
-                  placeholder="blur"
-                  priority
-                  fill
-                  className="object-cover"
-                />
-              )}
+              <Image
+                src={hero}
+                alt="Hand picking vanilla bean"
+                placeholder="blur"
+                priority
+                fill
+                className="object-cover sm:hidden"
+              />
             </div>
             <div className="absolute inset-0 bg-gray-900 opacity-30" />
           </div>
