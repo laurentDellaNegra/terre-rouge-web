@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import P from '@/components/UI/P'
 import TitleSection from '@/components/UI/TitleSection'
-import picture from '@/public/images/story.avif'
+import picture from '@/public/images/story.webp'
 
 export default function Story() {
   return (
