@@ -4,12 +4,13 @@ import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import TextLink from '@/atomic/atoms/TextLink'
-import TitleSection from '@/atomic/atoms/TitleSection'
 import { GET_HOME_PAGE_PRODUCTS_QUERY_KEY, getOurSelection } from '@/lib/getOurSelection'
 import { price } from '@/lib/price'
 import { ProductRecord } from '@/types/ProductRecord'
 import { CurrencyCode } from '@/types/gql/graphql'
+
+import TextLink from '../UI/TextLink'
+import TitleSection from '../UI/TitleSection'
 
 const APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || ''
 const API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY || ''
