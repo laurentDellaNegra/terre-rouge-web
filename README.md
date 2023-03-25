@@ -44,7 +44,6 @@ The application is built with Next.js, a popular React-based framework for build
 
 ![lighthouse](doc/lighthouse.png)
 The primary objectives of this website are to ensure it is both user-friendly and fast 🚀.
-
 In order to achieve these goals, the following tools are used:
 
 🎉 Partytown is a library that uses web workers to load third-party libraries, which can otherwise negatively impact lighthouse scores.
@@ -60,15 +59,15 @@ In order to achieve these goals, the following tools are used:
 - Using storefront Shopify API
 - Algolia autocomplete for global search
 - Category page plugged to algolia search results
-- Handleing cart
+- Cart management
 
 ## Incoming features
 
-- Cookie banner
-- Custom checkout
-- Storybook (sanitize components)
-- Improve performances (Switching to Astro)
-- Improve SEO
+- [ ] Cookie banner
+- [ ] Custom checkout
+- [ ] Storybook (sanitize components)
+- [ ] Improve performances (Switching to Astro)
+- [ ] Improve SEO
 
 ## Deployment
 
