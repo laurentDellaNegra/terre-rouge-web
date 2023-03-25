@@ -20,7 +20,7 @@
 
 [terre-rouge.shop](https://terre-rouge.shop) is a web application that allow users to order Malagasy spices with a focus on performance and user experience.
 
-The application is built with Next.js, a popular React-based framework for building web applications. It is also integrated with Algolia for search functionality, Partytown for performance optimization, TailwindUI and HeadlessUI for UI components, React Query for data fetching, Sentry for error monitoring, GraphQL for data management, and TypeScript for type safety.
+The application is built with Next.js, a popular React-based framework for building web applications. It is also integrated with Algolia for search functionality, Partytown for performance optimization, TailwindUI and HeadlessUI for UI components, React Query for data fetching, Sentry for error monitoring, GraphQL for data management, and TypeScript + Codegen for type safety.
 
 ## Tech Stack
 
@@ -33,6 +33,7 @@ The application is built with Next.js, a popular React-based framework for build
 - [Sentry](https://sentry.io/)
 - [GraphQL](https://graphql.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Codegen](https://the-guild.dev/graphql/codegen)
 
 ## Third parties
 
