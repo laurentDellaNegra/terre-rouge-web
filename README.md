@@ -44,7 +44,7 @@ The application is built with Next.js, a popular React-based framework for build
 ## Performances
 
 ![lighthouse](doc/lighthouse.png)
-The primary objectives of this website are to ensure it is both user-friendly and fast 🚀.
+The primary objectives of this website are to ensure both user-friendly and speed 🚀.
 In order to achieve these goals, the following tools are used:
 
 🎉 Partytown is a library that uses web workers to load third-party libraries, which can otherwise negatively impact lighthouse scores.
