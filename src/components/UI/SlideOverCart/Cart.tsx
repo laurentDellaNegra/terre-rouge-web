@@ -10,8 +10,8 @@ import useGetCart from '@/context/ShopifyClient/getCart/useGetCart'
 import useRemoveProduct from '@/context/ShopifyClient/removeProduct/useRemoveProduct'
 import useSetProductQty from '@/context/ShopifyClient/setProductQty/useSetProductQty'
 import useUIState from '@/context/UIState/useUIState'
-import getCookie from '@/lib/cookie'
 import { price } from '@/lib/price'
+import { track } from '@/lib/thirdParties/clientTracking'
 import { SelectedOption } from '@/types/gql/graphql'
 
 import QtySelect from './QtySelect'
@@ -42,24 +42,6 @@ export default function Cart({ onClose }: Props) {
     isLoading: isSetProductQtyLoading,
   } = useSetProductQty()
   const isEmpty = !cart || !cart.checkoutUrl || cart.lines.edges.length === 0
-
-  const track = () => {
-    // Tracking
-    const eventName = 'InitiateCheckout'
-    const eventID = `${eventName}.${new Date().getTime()}`
-    if (typeof (window as any).fbq !== 'undefined')
-      (window as any).fbq('track', eventName, { event_id: eventID })
-    fetch('/api/track', {
-      method: 'post',
-      body: JSON.stringify({
-        eventID,
-        eventName,
-        urlLocation: window?.location?.href,
-        fbp: getCookie('_fbp'),
-        fbc: getCookie('_fbc'),
-      }),
-    })
-  }
 
   return (
     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
@@ -211,7 +193,7 @@ export default function Cart({ onClose }: Props) {
                 : 'bg-primary text-white hover:bg-primary-dark',
               'flex items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium shadow-sm'
             )}
-            onClick={track}
+            onClick={() => track('InitiateCheckout')}
           >
             Finaliser ma commande
           </a>
