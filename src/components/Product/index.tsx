@@ -9,7 +9,7 @@ import { price } from '@/lib/price'
 import { track } from '@/lib/thirdParties/clientTracking'
 import { UNIT_STRING } from '@/lib/weight'
 import pastille from '@/public/images/pastille.png'
-import { GetProductQuery } from '@/types/gql/graphql'
+import { CurrencyCode, GetProductQuery } from '@/types/gql/graphql'
 
 import Alert from '../Alert/Alert'
 import RelatedProducts from '../RelatedProducts'
@@ -155,9 +155,19 @@ export default function Product(props: Props) {
 
             {/* Price / weight */}
             <div className="mt-3 flex gap-4">
-              <p className="text-3xl tracking-tight text-gray-900">
+              <p
+                className={clsx(
+                  variant.compareAtPrice ? 'text-primary-dark' : 'text-gray-900',
+                  'text-3xl tracking-tight'
+                )}
+              >
                 {price(variant.price.amount, variant.price.currencyCode)}
               </p>
+              {variant.compareAtPrice && variant.compareAtPrice.amount !== 0 ? (
+                <p className="text-3xl tracking-tight line-through text-gray-900">
+                  {price(variant.compareAtPrice.amount, variant.compareAtPrice.currencyCode)}
+                </p>
+              ) : null}
               {variant.weight && variant.weightUnit ? (
                 <p className="text-gray-600 bg-gray-200 rounded px-2 flex items-center">
                   <span>{variant.weight}</span>
