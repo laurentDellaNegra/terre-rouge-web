@@ -20,7 +20,7 @@ const recommendClient = recommend(APP_ID, API_KEY)
 export default function RelatedProducts({ productId }: { productId: string }) {
   const { data } = useQuery([GET_HOME_PAGE_PRODUCTS_QUERY_KEY], getOurSelection)
   const products = data?.collection?.products
-  if (!products) return null
+  if (!products || products.edges.length === 0) return null
   return (
     <div className="mx-auto mt-16 max-w-2xl sm:mt-24 lg:max-w-none">
       <div className="py-8 sm:py-16 lg:mx-auto lg:max-w-7xl lg:px-8">
@@ -90,8 +90,15 @@ function RelatedItem({ item: product }: { item: ProductRecord }) {
             {product.title}
           </Link>
         </h3>
-        <p className="mt-1 text-gray-900">
-          {price(product.price, product.currency as CurrencyCode)}
+        <p className="mt-1">
+          <span className={product.compareAtPrice ? 'text-primary' : 'text-gray-900'}>
+            {price(product.price, product.currency as CurrencyCode)}
+          </span>
+          {!!product.compareAtPrice && (
+            <span className="ml-2 text-gray-900 line-through">
+              {price(product.compareAtPrice, product.currency as CurrencyCode)}
+            </span>
+          )}
         </p>
       </div>
     </div>
