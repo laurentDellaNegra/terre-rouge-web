@@ -1,0 +1,5 @@
+# Group 1
+User-agent: *
+Disallow: /legal/
+
+Sitemap: http://www.terre-rouge.shop/sitemap.xml

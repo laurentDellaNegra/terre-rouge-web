@@ -1,38 +1,455 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://terre-rouge.shop</loc>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://www.terre-rouge.shop/</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/epices</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/condiments</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/arts-de-table</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/engagements</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produits</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/infusion-lodtsi</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-passion</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/fleur-de-sel-poisson-et-crustace</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/poivre-sauvage-voatsiperifery-en-poudre</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/epices?category=Vanille</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/legal/usage</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/legal/privacy</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/legal/refund</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/pili-pili-en-grain</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/melange-5-epices</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/clous-de-girofle</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/coriandre</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/cumin-en-poudre</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/poivre-noir-de-madagascar-en-poudre</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/melange-de-4-baies-de-madagascar</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/piment-pili-pili</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/combava</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/poivre-sauvage-de-voatsiperifery</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/baton-de-cannelle-de-madagascar</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/melange-massale</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/curry</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/citronnelle-sechee</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/cumin</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/poivre-noir-de-madagascar</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/baie-rose-de-madagascar</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/cannelle</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/gingembre</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/curcuma</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/gousse-de-vanille-17-18cm</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/gousse-de-vanille-15-16cm-1</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/gousse-de-vanille-13-14cm</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/bredes-anamamy</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/felika-mifangaro</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/felika-ro-mazava</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/felika-vary</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/brede-felimorongo-ou-moringa</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/brede-anamadinika</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/katsaka-maina-ou-mais-sans-peau</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/poids-de-bambara-ou-voanjobory</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/chocolat-noix-de-cajou-et-fleur-de-sel-marin</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/chocolat-noir-80</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/chocolat-noir-63-combava-et-baies-roses</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/chocolat-au-lait-45-cacao-lait-de-coco-et-vanille</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/tablette-noir-100-cacao-et-eclats-de-feves</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-tamarin</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-ananas</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-citron-vert</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-ananas-vanille-140-gr</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-litchi-vanille-140-gr</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/confiture-de-litchi-passion-140-gr</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/fleur-de-sel-aux-graines</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/fleur-de-sel-aux-herbes</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/fleur-de-sel-fou</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/fleur-de-sel-aux-4-epices</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/fleur-de-sel-special-salade</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/the-combava</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/the-ginger-lemon</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/the-orange</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/infusion-pomme-cannelle</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/infusion-tropicoco</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/infusion-citramono</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/infusion-gojiberry</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/piment-sakay-tany</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/piment-sakay-rubis</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/piment-sakay-combava</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/sirop-de-litchi</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/sirop-de-grernadelle</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/sirop-de-cannelle</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/vinaigre-dananas</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/vinaigre-de-litchi</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-3-paniers-a-fruit-tsokola</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-3-paniers-a-fruit-bordeau</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-3-paniers-a-fruit-mainty</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-3-paniers-a-fruit-manga</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-3-paniers-a-fruit-mavo</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-6-sets-de-table-fasika</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-6-set-de-table-wave</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-6-set-de-table-wind</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/set-de-table-aina</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-6-sous-verre-fasika</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-6-sous-verre-wave</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/lot-de-6-sous-verre-wind</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.terre-rouge.shop/produit/sous-verre-aina</loc>
+  <lastmod>2023-06-10T13:01:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
-  <url>
-    <loc>https://terre-rouge.shop/arts-de-table</loc>
-  </url>
 
-  <url>
-    <loc>https://terre-rouge.shop/condiments</loc>
-  </url>
-
-  <url>
-    <loc>https://terre-rouge.shop/epices</loc>
-  </url>
-
-  <url>
-    <loc>https://terre-rouge.shop/engagements</loc>
-  </url>
-
-  <url>
-    <loc>https://terre-rouge.shop/legal/privacy</loc>
-  </url>
-
-  <url>
-    <loc>https://terre-rouge.shop/legal/refund</loc>
-  </url>
-
-  <url>
-    <loc>https://terre-rouge.shop/legal/usage</loc>
-  </url>
-
-  <url>
-    <loc>https://terre-rouge.shop/produits</loc>
-  </url>
 </urlset>

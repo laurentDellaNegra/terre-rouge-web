@@ -9,8 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "generate-watch": "graphql-codegen --watch",
-    "generate": "graphql-codegen --config codegen.yml",
-    "postbuild": "node ./scripts/generate-sitemap.mjs"
+    "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.8.3",
@@ -63,7 +62,6 @@
     "eslint": "8.38.0",
     "eslint-config-next": "^13.3.0",
     "eslint-config-prettier": "^8.8.0",
-    "globby": "^13.1.4",
     "postcss": "^8.4.22",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
