@@ -17,14 +17,6 @@ const nextConfig = {
   experimental: {
     nextScriptWorkers: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
-    ]
-  },
 }
 
 const sentryWebpackPluginOptions = {
