@@ -14,6 +14,7 @@ import { CurrencyCode, GetProductQuery } from '@/types/gql/graphql'
 import Alert from '../Alert/Alert'
 import RelatedProducts from '../RelatedProducts'
 import Spinner from '../Spinner'
+import StockBadgeState from '../StockBadgeState'
 import VariantBoxes from './VariantBoxes'
 import VariantColors from './VariantColors'
 import { formatMetafields } from './metafields'
@@ -179,15 +180,7 @@ export default function Product(props: Props) {
             {/* Available */}
             <div className="mt-3">
               <h3 className="sr-only">Disponibilité</h3>
-              {variant.availableForSale ? (
-                <span className="bg-primary-extra-light text-primary py-1 px-3 rounded-full">
-                  En stock
-                </span>
-              ) : (
-                <span className="bg-red-100 text-red-500 py-1 px-3 rounded-full">
-                  Rupture de stock
-                </span>
-              )}
+              <StockBadgeState availableForSale={variant.availableForSale} />
             </div>
 
             {/* Description */}

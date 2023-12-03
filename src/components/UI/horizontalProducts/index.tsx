@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import StockBadgeState from '@/components/StockBadgeState'
 import TextLink from '@/components/UI/TextLink'
 import TitleSection from '@/components/UI/TitleSection'
 import { GET_HOME_PAGE_PRODUCTS_QUERY_KEY, getOurSelection } from '@/lib/getOurSelection'
@@ -43,6 +44,13 @@ export default function HorizontalProducts() {
                         height={240}
                         quality={60}
                       />
+                      {product.node.variants.edges.every((e) => !e.node.availableForSale) && (
+                        <div>
+                          <div className="absolute bottom-5 right-5">
+                            <StockBadgeState availableForSale={false} />
+                          </div>
+                        </div>
+                      )}
                     </div>
                     <div className="mt-6">
                       <h3 className="mt-1 font-semibold text-gray-900">

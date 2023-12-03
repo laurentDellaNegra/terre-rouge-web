@@ -9,6 +9,7 @@ import { price } from '@/lib/price'
 import { ProductRecord } from '@/types/ProductRecord'
 import { CurrencyCode } from '@/types/gql/graphql'
 
+import StockBadgeState from '../StockBadgeState'
 import TextLink from '../UI/TextLink'
 import TitleSection from '../UI/TitleSection'
 
@@ -71,6 +72,10 @@ function ListView(props: any) {
 }
 
 function RelatedItem({ item: product }: { item: ProductRecord }) {
+  const discount = (
+    ((product.compareAtPrice - product.price) / product.compareAtPrice) *
+    100
+  ).toFixed(0)
   return (
     <div className="group relative">
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200">
@@ -82,6 +87,13 @@ function RelatedItem({ item: product }: { item: ProductRecord }) {
           height={240}
           quality={60}
         />
+        {!product.availableForSale && (
+          <div>
+            <div className="absolute bottom-5 right-5">
+              <StockBadgeState availableForSale={false} />
+            </div>
+          </div>
+        )}
       </div>
       <div className="mt-6">
         <h3 className="mt-1 font-semibold text-gray-900">
@@ -95,9 +107,12 @@ function RelatedItem({ item: product }: { item: ProductRecord }) {
             {price(product.price, product.currency as CurrencyCode)}
           </span>
           {!!product.compareAtPrice && (
-            <span className="ml-2 text-gray-900 line-through">
-              {price(product.compareAtPrice, product.currency as CurrencyCode)}
-            </span>
+            <>
+              <span className="ml-2 text-gray-900 line-through">
+                {price(product.compareAtPrice, product.currency as CurrencyCode)}
+              </span>
+              <span className="ml-2 bg-red-500 text-white p-1 rounded-md">-{discount}%</span>
+            </>
           )}
         </p>
       </div>
